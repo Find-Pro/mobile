@@ -5,5 +5,5 @@ class PaddingInsets {
   final medium = const EdgeInsets.all(8);
   final large = const EdgeInsets.all(12);
   final xl = const EdgeInsets.all(14);
-  final xxl = const EdgeInsets.all(18);
+  final xxl = const EdgeInsets.all(28);
 }

@@ -1,7 +1,7 @@
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
-class GiveInformationDialog {
+class InformationToast {
   void show(BuildContext context, String text) {
     final overlay = Overlay.of(context);
     late final OverlayEntry overlayEntry;
@@ -85,7 +85,7 @@ class _NotificationWidgetState extends State<_NotificationWidget>
             padding:
                 const EdgeInsets.symmetric(horizontal: 14, vertical: 1),
             decoration: BoxDecoration(
-              color: context.themeData.shadowColor,
+              color: context.themeData.primaryColor,
               borderRadius: BorderRadius.circular(15),
             ),
             child: ListTile(

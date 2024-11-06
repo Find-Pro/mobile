@@ -11,7 +11,7 @@ part 'get_comments_response.g.dart';
 final class GetCommentsResponse extends INetworkModel<GetCommentsResponse>
     with EquatableMixin {
   const GetCommentsResponse({
-    this.success,
+    required this.success,
     this.message,
     this.comments,
   });
@@ -26,7 +26,7 @@ final class GetCommentsResponse extends INetworkModel<GetCommentsResponse>
   @override
   Map<String, dynamic>? toJson() => _$GetCommentsResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final List<CommentModel?>? comments;
 

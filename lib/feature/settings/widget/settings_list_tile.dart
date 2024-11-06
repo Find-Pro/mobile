@@ -18,7 +18,7 @@ class SettingsListTile extends StatelessWidget {
         iconData,
         color: context.themeData.cardColor,
       ),
-      title: Text(text, style: context.textTheme.headlineSmall),
+      title: Text(text, style: context.textTheme.labelLarge),
       onTap: onTap,
     );
   }

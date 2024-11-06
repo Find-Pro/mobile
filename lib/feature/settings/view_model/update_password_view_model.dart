@@ -5,7 +5,8 @@ import 'package:riverpod/riverpod.dart';
 
 class UpdatePasswordViewModel
     extends StateNotifier<SuccessAndMessageResponse> {
-  UpdatePasswordViewModel() : super(const SuccessAndMessageResponse());
+  UpdatePasswordViewModel()
+      : super(const SuccessAndMessageResponse(success: false));
 
   final loadingNotifier = ValueNotifier<bool>(false);
 
@@ -16,7 +17,7 @@ class UpdatePasswordViewModel
     if (response != null) {
       state = response;
       loadingNotifier.value = false;
-      return response.success ?? false;
+      return response.success;
     }
     loadingNotifier.value = false;
     return false;

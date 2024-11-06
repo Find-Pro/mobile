@@ -1,47 +1,40 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:findpro/common/cache/cache_manager.dart';
+import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/photo_operation.dart';
+import 'package:findpro/common/services/manager/network_service.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
-import 'package:vexana/vexana.dart';
 
 class PhotoService implements PhotoOperation {
-  PhotoService(this._networkManager);
-  final INetworkManager _networkManager;
-
   @override
-  Future<SuccessAndMessageResponse?> profile(
-      int userId, File image) async {
-    final formData = FormData.fromMap({
-      'userId': userId.toString(),
-      'profilePicture': await MultipartFile.fromFile(image.path),
-    });
-
-    final response = await _networkManager
-        .send<SuccessAndMessageResponse, SuccessAndMessageResponse>(
-      EndPointEnums.photosProfile.fullUrl,
-      parseModel: const SuccessAndMessageResponse(),
-      method: RequestType.POST,
-      data: formData,
-    );
-
-    return response.data;
+  Future<SuccessAndMessageResponse?> profile(File image) async {
+    return _uploadPhoto(image, EndPointEnums.photoProfile);
   }
 
   @override
-  Future<SuccessAndMessageResponse?> cover(int userId, File image) async {
-    final formData = FormData.fromMap({
-      'userId': userId.toString(),
-      'coverPicture': await MultipartFile.fromFile(image.path),
-    });
+  Future<SuccessAndMessageResponse?> cover(File image) async {
+    return _uploadPhoto(image, EndPointEnums.photoCover);
+  }
 
-    final response = await _networkManager
-        .send<SuccessAndMessageResponse, SuccessAndMessageResponse>(
-      EndPointEnums.photosCover.fullUrl,
-      parseModel: const SuccessAndMessageResponse(),
-      method: RequestType.POST,
-      data: formData,
+  Future<SuccessAndMessageResponse?> _uploadPhoto(
+      File image, EndPointEnums endpoint) async {
+    final userId = CacheManager.instance.getUserId();
+    final imageBytes = await image.readAsBytes();
+    final base64Image = base64Encode(imageBytes);
+    final jsonData = {
+      'userId': userId,
+      'image': base64Image,
+    };
+    final responseData = await NetworkService.instance.photoRequest(
+      APIRequestMethod.post,
+      endpoint,
+      data: jsonData,
     );
 
-    return response.data;
+    return responseData != null
+        ? SuccessAndMessageResponse.fromJson(responseData)
+        : null;
   }
 }

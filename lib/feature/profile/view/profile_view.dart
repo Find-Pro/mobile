@@ -1,13 +1,13 @@
-import 'package:auto_route/auto_route.dart' show RoutePage;
-import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:auto_route/auto_route.dart' show AutoRouterX, RoutePage;
+import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
+import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
+import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
+import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-part '../widget/profile_app_bar.dart';
 
 @RoutePage()
 class ProfileView extends ConsumerWidget {
@@ -15,20 +15,36 @@ class ProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final profileViewModel = ref.watch(profileProvider);
+    final profileViewModel = ref.watch(profileProvider);
     final profileFuture = ref.watch(profileFutureProvider);
-    return Scaffold(
-        backgroundColor: Theme.of(context).indicatorColor,
-        appBar: const _ProfileAppBar(),
-        body: profileFuture.when(
-            data: (_) {
-              return Column(
+    return profileFuture.when(
+        data: (_) {
+          return GestureDetector(
+            child: SingleChildScrollView(
+              child: Stack(
                 children: [
-                  20.verticalSpace,
+                  ProfileCoverImage(
+                    photoName: profileViewModel.user!.coverPicture!,
+                  ),
+                  ProfileProfilePicture(
+                    photoName: profileViewModel.user!.profilePicture!,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        InformationToast().show(context, 'TEXT');
+                      },
+                      child: const Text('sasdklajsdkl'))
                 ],
-              );
+              ),
+            ),
+            onHorizontalDragEnd: (details) {
+              if (details.primaryVelocity! < -500) {
+                context.router.push(const SettingsRoute());
+              }
             },
-            error: (error, stackTrace) => const NoConnectionWidget(),
-            loading: () => const CustomCircular()));
+          );
+        },
+        error: (error, stackTrace) => const NoConnectionWidget(),
+        loading: () => const CustomCircular());
   }
 }

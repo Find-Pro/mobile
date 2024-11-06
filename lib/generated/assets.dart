@@ -3,13 +3,16 @@ class Assets {
   Assets._();
 
   static const String assets = 'assets/.env';
+  static const String assetsIconLauncher = 'assets/icon/launcher.jpeg';
   static const String iconApplelogo = 'assets/icon/applelogo.png';
+  static const String iconBg = 'assets/icon/bg.jpg';
   static const String iconComment = 'assets/icon/comment.png';
   static const String iconDiscovery = 'assets/icon/discovery.png';
   static const String iconFriends = 'assets/icon/friends.png';
   static const String iconGeceMsgBg = 'assets/icon/gece_msg_bg.png';
   static const String iconGooglelogo = 'assets/icon/googlelogo.png';
   static const String iconGunduzMsgBg = 'assets/icon/gunduz_msg_bg.png';
+  static const String iconLauncher = 'assets/icon/launcher.png';
   static const String iconLike = 'assets/icon/like.png';
   static const String iconLiked = 'assets/icon/liked.png';
   static const String iconMaillogo = 'assets/icon/maillogo.png';
@@ -23,9 +26,11 @@ class Assets {
   static const String jsonCity = 'assets/json/city.json';
   static const String jsonDistrict = 'assets/json/district.json';
   static const String lottieCircular = 'assets/lottie/circular.json';
+  static const String lottieDarkBg = 'assets/lottie/dark_bg.svg';
   static const String lottieEmptyFollower =
       'assets/lottie/empty_follower.json';
   static const String lottieEmptyHome = 'assets/lottie/empty_home.json';
+  static const String lottieLightBg = 'assets/lottie/light_bg.svg';
   static const String lottieProfile = 'assets/lottie/profile.json';
   static const String lottieSearch = 'assets/lottie/search.json';
   static const String lottieSupport = 'assets/lottie/support.json';

@@ -11,7 +11,7 @@ part 'user_list_response.g.dart';
 final class UserListResponse extends INetworkModel<UserListResponse>
     with EquatableMixin {
   const UserListResponse({
-    this.success,
+    required this.success,
     this.message,
     this.users,
   });
@@ -26,7 +26,7 @@ final class UserListResponse extends INetworkModel<UserListResponse>
   @override
   Map<String, dynamic>? toJson() => _$UserListResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final List<UserModel>? users;
 

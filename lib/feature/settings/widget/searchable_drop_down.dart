@@ -33,7 +33,6 @@ class _DropdownMenuSampleState extends State<DropdownMenuSample> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width - 16.0;
     final menuController = TextEditingController();
-    MenuItem? selectedMenu;
 
     return Padding(
       padding: const EdgeInsets.all(8),
@@ -51,9 +50,7 @@ class _DropdownMenuSampleState extends State<DropdownMenuSample> {
 
         label: const Text('Select Menu'),
         onSelected: (MenuItem? menu) {
-          setState(() {
-            selectedMenu = menu;
-          });
+          setState(() {});
         },
         dropdownMenuEntries:
             menuItems.map<DropdownMenuEntry<MenuItem>>((MenuItem menu) {

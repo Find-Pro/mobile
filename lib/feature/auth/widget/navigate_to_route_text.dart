@@ -28,8 +28,8 @@ class NavigateToRouteText extends StatelessWidget {
           },
           child: Text(
             text2,
-            style: context.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.w700,
+            style: context.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.w900,
             ),
           ),
         ),

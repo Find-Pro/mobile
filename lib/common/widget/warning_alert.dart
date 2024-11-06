@@ -1,9 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/cupertino.dart';
 
 final class WarningAlert {
-  void show(BuildContext context, String title, String text,
-      VoidCallback onTap, bool dismissible) {
+  void show(BuildContext context, String title, bool dismissible) {
     showCupertinoDialog<Widget>(
       context: context,
       barrierDismissible: dismissible,
@@ -16,9 +17,9 @@ final class WarningAlert {
           actions: <Widget>[
             CupertinoDialogAction(
               textStyle: context.themeData.textTheme.headlineSmall,
-              onPressed: onTap,
+              onPressed: () => context.router.pop(),
               child: Text(
-                text,
+                LocaleKeys.okay,
                 style: context.themeData.textTheme.headlineSmall,
               ),
             ),

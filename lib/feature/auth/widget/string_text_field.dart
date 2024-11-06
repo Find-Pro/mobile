@@ -1,4 +1,5 @@
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/padding_insets.dart';
 import 'package:flutter/material.dart';
 
 class StringTextField extends StatelessWidget {
@@ -19,17 +20,17 @@ class StringTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 11, right: 11),
+      padding: PaddingInsets().large,
       child: TextFormField(
         style: context.themeData.textTheme.labelLarge,
         keyboardType: keyboardType,
         controller: controller,
         decoration: InputDecoration(
-          suffixIcon: IconButton(
+          prefixIcon: IconButton(
             onPressed: onIconButtonPressed,
             icon: Icon(
               iconData,
-              color: Colors.blueAccent.shade400,
+              color: context.themeData.indicatorColor,
             ),
           ),
           fillColor: context.themeData.scaffoldBackgroundColor,
@@ -39,24 +40,23 @@ class StringTextField extends StatelessWidget {
               ?.copyWith(fontWeight: FontWeight.w500),
           // Add borders
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10), // Rounded corners
+            borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: context.themeData.primaryColor, // Border color
+              color: context.themeData.primaryColor,
               width: 1.5, // Border width
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: context.themeData.primaryColor
-                  .withOpacity(0.5), // Lighter color when enabled
+              color: context.themeData.primaryColor.withOpacity(0.5),
               width: 1.5,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: context.themeData.primaryColor, // Color when focused
+              color: context.themeData.primaryColor,
               width: 2, // Thicker border when focused
             ),
           ),

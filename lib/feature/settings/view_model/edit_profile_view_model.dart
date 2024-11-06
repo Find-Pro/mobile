@@ -5,20 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
 class EditProfileViewModel extends StateNotifier<UpdateProfileResponse> {
-  EditProfileViewModel() : super(const UpdateProfileResponse());
+  EditProfileViewModel()
+      : super(const UpdateProfileResponse(success: false));
 
   final loadingNotifier = ValueNotifier<bool>(false);
 
   Future<bool> updateProfile(UserModel updateUser) async {
     loadingNotifier.value = true;
-
     final response = await UserService().updateProfile(updateUser);
     if (response != null) {
       state = response;
       loadingNotifier.value = false;
-      return response.success ?? false;
+      return response.success;
     }
     loadingNotifier.value = false;
+    return false;
+  }
+
+  Future<bool> getUser() async {
+    final response = await UserService().profile();
+    if (response!.success) {
+      state = UpdateProfileResponse(
+          success: true, message: response.message, user: response.user);
+
+      return response.success;
+    }
+
     return false;
   }
 }
@@ -26,3 +38,10 @@ class EditProfileViewModel extends StateNotifier<UpdateProfileResponse> {
 final editProfileProvider =
     StateNotifierProvider<EditProfileViewModel, UpdateProfileResponse>(
         (ref) => EditProfileViewModel());
+
+final editProfileFutureProvider = FutureProvider.autoDispose<bool>(
+  (ref) async {
+    final success = await ref.read(editProfileProvider.notifier).getUser();
+    return success;
+  },
+);

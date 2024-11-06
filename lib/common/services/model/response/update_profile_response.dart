@@ -11,7 +11,7 @@ part 'update_profile_response.g.dart';
 final class UpdateProfileResponse
     extends INetworkModel<UpdateProfileResponse> with EquatableMixin {
   const UpdateProfileResponse({
-    this.success,
+    required this.success,
     this.message,
     this.user,
   });
@@ -26,7 +26,7 @@ final class UpdateProfileResponse
   @override
   Map<String, dynamic>? toJson() => _$UpdateProfileResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final UserModel? user;
 

@@ -10,7 +10,7 @@ part 'success_and_message_response.g.dart';
 final class SuccessAndMessageResponse
     extends INetworkModel<SuccessAndMessageResponse> with EquatableMixin {
   const SuccessAndMessageResponse({
-    this.success,
+    required this.success,
     this.message,
   });
 
@@ -25,7 +25,7 @@ final class SuccessAndMessageResponse
   Map<String, dynamic>? toJson() =>
       _$SuccessAndMessageResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
 
   @override

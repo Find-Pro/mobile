@@ -7,7 +7,6 @@ final pwVisibleProvider = ChangeNotifierProvider(
 
 class PwVisibilityNotifier extends ChangeNotifier {
   bool _isPasswordObscured = true;
-
   bool get isPasswordObscured => _isPasswordObscured;
 
   void togglePwVisibility() {

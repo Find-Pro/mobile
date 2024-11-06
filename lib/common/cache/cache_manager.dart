@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheManager {
+final class CacheManager {
   CacheManager._init();
   late SharedPreferences prefs;
   static final CacheManager _instance = CacheManager._init();

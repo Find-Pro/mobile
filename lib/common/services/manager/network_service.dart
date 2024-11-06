@@ -3,6 +3,7 @@ import 'package:findpro/common/const/api_key.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/const/locale_keys.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class NetworkService {
@@ -39,6 +40,32 @@ class NetworkService {
       }
     } catch (e) {
       Logger().e(e.toString());
+      return null;
+    }
+  }
+
+  Future<Map<String, dynamic>?> photoRequest(
+    APIRequestMethod method,
+    EndPointEnums endPoint, {
+    dynamic data,
+  }) async {
+    try {
+      final response = await _dio.request<Map<String, dynamic>>(
+        ApiKey.baseUrl + endPoint.value,
+        data: data,
+        options: Options(
+          method: method.value,
+          contentType: 'application/json',
+        ),
+      );
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        Logger().e('Error Network Service: ${response.data}');
+        return null;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
       return null;
     }
   }

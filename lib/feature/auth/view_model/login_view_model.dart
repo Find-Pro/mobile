@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
 class LoginViewModel extends StateNotifier<UpdateProfileResponse> {
-  LoginViewModel() : super(const UpdateProfileResponse());
+  LoginViewModel() : super(const UpdateProfileResponse(success: false));
 
   final loadingNotifier = ValueNotifier<bool>(false);
 
@@ -14,11 +14,11 @@ class LoginViewModel extends StateNotifier<UpdateProfileResponse> {
     loadingNotifier.value = true;
 
     final response = await AuthService().login(request);
-    if (response!.success!) {
+    if (response!.success) {
       CacheManager.instance.setUserId(response.user!.userId!);
       state = response;
       loadingNotifier.value = false;
-      return response.success ?? false;
+      return response.success;
     }
     loadingNotifier.value = false;
     return false;

@@ -11,7 +11,7 @@ part 'user_profile_response.g.dart';
 final class UserProfileResponse extends INetworkModel<UserProfileResponse>
     with EquatableMixin {
   UserProfileResponse({
-    this.success,
+    required this.success,
     this.message,
     this.user,
   });
@@ -26,7 +26,7 @@ final class UserProfileResponse extends INetworkModel<UserProfileResponse>
   @override
   Map<String, dynamic>? toJson() => _$UserProfileResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final UserModel? user;
 

@@ -10,7 +10,7 @@ part 'custom_base_response.g.dart';
 final class CustomBaseResponse extends INetworkModel<CustomBaseResponse>
     with EquatableMixin {
   const CustomBaseResponse({
-    this.success,
+    required this.success,
     this.message,
     this.result,
   });
@@ -25,7 +25,7 @@ final class CustomBaseResponse extends INetworkModel<CustomBaseResponse>
   @override
   Map<String, dynamic>? toJson() => _$CustomBaseResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final dynamic result;
 

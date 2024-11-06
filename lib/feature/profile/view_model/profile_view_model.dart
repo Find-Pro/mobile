@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
 class ProfileViewModel extends StateNotifier<UserProfileResponse> {
-  ProfileViewModel() : super(UserProfileResponse());
+  ProfileViewModel() : super(UserProfileResponse(success: false));
 
   final loadingNotifier = ValueNotifier<bool>(false);
 
@@ -15,7 +15,7 @@ class ProfileViewModel extends StateNotifier<UserProfileResponse> {
     if (response != null) {
       state = response;
       loadingNotifier.value = false;
-      return response.success ?? false;
+      return response.success;
     }
     loadingNotifier.value = false;
     return false;

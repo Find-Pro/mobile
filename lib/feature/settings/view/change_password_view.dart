@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/feature/auth/widget/pw_text_field.dart';
+import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/settings/widget/settings_confirm_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,14 +17,15 @@ class ChangePasswordView extends ConsumerWidget {
     final pwAgainCnt = TextEditingController();
     // final changePwViewModel = ref.watch(updatePwProvider);
     return Scaffold(
-      backgroundColor: context.themeData.scaffoldBackgroundColor,
+      appBar: const SettingsAppBar(text: LocaleKeys.changePassword),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           PwTextField(controller: pwCnt, hintText: LocaleKeys.password),
           50.verticalSpace,
           PwTextField(
-              controller: pwAgainCnt, hintText: LocaleKeys.password),
+              controller: pwAgainCnt,
+              hintText: LocaleKeys.confirmPassword),
           70.verticalSpace,
           SettingsConfirmButton(
               text: LocaleKeys.changePassword, onTap: () {}),

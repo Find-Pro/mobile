@@ -10,16 +10,13 @@ class LightThemeManager implements CustomTheme {
   ThemeData get themeData => ThemeData(
         useMaterial3: true,
         indicatorColor: Colors.black,
+        canvasColor: const Color(0xff4b5a60ff),
+        primaryColor: Colors.teal,
         cardColor: Colors.blueAccent.shade200,
         fontFamily: GoogleFonts.inter().fontFamily,
         colorScheme: CustomColorScheme.lightColorScheme,
         appBarTheme: const AppBarTheme(
           centerTitle: false,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          type: BottomNavigationBarType.fixed,
-          enableFeedback: true,
-          elevation: 3,
         ),
         textTheme: TextTheme(
           bodyLarge:

@@ -11,7 +11,7 @@ part 'login_response.g.dart';
 final class LoginResponse extends INetworkModel<LoginResponse>
     with EquatableMixin {
   const LoginResponse({
-    this.success,
+    required this.success,
     this.message,
     this.user,
   });
@@ -26,7 +26,7 @@ final class LoginResponse extends INetworkModel<LoginResponse>
   @override
   Map<String, dynamic>? toJson() => _$LoginResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final UserModel? user;
 

@@ -37,8 +37,11 @@ dependencies:
   image_cropper: ^8.0.2
   url_launcher: ^6.3.1
   #notification
+
 flutter_native_splash:
   android_12:
+  android: true
+  ios: true
   color: "#024959"
   image: "assets/icon/discovery.png"
 

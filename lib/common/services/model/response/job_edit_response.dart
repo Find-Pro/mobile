@@ -11,7 +11,7 @@ part 'job_edit_response.g.dart';
 final class JobEditResponse extends INetworkModel<JobEditResponse>
     with EquatableMixin {
   const JobEditResponse({
-    this.success,
+    required this.success,
     this.message,
     this.job,
   });
@@ -26,7 +26,7 @@ final class JobEditResponse extends INetworkModel<JobEditResponse>
   @override
   Map<String, dynamic>? toJson() => _$JobEditResponseToJson(this);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final JobModel? job;
 

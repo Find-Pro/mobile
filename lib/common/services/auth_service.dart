@@ -36,7 +36,38 @@ class AuthService implements AuthOperation {
         'isMaster': registerRequest.isMaster,
       },
     );
+    return response != null
+        ? UpdateProfileResponse.fromJson(response)
+        : null;
+  }
 
+  @override
+  Future<UpdateProfileResponse?> registerWithToken(
+      String token, EndPointEnums endPoint) async {
+    final response = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      endPoint,
+      data: {
+        'token': token,
+        'password': token,
+      },
+    );
+    return response != null
+        ? UpdateProfileResponse.fromJson(response)
+        : null;
+  }
+
+//'appleToken','googleToken'
+  @override
+  Future<UpdateProfileResponse?> loginWithToken(
+      String token, String appleOrGoogle) async {
+    final response = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.login,
+      data: {
+        appleOrGoogle: token,
+      },
+    );
     return response != null
         ? UpdateProfileResponse.fromJson(response)
         : null;

@@ -6,18 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
 class RegisterViewModel extends StateNotifier<UpdateProfileResponse> {
-  RegisterViewModel() : super(const UpdateProfileResponse());
+  RegisterViewModel() : super(const UpdateProfileResponse(success: false));
 
   final loadingNotifier = ValueNotifier<bool>(false);
 
   Future<bool> register(RegisterRequest request) async {
     loadingNotifier.value = true;
     final response = await AuthService().register(request);
-    if (response!.success!) {
+    if (response!.success) {
       CacheManager.instance.setUserId(response.user!.userId!);
       state = response;
       loadingNotifier.value = false;
-      return response.success ?? false;
+      return response.success;
     }
     loadingNotifier.value = false;
     return false;

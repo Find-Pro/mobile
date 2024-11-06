@@ -11,7 +11,7 @@ part 'follow_list_response.g.dart';
 final class FollowListResponse extends INetworkModel<FollowListResponse>
     with EquatableMixin {
   const FollowListResponse({
-    this.success,
+    required this.success,
     this.message,
     this.result,
   });
@@ -20,7 +20,7 @@ final class FollowListResponse extends INetworkModel<FollowListResponse>
   factory FollowListResponse.fromJson(Map<String, dynamic> json) =>
       _$FollowListResponseFromJson(json);
 
-  final bool? success;
+  final bool success;
   final String? message;
   final List<FollowModel?>? result;
 

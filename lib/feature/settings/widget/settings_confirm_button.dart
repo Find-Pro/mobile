@@ -13,46 +13,25 @@ class SettingsConfirmButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      child: ElevatedButton(
-        onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: context.themeData.cardColor,
-          minimumSize: Size(context.size!.width - 50, 60),
-          maximumSize: Size(context.size!.width - 50, 60),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-          elevation: 5,
-          padding: const EdgeInsets.symmetric(vertical: 15),
-        ).copyWith(
-          backgroundColor: WidgetStateProperty.resolveWith<Color>(
-            (Set<WidgetState> states) {
-              return Colors.blueAccent; // Default color
-            },
-          ),
-        ),
-        child: Ink(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [
-                Colors.blueAccent,
-                Colors.lightBlue
-              ], // Gradient colors
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ElevatedButton(
+          onPressed: onTap,
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(190, 50),
+            maximumSize: const Size(190, 50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
-            borderRadius: BorderRadius.circular(30),
+            backgroundColor: context.themeData.primaryColorDark,
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            side: BorderSide.none,
           ),
-          child: Center(
-            child: Text(
-              text,
-              style: context.textTheme.headlineSmall!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ),
+          child: Text(text,
+              style: context.textTheme.headlineSmall
+                  ?.copyWith(color: Colors.white)),
+        );
+      },
     );
   }
 }

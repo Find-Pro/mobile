@@ -5,23 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// Custom light theme for project design
-final class DarkThemeManager implements CustomTheme {
+class DarkThemeManager implements CustomTheme {
   @override
   ThemeData get themeData => ThemeData(
         useMaterial3: true,
         indicatorColor: Colors.white,
+        canvasColor: const Color(0XFF4b5a60ff),
+        primaryColor: Colors.brown,
         cardColor: Colors.blueAccent.shade200,
         fontFamily: GoogleFonts.inter().fontFamily,
         colorScheme: CustomColorScheme.darkColorScheme,
         iconTheme: const IconThemeData(color: Colors.white),
         appBarTheme: const AppBarTheme(
           centerTitle: false,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          type: BottomNavigationBarType.fixed,
-          enableFeedback: true,
-          elevation: 3,
-          selectedIconTheme: IconThemeData(color: Colors.teal),
         ),
         textTheme: TextTheme(
           bodyLarge:
