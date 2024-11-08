@@ -26,8 +26,8 @@ class AppleLoginManager {
           context.router.pop();
         });
       } else if (credentialState == CredentialState.authorized) {
-        final loginResult = await AuthService()
-            .loginWithToken(credential.userIdentifier ?? '', 'appleToken');
+        final loginResult = await AuthService().loginWithToken(
+            credential.userIdentifier ?? '', EndPointEnums.loginWithApple);
 
         if (loginResult!.success) {
           CacheManager.instance.setUserId(loginResult.user!.userId ?? 0);

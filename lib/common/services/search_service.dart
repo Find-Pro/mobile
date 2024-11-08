@@ -1,7 +1,7 @@
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/search_operation.dart';
 import 'package:findpro/common/services/model/user_model.dart';
-import 'package:findpro/feature/home/model/job_model.dart';
+import 'package:findpro/feature/add_job/model/job_model.dart';
 import 'package:vexana/vexana.dart';
 
 class SearchService implements SearchOperation {

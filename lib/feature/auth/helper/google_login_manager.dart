@@ -4,18 +4,20 @@ import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/auth_service.dart';
-import 'package:findpro/common/services/model/request/login_request.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-final class GoogleLoginManager {
+class GoogleLoginManager {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   Future<void> login(BuildContext context) async {
     final user = await googleSignIn.signIn();
     if (user != null) {
-      final loginResponse =
-          await AuthService().login(LoginRequest(email: user.email));
+      final auth = await user.authentication;
+      final idToken = auth.idToken;
+      final loginResponse = await AuthService()
+          .loginWithToken(idToken!, EndPointEnums.loginWithGoogle);
+
       if (loginResponse!.success) {
         debugPrint('kullanıcı giris yaptı:$loginResponse');
         CacheManager.instance.setAppleOrGoogle(true);
@@ -23,18 +25,18 @@ final class GoogleLoginManager {
         await context.router
             .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
       } else {
-        final auth = await user.authentication;
-        final idToken = auth.idToken;
+        // hesabı yok token ile kayıt olacak
         CacheManager.instance.setAppleOrGoogle(true);
         final response = await AuthService().registerWithToken(
-          idToken ?? user.email,
+          idToken,
           EndPointEnums.registerWithGoogle,
         );
         if (response!.success) {
           debugPrint('kullanıcı başarılı kayıt oldu');
           debugPrint(response.message);
-          final loginResponse =
-              await AuthService().login(LoginRequest(email: user.email));
+          final loginResponse = await AuthService()
+              .loginWithToken(idToken, EndPointEnums.loginWithGoogle);
+
           if (loginResponse!.success) {
             CacheManager.instance.setAppleOrGoogle(true);
             CacheManager.instance

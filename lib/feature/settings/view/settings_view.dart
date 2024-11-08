@@ -45,6 +45,11 @@ class SettingsView extends StatelessWidget {
                       context.router.push(const EditProfileRoute())),
               const SettingsDivider(),
               SettingsListTile(
+                  iconData: Icons.business_center_outlined,
+                  text: LocaleKeys.createService,
+                  onTap: () => context.router.push(const AddJobRoute())),
+              const SettingsDivider(),
+              SettingsListTile(
                   iconData: Icons.sign_language_outlined,
                   text: LocaleKeys.signOut,
                   onTap: () => QuestionAlertDialog().show(context,

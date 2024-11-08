@@ -60,12 +60,12 @@ class AuthService implements AuthOperation {
 //'appleToken','googleToken'
   @override
   Future<UpdateProfileResponse?> loginWithToken(
-      String token, String appleOrGoogle) async {
+      String token, EndPointEnums endPoint) async {
     final response = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
-      EndPointEnums.login,
+      endPoint,
       data: {
-        appleOrGoogle: token,
+        'token': token,
       },
     );
     return response != null

@@ -16,11 +16,11 @@ final class WarningAlert {
           ),
           actions: <Widget>[
             CupertinoDialogAction(
-              textStyle: context.themeData.textTheme.headlineSmall,
+              textStyle: context.themeData.textTheme.labelLarge,
               onPressed: () => context.router.pop(),
               child: Text(
                 LocaleKeys.okay,
-                style: context.themeData.textTheme.headlineSmall,
+                style: context.themeData.textTheme.labelLarge,
               ),
             ),
           ],

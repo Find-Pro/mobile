@@ -1,39 +1,39 @@
 import 'package:auto_route/auto_route.dart' show AutoRouterX, RoutePage;
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
+import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
-import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
+import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
-class ProfileView extends ConsumerWidget {
-  const ProfileView({super.key});
+class UserProfileView extends ConsumerWidget {
+  const UserProfileView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profileViewModel = ref.watch(profileProvider);
-    final profileFuture = ref.watch(profileFutureProvider);
-    return profileFuture.when(
+    final userProfileViewModel = ref.watch(userProfileProvider);
+    final userProfileFuture = ref.watch(userProfileFutureProvider);
+    return userProfileFuture.when(
         data: (_) {
           return GestureDetector(
             child: SingleChildScrollView(
               child: Stack(
                 children: [
                   ProfileCoverImage(
-                    photoName: profileViewModel.user!.coverPicture!,
+                    photoName: userProfileViewModel.user!.coverPicture!,
                   ),
                   ProfileProfilePicture(
-                    photoName: profileViewModel.user!.profilePicture!,
+                    photoName: userProfileViewModel.user!.profilePicture!,
                   ),
-                  Positioned(
-                    bottom: 0,
-                    child: TextButton(
-                        onPressed: () async {},
-                        child: const Text('OKASŞLDKJASİŞLDK')),
-                  )
+                  TextButton(
+                      onPressed: () {
+                        InformationToast().show(context, 'TEXT');
+                      },
+                      child: const Text('sasdklajsdkl'))
                 ],
               ),
             ),

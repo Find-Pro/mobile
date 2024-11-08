@@ -16,6 +16,8 @@ enum EndPointEnums {
   jobComplete('/job/complete'),
   jobEdit('/job/edit'),
   login('/login'),
+  loginWithGoogle('/login/google'),
+  loginWithApple('/login/apple'),
   messageList('/message/list/:userId'),
   messageBlock('/message/blockUser'),
   messageDelete('/message/delete/:messageId'),

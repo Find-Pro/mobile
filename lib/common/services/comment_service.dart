@@ -5,10 +5,13 @@ import 'package:findpro/common/services/interface/comment_operation.dart';
 import 'package:findpro/common/services/manager/network_service.dart';
 import 'package:findpro/common/services/model/comment_model.dart';
 import 'package:findpro/common/services/model/request/add_comment_request.dart';
+import 'package:findpro/common/services/model/response/add_comment_response.dart';
+import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 
 class CommentService implements CommentOperation {
   @override
-  Future<CommentModel?> addComment(AddCommentRequest requestModel) async {
+  Future<AddCommentResponse?> addComment(
+      AddCommentRequest requestModel) async {
     final createdByUserId = CacheManager.instance.getUserId();
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
@@ -20,7 +23,7 @@ class CommentService implements CommentOperation {
         'rating': requestModel.rating,
       },
     );
-    return CommentModel.fromJson(responseData!);
+    return AddCommentResponse.fromJson(responseData!);
   }
 
   @override
@@ -37,13 +40,13 @@ class CommentService implements CommentOperation {
   }
 
   @override
-  Future<CommentModel?> delete(int commentId) async {
+  Future<SuccessAndMessageResponse?> delete(int commentId) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.commentDelete,
       data: {'commentId': commentId},
     );
 
-    return CommentModel.fromJson(responseData!);
+    return SuccessAndMessageResponse.fromJson(responseData!);
   }
 }

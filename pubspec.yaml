@@ -11,8 +11,6 @@ dependencies:
   #core
   equatable: ^2.0.5
   easy_localization: ^3.0.7
-  easy_logger: ^0.0.2
-  logger: ^2.4.0
   #material
   cupertino_icons: ^1.0.6
   lottie: ^2.6.0
@@ -31,7 +29,6 @@ dependencies:
   google_sign_in: ^6.1.6
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
-  flutter_dotenv: ^5.2.1
   connectivity_plus: ^4.0.1
   image_picker: ^1.1.2
   image_cropper: ^8.0.2
@@ -59,7 +56,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/.env
     - assets/icon/
     - assets/lottie/
     - assets/json/

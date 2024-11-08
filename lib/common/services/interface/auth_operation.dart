@@ -14,5 +14,5 @@ abstract class AuthOperation {
   Future<UpdateProfileResponse?> registerWithToken(
       String token, EndPointEnums endPoint);
   Future<UpdateProfileResponse?> loginWithToken(
-      String token, String appleOrGoogle);
+      String token, EndPointEnums endPoint);
 }

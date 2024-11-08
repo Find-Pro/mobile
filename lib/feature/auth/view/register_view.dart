@@ -45,13 +45,13 @@ class RegisterView extends ConsumerWidget {
                 child: Column(
                   children: [
                     const RegisterTitleText(),
-                    60.verticalSpace,
+                    30.verticalSpace,
                     StringTextField(
                       controller: fullNameCnt,
                       hintText: LocaleKeys.fullName,
                       iconData: Icons.person_outline,
                     ),
-                    30.verticalSpace,
+                    20.verticalSpace,
                     StringTextField(
                       controller: emailCnt,
                       hintText: LocaleKeys.email,

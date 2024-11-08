@@ -1,7 +1,8 @@
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SettingsConfirmButton extends StatelessWidget {
+class SettingsConfirmButton extends ConsumerWidget {
   const SettingsConfirmButton({
     required this.text,
     required this.onTap,
@@ -12,7 +13,7 @@ class SettingsConfirmButton extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return ElevatedButton(

@@ -4,7 +4,6 @@ import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 class NetworkService {
   NetworkService._() {
@@ -32,14 +31,14 @@ class NetworkService {
           data: data,
           options: Options(method: method.value));
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       } else {
-        Logger().e(LocaleKeys.error + response.data.toString());
+        debugPrint(LocaleKeys.error + response.data.toString());
         return null;
       }
     } catch (e) {
-      Logger().e(e.toString());
+      debugPrint(e.toString());
       return null;
     }
   }
@@ -61,7 +60,7 @@ class NetworkService {
       if (response.statusCode == 200) {
         return response.data;
       } else {
-        Logger().e('Error Network Service: ${response.data}');
+        debugPrint('Error Network Service: ${response.data}');
         return null;
       }
     } catch (e) {

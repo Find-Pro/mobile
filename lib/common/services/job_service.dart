@@ -5,17 +5,17 @@ import 'package:findpro/common/services/manager/network_service.dart';
 import 'package:findpro/common/services/model/response/job_add_response.dart';
 import 'package:findpro/common/services/model/response/job_edit_response.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
-import 'package:findpro/feature/home/model/job_model.dart';
+import 'package:findpro/feature/add_job/model/job_add_model.dart';
+import 'package:findpro/feature/add_job/model/job_model.dart';
 
 class JobService implements JobOperation {
   @override
-  Future<JobAddResponse?> add(JobModel job) async {
+  Future<JobAddResponse?> add(JobAddModel job) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobAdd,
       data: job.toJson(),
     );
-
     if (responseData != null && responseData['success'] == true) {
       return JobAddResponse.fromJson(responseData);
     }

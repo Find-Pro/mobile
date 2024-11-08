@@ -19,9 +19,9 @@ final class DistrictModel extends INetworkModel<DistrictModel>
       _$DistrictModelFromJson(json);
 
   @JsonKey(name: 'il_id')
-  final String? ilId;
+  final int? ilId;
   final String? name;
-  final String? id;
+  final int? id;
 
   @override
   DistrictModel fromJson(Map<String, dynamic> json) =>

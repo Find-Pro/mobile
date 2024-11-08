@@ -13,9 +13,13 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
     this.jobId,
     this.userId,
     this.jobCategory,
+    this.jobService,
     this.city,
     this.district,
-    this.jobTitle,
+    this.jobCategoryId,
+    this.cityId,
+    this.jobServiceId,
+    this.districtId,
     this.description,
     this.isCompleted,
     this.createdAt,
@@ -31,7 +35,11 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
   final String? jobCategory;
   final String? city;
   final String? district;
-  final String? jobTitle;
+  final String? jobService;
+  final int? jobCategoryId;
+  final int? cityId;
+  final int? districtId;
+  final int? jobServiceId;
   final String? description;
   final bool? isCompleted;
   final String? createdAt;
@@ -51,7 +59,11 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
         jobCategory,
         city,
         district,
-        jobTitle,
+        jobService,
+        jobServiceId,
+        jobCategoryId,
+        cityId,
+        districtId,
         description,
         isCompleted,
         createdAt,

@@ -5,8 +5,19 @@ class LocaleKeys {
   static const String pwMustBeAtLeast = 'Şifre en az 6 karakter olmalıdır';
   static const String jobDeletedSuccess = 'İş başarıyla silindi';
   static const String okay = 'Tamam';
+  static const String serviceCreatedSuccessfully =
+      'İş ilanı başarıyla oluşturuldu.';
+  static const String descriptionIsRequired = 'Açıklama zorunludur';
   static const String home = 'Anasayfa';
+  static const String serviceCouldNotAdd =
+      'Hizmet eklerken bir hata oluştu.';
   static const String search = 'Arama';
+  static const String pleaseAddDescription = 'Lütfen açıklama ekleyin';
+  static const String createService = 'Hizmet oluştur';
+  static const String couldNotFindDistrict =
+      'Bu şehir için ilçe bulunamadı.';
+  static const String couldNotFindService =
+      'Bu kategori için hizmet bulunamadı.';
   static const String messages = 'Mesajlar';
   static const String chats = 'Konuşmalar';
   static const String profile = 'Profil';
