@@ -16,7 +16,7 @@ dependencies:
   lottie: ^2.6.0
   google_fonts: ^6.2.1
   flutter_screenutil: ^5.9.3
-  flutter_native_splash: ^2.4.2
+  animation_search_bar: ^0.0.10
   #network
   vexana: ^4.0.4
   #state

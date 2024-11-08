@@ -14,12 +14,12 @@ Future<void> main() async {
   );
 }
 
-class _MyApp extends StatelessWidget {
+class _MyApp extends ConsumerWidget {
   const _MyApp();
 
   static final _appRouter = AppRouter();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return CustomResponsive(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

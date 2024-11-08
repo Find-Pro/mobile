@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:findpro/common/services/model/comment_model.dart';
+import 'package:findpro/feature/profile/model/follower_model.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
@@ -36,12 +38,12 @@ final class UserModel extends INetworkModel<UserModel>
   final bool? isMaster;
   final String? fullName;
   final String? email;
-  final List<dynamic>? ratings;
+  final List<CommentModel>? ratings;
   final String? password;
   final String? profilePicture;
   final String? coverPicture;
-  final List<dynamic>? followers;
-  final List<dynamic>? followings;
+  final List<FollowerModel>? followers;
+  final List<FollowerModel>? followings;
   final String? createdAt;
   final String? updatedAt;
   final String? salt;

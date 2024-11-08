@@ -5,6 +5,11 @@ class LocaleKeys {
   static const String pwMustBeAtLeast = 'Şifre en az 6 karakter olmalıdır';
   static const String jobDeletedSuccess = 'İş başarıyla silindi';
   static const String okay = 'Tamam';
+  static const String removeFollower = 'Takipçiyi sil';
+  static const String followers = 'Takip edilen';
+  static const String following = 'Takipçiler';
+  static const String areYouSureDeleteFollower =
+      'Takipçiyi silmek istediğinize emin misiniz?';
   static const String serviceCreatedSuccessfully =
       'İş ilanı başarıyla oluşturuldu.';
   static const String descriptionIsRequired = 'Açıklama zorunludur';

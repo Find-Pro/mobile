@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart' show AutoRouterX, RoutePage;
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
+import 'package:findpro/feature/profile/widget/follow_number_box.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:flutter/material.dart';
@@ -28,11 +30,22 @@ class ProfileView extends ConsumerWidget {
                   ProfileProfilePicture(
                     photoName: profileViewModel.user!.profilePicture!,
                   ),
-                  Positioned(
-                    bottom: 0,
-                    child: TextButton(
-                        onPressed: () async {},
-                        child: const Text('OKASŞLDKJASİŞLDK')),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 190),
+                        child: FollowNumberBox(
+                            followingCount:
+                                profileViewModel.user!.followings!.length,
+                            followersCount:
+                                profileViewModel.user!.followers!.length,
+                            isGeneralProfile: false),
+                      ),
+                      Divider(
+                        color: context.themeData.indicatorColor,
+                        thickness: 0.3,
+                      ),
+                    ],
                   )
                 ],
               ),

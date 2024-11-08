@@ -14,7 +14,7 @@ class AuthGuard extends AutoRouteGuard {
     if (userId != 0 || isAppleOrGoogle) {
       resolver.next();
     } else {
-      await resolver.redirect(const RegisterRoute());
+      await resolver.redirect(const LoginRoute());
     }
   }
 }

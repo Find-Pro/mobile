@@ -13,7 +13,7 @@ class ProfileProfilePicture extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 80),
         child: Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
