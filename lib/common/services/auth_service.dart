@@ -7,6 +7,8 @@ import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
 
 class AuthService implements AuthOperation {
+  AuthService._();
+  static final AuthService instance = AuthService._();
   @override
   Future<UpdateProfileResponse?> login(LoginRequest loginRequest) async {
     final response = await NetworkService.instance.baseRequest(

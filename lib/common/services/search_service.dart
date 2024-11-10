@@ -1,33 +1,26 @@
+import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/search_operation.dart';
-import 'package:findpro/common/services/model/user_model.dart';
-import 'package:findpro/feature/add_job/model/job_model.dart';
-import 'package:vexana/vexana.dart';
+import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/model/request/search_request.dart';
+import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
 
 class SearchService implements SearchOperation {
-  SearchService(this._networkManager);
-  final INetworkManager _networkManager;
-
+  SearchService._();
+  static final SearchService instance = SearchService._();
   @override
-  Future<List<UserModel>?> user(String search) async {
-    final response =
-        await _networkManager.send<UserModel, List<UserModel>>(
-      EndPointEnums.searchUser.fullUrl,
-      parseModel: UserModel(),
-      method: RequestType.POST,
-      data: {'searchString': search},
+  Future<GetUserJobsResponse?> search(SearchRequest searchRequest) async {
+    final response = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.search,
+      data: {
+        'jobCategoryId': searchRequest.jobCategoryId,
+        'jobServiceId': searchRequest.jobServiceId,
+        'cityId': searchRequest.cityId,
+        'districtId': searchRequest.districtId,
+      },
     );
-    return response.data;
-  }
 
-  @override
-  Future<List<JobModel>?> job(String search) async {
-    final response = await _networkManager.send<JobModel, List<JobModel>>(
-      EndPointEnums.searchJob.fullUrl,
-      parseModel: JobModel(),
-      method: RequestType.POST,
-      data: {'searchString': search},
-    );
-    return response.data;
+    return GetUserJobsResponse.fromJson(response!);
   }
 }

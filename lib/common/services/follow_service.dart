@@ -6,6 +6,8 @@ import 'package:findpro/common/services/model/response/success_and_message_respo
 import 'package:findpro/common/services/model/user_model.dart';
 
 class FollowService implements FollowOperation {
+  FollowService._();
+  static final FollowService instance = FollowService._();
   @override
   Future<SuccessAndMessageResponse?> follow(
       int userId, int followUserId, bool follow) async {

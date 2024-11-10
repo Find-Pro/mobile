@@ -10,9 +10,11 @@ import 'package:findpro/common/services/model/response/user_profile_response.dar
 import 'package:findpro/common/services/model/user_model.dart';
 
 class UserService implements UserOperation {
+  UserService._();
+  static final UserService instance = UserService._();
+
   @override
-  Future<UserProfileResponse?> profile() async {
-    final userId = CacheManager.instance.getUserId();
+  Future<UserProfileResponse?> profile(int userId) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.userProfile,

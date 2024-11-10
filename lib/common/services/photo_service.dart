@@ -8,6 +8,8 @@ import 'package:findpro/common/services/manager/network_service.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 
 class PhotoService implements PhotoOperation {
+  PhotoService._();
+  static final PhotoService instance = PhotoService._();
   @override
   Future<SuccessAndMessageResponse?> profile(File image) async {
     return _uploadPhoto(image, EndPointEnums.photoProfile);

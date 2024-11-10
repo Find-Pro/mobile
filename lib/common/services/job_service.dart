@@ -1,14 +1,18 @@
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/job_operation.dart';
 import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
 import 'package:findpro/common/services/model/response/job_add_response.dart';
 import 'package:findpro/common/services/model/response/job_edit_response.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
-import 'package:findpro/feature/add_job/model/job_add_model.dart';
-import 'package:findpro/feature/add_job/model/job_model.dart';
+import 'package:findpro/feature/jobs/add_job/model/job_add_model.dart';
+import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 
 class JobService implements JobOperation {
+  JobService._();
+  static final JobService instance = JobService._();
   @override
   Future<JobAddResponse?> add(JobAddModel job) async {
     final responseData = await NetworkService.instance.baseRequest(
@@ -58,6 +62,45 @@ class JobService implements JobOperation {
     );
     return responseData != null
         ? SuccessAndMessageResponse.fromJson(responseData)
+        : null;
+  }
+
+  @override
+  Future<JobAddResponse?> get(int jobId) async {
+    final responseData = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.jobGet,
+      data: {'jobId': jobId},
+    );
+    return responseData != null
+        ? JobAddResponse.fromJson(responseData)
+        : null;
+  }
+
+  @override
+  Future<GetUserJobsResponse?> getUserJobs(int userId) async {
+    final responseData = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.jobGetUserJobs,
+      data: {'userId': userId},
+    );
+
+    return responseData != null
+        ? GetUserJobsResponse.fromJson(responseData)
+        : null;
+  }
+
+  @override
+  Future<GetUserJobsResponse?> getFollowingJobs() async {
+    final userId = CacheManager.instance.getUserId();
+    final responseData = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.jobGetFollowingJobs,
+      data: {'userId': userId},
+    );
+
+    return responseData != null
+        ? GetUserJobsResponse.fromJson(responseData)
         : null;
   }
 }

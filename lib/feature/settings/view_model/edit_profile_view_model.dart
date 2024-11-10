@@ -1,3 +1,4 @@
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
 import 'package:findpro/common/services/model/user_model.dart';
 import 'package:findpro/common/services/user_service.dart';
@@ -12,7 +13,7 @@ class EditProfileViewModel extends StateNotifier<UpdateProfileResponse> {
 
   Future<bool> updateProfile(UserModel updateUser) async {
     loadingNotifier.value = true;
-    final response = await UserService().updateProfile(updateUser);
+    final response = await UserService.instance.updateProfile(updateUser);
     if (response != null) {
       state = response;
       loadingNotifier.value = false;
@@ -23,7 +24,8 @@ class EditProfileViewModel extends StateNotifier<UpdateProfileResponse> {
   }
 
   Future<bool> getUser() async {
-    final response = await UserService().profile();
+    final userId = CacheManager.instance.getUserId();
+    final response = await UserService.instance.profile(userId);
     if (response!.success) {
       state = UpdateProfileResponse(
           success: true, message: response.message, user: response.user);

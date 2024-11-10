@@ -13,7 +13,7 @@ class UpdatePasswordViewModel
   Future<bool> updateProfile(String password) async {
     loadingNotifier.value = true;
 
-    final response = await UserService().updatePassword(password);
+    final response = await UserService.instance.updatePassword(password);
     if (response != null) {
       state = response;
       loadingNotifier.value = false;

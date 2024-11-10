@@ -12,7 +12,7 @@ class RegisterViewModel extends StateNotifier<UpdateProfileResponse> {
 
   Future<bool> register(RegisterRequest request) async {
     loadingNotifier.value = true;
-    final response = await AuthService().register(request);
+    final response = await AuthService.instance.register(request);
     if (response!.success) {
       CacheManager.instance.setUserId(response.user!.userId!);
       state = response;

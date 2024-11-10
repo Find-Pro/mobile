@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +20,10 @@ class QuestionAlert {
           ),
           actions: <Widget>[
             CupertinoDialogAction(
-              onPressed: onTap,
+              onPressed: () {
+                onTap();
+                context.router.pop();
+              },
               child: Text(
                 LocaleKeys.okay,
                 style: context.themeData.textTheme.labelLarge

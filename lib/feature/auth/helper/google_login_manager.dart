@@ -15,7 +15,7 @@ class GoogleLoginManager {
     if (user != null) {
       final auth = await user.authentication;
       final idToken = auth.idToken;
-      final loginResponse = await AuthService()
+      final loginResponse = await AuthService.instance
           .loginWithToken(idToken!, EndPointEnums.loginWithGoogle);
 
       if (loginResponse!.success) {
@@ -27,14 +27,14 @@ class GoogleLoginManager {
       } else {
         // hesabı yok token ile kayıt olacak
         CacheManager.instance.setAppleOrGoogle(true);
-        final response = await AuthService().registerWithToken(
+        final response = await AuthService.instance.registerWithToken(
           idToken,
           EndPointEnums.registerWithGoogle,
         );
         if (response!.success) {
           debugPrint('kullanıcı başarılı kayıt oldu');
           debugPrint(response.message);
-          final loginResponse = await AuthService()
+          final loginResponse = await AuthService.instance
               .loginWithToken(idToken, EndPointEnums.loginWithGoogle);
 
           if (loginResponse!.success) {

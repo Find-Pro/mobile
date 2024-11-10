@@ -1,7 +1,8 @@
-import 'package:findpro/common/services/model/user_model.dart';
-import 'package:findpro/feature/add_job/model/job_model.dart';
+// ignore_for_file: one_member_abstracts
+
+import 'package:findpro/common/services/model/request/search_request.dart';
+import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
 
 abstract class SearchOperation {
-  Future<List<UserModel>?> user(String search);
-  Future<List<JobModel>?> job(String search);
+  Future<GetUserJobsResponse?> search(SearchRequest searchRequest);
 }

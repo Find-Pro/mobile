@@ -1,7 +1,6 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
-import 'package:findpro/feature/profile/model/follower_model.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follower_list_tile.dart';
 import 'package:findpro/feature/profile/widget/following_search_bar.dart';
@@ -9,70 +8,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
-class FollowingView extends ConsumerStatefulWidget {
+class FollowingView extends ConsumerWidget {
   const FollowingView({required this.isGeneralProfile, super.key});
   final bool isGeneralProfile;
 
   @override
-  ConsumerState createState() => _FollowingViewState();
-}
-
-class _FollowingViewState extends ConsumerState<FollowingView> {
-  List<FollowerModel>? filteredUsers;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final followings = ref.read(profileProvider).user?.followings;
-      setState(() {
-        filteredUsers = followings ?? [];
-      });
-    });
-  }
-
-  void onSearch(String key) {
-    final followings = ref.read(profileProvider).user?.followings;
-    if (key.isEmpty) {
-      filteredUsers = followings;
-    } else {
-      filteredUsers = followings?.where((user) {
-        final fullName = user.fullName!.toLowerCase();
-        return fullName.contains(key.toLowerCase());
-      }).toList();
-    }
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final profileFuture = ref.watch(profileFutureProvider);
+    final filteredFollowings = ref
+        .watch(profileProvider.select((state) => state.user?.followings));
+
     return profileFuture.when(
       data: (_) {
         return Scaffold(
           appBar: AppBar(
             actions: [
-              FollowingSearchBar(onSearch: onSearch),
+              FollowingSearchBar(
+                  onSearch: (key) => ref
+                      .read(profileProvider.notifier)
+                      .searchFollowers(key, filteredFollowings, true)),
             ],
           ),
-          body: filteredUsers == null || filteredUsers!.isEmpty
-              ? const NoConnectionWidget()
+          body: filteredFollowings == null || filteredFollowings.isEmpty
+              ? const NoDataFoundWidget()
               : ListView.builder(
-                  itemCount: filteredUsers!.length,
+                  itemCount: filteredFollowings.length,
                   itemBuilder: (context, index) {
-                    final userModel = filteredUsers![index];
+                    final userModel = filteredFollowings[index];
                     return FollowerListTile(
-                      isFollowersView: false,
+                      isFollowersView: true,
                       followerModel: userModel,
                       currentUserId:
                           ref.read(profileProvider).user!.userId!,
-                      isGeneralProfile: widget.isGeneralProfile,
+                      isGeneralProfile: isGeneralProfile,
                     );
                   },
                 ),
         );
       },
-      error: (error, stackTrace) => const NoConnectionWidget(),
+      error: (error, stackTrace) => const NoDataFoundWidget(),
       loading: () => const CustomCircular(),
     );
   }

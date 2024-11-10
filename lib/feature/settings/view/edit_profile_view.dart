@@ -34,6 +34,9 @@ class EditProfileView extends ConsumerWidget {
         backgroundColor: context.themeData.scaffoldBackgroundColor,
         body: profileFuture.when(
             data: (_) {
+              if (!ref.watch(editProfileProvider).success) {
+                return const NoDataFoundWidget();
+              }
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -72,7 +75,7 @@ class EditProfileView extends ConsumerWidget {
                 ],
               );
             },
-            error: (error, stackTrace) => const NoConnectionWidget(),
+            error: (error, stackTrace) => const NoDataFoundWidget(),
             loading: () => const CustomCircular()));
   }
 }

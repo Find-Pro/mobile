@@ -4,14 +4,14 @@ import 'package:findpro/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class NoConnectionWidget extends StatefulWidget {
-  const NoConnectionWidget({super.key});
+class NoDataFoundWidget extends StatefulWidget {
+  const NoDataFoundWidget({super.key});
 
   @override
-  NoConnectionWidgetState createState() => NoConnectionWidgetState();
+  NoDataFoundWidgetState createState() => NoDataFoundWidgetState();
 }
 
-class NoConnectionWidgetState extends State<NoConnectionWidget> {
+class NoDataFoundWidgetState extends State<NoDataFoundWidget> {
   bool isAnimated = false;
 
   @override
@@ -28,7 +28,7 @@ class NoConnectionWidgetState extends State<NoConnectionWidget> {
         });
       },
       child: ColoredBox(
-        color: Colors.transparent,
+        color: context.themeData.scaffoldBackgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -41,8 +41,7 @@ class NoConnectionWidgetState extends State<NoConnectionWidget> {
               child: Align(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 114, 81, 81)
-                        .withOpacity(0.6),
+                    color: context.themeData.scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   width: MediaQuery.of(context).size.width * 0.85,
@@ -57,7 +56,7 @@ class NoConnectionWidgetState extends State<NoConnectionWidget> {
                       ),
                       const SizedBox(height: 1),
                       Text(
-                        LocaleKeys.connectionError,
+                        LocaleKeys.noDataFound,
                         style: context.textTheme.headlineSmall,
                       ),
                     ],

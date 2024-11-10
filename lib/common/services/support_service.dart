@@ -5,6 +5,8 @@ import 'package:findpro/common/services/manager/network_service.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 
 class SupportService implements SupportOperation {
+  SupportService._();
+  static final SupportService instance = SupportService._();
   @override
   Future<SuccessAndMessageResponse?> user(
       int userId, int otherId, String subject) async {

@@ -5,7 +5,7 @@ import 'package:findpro/common/services/model/response/user_profile_response.dar
 import 'package:findpro/common/services/model/user_model.dart';
 
 abstract class UserOperation {
-  Future<UserProfileResponse?> profile();
+  Future<UserProfileResponse?> profile(int userId);
   Future<UpdateProfileResponse?> updateProfile(UserModel updateUser);
   Future<SuccessAndMessageResponse?> updatePassword(String password);
   Future<UserListResponse?> list();

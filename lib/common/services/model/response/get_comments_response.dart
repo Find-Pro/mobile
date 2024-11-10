@@ -1,35 +1,17 @@
-import 'package:equatable/equatable.dart';
 import 'package:findpro/common/services/model/comment_model.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'get_comments_response.g.dart';
+part 'get_comments_response.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class GetCommentsResponse extends INetworkModel<GetCommentsResponse>
-    with EquatableMixin {
-  const GetCommentsResponse({
-    required this.success,
-    this.message,
-    this.comments,
-  });
+@freezed
+class GetCommentsResponse with _$GetCommentsResponse {
+  factory GetCommentsResponse({
+    @Default(false) bool success,
+    @Default('') String? message,
+    @Default([]) List<CommentModel>? result,
+  }) = _GetCommentsResponse;
 
-  @override
   factory GetCommentsResponse.fromJson(Map<String, dynamic> json) =>
       _$GetCommentsResponseFromJson(json);
-  @override
-  GetCommentsResponse fromJson(Map<String, dynamic> json) =>
-      GetCommentsResponse.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$GetCommentsResponseToJson(this);
-
-  final bool success;
-  final String? message;
-  final List<CommentModel?>? comments;
-
-  @override
-  List<Object?> get props => [success, message];
 }

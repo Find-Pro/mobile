@@ -13,7 +13,7 @@ class MainView extends ConsumerWidget {
     return AutoTabsScaffold(
       routes: const [
         HomeRoute(),
-        SearchRoute(),
+        SearchInputRoute(),
         MessagesRoute(),
         ProfileRoute(),
       ],

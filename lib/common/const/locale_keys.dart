@@ -1,10 +1,38 @@
 class LocaleKeys {
   static const String login = 'Giriş Yap';
   static const String appName = 'Find Pro';
+  static const String harmfulContent = 'Zararlı içerik';
   static const String register = 'Kayıt Ol';
+  static const String noDataFound = 'Henüz veri yok';
+  static const String myJobs = 'İşlerim';
+  static const String addComment = 'Yorum yap';
+  static const String commentCreatedSuccessfully =
+      'Yorum başarıyla gönderildi.';
+  static const String commentShouldBe10Character =
+      'En az 10 karakter girmelisiniz';
+  static const String submitComment = 'Yorumu gönder';
+  static const String addCommentText = 'Yorum metni girin';
+  static const String jobs = 'İşler';
+  static const String pleaseAvoidBadWords =
+      'Lütfen argo kelime kullanmayın.';
+  static const String comments = 'Yorumlar';
   static const String pwMustBeAtLeast = 'Şifre en az 6 karakter olmalıdır';
   static const String jobDeletedSuccess = 'İş başarıyla silindi';
   static const String okay = 'Tamam';
+  static const String myComments = 'Yorumlarım';
+  static const String commentReported = 'Yorum şikayet edildi';
+  static const String commentDeletedSuccessfully =
+      'Yorum başarıyla silindi';
+  static const String reportComment = 'Yorumu şikayet et';
+  static const String deleteComment = 'Yorumu sil';
+  static const String youHaveNotMadeAnyChoose =
+      'Herhangi bir seçim yapmadınız.';
+  static const String selectHourlyWage = 'Saatlik ücreti seçiniz (₺)';
+  static const String description = 'Açıklama';
+  static const String city = 'Şehir';
+  static const String serviceDetails = 'İlan detayları';
+  static const String district = 'İlçe';
+  static const String followerDeleted = 'Takipçi silindi.';
   static const String removeFollower = 'Takipçiyi sil';
   static const String followers = 'Takip edilen';
   static const String following = 'Takipçiler';
@@ -17,6 +45,7 @@ class LocaleKeys {
   static const String serviceCouldNotAdd =
       'Hizmet eklerken bir hata oluştu.';
   static const String search = 'Arama';
+
   static const String pleaseAddDescription = 'Lütfen açıklama ekleyin';
   static const String createService = 'Hizmet oluştur';
   static const String couldNotFindDistrict =
@@ -63,6 +92,8 @@ class LocaleKeys {
   static const String password = 'Şifre';
   static const String confirmPassword = 'Şifreyi doğrulayın';
   static const String category = 'Kategori';
+  static const String announcementTime = 'İlan tarihi';
+  static const String hourlyWage = 'Saatlik ücret';
   static const String phoneNumber = 'Telefon numarası';
   static const String services = 'Hizmetler';
   static const String service = 'Hizmet';

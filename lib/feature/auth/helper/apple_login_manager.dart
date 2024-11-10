@@ -26,7 +26,7 @@ class AppleLoginManager {
           context.router.pop();
         });
       } else if (credentialState == CredentialState.authorized) {
-        final loginResult = await AuthService().loginWithToken(
+        final loginResult = await AuthService.instance.loginWithToken(
             credential.userIdentifier ?? '', EndPointEnums.loginWithApple);
 
         if (loginResult!.success) {
@@ -35,9 +35,9 @@ class AppleLoginManager {
           await context.router
               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
         } else {
-          final registerResult = await AuthService().registerWithToken(
-              credential.userIdentifier ?? '',
-              EndPointEnums.registerWithApple);
+          final registerResult = await AuthService.instance
+              .registerWithToken(credential.userIdentifier ?? '',
+                  EndPointEnums.registerWithApple);
 
           if (registerResult!.success) {
             CacheManager.instance
@@ -51,7 +51,8 @@ class AppleLoginManager {
           }
         }
       } else if (credentialState == CredentialState.notFound) {
-        final registerResult = await AuthService().registerWithToken(
+        final registerResult =
+            await AuthService.instance.registerWithToken(
           credential.userIdentifier ?? '',
           EndPointEnums.registerWithApple,
         );

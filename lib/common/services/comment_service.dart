@@ -3,14 +3,14 @@ import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/comment_operation.dart';
 import 'package:findpro/common/services/manager/network_service.dart';
-import 'package:findpro/common/services/model/comment_model.dart';
 import 'package:findpro/common/services/model/request/add_comment_request.dart';
-import 'package:findpro/common/services/model/response/add_comment_response.dart';
-import 'package:findpro/common/services/model/response/success_and_message_response.dart';
+import 'package:findpro/common/services/model/response/get_comments_response.dart';
 
 class CommentService implements CommentOperation {
+  CommentService._();
+  static final CommentService instance = CommentService._();
   @override
-  Future<AddCommentResponse?> addComment(
+  Future<GetCommentsResponse?> addComment(
       AddCommentRequest requestModel) async {
     final createdByUserId = CacheManager.instance.getUserId();
     final responseData = await NetworkService.instance.baseRequest(
@@ -23,30 +23,28 @@ class CommentService implements CommentOperation {
         'rating': requestModel.rating,
       },
     );
-    return AddCommentResponse.fromJson(responseData!);
+    return GetCommentsResponse.fromJson(responseData!);
   }
 
   @override
-  Future<List<CommentModel>?> getComments(int userId) async {
+  Future<GetCommentsResponse?> getComments(int userId) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.commentGetComments,
       data: {'userId': userId},
     );
 
-    return (responseData!['comments'] as List<dynamic>)
-        .map((json) => CommentModel.fromJson(json as Map<String, dynamic>))
-        .toList();
+    return GetCommentsResponse.fromJson(responseData!);
   }
 
   @override
-  Future<SuccessAndMessageResponse?> delete(int commentId) async {
+  Future<GetCommentsResponse?> delete(int commentId) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.commentDelete,
       data: {'commentId': commentId},
     );
 
-    return SuccessAndMessageResponse.fromJson(responseData!);
+    return GetCommentsResponse.fromJson(responseData!);
   }
 }

@@ -33,7 +33,7 @@ class ChangeCoverPicture {
   }
 
   static Future<bool> _handleUpdate(File file) async {
-    final postResponse = await PhotoService().cover(file);
+    final postResponse = await PhotoService.instance.cover(file);
     if (postResponse == null || !postResponse.success) {
       return false;
     }

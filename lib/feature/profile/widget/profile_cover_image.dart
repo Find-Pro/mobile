@@ -5,14 +5,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileCoverImage extends ConsumerWidget {
-  const ProfileCoverImage({required this.photoName, super.key});
+  const ProfileCoverImage(
+      {required this.photoName,
+      required this.isGeneralProfile,
+      super.key});
   final String photoName;
+  final bool isGeneralProfile;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => ChangeCoverPicture().show(context, ref),
-      onLongPress: () => FullScreenImage().show(context, photoName),
+      onTap: () {
+        if (isGeneralProfile) {
+          FullScreenImage().show(context, photoName);
+        } else {
+          ChangeCoverPicture().show(context, ref);
+        }
+      },
+      onLongPress: () {
+        if (isGeneralProfile) {
+        } else {
+          FullScreenImage().show(context, photoName);
+        }
+      },
       child: SizedBox(
           width: double.infinity,
           height: 160,

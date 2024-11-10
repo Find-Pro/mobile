@@ -1,35 +1,17 @@
-import 'package:equatable/equatable.dart';
 import 'package:findpro/common/services/model/user_model.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_profile_response.g.dart';
+part 'user_profile_response.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class UserProfileResponse extends INetworkModel<UserProfileResponse>
-    with EquatableMixin {
-  UserProfileResponse({
-    required this.success,
-    this.message,
-    this.user,
-  });
+@freezed
+class UserProfileResponse with _$UserProfileResponse {
+  factory UserProfileResponse({
+    required bool success,
+    String? message,
+    UserModel? user,
+  }) = _UserProfileResponse;
 
-  @override
   factory UserProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$UserProfileResponseFromJson(json);
-  @override
-  UserProfileResponse fromJson(Map<String, dynamic> json) =>
-      UserProfileResponse.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$UserProfileResponseToJson(this);
-
-  final bool success;
-  final String? message;
-  final UserModel? user;
-
-  @override
-  List<Object?> get props => [success, user, message];
 }

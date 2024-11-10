@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/common/widget/question_alert.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:findpro/feature/profile/model/follower_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FollowerListTile extends StatelessWidget {
+class FollowerListTile extends ConsumerWidget {
   const FollowerListTile(
       {required this.followerModel,
       required this.currentUserId,
@@ -21,7 +20,7 @@ class FollowerListTile extends StatelessWidget {
   final bool isFollowersView;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: PaddingInsets().large,
       child: ListTile(
@@ -33,7 +32,8 @@ class FollowerListTile extends StatelessWidget {
                   );
                 }
               : () {
-                  context.router.push(const UserProfileRoute());
+                  context.router.push(
+                      UserProfileRoute(userId: followerModel.userId!));
                 },
           leading: CircleAvatar(
               radius: 25,
@@ -52,12 +52,10 @@ class FollowerListTile extends StatelessWidget {
           trailing: isFollowersView
               ? const SizedBox()
               : TextButton(
-                  onPressed: () {
-                    QuestionAlert().show(context,
-                        LocaleKeys.areYouSureDeleteFollower, () {});
-                  },
+                  onPressed: () {},
                   child: Text(
-                    LocaleKeys.removeFollower,
+                    // LocaleKeys.removeFollower,
+                    '',
                     style: context.textTheme.labelMedium?.copyWith(
                         color: Colors.red, fontWeight: FontWeight.w700),
                   ))),

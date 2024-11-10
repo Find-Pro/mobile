@@ -13,7 +13,7 @@ class LoginViewModel extends StateNotifier<UpdateProfileResponse> {
   Future<bool> login(LoginRequest request) async {
     loadingNotifier.value = true;
 
-    final response = await AuthService().login(request);
+    final response = await AuthService.instance.login(request);
     if (response!.success) {
       CacheManager.instance.setUserId(response.user!.userId!);
       state = response;

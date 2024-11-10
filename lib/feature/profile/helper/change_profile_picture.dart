@@ -34,7 +34,7 @@ class ChangeProfilePicture {
 }
 
 Future<bool> _handleUpdate(File file) async {
-  final postResponse = await PhotoService().profile(file);
+  final postResponse = await PhotoService.instance.profile(file);
   if (postResponse == null || !postResponse.success) {
     return false;
   }

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:findpro/feature/add_job/model/job_model.dart';
+import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
