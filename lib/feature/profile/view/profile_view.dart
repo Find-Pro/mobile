@@ -40,6 +40,8 @@ class ProfileView extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 190),
                         child: FollowNumberBox(
+                            userId: profileViewModel.user!.userId!,
+                            fullName: profileViewModel.user!.fullName!,
                             followingCount:
                                 profileViewModel.user!.followings!.length,
                             followersCount:

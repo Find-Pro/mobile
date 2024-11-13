@@ -13,7 +13,7 @@ class JobDetailBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final jobViewModel = ref.watch(jobDetailProvider);
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _BuildDetailRow(
           iconData: Icons.category,
@@ -71,17 +71,18 @@ class _BuildDetailRow extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
               child: Icon(
                 iconData,
                 color: context.themeData.primaryColor,
+                size: 27,
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 2,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     titleText.toUpperCase(),

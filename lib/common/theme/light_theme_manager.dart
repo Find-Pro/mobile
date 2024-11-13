@@ -12,6 +12,7 @@ class LightThemeManager implements CustomTheme {
         indicatorColor: Colors.black,
         canvasColor: const Color(0xff4b5a60ff),
         primaryColor: Colors.teal,
+        dividerColor: Colors.grey,
         cardColor: Colors.blueAccent.shade200,
         fontFamily: GoogleFonts.inter().fontFamily,
         colorScheme: CustomColorScheme.lightColorScheme,

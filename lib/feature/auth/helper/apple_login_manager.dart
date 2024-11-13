@@ -6,10 +6,11 @@ import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/auth_service.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AppleLoginManager {
-  Future<void> login(BuildContext context) async {
+  Future<void> login(BuildContext context, WidgetRef ref) async {
     try {
       final credential = await SignInWithApple.getAppleIDCredential(
         scopes: [
@@ -32,6 +33,7 @@ class AppleLoginManager {
         if (loginResult!.success) {
           CacheManager.instance.setUserId(loginResult.user!.userId ?? 0);
           CacheManager.instance.setAppleOrGoogle(true);
+          //  await ref.read(notificationProvider.login);
           await context.router
               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
         } else {
@@ -43,6 +45,7 @@ class AppleLoginManager {
             CacheManager.instance
                 .setUserId(registerResult.user!.userId ?? 0);
             CacheManager.instance.setAppleOrGoogle(true);
+            //  await ref.read(notificationProvider.login);
             await context.router.pushAndPopUntil(const MainRoute(),
                 predicate: (_) => false);
             debugPrint('Başarılı kayıt: ${registerResult.user}');
@@ -61,6 +64,7 @@ class AppleLoginManager {
         if (registerResult.success) {
           CacheManager.instance
               .setUserId(registerResult.user!.userId ?? 0);
+          //  await ref.read(notificationProvider.login);
           await context.router
               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
         } else {

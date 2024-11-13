@@ -20,21 +20,23 @@ class CommentCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       shape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-                radius: 30,
-                backgroundImage: Image.network(
-                  CreateImageUrl.instance
-                      .photo(commentModel.profilePhoto!),
-                ).image),
             Expanded(
+              child: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: Image.network(
+                    CreateImageUrl.instance
+                        .photo(commentModel.profilePhoto!),
+                  ).image),
+            ),
+            Expanded(
+              flex: 3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -49,28 +51,31 @@ class CommentCard extends ConsumerWidget {
                       RatingStars(rating: commentModel.rating!),
                     ],
                   ),
-                  10.verticalSpace,
+                  5.verticalSpace,
                   Text(
                     commentModel.fullName ?? LocaleKeys.undefined,
-                    style: context.textTheme.labelMedium?.copyWith(
+                    style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  10.verticalSpace,
+                  5.verticalSpace,
                   Text(
-                    commentModel.commentText!,
+                    commentModel.commentText ?? '',
                     style: context.textTheme.labelMedium,
+                    maxLines: 2,
                   ),
                 ],
               ),
             ),
-            IconButton(
-              icon: Icon(
-                Icons.more_vert,
-                color: context.themeData.indicatorColor,
+            Expanded(
+              child: IconButton(
+                icon: Icon(
+                  Icons.more_vert,
+                  color: context.themeData.indicatorColor,
+                ),
+                onPressed: onTap,
               ),
-              onPressed: onTap,
-            ),
+            )
           ],
         ),
       ),

@@ -5,13 +5,14 @@ import 'package:findpro/feature/auth/helper/apple_login_manager.dart';
 import 'package:findpro/feature/auth/helper/google_login_manager.dart';
 import 'package:findpro/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppleGoogleRow extends StatelessWidget {
+class AppleGoogleRow extends ConsumerWidget {
   const AppleGoogleRow({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return Center(
@@ -20,8 +21,8 @@ class AppleGoogleRow extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               onPressed: Platform.isAndroid
-                  ? () => GoogleLoginManager().login(context)
-                  : () => AppleLoginManager().login(context),
+                  ? () => GoogleLoginManager().login(context, ref)
+                  : () => AppleLoginManager().login(context, ref),
               style: ElevatedButton.styleFrom(
                 backgroundColor: context.themeData.primaryColor,
                 shape: RoundedRectangleBorder(

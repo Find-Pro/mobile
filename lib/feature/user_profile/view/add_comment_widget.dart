@@ -39,7 +39,7 @@ class AddCommentView extends ConsumerWidget {
             ),
             10.verticalSpace,
             Text(
-              userProfileViewModel.user!.fullName ?? '',
+              userProfileViewModel.user!.fullName ?? LocaleKeys.undefined,
               style: context.textTheme.labelLarge,
             ),
             30.verticalSpace,

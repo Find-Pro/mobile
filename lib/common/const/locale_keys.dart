@@ -5,6 +5,9 @@ class LocaleKeys {
   static const String register = 'Kayıt Ol';
   static const String noDataFound = 'Henüz veri yok';
   static const String myJobs = 'İşlerim';
+  static const String typeAMessage = 'Mesaj yaz';
+  static const String areYouSureDeleteJob =
+      'İşi silmek istediğinize emin misiniz';
   static const String addComment = 'Yorum yap';
   static const String commentCreatedSuccessfully =
       'Yorum başarıyla gönderildi.';
@@ -108,4 +111,18 @@ class LocaleKeys {
   static const String profileUpdated = 'Profil Güncellendi';
   static const String themeSettings = 'Tema ayarları';
   static const String editProfile = 'Profili düzenle';
+  static const List<String> months = [
+    'Ocak',
+    'Şubat',
+    'Mart',
+    'Nisan',
+    'Mayıs',
+    'Haziran',
+    'Temmuz',
+    'Ağustos',
+    'Eylül',
+    'Ekim',
+    'Kasım',
+    'Aralık'
+  ];
 }

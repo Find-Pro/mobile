@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
@@ -44,7 +45,7 @@ class FollowerListTile extends ConsumerWidget {
           title: Padding(
             padding: const EdgeInsets.only(left: 6),
             child: Text(
-              followerModel.fullName ?? '',
+              followerModel.fullName ?? LocaleKeys.undefined,
               style: context.textTheme.labelLarge
                   ?.copyWith(fontWeight: FontWeight.w700),
             ),

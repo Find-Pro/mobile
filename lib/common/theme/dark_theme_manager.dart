@@ -12,6 +12,7 @@ class DarkThemeManager implements CustomTheme {
         indicatorColor: Colors.white,
         canvasColor: const Color(0XFF4b5a60ff),
         primaryColor: Colors.brown,
+        dividerColor: Colors.white70,
         cardColor: Colors.blueAccent.shade200,
         fontFamily: GoogleFonts.inter().fontFamily,
         colorScheme: CustomColorScheme.darkColorScheme,

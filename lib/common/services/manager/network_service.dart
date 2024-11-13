@@ -27,18 +27,20 @@ class NetworkService {
   }) async {
     try {
       final response = await _dio.request<Map<String, dynamic>>(
-          ApiKey.baseUrl + endPoint.value,
+          '${ApiKey.baseUrl}${endPoint.value}',
           data: data,
           options: Options(method: method.value));
-
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       } else {
         debugPrint(LocaleKeys.error + response.data.toString());
         return null;
       }
-    } catch (e) {
-      debugPrint(e.toString());
+    } on DioException catch (e) {
+      debugPrint('Dio error: ${e.message}');
+      if (e.response != null) {
+        debugPrint('Dio error response data: ${e.response?.data}');
+      }
       return null;
     }
   }
@@ -63,7 +65,8 @@ class NetworkService {
         debugPrint('Error Network Service: ${response.data}');
         return null;
       }
-    } catch (e) {
+    } on DioException catch (e) {
+      debugPrint('Dio error: ${e.message}');
       debugPrint(e.toString());
       return null;
     }

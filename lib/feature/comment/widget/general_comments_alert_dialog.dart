@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/services/support_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
@@ -22,12 +23,12 @@ class GeneralCommentsAlertDialog {
       builder: (BuildContext context) {
         return Container(
           margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
             ),
-            color: Colors.transparent,
+            color: context.themeData.scaffoldBackgroundColor,
           ),
           child: SingleChildScrollView(
             child: Column(

@@ -17,8 +17,10 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_screenutil: ^5.9.3
   animation_search_bar: ^0.0.10
+  flutter_svg: ^2.0.14
   #network
   vexana: ^4.0.4
+  web_socket_channel: ^3.0.1
   #state
   flutter_riverpod: ^2.6.1
   auto_route: 7.8.4
@@ -34,13 +36,7 @@ dependencies:
   image_cropper: ^8.0.2
   url_launcher: ^6.3.1
   #notification
-
-flutter_native_splash:
-  android_12:
-  android: true
-  ios: true
-  color: "#024959"
-  image: "assets/icon/discovery.png"
+  onesignal_flutter: ^5.2.7
 
 dev_dependencies:
   flutter_test:

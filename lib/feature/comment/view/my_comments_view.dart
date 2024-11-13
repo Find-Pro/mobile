@@ -22,6 +22,7 @@ class MyCommentsView extends ConsumerWidget {
           return const NoDataFoundWidget();
         }
         return ListView.builder(
+          itemCount: myCommentViewModel.result!.length,
           itemBuilder: (context, index) => CommentCard(
               commentModel: myCommentViewModel.result![index],
               onTap: () => MyCommentsAlertDialog().show(

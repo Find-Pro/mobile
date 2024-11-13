@@ -10,7 +10,7 @@ class RatingStars extends StatelessWidget {
         return Icon(
           index < rating ? Icons.star : Icons.star_border,
           color: index < rating ? Colors.amber : Colors.grey,
-          size: 20,
+          size: 25,
         );
       }),
     );
