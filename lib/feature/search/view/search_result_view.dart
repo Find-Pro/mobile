@@ -1,13 +1,10 @@
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/feature/search/view_model/search_input_view_model.dart';
 import 'package:findpro/feature/search/view_model/search_result_view_model.dart';
+import 'package:findpro/feature/search/widget/search_result_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,16 +30,7 @@ class SearchResultView extends ConsumerWidget {
           return const NoDataFoundWidget();
         }
         return Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-                onPressed: () => context.router.pushAndPopUntil(
-                    const MainRoute(),
-                    predicate: (_) => false),
-                icon: Icon(
-                  Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-                  color: context.themeData.indicatorColor,
-                )),
-          ),
+          appBar: const SearchResultAppbar(),
           body: ListView.builder(
             itemCount: searchResult.result!.length,
             itemBuilder: (context, index) {

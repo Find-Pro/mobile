@@ -7,7 +7,6 @@ import 'package:findpro/common/services/model/response/success_and_message_respo
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
 import 'package:findpro/common/services/model/response/user_list_response.dart';
 import 'package:findpro/common/services/model/response/user_profile_response.dart';
-import 'package:findpro/common/services/model/user_model.dart';
 
 class UserService implements UserOperation {
   UserService._();
@@ -25,16 +24,14 @@ class UserService implements UserOperation {
 
   @override
   Future<UpdateProfileResponse?> updateProfile(
-      UserModel updateUser) async {
+      String fullName, String email) async {
     final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.userUpdate,
-      data: {
-        'userId': userId,
-        'user': updateUser.toJson(),
-      },
+      data: {'userId': userId, 'fullName': fullName, 'email': email},
     );
+
     return UpdateProfileResponse.fromJson(responseData!);
   }
 
@@ -60,5 +57,16 @@ class UserService implements UserOperation {
       EndPointEnums.userList,
     );
     return UserListResponse.fromJson(responseData!);
+  }
+
+  @override
+  Future<SuccessAndMessageResponse?> removeAccount() async {
+    final userId = CacheManager.instance.getUserId();
+    final responseData = await NetworkService.instance.baseRequest(
+      APIRequestMethod.get,
+      EndPointEnums.userList,
+      data: {'userId': userId},
+    );
+    return SuccessAndMessageResponse.fromJson(responseData!);
   }
 }

@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/question_alert.dart';
@@ -60,16 +60,16 @@ class MyJobsListTile extends ConsumerWidget {
               IconButton(
                   onPressed: () async {
                     QuestionAlert().show(
-                        context, LocaleKeys.areYouSureDeleteJob, () async {
+                        context, 'areYouSureDeleteJob'.tr(), () async {
                       final res = await ref
                           .read(myJobsProvider.notifier)
                           .deleteJob(jobModel.jobId!);
                       if (res) {
-                        InformationToast().show(context,
-                            LocaleKeys.commentDeletedSuccessfully);
+                        InformationToast().show(
+                            context, 'commentDeletedSuccessfully'.tr());
                       } else {
                         InformationToast()
-                            .show(context, LocaleKeys.anErrorOccurred);
+                            .show(context, 'anErrorOccurred'.tr());
                       }
                     });
                   },

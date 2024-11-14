@@ -28,7 +28,7 @@ final class CacheManager {
     prefs.setBool('appleOrGoogle', value);
   }
 
-  void clearCache(String key) {
+  void clearCache() {
     prefs.clear();
   }
 }

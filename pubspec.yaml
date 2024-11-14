@@ -55,5 +55,6 @@ flutter:
     - assets/icon/
     - assets/lottie/
     - assets/json/
+    - assets/translations/
 
 

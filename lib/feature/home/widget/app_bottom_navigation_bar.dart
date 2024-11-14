@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/feature/home/widget/nav_bar_item.dart';
 import 'package:findpro/feature/settings/view/settings_view.dart';
 import 'package:findpro/generated/assets.dart';
@@ -44,19 +44,19 @@ class AppBottomNavigationBar extends StatelessWidget {
       items: [
         NavBarItem(
           image: Assets.iconDiscovery,
-          text: LocaleKeys.home,
+          text: 'home'.tr(),
           isActive: tabsRouter.activeIndex == 0,
           isSettings: false,
         ).build(context),
         NavBarItem(
           image: Assets.iconSearchIcon,
-          text: LocaleKeys.search,
+          text: 'search'.tr(),
           isActive: tabsRouter.activeIndex == 1,
           isSettings: false,
         ).build(context),
         NavBarItem(
           image: Assets.iconMessages,
-          text: LocaleKeys.messages,
+          text: 'messages'.tr(),
           isActive: tabsRouter.activeIndex == 2,
           isSettings: false,
         ).build(context),
@@ -65,8 +65,8 @@ class AppBottomNavigationBar extends StatelessWidget {
               ? Assets.iconSettings
               : Assets.iconProfile,
           text: tabsRouter.activeIndex == 3
-              ? LocaleKeys.settings
-              : LocaleKeys.profile,
+              ? 'settings'.tr()
+              : 'profile'.tr(),
           isActive: tabsRouter.activeIndex == 3,
           isSettings: tabsRouter.activeIndex == 3,
         ).build(context),

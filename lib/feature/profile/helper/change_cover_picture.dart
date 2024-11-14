@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/services/photo_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
@@ -23,10 +23,10 @@ class ChangeCoverPicture {
         final file = File(croppedFile.path);
         final success = await _handleUpdate(file);
         if (success) {
-          InformationToast().show(context, LocaleKeys.coverPhotoChanged);
+          InformationToast().show(context, 'coverPhotoChanged'.tr());
           await ref.read(profileProvider.notifier).getUser();
         } else {
-          WarningAlert().show(context, LocaleKeys.error, true);
+          WarningAlert().show(context, 'error'.tr(), true);
         }
       }
     }

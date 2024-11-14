@@ -23,21 +23,22 @@ class GeneralCommentsView extends ConsumerWidget {
             generalCommentViewModel.result!.isEmpty) {
           return const NoDataFoundWidget();
         }
-
         return ListView.builder(
           itemCount: generalCommentViewModel.result!.length,
-          itemBuilder: (context, index) => CommentCard(
-              commentModel: generalCommentViewModel.result![index],
-              onTap: () => GeneralCommentsAlertDialog().show(
-                  commentId:
-                      generalCommentViewModel.result![index].commentId!,
-                  context: context,
-                  ref: ref,
-                  isMyComment: ref
-                          .watch(generalCommentsProvider.notifier)
-                          .currentUserId ==
-                      generalCommentViewModel
-                          .result![index].createdByUserId)),
+          itemBuilder: (context, index) {
+            final reversedList =
+                generalCommentViewModel.result!.reversed.toList();
+            return CommentCard(
+                commentModel: reversedList[index],
+                onTap: () => GeneralCommentsAlertDialog().show(
+                    commentId: reversedList[index].commentId!,
+                    context: context,
+                    ref: ref,
+                    isMyComment: ref
+                            .watch(generalCommentsProvider.notifier)
+                            .currentUserId ==
+                        reversedList[index].createdByUserId));
+          },
         );
       },
       error: (error, stackTrace) => const NoDataFoundWidget(),

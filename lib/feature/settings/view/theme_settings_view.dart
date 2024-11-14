@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/feature/settings/widget/change_theme_button.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/generated/assets.dart';
@@ -14,9 +14,8 @@ class ThemeSettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     const isDark = false;
     const isLight = false;
-    const isSystem = false;
     return Scaffold(
-      appBar: const SettingsAppBar(text: LocaleKeys.themeSettings),
+      appBar: SettingsAppBar(text: 'themeSettings'.tr()),
       body: Column(
         children: [
           40.verticalSpace,
@@ -33,7 +32,7 @@ class ThemeSettingsView extends StatelessWidget {
                   onTap: () {}),
               ChangeThemeButton(
                   imagePath: Assets.iconModeSystem,
-                  isSelected: isSystem,
+                  isSelected: true,
                   onTap: () {}),
             ],
           ),

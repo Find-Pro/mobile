@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart' show AutoRouterX, RoutePage;
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
@@ -11,7 +12,6 @@ import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class ProfileView extends ConsumerWidget {
@@ -37,18 +37,18 @@ class ProfileView extends ConsumerWidget {
                   ),
                   Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 190),
-                        child: FollowNumberBox(
-                            userId: profileViewModel.user!.userId!,
-                            fullName: profileViewModel.user!.fullName!,
-                            followingCount:
-                                profileViewModel.user!.followings!.length,
-                            followersCount:
-                                profileViewModel.user!.followers!.length,
-                            isGeneralProfile: false),
+                      FollowNumberBox(
+                          userId: profileViewModel.user!.userId!,
+                          fullName: profileViewModel.user!.fullName!,
+                          followingCount:
+                              profileViewModel.user!.followings!.length,
+                          followersCount:
+                              profileViewModel.user!.followers!.length,
+                          isGeneralProfile: false),
+                      Divider(
+                        color: context.themeData.indicatorColor,
+                        thickness: 0.5,
                       ),
-                      20.verticalSpace,
                       const CommentAndJobsPageView(
                         commentWidget: MyCommentsView(),
                         jobWidget: MyJobsListView(),

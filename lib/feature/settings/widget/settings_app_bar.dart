@@ -14,18 +14,18 @@ class SettingsAppBar extends StatelessWidget
         text,
         style: context.textTheme.titleMedium?.copyWith(
           fontWeight: FontWeight.bold,
-          color: context.themeData.scaffoldBackgroundColor,
+          color: Colors.white,
         ),
       ),
-      backgroundColor: context.themeData.primaryColorDark,
+      backgroundColor: Colors.blue,
       elevation: 4,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(10),
         ),
       ),
-      iconTheme: IconThemeData(
-        color: context.themeData.scaffoldBackgroundColor,
+      iconTheme: const IconThemeData(
+        color: Colors.white,
       ),
     );
   }

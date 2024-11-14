@@ -1,4 +1,4 @@
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/feature/jobs/add_job/helper/city_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
@@ -44,7 +44,7 @@ class _SelectDistrictState extends ConsumerState<SelectDistrict> {
     }
 
     if (districts.isEmpty) {
-      return const Center(child: Text(LocaleKeys.couldNotFindDistrict));
+      return Center(child: Text('couldNotFindDistrict'.tr()));
     }
 
     return ListView.builder(

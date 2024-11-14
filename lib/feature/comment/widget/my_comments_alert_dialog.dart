@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/feature/comment/view_model/my_comments_view_model.dart';
 import 'package:findpro/feature/comment/widget/alert_dialog_list_tile.dart';
@@ -31,7 +31,7 @@ class MyCommentsAlertDialog {
               children: <Widget>[
                 AlertDialogListTile(
                   iconData: Icons.delete_forever,
-                  text: LocaleKeys.deleteComment,
+                  text: 'deleteComment'.tr(),
                   onTap: () async {
                     final res = await ref
                         .read(myCommentsProvider.notifier)
@@ -39,10 +39,10 @@ class MyCommentsAlertDialog {
                     await context.router.pop();
                     if (res) {
                       InformationToast().show(
-                          context, LocaleKeys.commentDeletedSuccessfully);
+                          context, 'commentDeletedSuccessfully'.tr());
                     } else {
                       InformationToast()
-                          .show(context, LocaleKeys.anErrorOccurred);
+                          .show(context, 'anErrorOccurred'.tr());
                     }
                   },
                 ),
@@ -57,7 +57,7 @@ class MyCommentsAlertDialog {
 
 //   AlertDialogListTile(
 //                   iconData: Icons.report_gmailerrorred,
-//                   text: LocaleKeys.reportComment,
+//                   text: 'reportComment'.tr(),
 //                   onTap: () async {
 //                     final userId = CacheManager.instance.getUserId();
 //                     final res = await SupportService.instance.comment(

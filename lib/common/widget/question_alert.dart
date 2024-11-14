@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,7 @@ class QuestionAlert {
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
           title: Text(
-            LocaleKeys.warning,
+            'warning'.tr(),
             style: context.themeData.textTheme.headlineMedium,
           ),
           content: Text(
@@ -20,20 +20,17 @@ class QuestionAlert {
           ),
           actions: <Widget>[
             CupertinoDialogAction(
-              onPressed: () {
-                onTap();
-                context.router.pop();
-              },
+              onPressed: onTap,
               child: Text(
-                LocaleKeys.okay,
+                'okay'.tr(),
                 style: context.themeData.textTheme.labelLarge
                     ?.copyWith(color: Colors.red),
               ),
             ),
             CupertinoDialogAction(
-              onPressed: onTap,
+              onPressed: () => context.router.pop(),
               child: Text(
-                LocaleKeys.cancel,
+                'cancel'.tr(),
                 style: context.themeData.textTheme.labelLarge,
               ),
             ),

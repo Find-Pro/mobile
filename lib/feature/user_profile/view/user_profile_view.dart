@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart' show RoutePage;
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/comment/view/general_comments_view.dart';
@@ -22,7 +22,6 @@ class UserProfileView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userProfileViewModel = ref.watch(userProfileProvider);
     final userProfileFuture = ref.watch(userProfileFutureProvider(userId));
-
     return userProfileFuture.when(
       data: (_) {
         if (userProfileViewModel.user == null) {
@@ -54,7 +53,7 @@ class UserProfileView extends ConsumerWidget {
                         FollowNumberBox(
                           userId: userProfileViewModel.user!.userId!,
                           fullName: userProfileViewModel.user!.fullName ??
-                              LocaleKeys.undefined,
+                              'undefined'.tr(),
                           followingCount: userProfileViewModel
                               .user!.followings!.length,
                           followersCount:
@@ -63,7 +62,7 @@ class UserProfileView extends ConsumerWidget {
                         ),
                         Divider(
                           color: context.themeData.indicatorColor,
-                          thickness: 0.3,
+                          thickness: 0.7,
                         ),
                         CommentAndJobsPageView(
                           commentWidget: GeneralCommentsView(

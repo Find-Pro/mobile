@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
@@ -33,7 +33,7 @@ class JobDetailUserTile extends ConsumerWidget {
               ).image,
             ),
             Text(
-              jobViewModel.result!.fullName ?? LocaleKeys.undefined,
+              jobViewModel.result!.fullName ?? 'undefined'.tr(),
               style: context.textTheme.titleLarge,
             ),
             IconButton(
@@ -47,8 +47,8 @@ class JobDetailUserTile extends ConsumerWidget {
                         .getChatRooms();
                     await context.router.push(const MessagesRoute());
                   } else {
-                    WarningAlert().show(
-                        context, res.message ?? LocaleKeys.error, false);
+                    WarningAlert()
+                        .show(context, res.message ?? 'error'.tr(), false);
                   }
                 },
                 icon: Icon(

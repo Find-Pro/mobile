@@ -1,32 +1,34 @@
+import 'package:findpro/generated/assets.dart';
+
 class GetCategoryIcon {
   String get(int categoryId) {
     switch (categoryId) {
       case 1:
-        return 'assets/icon/1.svg';
+        return Assets.icon1;
       case 2:
-        return 'assets/icon/.svg';
+        return Assets.icon2;
       case 3:
-        return 'assets/icon/3.svg';
+        return Assets.icon3;
       case 4:
-        return 'assets/icon/4.svg';
+        return Assets.icon4;
       case 5:
-        return 'assets/icon/5.svg';
+        return Assets.icon5;
       case 6:
-        return 'assets/icon/6.svg';
+        return Assets.icon6;
       case 7:
-        return 'assets/icon/7.svg';
+        return Assets.icon7;
       case 8:
-        return 'assets/icon/8.svg';
+        return Assets.icon8;
       case 9:
-        return 'assets/icon/9.svg';
+        return Assets.icon9;
       case 10:
-        return 'assets/icon/10.svg';
+        return Assets.icon10;
       case 11:
-        return 'assets/icon/11.svg';
+        return Assets.icon11;
       case 12:
-        return 'assets/icon/12.svg';
+        return Assets.icon12;
       default:
-        return 'assets/icon/1.svg';
+        return Assets.icon1;
     }
   }
 }

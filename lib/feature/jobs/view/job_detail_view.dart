@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
@@ -19,7 +19,7 @@ class JobDetailView extends ConsumerWidget {
     final jobFuture = ref.watch(jobDetailFutureProvider(jobId));
     final jobViewModel = ref.watch(jobDetailProvider);
     return Scaffold(
-      appBar: const SettingsAppBar(text: LocaleKeys.serviceDetails),
+      appBar: SettingsAppBar(text: 'serviceDetails'.tr()),
       body: jobFuture.when(
         data: (_) {
           if (jobViewModel.result == null) {

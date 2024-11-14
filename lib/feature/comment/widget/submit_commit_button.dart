@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/material.dart';
 
 class SubmitCommitButton extends StatelessWidget {
@@ -32,7 +32,7 @@ class SubmitCommitButton extends StatelessWidget {
         ),
       ),
       child: Text(
-        LocaleKeys.submitComment,
+        'submitComment'.tr(),
         style: context.textTheme.headlineSmall
             ?.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
         textAlign: TextAlign.center,

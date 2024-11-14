@@ -1,4 +1,5 @@
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/service_model.dart';
@@ -43,7 +44,11 @@ class _SearchServiceState extends ConsumerState<SearchServiceWidget> {
       return const CustomCircular();
     }
     if (services.isEmpty) {
-      return const Center(child: Text(LocaleKeys.couldNotFindService));
+      return Center(
+          child: Text(
+        'couldNotFindService'.tr(),
+        style: context.textTheme.headlineSmall,
+      ));
     }
     return ListView.builder(
       itemCount: services.length,

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/model/request/login_request.dart';
@@ -35,7 +35,7 @@ class LoginView extends ConsumerWidget {
     final isPasswordValid = ref.watch(passwordValidProvider);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const AuthAppBar(text: LocaleKeys.login),
+      appBar: AuthAppBar(text: 'login'.tr()),
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       body: Stack(
         children: [
@@ -50,13 +50,13 @@ class LoginView extends ConsumerWidget {
                     40.verticalSpace,
                     StringTextField(
                       controller: emailCnt,
-                      hintText: LocaleKeys.mailOrPhoneNumber,
+                      hintText: 'mailOrPhoneNumber'.tr(),
                       iconData: Icons.mail,
                     ),
                     20.verticalSpace,
                     PwTextField(
                       controller: pwCnt,
-                      hintText: LocaleKeys.password,
+                      hintText: 'password'.tr(),
                     ),
                     40.verticalSpace,
                     Row(
@@ -66,11 +66,11 @@ class LoginView extends ConsumerWidget {
                         if (loginViewModel.loadingNotifier.value)
                           const CustomCircular(),
                         LoginRegisterButton(
-                          text: LocaleKeys.login,
+                          text: 'login'.tr(),
                           onTap: () async {
                             if (!isPasswordValid.value) {
-                              WarningAlert().show(
-                                  context, LocaleKeys.warning, false);
+                              WarningAlert()
+                                  .show(context, 'warning'.tr(), false);
                             }
                             final success = await loginViewModel.login(
                                 LoginRequest(
@@ -88,10 +88,10 @@ class LoginView extends ConsumerWidget {
                     40.verticalSpace,
                     const AppleGoogleRow(),
                     40.verticalSpace,
-                    const NavigateToRouteText(
-                      text1: LocaleKeys.doNotYouHaveAnAccount,
-                      text2: LocaleKeys.register,
-                      route: RegisterRoute(),
+                    NavigateToRouteText(
+                      text1: 'doNotYouHaveAnAccount'.tr(),
+                      text2: 'register'.tr(),
+                      route: const RegisterRoute(),
                     ),
                   ],
                 ),

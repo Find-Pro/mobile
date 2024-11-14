@@ -1,4 +1,4 @@
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/service_model.dart';
@@ -43,7 +43,7 @@ class _SelectServiceState extends ConsumerState<SelectService> {
       return const CustomCircular();
     }
     if (services.isEmpty) {
-      return const Center(child: Text(LocaleKeys.couldNotFindService));
+      return Center(child: Text('couldNotFindService'.tr()));
     }
     return ListView.builder(
       itemCount: services.length,

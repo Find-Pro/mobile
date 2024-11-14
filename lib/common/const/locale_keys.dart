@@ -3,12 +3,16 @@ class LocaleKeys {
   static const String appName = 'Find Pro';
   static const String harmfulContent = 'Zararlı içerik';
   static const String register = 'Kayıt Ol';
+  static const String searchResult = 'Arama Sonuçları';
+  static const String turkish = 'Türkçe';
+  static const String english = 'İngilizce';
   static const String noDataFound = 'Henüz veri yok';
   static const String myJobs = 'İşlerim';
   static const String typeAMessage = 'Mesaj yaz';
   static const String areYouSureDeleteJob =
       'İşi silmek istediğinize emin misiniz';
   static const String addComment = 'Yorum yap';
+  static const String removeAccount = 'Hesabı sil !';
   static const String commentCreatedSuccessfully =
       'Yorum başarıyla gönderildi.';
   static const String commentShouldBe10Character =
@@ -48,7 +52,6 @@ class LocaleKeys {
   static const String serviceCouldNotAdd =
       'Hizmet eklerken bir hata oluştu.';
   static const String search = 'Arama';
-
   static const String pleaseAddDescription = 'Lütfen açıklama ekleyin';
   static const String createService = 'Hizmet oluştur';
   static const String couldNotFindDistrict =
@@ -111,6 +114,7 @@ class LocaleKeys {
   static const String profileUpdated = 'Profil Güncellendi';
   static const String themeSettings = 'Tema ayarları';
   static const String editProfile = 'Profili düzenle';
+  static const String changeLanguage = 'Dili değiştir';
   static const List<String> months = [
     'Ocak',
     'Şubat',

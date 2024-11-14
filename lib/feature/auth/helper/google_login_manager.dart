@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,14 +48,14 @@ class GoogleLoginManager {
             await context.router.pushAndPopUntil(const MainRoute(),
                 predicate: (_) => false);
           } else {
-            debugPrint(LocaleKeys.error);
+            debugPrint('error'.tr());
           }
         } else {
-          debugPrint(LocaleKeys.error);
+          debugPrint('error'.tr());
         }
       }
     } else {
-      debugPrint(LocaleKeys.error);
+      debugPrint('error'.tr());
     }
   }
 
@@ -63,7 +63,7 @@ class GoogleLoginManager {
     try {
       await googleSignIn.signOut();
     } catch (error) {
-      debugPrint(LocaleKeys.error);
+      debugPrint('error'.tr());
     }
   }
 

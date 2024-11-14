@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/feature/auth/view_model/password_visibility_notifier.dart';
 import 'package:findpro/feature/auth/view_model/pw_valid_provider.dart';
@@ -82,11 +82,12 @@ class PwTextField extends ConsumerWidget {
                 ),
               ),
               if (!isValid)
-                const Padding(
-                  padding: EdgeInsets.only(top: 5),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
                   child: Text(
-                    LocaleKeys.pwMustBeAtLeast,
-                    style: TextStyle(color: Colors.red, fontSize: 12),
+                    'pwMustBeAtLeast'.tr(),
+                    style: context.textTheme.labelMedium
+                        ?.copyWith(color: Colors.red),
                   ),
                 ),
             ],

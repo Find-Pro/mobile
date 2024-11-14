@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
@@ -32,7 +32,7 @@ class RegisterView extends ConsumerWidget {
     const isMaster = false;
     final registerViewModel = RegisterViewModel();
     return Scaffold(
-      appBar: const AuthAppBar(text: LocaleKeys.register),
+      appBar: AuthAppBar(text: 'register'.tr()),
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -48,19 +48,19 @@ class RegisterView extends ConsumerWidget {
                     30.verticalSpace,
                     StringTextField(
                       controller: fullNameCnt,
-                      hintText: LocaleKeys.fullName,
+                      hintText: 'fullName'.tr(),
                       iconData: Icons.person_outline,
                     ),
                     20.verticalSpace,
                     StringTextField(
                       controller: emailCnt,
-                      hintText: LocaleKeys.email,
+                      hintText: 'email'.tr(),
                       iconData: Icons.mail,
                     ),
                     30.verticalSpace,
                     PwTextField(
                       controller: pwCnt,
-                      hintText: LocaleKeys.password,
+                      hintText: 'password'.tr(),
                     ),
                     30.verticalSpace,
                     if (registerViewModel.loadingNotifier.value)
@@ -70,7 +70,7 @@ class RegisterView extends ConsumerWidget {
                       children: [
                         const SupportButton(),
                         LoginRegisterButton(
-                          text: LocaleKeys.register,
+                          text: 'register'.tr(),
                           onTap: () async {
                             final success = await ref
                                 .read(registerProvider.notifier)
@@ -89,10 +89,10 @@ class RegisterView extends ConsumerWidget {
                       ],
                     ),
                     30.verticalSpace,
-                    const NavigateToRouteText(
-                      text1: LocaleKeys.alreadyHaveAnAccount,
-                      text2: LocaleKeys.login,
-                      route: LoginRoute(),
+                    NavigateToRouteText(
+                      text1: 'alreadyHaveAnAccount'.tr(),
+                      text2: 'login'.tr(),
+                      route: const LoginRoute(),
                     )
                   ],
                 ),

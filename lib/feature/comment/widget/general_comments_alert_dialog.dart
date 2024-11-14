@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/services/support_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/feature/comment/view_model/general_comments_view_model.dart';
@@ -36,18 +36,18 @@ class GeneralCommentsAlertDialog {
               children: <Widget>[
                 AlertDialogListTile(
                   iconData: Icons.report_gmailerrorred,
-                  text: LocaleKeys.reportComment,
+                  text: 'reportComment'.tr(),
                   onTap: () async {
                     final userId = CacheManager.instance.getUserId();
-                    final res = await SupportService.instance.comment(
-                        userId, commentId, LocaleKeys.harmfulContent);
+                    final res = await SupportService.instance
+                        .comment(userId, commentId, 'harmfulContent'.tr());
                     await context.router.pop();
                     if (res!.success) {
                       InformationToast()
-                          .show(context, LocaleKeys.commentReported);
+                          .show(context, 'commentReported'.tr());
                     } else {
                       InformationToast()
-                          .show(context, LocaleKeys.anErrorOccurred);
+                          .show(context, 'anErrorOccurred'.tr());
                     }
                   },
                 ),
@@ -55,18 +55,18 @@ class GeneralCommentsAlertDialog {
                 if (isMyComment)
                   AlertDialogListTile(
                     iconData: Icons.delete_forever,
-                    text: LocaleKeys.deleteComment,
+                    text: 'deleteComment'.tr(),
                     onTap: () async {
                       final res = await ref
                           .read(generalCommentsProvider.notifier)
                           .deleteMyComment(commentId);
                       await context.router.pop();
                       if (res) {
-                        InformationToast().show(context,
-                            LocaleKeys.commentDeletedSuccessfully);
+                        InformationToast().show(
+                            context, 'commentDeletedSuccessfully'.tr());
                       } else {
                         InformationToast()
-                            .show(context, LocaleKeys.anErrorOccurred);
+                            .show(context, 'anErrorOccurred'.tr());
                       }
                     },
                   ),

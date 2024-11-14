@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/message_date_parsing.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/message/model/message_profile_model.dart';
 import 'package:findpro/feature/message/view_model/chat_view_mixin.dart';
@@ -39,7 +39,7 @@ class ChatViewState extends State<ChatView> with ChatViewMixin {
                   return MessageCard(
                       isMyMessage: currentUserId == message.userId,
                       time: message.timestamp?.formatMessageDate ??
-                          LocaleKeys.error,
+                          'error'.tr(),
                       text: message.message);
                 },
               ),
@@ -52,7 +52,7 @@ class ChatViewState extends State<ChatView> with ChatViewMixin {
       appBar: ChatAppBar(
           onTap: () => context.router
               .push(UserProfileRoute(userId: widget.chatWithUser.userId)),
-          fullName: widget.chatWithUser.fullName ?? LocaleKeys.undefined,
+          fullName: widget.chatWithUser.fullName ?? 'undefined'.tr(),
           photo: widget.chatWithUser.profilePicture),
     );
   }

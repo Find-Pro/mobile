@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/information_toast.dart';
@@ -29,7 +29,7 @@ class AddDescription extends ConsumerWidget {
                 ref.read(addJobProvider.notifier).description = text;
               },
               decoration: InputDecoration(
-                hintText: LocaleKeys.description,
+                hintText: 'description'.tr(),
                 hintStyle: context.themeData.textTheme.labelMedium
                     ?.copyWith(
                         fontWeight: FontWeight.w500, color: Colors.grey),
@@ -50,22 +50,22 @@ class AddDescription extends ConsumerWidget {
               )),
           50.verticalSpace,
           SettingsConfirmButton(
-            text: LocaleKeys.createService,
+            text: 'createService'.tr(),
             onTap: () async {
               if (descriptionCnt.text.isEmpty) {
-                WarningAlert().show(
-                    context, LocaleKeys.descriptionIsRequired, false);
+                WarningAlert()
+                    .show(context, 'descriptionIsRequired'.tr(), false);
               } else {
                 addJobViewModel.description = descriptionCnt.text;
                 final success = await addJobViewModel.createService();
                 if (success) {
-                  InformationToast().show(
-                      context, LocaleKeys.serviceCreatedSuccessfully);
+                  InformationToast()
+                      .show(context, 'serviceCreatedSuccessfully'.tr());
                   await context.router.pushAndPopUntil(const MainRoute(),
                       predicate: (_) => false);
                 } else {
                   WarningAlert()
-                      .show(context, LocaleKeys.serviceCouldNotAdd, false);
+                      .show(context, 'serviceCouldNotAdd'.tr(), false);
                 }
               }
             },

@@ -1,4 +1,5 @@
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/init/localization/app_localization.dart';
 import 'package:findpro/common/init/product_init.dart';
 import 'package:findpro/common/router/app_router.dart';
 import 'package:findpro/common/theme/dark_theme_manager.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 Future<void> main() async {
   await ProductInitialization.mainInit();
   runApp(
-    const ProviderScope(child: _MyApp()),
+    ProductLocalization(child: const ProviderScope(child: _MyApp())),
   );
 }
 
@@ -23,15 +24,12 @@ class _MyApp extends ConsumerWidget {
     return CustomResponsive(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: LocaleKeys.appName,
         routerConfig: _appRouter.config(),
-
         theme: LightThemeManager().themeData,
         darkTheme: DarkThemeManager().themeData,
-
-        //  localizationsDelegates: context.localizationDelegates,
-        //   supportedLocales: context.supportedLocales,
-        //   locale: context.locale,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
       ),
     );
   }

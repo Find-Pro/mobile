@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,38 +18,38 @@ class JobDetailBody extends ConsumerWidget {
         _BuildDetailRow(
           iconData: Icons.category,
           bodyText: jobViewModel.result!.jobCategory!,
-          titleText: LocaleKeys.category,
+          titleText: 'category'.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.business_center_outlined,
           bodyText: jobViewModel.result!.jobService!,
-          titleText: LocaleKeys.service,
+          titleText: 'service'.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.monetization_on,
           bodyText: '${jobViewModel.result!.hourlyWage} ₺',
-          titleText: LocaleKeys.hourlyWage,
+          titleText: 'hourlyWage'.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.calendar_month_sharp,
           bodyText: DateTime.parse(jobViewModel.result!.createdAt!)
               .formattedDate,
-          titleText: LocaleKeys.announcementTime,
+          titleText: 'announcementTime'.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.location_on_outlined,
           bodyText: jobViewModel.result!.city!,
-          titleText: LocaleKeys.city,
+          titleText: 'city'.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.location_searching,
           bodyText: jobViewModel.result!.district!,
-          titleText: LocaleKeys.district,
+          titleText: 'district'.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.description_outlined,
           bodyText: jobViewModel.result!.description!,
-          titleText: LocaleKeys.description,
+          titleText: 'description'.tr(),
         ),
       ],
     );

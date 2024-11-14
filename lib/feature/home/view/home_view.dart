@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/home/view_model/home_view_model.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
-import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,7 @@ class HomeView extends ConsumerWidget {
           return const NoDataFoundWidget();
         }
         return Scaffold(
-          appBar: const SettingsAppBar(text: LocaleKeys.home),
+          appBar: HomeAppBar(text: 'home'.tr()),
           body: ListView.builder(
               itemCount: homeViewModel.result!.length,
               itemBuilder: (context, index) {

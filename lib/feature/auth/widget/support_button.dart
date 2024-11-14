@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/feature/auth/helper/launch_support_mail.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class SupportButton extends StatelessWidget {
               size: 30,
             ),
             Text(
-              LocaleKeys.support,
+              'support'.tr(),
               style: context.textTheme.labelMedium?.copyWith(),
             ),
           ],

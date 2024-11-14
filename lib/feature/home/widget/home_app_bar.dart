@@ -13,22 +13,22 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         text,
         style: context.textTheme.titleMedium?.copyWith(
           fontWeight: FontWeight.bold,
-          color: context.themeData.scaffoldBackgroundColor,
+          color: Colors.white,
         ),
       ),
-      backgroundColor: context.themeData.primaryColorDark,
+      backgroundColor: Colors.grey.shade700,
       elevation: 4,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(10),
+          bottom: Radius.circular(5),
         ),
       ),
-      iconTheme: IconThemeData(
-        color: context.themeData.scaffoldBackgroundColor,
+      iconTheme: const IconThemeData(
+        color: Colors.white,
       ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 10);
 }

@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -56,7 +56,7 @@ class NoDataFoundWidgetState extends State<NoDataFoundWidget> {
                       ),
                       const SizedBox(height: 1),
                       Text(
-                        LocaleKeys.noDataFound,
+                        'noDataFound'.tr(),
                         style: context.textTheme.headlineSmall,
                       ),
                     ],

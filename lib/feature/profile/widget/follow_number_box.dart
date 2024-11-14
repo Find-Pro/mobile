@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/user_profile/widget/user_profile_more_icon_alert.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class FollowNumberBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 120),
+      padding: EdgeInsets.only(top: isGeneralProfile ? 120 : 170),
       child: Row(
         children: [
           Expanded(
@@ -30,7 +30,8 @@ class FollowNumberBox extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 35),
+                  padding:
+                      EdgeInsets.only(left: isGeneralProfile ? 35 : 0),
                   child: Text(
                     fullName,
                     style: context.textTheme.headlineSmall
@@ -51,7 +52,7 @@ class FollowNumberBox extends StatelessWidget {
                                   ?.copyWith(fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              LocaleKeys.followers,
+                              'followers'.tr(),
                               style: context.textTheme.labelLarge,
                             ),
                           ],
@@ -70,7 +71,7 @@ class FollowNumberBox extends StatelessWidget {
                                   ?.copyWith(fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              LocaleKeys.following,
+                              'following'.tr(),
                               style: context.textTheme.labelLarge,
                             ),
                           ],
@@ -82,18 +83,16 @@ class FollowNumberBox extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-              child: IconButton(
-                  onPressed: () {
-                    if (isGeneralProfile) {
-                    } else {
+          if (isGeneralProfile)
+            Expanded(
+                child: IconButton(
+                    onPressed: () {
                       UserProfileMoreIconAlert().show(context, userId);
-                    }
-                  },
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: context.themeData.indicatorColor,
-                  )))
+                    },
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: context.themeData.indicatorColor,
+                    )))
         ],
       ),
     );

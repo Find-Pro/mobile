@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/auth_service.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
@@ -50,7 +50,7 @@ class AppleLoginManager {
                 predicate: (_) => false);
             debugPrint('Başarılı kayıt: ${registerResult.user}');
           } else {
-            WarningAlert().show(context, LocaleKeys.error, false);
+            WarningAlert().show(context, 'error'.tr(), false);
           }
         }
       } else if (credentialState == CredentialState.notFound) {
@@ -72,7 +72,7 @@ class AppleLoginManager {
               predicate: (_) => false);
         }
       } else {
-        WarningAlert().show(context, LocaleKeys.error, false);
+        WarningAlert().show(context, 'error'.tr(), false);
       }
     } catch (e) {
       debugPrint('IOS register error:$e');

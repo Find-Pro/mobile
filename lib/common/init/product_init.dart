@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/router/app_router.dart';
 import 'package:findpro/common/services/manager/product_network_manager.dart';
@@ -12,6 +13,8 @@ class ProductInitialization {
 
   static Future<void> mainInit() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await EasyLocalization.ensureInitialized();
+    EasyLocalization.logger.enableBuildModes = [];
     await CacheManager.instance.init();
     _getItInit();
   }

@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -42,20 +42,20 @@ class _CommentJobsPageViewState
       child: Scaffold(
         appBar: TabBar(
           dividerColor: Colors.transparent,
-          unselectedLabelStyle: context.textTheme.labelLarge,
-          labelStyle: context.textTheme.labelLarge,
+          unselectedLabelStyle: context.textTheme.labelMedium,
+          labelStyle: context.textTheme.labelMedium,
           controller: _tabController,
           indicatorColor: Colors.blueAccent,
           labelColor: Colors.blueAccent,
           unselectedLabelColor: context.themeData.indicatorColor,
-          tabs: const [
+          tabs: [
             Tab(
-              icon: Icon(Icons.business_center_outlined),
-              text: LocaleKeys.jobs,
+              icon: const Icon(Icons.business_center_outlined),
+              text: 'jobs'.tr(),
             ),
             Tab(
-              icon: Icon(Icons.comment_outlined),
-              text: LocaleKeys.comments,
+              icon: const Icon(Icons.comment_outlined),
+              text: 'comments'.tr(),
             ),
           ],
         ),

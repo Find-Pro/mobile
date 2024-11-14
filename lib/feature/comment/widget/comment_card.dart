@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/services/model/comment_model.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ class CommentCard extends ConsumerWidget {
                   ),
                   5.verticalSpace,
                   Text(
-                    commentModel.fullName ?? LocaleKeys.undefined,
+                    commentModel.fullName ?? 'undefined'.tr(),
                     style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),

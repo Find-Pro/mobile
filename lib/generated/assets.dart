@@ -3,10 +3,24 @@ class Assets {
   Assets._();
 
   static const String assetsIconLauncher = 'assets/icon/launcher.jpeg';
+  static const String icon1 = 'assets/icon/1.svg';
+  static const String icon10 = 'assets/icon/10.svg';
+  static const String icon11 = 'assets/icon/11.svg';
+  static const String icon12 = 'assets/icon/12.svg';
+  static const String icon2 = 'assets/icon/2.svg';
+  static const String icon3 = 'assets/icon/3.svg';
+  static const String icon4 = 'assets/icon/4.svg';
+  static const String icon5 = 'assets/icon/5.svg';
+  static const String icon6 = 'assets/icon/6.svg';
+  static const String icon7 = 'assets/icon/7.svg';
+  static const String icon8 = 'assets/icon/8.svg';
+  static const String icon9 = 'assets/icon/9.svg';
   static const String iconApplelogo = 'assets/icon/applelogo.png';
   static const String iconBg = 'assets/icon/bg.jpg';
   static const String iconComment = 'assets/icon/comment.png';
   static const String iconDiscovery = 'assets/icon/discovery.png';
+  static const String iconFindProHigh = 'assets/icon/find_pro_high.jpeg';
+  static const String iconFindProLogo = 'assets/icon/find_pro_logo.jpeg';
   static const String iconFriends = 'assets/icon/friends.png';
   static const String iconGeceMsgBg = 'assets/icon/gece_msg_bg.png';
   static const String iconGooglelogo = 'assets/icon/googlelogo.png';
@@ -27,6 +41,8 @@ class Assets {
   static const String jsonCity = 'assets/json/city.json';
   static const String jsonDistrict = 'assets/json/district.json';
   static const String jsonServices = 'assets/json/services.json';
+  static const String langEn = 'assets/lang/en.json';
+  static const String langTr = 'assets/lang/tr.json';
   static const String lottieCircular = 'assets/lottie/circular.json';
   static const String lottieDarkBg = 'assets/lottie/dark_bg.svg';
   static const String lottieEmptyFollower =

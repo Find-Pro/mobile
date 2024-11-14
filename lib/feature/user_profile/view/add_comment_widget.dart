@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/comment_filter_service.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/comment/view_model/general_comments_view_model.dart';
@@ -28,7 +28,7 @@ class AddCommentView extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: const SettingsAppBar(text: LocaleKeys.addComment),
+      appBar: SettingsAppBar(text: 'addComment'.tr()),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -39,7 +39,7 @@ class AddCommentView extends ConsumerWidget {
             ),
             10.verticalSpace,
             Text(
-              userProfileViewModel.user!.fullName ?? LocaleKeys.undefined,
+              userProfileViewModel.user!.fullName ?? 'undefined'.tr(),
               style: context.textTheme.labelLarge,
             ),
             30.verticalSpace,
@@ -77,11 +77,11 @@ class AddCommentView extends ConsumerWidget {
       ValueNotifier<int> ratingNotifier) async {
     final commentText = commentController.text;
     if (commentText.isEmpty) {
-      showWarning(context, LocaleKeys.commentShouldBe10Character);
+      showWarning(context, 'commentShouldBe10Character'.tr());
       return;
     }
     if (CommentFilterService.containsForbiddenWord(commentText)) {
-      showWarning(context, LocaleKeys.pleaseAvoidBadWords);
+      showWarning(context, 'pleaseAvoidBadWords'.tr());
       return;
     }
     final res = await ref
@@ -90,9 +90,9 @@ class AddCommentView extends ConsumerWidget {
 
     if (res) {
       await context.router.pop();
-      showInfoToast(context, LocaleKeys.commentCreatedSuccessfully);
+      showInfoToast(context, 'commentCreatedSuccessfully'.tr());
     } else {
-      showInfoToast(context, LocaleKeys.anErrorOccurred);
+      showInfoToast(context, 'anErrorOccurred'.tr());
     }
   }
 }

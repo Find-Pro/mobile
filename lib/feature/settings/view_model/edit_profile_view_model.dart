@@ -1,25 +1,19 @@
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
-import 'package:findpro/common/services/model/user_model.dart';
 import 'package:findpro/common/services/user_service.dart';
-import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
 class EditProfileViewModel extends StateNotifier<UpdateProfileResponse> {
   EditProfileViewModel()
       : super(const UpdateProfileResponse(success: false));
 
-  final loadingNotifier = ValueNotifier<bool>(false);
-
-  Future<bool> updateProfile(UserModel updateUser) async {
-    loadingNotifier.value = true;
-    final response = await UserService.instance.updateProfile(updateUser);
+  Future<bool> updateProfile(String fullName, String email) async {
+    final response =
+        await UserService.instance.updateProfile(fullName, email);
     if (response != null) {
       state = response;
-      loadingNotifier.value = false;
       return response.success;
     }
-    loadingNotifier.value = false;
     return false;
   }
 
@@ -32,7 +26,6 @@ class EditProfileViewModel extends StateNotifier<UpdateProfileResponse> {
 
       return response.success;
     }
-
     return false;
   }
 }

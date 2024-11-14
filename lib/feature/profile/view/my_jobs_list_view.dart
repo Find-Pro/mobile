@@ -22,8 +22,9 @@ class MyJobsListView extends ConsumerWidget {
         return ListView.builder(
             itemCount: myJobsViewModel.result!.length,
             itemBuilder: (context, index) {
-              return MyJobsListTile(
-                  jobModel: myJobsViewModel.result![index]);
+              final reversedList =
+                  myJobsViewModel.result!.reversed.toList();
+              return MyJobsListTile(jobModel: reversedList[index]);
             });
       },
       error: (error, stackTrace) => const NoDataFoundWidget(),

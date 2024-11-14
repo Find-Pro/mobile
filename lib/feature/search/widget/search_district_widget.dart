@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/locale_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/feature/jobs/add_job/helper/city_helper.dart';
@@ -45,7 +46,11 @@ class _SearchDistrictWidgetState
     }
 
     if (districts.isEmpty) {
-      return const Center(child: Text(LocaleKeys.couldNotFindDistrict));
+      return Center(
+          child: Text(
+        'couldNotFindDistrict'.tr(),
+        style: context.textTheme.headlineSmall,
+      ));
     }
 
     return ListView.builder(

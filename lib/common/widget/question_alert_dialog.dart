@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/material.dart';
 
 final class QuestionAlertDialog {
@@ -15,7 +15,7 @@ final class QuestionAlertDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            LocaleKeys.warning,
+            'warning'.tr(),
             style: context.textTheme.headlineLarge?.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -36,7 +36,7 @@ final class QuestionAlertDialog {
             TextButton(
               onPressed: () => context.router.pop(),
               child: Text(
-                LocaleKeys.cancel,
+                'cancel'.tr(),
                 style: context.textTheme.headlineSmall,
               ),
             ),

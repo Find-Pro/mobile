@@ -1,6 +1,6 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:findpro/feature/auth/helper/apple_login_manager.dart';
 import 'package:findpro/feature/auth/helper/google_login_manager.dart';
 import 'package:findpro/generated/assets.dart';
@@ -41,8 +41,8 @@ class AppleGoogleRow extends ConsumerWidget {
                   20.horizontalSpace,
                   Text(
                     Platform.isAndroid
-                        ? LocaleKeys.loginWithGoogle
-                        : LocaleKeys.loginWithApple,
+                        ? 'loginWithGoogle'.tr()
+                        : 'loginWithApple'.tr(),
                     style: context.textTheme.headlineSmall?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),

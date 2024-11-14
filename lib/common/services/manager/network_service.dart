@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/api_key.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
-import 'package:findpro/common/const/locale_keys.dart';
 import 'package:flutter/material.dart';
 
 class NetworkService {
@@ -33,7 +33,7 @@ class NetworkService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       } else {
-        debugPrint(LocaleKeys.error + response.data.toString());
+        debugPrint('error'.tr() + response.data.toString());
         return null;
       }
     } on DioException catch (e) {

@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/const/locale_keys.dart';
-import 'package:findpro/common/services/model/user_model.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
@@ -20,17 +19,17 @@ class EditProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final editProfileViewModel = EditProfileViewModel();
+    final profileFuture = ref.watch(editProfileFutureProvider);
     final mailCnt = TextEditingController(
         text: ref.watch(editProfileProvider).user?.email ??
-            LocaleKeys.undefined);
+            'undefined'.tr());
     final fullNameCnt = TextEditingController(
         text: ref.watch(editProfileProvider).user?.fullName ??
-            LocaleKeys.undefined);
-    final profileFuture = ref.watch(editProfileFutureProvider);
+            'undefined'.tr());
 
     return Scaffold(
-        appBar: const SettingsAppBar(text: LocaleKeys.updateProfile),
+        resizeToAvoidBottomInset: false,
+        appBar: SettingsAppBar(text: 'updateProfile'.tr()),
         backgroundColor: context.themeData.scaffoldBackgroundColor,
         body: profileFuture.when(
             data: (_) {
@@ -42,33 +41,30 @@ class EditProfileView extends ConsumerWidget {
                 children: [
                   StringTextField(
                     controller: mailCnt,
-                    hintText: LocaleKeys.email,
+                    hintText: 'email'.tr(),
                     iconData: Icons.email,
                   ),
                   30.verticalSpace,
                   StringTextField(
                     controller: fullNameCnt,
-                    hintText: LocaleKeys.fullName,
+                    hintText: 'fullName'.tr(),
                     iconData: Icons.person_outline,
                   ),
                   30.verticalSpace,
-                  if (editProfileViewModel.loadingNotifier.value)
-                    const CustomCircular(),
                   SettingsConfirmButton(
-                    text: LocaleKeys.updateProfile,
+                    text: 'updateProfile'.tr(),
                     onTap: () async {
                       final success = await ref
                           .read(editProfileProvider.notifier)
-                          .updateProfile(UserModel(
-                            email: mailCnt.text,
-                            fullName: fullNameCnt.text,
-                          ));
+                          .updateProfile(
+                            fullNameCnt.text,
+                            mailCnt.text,
+                          );
                       if (success) {
                         InformationToast()
-                            .show(context, LocaleKeys.profileUpdated);
+                            .show(context, 'profileUpdated'.tr());
                       } else {
-                        WarningAlert()
-                            .show(context, LocaleKeys.error, true);
+                        WarningAlert().show(context, 'error'.tr(), true);
                       }
                     },
                   )
