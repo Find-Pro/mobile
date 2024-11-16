@@ -3,7 +3,7 @@ import 'package:findpro/common/services/model/response/get_user_jobs_response.da
 import 'package:riverpod/riverpod.dart';
 
 class HomeViewModel extends StateNotifier<GetUserJobsResponse> {
-  HomeViewModel() : super(GetUserJobsResponse(success: false));
+  HomeViewModel() : super(GetUserJobsResponse(success: false, result: []));
 
   Future<bool> getJobs() async {
     final response = await JobService.instance.getFollowingJobs();

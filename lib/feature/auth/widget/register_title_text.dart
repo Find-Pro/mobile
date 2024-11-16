@@ -16,14 +16,14 @@ class RegisterTitleText extends StatelessWidget {
         children: [
           Text(
             'createAccount'.tr(),
-            style: context.textTheme.titleLarge
-                ?.copyWith(fontWeight: FontWeight.w700),
+            style: context.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700, color: Colors.black),
           ),
           20.verticalSpace,
           Text(
             'pleaseEnterYourInfo'.tr(),
-            style: context.textTheme.headlineSmall
-                ?.copyWith(fontWeight: FontWeight.w300),
+            style: context.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w300, color: Colors.black),
           ),
         ],
       ),

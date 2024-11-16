@@ -6,7 +6,6 @@ import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/view_model/register_view_model.dart';
-import 'package:findpro/feature/auth/widget/auth_app_bar.dart';
 import 'package:findpro/feature/auth/widget/background_image.dart';
 import 'package:findpro/feature/auth/widget/login_register_button.dart';
 import 'package:findpro/feature/auth/widget/navigate_to_route_text.dart';
@@ -14,6 +13,7 @@ import 'package:findpro/feature/auth/widget/pw_text_field.dart';
 import 'package:findpro/feature/auth/widget/register_title_text.dart';
 import 'package:findpro/feature/auth/widget/string_text_field.dart';
 import 'package:findpro/feature/auth/widget/support_button.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,9 +30,8 @@ class RegisterView extends ConsumerWidget {
     final emailCnt = TextEditingController();
     final pwCnt = TextEditingController();
     const isMaster = false;
-    final registerViewModel = RegisterViewModel();
     return Scaffold(
-      appBar: AuthAppBar(text: 'register'.tr()),
+      appBar: HomeAppBar(text: 'register'.tr()),
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -58,13 +57,11 @@ class RegisterView extends ConsumerWidget {
                       iconData: Icons.mail,
                     ),
                     30.verticalSpace,
-                    PwTextField(
+                    PwTextField(  isRegisterView: true,
                       controller: pwCnt,
                       hintText: 'password'.tr(),
                     ),
                     30.verticalSpace,
-                    if (registerViewModel.loadingNotifier.value)
-                      const CircularProgressIndicator(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -72,18 +69,19 @@ class RegisterView extends ConsumerWidget {
                         LoginRegisterButton(
                           text: 'register'.tr(),
                           onTap: () async {
-                            final success = await ref
+                            final res = await ref
                                 .read(registerProvider.notifier)
                                 .register(RegisterRequest(
                                     password: pwCnt.text,
                                     email: emailCnt.text,
                                     fullName: fullNameCnt.text,
                                     isMaster: isMaster));
-                            success
+                            res.success
                                 ? context.router.pushAndPopUntil(
                                     const MainRoute(),
                                     predicate: (_) => false)
-                                : WarningAlert();
+                                : WarningAlert().show(context,
+                                    res.message ?? 'error'.tr(), false);
                           },
                         ),
                       ],

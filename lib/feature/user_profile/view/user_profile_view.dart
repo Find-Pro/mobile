@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart' show RoutePage;
-import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
-import 'package:findpro/feature/comment/view/general_comments_view.dart';
+import 'package:findpro/feature/comment/view/user_profile_comments_view.dart';
 import 'package:findpro/feature/profile/view/comment_and_jobs_page_view.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:findpro/feature/user_profile/view/user_profile_jobs_list_view.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
+import 'package:findpro/feature/user_profile/widget/is_following_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,6 +31,7 @@ class UserProfileView extends ConsumerWidget {
           body: CustomScrollView(
             slivers: [
               SliverAppBar(
+                iconTheme: const IconThemeData(color: Colors.white),
                 expandedHeight: 80,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
@@ -50,22 +51,16 @@ class UserProfileView extends ConsumerWidget {
                     ),
                     Column(
                       children: [
-                        FollowNumberBox(
-                          userId: userProfileViewModel.user!.userId!,
-                          fullName: userProfileViewModel.user!.fullName ??
-                              'undefined'.tr(),
-                          followingCount: userProfileViewModel
-                              .user!.followings!.length,
-                          followersCount:
-                              userProfileViewModel.user!.followers!.length,
+                        const FollowNumberBox(
                           isGeneralProfile: true,
                         ),
+                        IsFollowingButton(userId: userId),
                         Divider(
                           color: context.themeData.indicatorColor,
                           thickness: 0.7,
                         ),
                         CommentAndJobsPageView(
-                          commentWidget: GeneralCommentsView(
+                          commentWidget: UserProfileCommentsView(
                             userId: userProfileViewModel.user!.userId!,
                           ),
                           jobWidget: UserProfileJobsListView(

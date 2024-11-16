@@ -4,8 +4,9 @@ import 'package:findpro/common/services/model/request/add_comment_request.dart';
 import 'package:findpro/common/services/model/response/get_comments_response.dart';
 import 'package:riverpod/riverpod.dart';
 
-class GeneralCommentsViewModel extends StateNotifier<GetCommentsResponse> {
-  GeneralCommentsViewModel() : super(GetCommentsResponse());
+class UserProfileCommentsViewModel
+    extends StateNotifier<GetCommentsResponse> {
+  UserProfileCommentsViewModel() : super(GetCommentsResponse());
 
   int _currentUserId = 0;
   int get currentUserId => _currentUserId;
@@ -44,15 +45,15 @@ class GeneralCommentsViewModel extends StateNotifier<GetCommentsResponse> {
   }
 }
 
-final generalCommentsProvider =
-    StateNotifierProvider<GeneralCommentsViewModel, GetCommentsResponse>(
-        (ref) => GeneralCommentsViewModel());
+final userProfileCommentsProvider = StateNotifierProvider<
+    UserProfileCommentsViewModel,
+    GetCommentsResponse>((ref) => UserProfileCommentsViewModel());
 
-final generalCommentsFutureProvider =
+final userProfileCommentsFutureProvider =
     FutureProvider.autoDispose.family<bool, int>(
   (ref, userId) async {
     final success = await ref
-        .read(generalCommentsProvider.notifier)
+        .read(userProfileCommentsProvider.notifier)
         .getComments(userId);
     return success;
   },

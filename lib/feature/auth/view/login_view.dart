@@ -4,12 +4,9 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/model/request/login_request.dart';
-import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/view_model/login_view_model.dart';
-import 'package:findpro/feature/auth/view_model/pw_valid_provider.dart';
 import 'package:findpro/feature/auth/widget/apple_google_row.dart';
-import 'package:findpro/feature/auth/widget/auth_app_bar.dart';
 import 'package:findpro/feature/auth/widget/background_image.dart';
 import 'package:findpro/feature/auth/widget/login_register_button.dart';
 import 'package:findpro/feature/auth/widget/login_welcome_text.dart';
@@ -17,6 +14,7 @@ import 'package:findpro/feature/auth/widget/navigate_to_route_text.dart';
 import 'package:findpro/feature/auth/widget/pw_text_field.dart';
 import 'package:findpro/feature/auth/widget/string_text_field.dart';
 import 'package:findpro/feature/auth/widget/support_button.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,10 +30,9 @@ class LoginView extends ConsumerWidget {
     final loginViewModel = LoginViewModel();
     final emailCnt = TextEditingController();
     final pwCnt = TextEditingController();
-    final isPasswordValid = ref.watch(passwordValidProvider);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AuthAppBar(text: 'login'.tr()),
+      appBar: HomeAppBar(text: 'login'.tr()),
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       body: Stack(
         children: [
@@ -63,24 +60,24 @@ class LoginView extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const SupportButton(),
-                        if (loginViewModel.loadingNotifier.value)
-                          const CustomCircular(),
                         LoginRegisterButton(
                           text: 'login'.tr(),
                           onTap: () async {
-                            if (!isPasswordValid.value) {
+                            if (pwCnt.text.isEmpty) {
                               WarningAlert()
                                   .show(context, 'warning'.tr(), false);
+                            } else {
+                              final res = await loginViewModel.login(
+                                  LoginRequest(
+                                      email: emailCnt.text,
+                                      password: pwCnt.text));
+                              res.success
+                                  ? context.router.pushAndPopUntil(
+                                      const MainRoute(),
+                                      predicate: (_) => false)
+                                  : WarningAlert().show(context,
+                                      res.message ?? 'error'.tr(), false);
                             }
-                            final success = await loginViewModel.login(
-                                LoginRequest(
-                                    email: emailCnt.text,
-                                    password: pwCnt.text));
-                            success
-                                ? context.router.pushAndPopUntil(
-                                    const MainRoute(),
-                                    predicate: (_) => false)
-                                : WarningAlert();
                           },
                         ),
                       ],

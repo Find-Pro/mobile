@@ -16,14 +16,14 @@ class LoginWelcomeText extends StatelessWidget {
         children: [
           Text(
             'welcomeBack'.tr(),
-            style: context.textTheme.titleLarge
-                ?.copyWith(fontWeight: FontWeight.w700),
+            style: context.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700, color: Colors.black),
           ),
           20.verticalSpace,
           Text(
             'enterYourMailToGetAccount'.tr(),
-            style: context.textTheme.headlineSmall
-                ?.copyWith(fontWeight: FontWeight.w300),
+            style: context.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w300, color: Colors.black),
           ),
         ],
       ),

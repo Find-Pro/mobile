@@ -10,24 +10,27 @@ class MessagesUserCard extends StatelessWidget {
   final MessageProfileModel messageProfileModel;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        onTap: () {
-          context.router.push(ChatRoute(
-              roomId: messageProfileModel.roomId,
-              chatWithUser: messageProfileModel));
-        },
-        leading: CircleAvatar(
-          radius: 30,
-          backgroundImage: Image.network(
-            CreateImageUrl.instance
-                .photo(messageProfileModel.profilePicture),
-          ).image,
-        ),
-        title: Text(
-          messageProfileModel.fullName!,
-          style: context.textTheme.labelLarge
-              ?.copyWith(fontWeight: FontWeight.w800),
+    return Padding(
+      padding: const EdgeInsets.only(top: 18),
+      child: Card(
+        child: ListTile(
+          onTap: () {
+            context.router.push(ChatRoute(
+                roomId: messageProfileModel.roomId,
+                chatWithUser: messageProfileModel));
+          },
+          leading: CircleAvatar(
+            radius: 30,
+            backgroundImage: Image.network(
+              CreateImageUrl.instance
+                  .photo(messageProfileModel.profilePicture),
+            ).image,
+          ),
+          title: Text(
+            messageProfileModel.fullName!,
+            style: context.textTheme.labelLarge
+                ?.copyWith(fontWeight: FontWeight.w800),
+          ),
         ),
       ),
     );

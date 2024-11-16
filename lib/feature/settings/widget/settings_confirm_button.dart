@@ -29,7 +29,7 @@ class SettingsConfirmButton extends ConsumerWidget {
             side: BorderSide.none,
           ),
           child: Text(text,
-              style: context.textTheme.headlineSmall
+              style: context.textTheme.labelLarge
                   ?.copyWith(color: Colors.white)),
         );
       },

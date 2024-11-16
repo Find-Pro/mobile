@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
@@ -30,7 +31,9 @@ class FollowingView extends ConsumerWidget {
             ],
           ),
           body: filteredFollowings == null || filteredFollowings.isEmpty
-              ? const NoDataFoundWidget()
+              ? NoDataFoundWidget(
+                  text: 'noFollowingFound'.tr(),
+                )
               : ListView.builder(
                   itemCount: filteredFollowings.length,
                   itemBuilder: (context, index) {

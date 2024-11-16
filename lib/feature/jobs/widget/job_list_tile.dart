@@ -16,7 +16,7 @@ class JobListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: PaddingInsets().medium,
+      padding: PaddingInsets().xl,
       child: Card(
         elevation: 1,
         child: Padding(

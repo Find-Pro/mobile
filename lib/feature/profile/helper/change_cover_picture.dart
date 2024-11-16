@@ -8,9 +8,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ChangeCoverPicture {
   Future<void> show(BuildContext context, WidgetRef ref) async {
+    final galleryPermission = await Permission.photos.status;
+    if (!galleryPermission.isGranted) {
+      final requestedPermission = await Permission.photos.request();
+      if (!requestedPermission.isGranted) {
+        WarningAlert().show(
+          context,
+          'permissionDenied'.tr(),
+          true,
+        );
+        return;
+      }
+    }
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {

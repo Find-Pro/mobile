@@ -31,12 +31,6 @@ class SettingsView extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SettingsListTile(
-                  iconData: Icons.color_lens_outlined,
-                  text: 'themeSettings'.tr(),
-                  onTap: () =>
-                      context.router.push(const ThemeSettingsRoute())),
-              const SettingsDivider(),
-              SettingsListTile(
                   iconData: Icons.key,
                   text: 'changePassword'.tr(),
                   onTap: () =>
@@ -76,8 +70,8 @@ class SettingsView extends ConsumerWidget {
                               context, 'anErrorOccurred'.tr(), false);
                         }
                       },
-                          bodyText: 'areYouSureSignOut'.tr(),
-                          buttonText: 'signOut'.tr())),
+                          bodyText: 'areYouSureRemoveAccount'.tr(),
+                          buttonText: 'removeAccount'.tr())),
               const SettingsDivider(),
               SettingsListTile(
                   iconColor: Colors.red,
@@ -86,7 +80,7 @@ class SettingsView extends ConsumerWidget {
                   onTap: () => QuestionAlertDialog().show(context,
                       onTap: () => SignOut.instance.signOut(context),
                       bodyText: 'areYouSureSignOut'.tr(),
-                      buttonText: 'signOut')),
+                      buttonText: 'signOut'.tr())),
             ],
           ),
         ),

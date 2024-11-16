@@ -4,7 +4,7 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/services/support_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
-import 'package:findpro/feature/comment/view_model/general_comments_view_model.dart';
+import 'package:findpro/feature/comment/view_model/user_profile_comments_view_model.dart';
 import 'package:findpro/feature/comment/widget/alert_dialog_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -58,7 +58,7 @@ class GeneralCommentsAlertDialog {
                     text: 'deleteComment'.tr(),
                     onTap: () async {
                       final res = await ref
-                          .read(generalCommentsProvider.notifier)
+                          .read(userProfileCommentsProvider.notifier)
                           .deleteMyComment(commentId);
                       await context.router.pop();
                       if (res) {

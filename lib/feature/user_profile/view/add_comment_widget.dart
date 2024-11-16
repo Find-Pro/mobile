@@ -4,7 +4,7 @@ import 'package:findpro/common/const/comment_filter_service.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
-import 'package:findpro/feature/comment/view_model/general_comments_view_model.dart';
+import 'package:findpro/feature/comment/view_model/user_profile_comments_view_model.dart';
 import 'package:findpro/feature/comment/widget/add_comment_text_field.dart';
 import 'package:findpro/feature/comment/widget/dialog_add_rating_stars.dart';
 import 'package:findpro/feature/comment/widget/submit_commit_button.dart';
@@ -85,7 +85,7 @@ class AddCommentView extends ConsumerWidget {
       return;
     }
     final res = await ref
-        .read(generalCommentsProvider.notifier)
+        .read(userProfileCommentsProvider.notifier)
         .addComment(userId, commentText, ratingNotifier.value);
 
     if (res) {

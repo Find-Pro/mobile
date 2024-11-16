@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/comment/view_model/my_comments_view_model.dart';
@@ -19,7 +20,7 @@ class MyCommentsView extends ConsumerWidget {
       data: (_) {
         if (myCommentViewModel.result == null ||
             myCommentViewModel.result!.isEmpty) {
-          return const NoDataFoundWidget();
+          return NoDataFoundWidget(text: 'noCommentsFound'.tr());
         }
         return ListView.builder(
           itemCount: myCommentViewModel.result!.length,

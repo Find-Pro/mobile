@@ -19,7 +19,8 @@ class NavigateToRouteText extends StatelessWidget {
       children: [
         Text(
           text1,
-          style: context.textTheme.headlineSmall,
+          style: context.textTheme.headlineSmall
+              ?.copyWith(color: Colors.black),
         ),
         10.horizontalSpace,
         TextButton(
@@ -29,8 +30,7 @@ class NavigateToRouteText extends StatelessWidget {
           child: Text(
             text2,
             style: context.textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w900,
-            ),
+                fontWeight: FontWeight.w900, color: Colors.black),
           ),
         ),
       ],

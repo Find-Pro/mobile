@@ -10,20 +10,23 @@ class PwTextField extends ConsumerWidget {
   const PwTextField({
     required this.controller,
     required this.hintText,
+    this.isRegisterView = false,
     super.key,
   });
 
   final TextEditingController controller;
   final String hintText;
+  final bool isRegisterView;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final passwordVisibility = ref.watch(pwVisibleProvider);
     final isPasswordValid = ref.watch(passwordValidProvider);
-
-    controller.addListener(() {
-      isPasswordValid.value = controller.text.length >= 6;
-    });
+    if (isRegisterView) {
+      controller.addListener(() {
+        isPasswordValid.value = controller.text.length >= 6;
+      });
+    }
 
     return ValueListenableBuilder<bool>(
       valueListenable: isPasswordValid,
@@ -37,19 +40,18 @@ class PwTextField extends ConsumerWidget {
                 style: context.textTheme.labelLarge,
                 keyboardType: TextInputType.text,
                 controller: controller,
-                obscureText: true,
+                obscureText: passwordVisibility.isPasswordObscured,
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.lock_sharp,
-                    color: isValid
-                        ? context.themeData.indicatorColor
-                        : Colors.red,
+                    color: isRegisterView && !isValid
+                        ? Colors.red
+                        : context.themeData.indicatorColor,
                   ),
                   suffixIcon: IconButton(
                     onPressed: passwordVisibility.togglePwVisibility,
                     icon: passwordVisibility.isPasswordObscured
-                        ? const Icon(Icons.visibility_off,
-                            color: Colors.blue)
+                        ? const Icon(Icons.visibility_off, color: Colors.blue)
                         : const Icon(Icons.visibility, color: Colors.blue),
                   ),
                   fillColor: context.themeData.scaffoldBackgroundColor,
@@ -68,7 +70,7 @@ class PwTextField extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
                       color:
-                          context.themeData.primaryColor.withOpacity(0.5),
+                      context.themeData.primaryColor.withOpacity(0.5),
                       width: 1.5,
                     ),
                   ),
@@ -81,7 +83,7 @@ class PwTextField extends ConsumerWidget {
                   ),
                 ),
               ),
-              if (!isValid)
+              if (isRegisterView && !isValid)
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: Text(

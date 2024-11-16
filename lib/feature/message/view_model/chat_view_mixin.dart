@@ -12,44 +12,63 @@ mixin ChatViewMixin on State<ChatView> {
   final TextEditingController messageController = TextEditingController();
   List<MessageModel> messages = [];
   int currentUserId = 0;
+
   @override
   void initState() {
     super.initState();
     currentUserId = CacheManager.instance.getUserId();
     final url = '${ApiKey.webSocketUrl}${widget.roomId}';
     channel = WebSocketChannel.connect(Uri.parse(url));
+
     channel.stream.listen(
       (message) {
         final decodedMessage =
             jsonDecode(message as String) as Map<String, dynamic>;
-        setState(() {
-          if (decodedMessage['action'] == 'loadMessages') {
-            final previousMessages = (decodedMessage['messages'] as List)
-                .map((json) =>
-                    MessageModel.fromJson(json as Map<String, dynamic>))
-                .toList();
-            messages.addAll(previousMessages);
-          } else if (decodedMessage['action'] == 'receiveMessage') {
-            final newMessage = MessageModel.fromJson(decodedMessage);
-            messages.add(newMessage);
-          }
-        });
+        final action = decodedMessage['action'];
+
+        if (action == 'loadMessages') {
+          _handleLoadMessages(decodedMessage);
+        } else if (action == 'receiveMessage') {
+          _handleReceiveMessage(decodedMessage);
+        }
       },
+      onDone: () => debugPrint('WebSocket bağlantısı kapandı.'),
     );
   }
 
+  void _handleLoadMessages(Map<String, dynamic> decodedMessage) {
+    final previousMessages = (decodedMessage['messages'] as List)
+        .map((json) => MessageModel.fromJson(json as Map<String, dynamic>))
+        .toList();
+
+    setState(() {
+      messages.addAll(previousMessages);
+    });
+  }
+
+  void _handleReceiveMessage(Map<String, dynamic> decodedMessage) {
+    final newMessage = MessageModel.fromJson(
+        decodedMessage['message'] as Map<String, dynamic>);
+    setState(() {
+      messages.add(newMessage);
+    });
+  }
+
   void sendMessage() {
-    final userId = CacheManager.instance.getUserId();
     if (messageController.text.isNotEmpty) {
       final messageModel = SendMessageModel(
         roomId: widget.roomId,
         messageId: DateTime.now().millisecondsSinceEpoch,
-        userId: userId,
-        otherUserId: 12,
+        userId: currentUserId,
+        otherUserId: widget.chatWithUser.userId,
         message: messageController.text,
         timestamp: DateTime.now().toIso8601String(),
       );
 
+      final messageJson = jsonEncode({
+        'action': 'sendMessage',
+        ...messageModel.toJson(),
+      });
       final newMessage = MessageModel(
         messageId: messageModel.messageId,
         userId: messageModel.userId,
@@ -57,18 +76,14 @@ mixin ChatViewMixin on State<ChatView> {
         message: messageModel.message,
         timestamp: messageModel.timestamp,
       );
-
       setState(() {
         messages.add(newMessage);
       });
-
-      final messageJson = jsonEncode(messageModel.toJson());
       try {
         channel.sink.add(messageJson);
       } catch (e) {
-        debugPrint('Error sending message: $e');
+        debugPrint('Mesaj gönderme hatası: $e');
       }
-
       messageController.clear();
     }
   }

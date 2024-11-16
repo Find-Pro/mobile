@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/feature/comment/view_model/my_comments_view_model.dart';
 import 'package:findpro/feature/comment/widget/alert_dialog_list_tile.dart';
@@ -25,28 +26,31 @@ class MyCommentsAlertDialog {
             ),
             color: Colors.transparent,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                AlertDialogListTile(
-                  iconData: Icons.delete_forever,
-                  text: 'deleteComment'.tr(),
-                  onTap: () async {
-                    final res = await ref
-                        .read(myCommentsProvider.notifier)
-                        .deleteComment(commentId);
-                    await context.router.pop();
-                    if (res) {
-                      InformationToast().show(
-                          context, 'commentDeletedSuccessfully'.tr());
-                    } else {
-                      InformationToast()
-                          .show(context, 'anErrorOccurred'.tr());
-                    }
-                  },
-                ),
-              ],
+          child: ColoredBox(
+            color: context.themeData.scaffoldBackgroundColor,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  AlertDialogListTile(
+                    iconData: Icons.delete_forever,
+                    text: 'deleteComment'.tr(),
+                    onTap: () async {
+                      final res = await ref
+                          .read(myCommentsProvider.notifier)
+                          .deleteComment(commentId);
+                      await context.router.pop();
+                      if (res) {
+                        InformationToast().show(
+                            context, 'commentDeletedSuccessfully'.tr());
+                      } else {
+                        InformationToast()
+                            .show(context, 'anErrorOccurred'.tr());
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         );

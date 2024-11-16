@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/enum/locale_enums.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/init/localization/app_localization.dart';
-import 'package:findpro/common/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

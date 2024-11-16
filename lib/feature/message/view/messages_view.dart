@@ -18,14 +18,17 @@ class MessagesView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final messagesViewModel = ref.watch(messagesProvider);
     final messagesFuture = ref.watch(messagesFutureProvider);
-    return messagesFuture.when(
-      data: (_) {
-        if (messagesViewModel.isEmpty) {
-          return const NoDataFoundWidget();
-        }
-        return Scaffold(
-          appBar: HomeAppBar(text: 'messages'.tr()),
-          body: ListView.builder(
+
+    return Scaffold(
+      appBar: HomeAppBar(text: 'messages'.tr()),
+      body: messagesFuture.when(
+        data: (_) {
+          if (messagesViewModel.isEmpty) {
+            return NoDataFoundWidget(
+              text: 'noMessagesFound'.tr(),
+            );
+          }
+          return ListView.builder(
             itemCount: messagesViewModel.length,
             itemBuilder: (context, index) {
               final reverseIndex = messagesViewModel.length - 1 - index;
@@ -33,11 +36,11 @@ class MessagesView extends ConsumerWidget {
                 messageProfileModel: messagesViewModel[reverseIndex],
               );
             },
-          ),
-        );
-      },
-      error: (error, stackTrace) => const NoDataFoundWidget(),
-      loading: () => const CustomCircular(),
+          );
+        },
+        error: (error, stackTrace) => const NoDataFoundWidget(),
+        loading: () => const CustomCircular(),
+      ),
     );
   }
 }

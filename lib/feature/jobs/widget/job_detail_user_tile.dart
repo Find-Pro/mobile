@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
 import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
@@ -23,38 +24,48 @@ class JobDetailUserTile extends ConsumerWidget {
       child: SizedBox(
         height: 150,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: Image.network(
-                CreateImageUrl.instance
-                    .photo(jobViewModel.result!.profilePicture!),
-              ).image,
+            Expanded(
+              child: GestureDetector(
+                onTap: () => context.router.push(UserProfileRoute(
+                    userId: jobViewModel.result!.userId!)),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: Image.network(
+                    CreateImageUrl.instance
+                        .photo(jobViewModel.result!.profilePicture!),
+                  ).image,
+                ),
+              ),
             ),
-            Text(
-              jobViewModel.result!.fullName ?? 'undefined'.tr(),
-              style: context.textTheme.titleLarge,
+            Expanded(
+              flex: 2,
+              child: Text(
+                jobViewModel.result!.fullName ?? 'undefined'.tr(),
+                style: context.textTheme.titleLarge,
+              ),
             ),
-            IconButton(
-                onPressed: () async {
-                  final res = await ref
-                      .read(createChatRoomProvider.notifier)
-                      .create(jobViewModel.result!.userId!);
-                  if (res.success) {
-                    await ref
-                        .read(messagesProvider.notifier)
-                        .getChatRooms();
-                    await context.router.push(const MessagesRoute());
-                  } else {
-                    WarningAlert()
-                        .show(context, res.message ?? 'error'.tr(), false);
-                  }
-                },
-                icon: Icon(
-                  Icons.message_outlined,
-                  color: context.themeData.cardColor,
-                ))
+            Expanded(
+                child: IconButton(
+                    onPressed: () async {
+                      final res = await ref
+                          .read(createChatRoomProvider.notifier)
+                          .create(jobViewModel.result!.userId!);
+                      if (res.success) {
+                        await ref
+                            .read(messagesProvider.notifier)
+                            .getChatRooms();
+                        InformationToast()
+                            .show(context, 'chatRoomCreated'.tr());
+                      } else {
+                        WarningAlert().show(
+                            context, res.message ?? 'error'.tr(), false);
+                      }
+                    },
+                    icon: Icon(
+                      Icons.message_outlined,
+                      color: context.themeData.cardColor,
+                    )))
           ],
         ),
       ),

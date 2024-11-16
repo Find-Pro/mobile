@@ -19,28 +19,29 @@ class SearchResultView extends ConsumerWidget {
     final searchRequest = ref.watch(searchInputProvider);
     final searchResultFuture =
         ref.watch(searchResultFutureProvider(searchRequest));
-    return searchResultFuture.when(
-      data: (result) {
-        if (result != null) {
-          Future.microtask(() =>
-              ref.read(searchResultProvider.notifier).result = result);
-        }
-        final searchResult = ref.watch(searchResultProvider);
-        if (searchResult.result == null) {
-          return const NoDataFoundWidget();
-        }
-        return Scaffold(
-          appBar: const SearchResultAppbar(),
-          body: ListView.builder(
+
+    return Scaffold(
+      appBar: const SearchResultAppbar(),
+      body: searchResultFuture.when(
+        data: (result) {
+          if (result != null) {
+            Future.microtask(() =>
+                ref.read(searchResultProvider.notifier).result = result);
+          }
+          final searchResult = ref.watch(searchResultProvider);
+          if (searchResult.result == null) {
+            return const NoDataFoundWidget();
+          }
+          return ListView.builder(
             itemCount: searchResult.result!.length,
             itemBuilder: (context, index) {
               return JobListTile(jobModel: searchResult.result![index]);
             },
-          ),
-        );
-      },
-      error: (error, stackTrace) => const NoDataFoundWidget(),
-      loading: () => const CustomCircular(),
+          );
+        },
+        error: (error, stackTrace) => const NoDataFoundWidget(),
+        loading: () => const CustomCircular(),
+      ),
     );
   }
 }

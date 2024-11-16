@@ -63,8 +63,8 @@ class UserService implements UserOperation {
   Future<SuccessAndMessageResponse?> removeAccount() async {
     final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkService.instance.baseRequest(
-      APIRequestMethod.get,
-      EndPointEnums.userList,
+      APIRequestMethod.post,
+      EndPointEnums.userRemoveAccount,
       data: {'userId': userId},
     );
     return SuccessAndMessageResponse.fromJson(responseData!);

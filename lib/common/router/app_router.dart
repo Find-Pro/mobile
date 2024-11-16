@@ -12,10 +12,11 @@ class AppRouter extends $AppRouter {
   final List<AutoRoute> routes = [
     AutoRoute(
       page: OnboardingRoute.page,
-      initial: true,
+      //initial: true,
     ),
     AutoRoute(
       page: MainRoute.page,
+      initial: true,
       guards: [
         AuthGuard(),
       ],
@@ -35,7 +36,6 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: SettingsRoute.page),
     AutoRoute(page: ChangePasswordRoute.page),
     AutoRoute(page: EditProfileRoute.page),
-    AutoRoute(page: ThemeSettingsRoute.page),
     AutoRoute(page: AddJobRoute.page),
     AutoRoute(page: JobDetailRoute.page),
     AutoRoute(page: FollowersRoute.page),

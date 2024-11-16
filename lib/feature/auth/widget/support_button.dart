@@ -16,14 +16,15 @@ class SupportButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(
+            const Icon(
               Icons.support_agent,
-              color: context.themeData.indicatorColor,
+              color: Colors.black,
               size: 30,
             ),
             Text(
               'support'.tr(),
-              style: context.textTheme.labelMedium?.copyWith(),
+              style: context.textTheme.labelMedium
+                  ?.copyWith(color: Colors.black),
             ),
           ],
         ),

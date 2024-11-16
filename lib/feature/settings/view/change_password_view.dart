@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/widget/information_toast.dart';
+import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/widget/pw_text_field.dart';
+import 'package:findpro/feature/settings/view_model/change_password_view_model.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/settings/widget/settings_confirm_button.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +18,42 @@ class ChangePasswordView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pwCnt = TextEditingController();
     final pwAgainCnt = TextEditingController();
-    // final changePwViewModel = ref.watch(updatePwProvider);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: SettingsAppBar(text: 'changePassword'.tr()),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PwTextField(controller: pwCnt, hintText: 'password'.tr()),
+          PwTextField(
+            controller: pwCnt,
+            hintText: 'password'.tr(),
+          ),
           50.verticalSpace,
           PwTextField(
-              controller: pwAgainCnt, hintText: 'confirmPassword'.tr()),
+            controller: pwAgainCnt,
+            hintText: 'confirmPassword'.tr(),
+          ),
           70.verticalSpace,
-          SettingsConfirmButton(text: 'changePassword'.tr(), onTap: () {}),
+          SettingsConfirmButton(
+              text: 'changePassword'.tr(),
+              onTap: () async {
+                if (pwCnt.text != pwAgainCnt.text) {
+                  WarningAlert()
+                      .show(context, 'passwordsDoNotMatch'.tr(), true);
+                } else {
+                  final res = await ref
+                      .read(changePasswordProvider.notifier)
+                      .change(pwAgainCnt.text);
+                  if (res.success) {
+                    InformationToast()
+                        .show(context, 'pwChangedSuccess'.tr());
+                    pwCnt.text = '';
+                    pwAgainCnt.text = '';
+                  } else {
+                    WarningAlert().show(context, res.message!, true);
+                  }
+                }
+              }),
         ],
       ),
     );

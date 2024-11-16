@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -17,7 +18,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(Duration.zero, () {
       if (mounted) {
         context.router.replace(const MainRoute());
       }
@@ -34,7 +35,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             Transform.scale(
               scale: 0.3,
               child: Image.asset(
-                'assets/icon/find_pro_high.jpeg',
+                Assets.iconLauncher,
               ),
             ),
           ],

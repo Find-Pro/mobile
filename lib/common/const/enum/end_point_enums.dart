@@ -5,6 +5,7 @@ enum EndPointEnums {
   userUpdate('/user/updateProfile'),
   userUpdatePassword('/user/updatePassword'),
   userList('/user/list'),
+  userRemoveAccount('/user/removeAccount'),
   commentAdd('/comment/add'),
   commentGetComments('/comment/getComments'),
   commentDelete('/comment/delete'),

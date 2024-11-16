@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
@@ -19,7 +20,9 @@ class UserProfileJobsListView extends ConsumerWidget {
     return userProfileJobsFuture.when(
       data: (_) {
         if (userProfileJobsViewModel.result == null) {
-          return const NoDataFoundWidget();
+          return NoDataFoundWidget(
+            text: 'noJobsFound'.tr(),
+          );
         }
         return ListView.builder(
             itemCount: userProfileJobsViewModel.result!.length,
