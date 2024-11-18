@@ -51,8 +51,11 @@ class UserProfileView extends ConsumerWidget {
                     ),
                     Column(
                       children: [
-                        const FollowNumberBox(
+                        FollowNumberBox(
                           isGeneralProfile: true,
+                          userId: userProfileViewModel.user!.userId!,
+                          fullName:
+                              userProfileViewModel.user!.fullName ?? '',
                         ),
                         IsFollowingButton(userId: userId),
                         Divider(

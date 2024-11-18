@@ -12,6 +12,9 @@ class NetworkService {
         baseUrl: ApiKey.baseUrl,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
+        validateStatus: (status) {
+          return status != null && status < 500;
+        },
       ),
     );
   }

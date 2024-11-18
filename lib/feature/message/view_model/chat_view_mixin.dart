@@ -49,9 +49,11 @@ mixin ChatViewMixin on State<ChatView> {
   void _handleReceiveMessage(Map<String, dynamic> decodedMessage) {
     final newMessage = MessageModel.fromJson(
         decodedMessage['message'] as Map<String, dynamic>);
-    setState(() {
-      messages.add(newMessage);
-    });
+    if (!messages.any((msg) => msg.messageId == newMessage.messageId)) {
+      setState(() {
+        messages.add(newMessage);
+      });
+    }
   }
 
   void sendMessage() {
@@ -64,7 +66,6 @@ mixin ChatViewMixin on State<ChatView> {
         message: messageController.text,
         timestamp: DateTime.now().toIso8601String(),
       );
-
       final messageJson = jsonEncode({
         'action': 'sendMessage',
         ...messageModel.toJson(),

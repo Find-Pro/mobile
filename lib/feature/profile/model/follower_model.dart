@@ -1,34 +1,18 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+// ignore_for_file: invalid_annotation_target
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'follower_model.g.dart';
+part 'follower_model.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class FollowerModel extends INetworkModel<FollowerModel>
-    with EquatableMixin {
-  const FollowerModel({
-    this.userId,
-    this.fullName,
-    this.profilePicture,
-  });
+@freezed
+class FollowerModel with _$FollowerModel {
+  factory FollowerModel({
+    @Default(0) int? userId,
+    @JsonKey(name: '_id') String? mongoDbId,
+    @Default('') String? fullName,
+    @Default('') String? profilePicture,
+  }) = _FollowerModel;
 
-  @override
   factory FollowerModel.fromJson(Map<String, dynamic> json) =>
       _$FollowerModelFromJson(json);
-  @override
-  FollowerModel fromJson(Map<String, dynamic> json) =>
-      FollowerModel.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$FollowerModelToJson(this);
-
-  final int? userId;
-  final String? fullName;
-  final String? profilePicture;
-
-  @override
-  List<Object?> get props => [userId, fullName, profilePicture];
 }

@@ -37,7 +37,11 @@ class ProfileView extends ConsumerWidget {
                   ),
                   Column(
                     children: [
-                      const FollowNumberBox(isGeneralProfile: false),
+                      FollowNumberBox(
+                        userId: profileViewModel.user!.userId!,
+                        fullName: profileViewModel.user!.fullName ?? '',
+                        isGeneralProfile: false,
+                      ),
                       Divider(
                         color: context.themeData.indicatorColor,
                         thickness: 0.5,

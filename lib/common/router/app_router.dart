@@ -11,10 +11,6 @@ class AppRouter extends $AppRouter {
   @override
   final List<AutoRoute> routes = [
     AutoRoute(
-      page: OnboardingRoute.page,
-      //initial: true,
-    ),
-    AutoRoute(
       page: MainRoute.page,
       initial: true,
       guards: [
@@ -25,12 +21,14 @@ class AppRouter extends $AppRouter {
           page: HomeRoute.page,
           initial: true,
         ),
-        AutoRoute(page: SearchInputRoute.page),
+        AutoRoute(page: UserSearchRoute.page),
         AutoRoute(page: MessagesRoute.page),
         AutoRoute(page: ProfileRoute.page),
       ],
     ),
+    AutoRoute(page: OnboardingRoute.page),
     AutoRoute(page: SearchResultRoute.page),
+    AutoRoute(page: SearchInputRoute.page),
     AutoRoute(page: LoginRoute.page),
     AutoRoute(page: RegisterRoute.page),
     AutoRoute(page: SettingsRoute.page),

@@ -39,7 +39,8 @@ class ChangeCoverPicture {
           InformationToast().show(context, 'coverPhotoChanged'.tr());
           await ref.read(profileProvider.notifier).getUser();
         } else {
-          WarningAlert().show(context, 'error'.tr(), true);
+          WarningAlert()
+              .show(context, 'photoShouldLessThan3MB'.tr(), true);
         }
       }
     }

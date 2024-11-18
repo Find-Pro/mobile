@@ -12,6 +12,7 @@ enum EndPointEnums {
   followFollow('/follow/'),
   followFollowing('/follow/following/'),
   followFollowers('/follow/followers/'),
+  followCount('/follow/count/'),
   jobAdd('/job/add'),
   jobDelete('/job/delete'),
   jobComplete('/job/complete'),
@@ -29,7 +30,8 @@ enum EndPointEnums {
   register('/register'),
   registerWithGoogle('/register/google'),
   registerWithApple('/register/apple'),
-  search('/search'),
+  searchJob('/search'),
+  searchUser('/search/user'),
   supportUser('/support/user'),
   supportComment('/support/comment'),
   supportGeneral('/support/general');

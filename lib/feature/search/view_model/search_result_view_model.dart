@@ -8,7 +8,7 @@ class SearchResultViewModel extends StateNotifier<GetUserJobsResponse> {
 
   Future<GetUserJobsResponse?> performSearch(
       SearchRequest searchRequest) async {
-    final response = await SearchService.instance.search(searchRequest);
+    final response = await SearchService.instance.searchJob(searchRequest);
     return response;
   }
 

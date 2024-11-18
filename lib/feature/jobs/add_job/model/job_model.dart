@@ -26,6 +26,7 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
     this.isCompleted,
     this.createdAt,
     this.hourlyWage,
+    this.expiryDate,
     this.updatedAt,
   });
 
@@ -36,6 +37,7 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
   final int? jobId;
   final int? userId;
   final String? jobCategory;
+  final DateTime? expiryDate;
   final String? city;
   final String? district;
   final String? jobService;
@@ -64,6 +66,7 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
         hourlyWage,
         userId,
         profilePicture,
+        expiryDate,
         fullName,
         jobCategory,
         city,

@@ -1,36 +1,17 @@
-import 'package:equatable/equatable.dart';
-import 'package:findpro/common/services/model/follow_model.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+import 'package:findpro/feature/profile/model/follower_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'follow_list_response.g.dart';
+part 'follow_list_response.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class FollowListResponse extends INetworkModel<FollowListResponse>
-    with EquatableMixin {
-  const FollowListResponse({
-    required this.success,
-    this.message,
-    this.result,
-  });
+@freezed
+class FollowListResponse with _$FollowListResponse {
+  factory FollowListResponse({
+    @Default(false) bool? success,
+    @Default('') String? message,
+    @Default([]) List<FollowerModel>? result,
+  }) = _FollowListResponse;
 
-  @override
   factory FollowListResponse.fromJson(Map<String, dynamic> json) =>
       _$FollowListResponseFromJson(json);
-
-  final bool success;
-  final String? message;
-  final List<FollowModel?>? result;
-
-  @override
-  FollowListResponse fromJson(Map<String, dynamic> json) =>
-      FollowListResponse.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$FollowListResponseToJson(this);
-
-  @override
-  List<Object?> get props => [success, message];
 }

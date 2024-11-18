@@ -4,6 +4,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
+import 'package:findpro/feature/profile/view_model/follow_number_box_view_model.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/user_profile/view_model/follow_view_model.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
@@ -29,8 +30,14 @@ class IsFollowingButton extends ConsumerWidget {
               bool result;
               if (isCurrentlyFollowing) {
                 result = await followNotifier.unfollow(userId);
+                await ref
+                    .read(followNumberBoxProvider.notifier)
+                    .get(userId);
               } else {
                 result = await followNotifier.follow(userId);
+                await ref
+                    .read(followNumberBoxProvider.notifier)
+                    .get(userId);
               }
               if (result) {
                 await ref.read(profileProvider.notifier).getUser();

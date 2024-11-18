@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/information_toast.dart';
@@ -27,8 +28,16 @@ class JobDetailUserTile extends ConsumerWidget {
           children: [
             Expanded(
               child: GestureDetector(
-                onTap: () => context.router.push(UserProfileRoute(
-                    userId: jobViewModel.result!.userId!)),
+                onTap: () {
+                  final currentUserId = CacheManager.instance.getUserId();
+                  if (currentUserId == jobViewModel.result!.userId!) {
+                    context.router.pushAndPopUntil(const ProfileRoute(),
+                        predicate: (_) => false);
+                  } else {
+                    context.router.push(UserProfileRoute(
+                        userId: jobViewModel.result!.userId!));
+                  }
+                },
                 child: CircleAvatar(
                   radius: 50,
                   backgroundImage: Image.network(

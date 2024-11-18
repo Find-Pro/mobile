@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:findpro/common/services/model/comment_model.dart';
-import 'package:findpro/feature/profile/model/follower_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.g.dart';
@@ -19,8 +18,6 @@ class UserModel with _$UserModel {
     @Default('') String? password,
     @Default('') String? profilePicture,
     @Default('') String? coverPicture,
-    @Default([]) List<FollowerModel>? followers,
-    @Default([]) List<FollowerModel>? followings,
     @Default('') String? createdAt,
     @Default('') String? updatedAt,
     @Default('') String? salt,

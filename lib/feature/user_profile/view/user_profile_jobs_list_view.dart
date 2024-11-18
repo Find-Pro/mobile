@@ -19,7 +19,8 @@ class UserProfileJobsListView extends ConsumerWidget {
         ref.watch(userProfileJobsFutureProvider(userId));
     return userProfileJobsFuture.when(
       data: (_) {
-        if (userProfileJobsViewModel.result == null) {
+        if (userProfileJobsViewModel.result == null ||
+            userProfileJobsViewModel.result!.isEmpty) {
           return NoDataFoundWidget(
             text: 'noJobsFound'.tr(),
           );

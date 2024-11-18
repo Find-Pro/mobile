@@ -16,8 +16,8 @@ class NoDataFoundWidgetState extends State<NoDataFoundWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 250,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 400),
       child: GestureDetector(
         onTap: () {
           setState(() {

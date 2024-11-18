@@ -1,25 +1,18 @@
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/services/follow_service.dart';
-import 'package:findpro/common/services/user_service.dart';
 import 'package:riverpod/riverpod.dart';
 
-// takip ettiğim state = kullanıcıyı takip edip etmemem
-//true = takip ediyorum
-//false = takip etmiyorum
 class FollowViewModel extends StateNotifier<bool> {
   FollowViewModel() : super(false);
-  Ref? ref;
+
   Future<bool> isFollowing(int userId) async {
     final currentUserId = CacheManager.instance.getUserId();
-    final profileResponse =
-        await UserService.instance.profile(currentUserId);
-    if (profileResponse?.user == null) {
+    final response = await FollowService.instance.following(currentUserId);
+    if (response?.result == null) {
       return false;
     }
-
-    final isFollowing = profileResponse!.user!.followings
-            ?.any((following) => following.userId == userId) ??
-        false;
+    final isFollowing =
+        response!.result!.any((following) => following.userId == userId);
 
     state = isFollowing;
     return isFollowing;

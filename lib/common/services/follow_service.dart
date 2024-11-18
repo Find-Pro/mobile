@@ -2,8 +2,9 @@ import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/follow_operation.dart';
 import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/model/response/follow_list_response.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
-import 'package:findpro/common/services/model/user_model.dart';
+import 'package:findpro/feature/profile/model/follow_number_box_model.dart';
 
 class FollowService implements FollowOperation {
   FollowService._();
@@ -26,7 +27,7 @@ class FollowService implements FollowOperation {
   }
 
   @override
-  Future<List<UserModel>?> following(int userId) async {
+  Future<FollowListResponse?> following(int userId) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.followFollowing,
@@ -34,15 +35,12 @@ class FollowService implements FollowOperation {
     );
 
     return responseData != null
-        ? (responseData as List)
-            .map(
-                (user) => UserModel.fromJson(user as Map<String, dynamic>))
-            .toList()
+        ? FollowListResponse.fromJson(responseData)
         : null;
   }
 
   @override
-  Future<List<UserModel>?> followers(int userId) async {
+  Future<FollowListResponse?> followers(int userId) async {
     final responseData = await NetworkService.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.followFollowers,
@@ -50,10 +48,20 @@ class FollowService implements FollowOperation {
     );
 
     return responseData != null
-        ? (responseData as List)
-            .map(
-                (user) => UserModel.fromJson(user as Map<String, dynamic>))
-            .toList()
+        ? FollowListResponse.fromJson(responseData)
+        : null;
+  }
+
+  @override
+  Future<FollowNumberBoxModel?> count(int userId) async {
+    final responseData = await NetworkService.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.followCount,
+      data: {'userId': userId},
+    );
+
+    return responseData != null
+        ? FollowNumberBoxModel.fromJson(responseData)
         : null;
   }
 }
