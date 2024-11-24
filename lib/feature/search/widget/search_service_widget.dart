@@ -6,6 +6,7 @@ import 'package:findpro/feature/jobs/add_job/model/service_model.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
 import 'package:findpro/feature/search/view_model/search_input_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -46,7 +47,7 @@ class _SearchServiceState extends ConsumerState<SearchServiceWidget> {
     if (services.isEmpty) {
       return Center(
           child: Text(
-        'couldNotFindService'.tr(),
+        LocaleKeys.couldNotFindService.tr(),
         style: context.textTheme.headlineSmall,
       ));
     }

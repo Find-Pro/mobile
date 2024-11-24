@@ -7,6 +7,7 @@ import 'package:findpro/feature/jobs/add_job/helper/city_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
 import 'package:findpro/feature/search/view_model/search_input_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -48,7 +49,7 @@ class _SearchDistrictWidgetState
     if (districts.isEmpty) {
       return Center(
           child: Text(
-        'couldNotFindDistrict'.tr(),
+        LocaleKeys.couldNotFindDistrict.tr(),
         style: context.textTheme.headlineSmall,
       ));
     }

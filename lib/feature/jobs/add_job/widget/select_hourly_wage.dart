@@ -4,6 +4,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/hourly_wage_list.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class SelectHourlyWage extends ConsumerWidget {
         children: [
           10.verticalSpace,
           Text(
-            'selectHourlyWage'.tr(),
+            LocaleKeys.selectHourlyWage.tr(),
             style: context.textTheme.headlineMedium,
           ),
           SizedBox(

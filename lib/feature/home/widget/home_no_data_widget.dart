@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/generated/assets.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -47,7 +48,7 @@ class HomeNoDataWidgetState extends State<HomeNoDataWidget> {
                     child: Padding(
                   padding: PaddingInsets().xxl,
                   child: Text(
-                    'homeViewText'.tr(),
+                    LocaleKeys.homeViewText.tr(),
                     style: context.textTheme.headlineSmall
                         ?.copyWith(fontWeight: FontWeight.w600),
                   ),
@@ -61,7 +62,7 @@ class HomeNoDataWidgetState extends State<HomeNoDataWidget> {
                     )),
                 Expanded(
                     child: Text(
-                  widget.text ?? 'noDataFound'.tr(),
+                  widget.text ?? LocaleKeys.noDataFound.tr(),
                   style: context.textTheme.headlineSmall,
                 )),
               ],

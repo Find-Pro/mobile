@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,13 +16,13 @@ class LoginWelcomeText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'welcomeBack'.tr(),
+            LocaleKeys.welcomeBack.tr(),
             style: context.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.w700, color: Colors.black),
           ),
           20.verticalSpace,
           Text(
-            'enterYourMailToGetAccount'.tr(),
+            LocaleKeys.enterYourMailToGetAccount.tr(),
             style: context.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.w300, color: Colors.black),
           ),

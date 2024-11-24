@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
 import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,38 +19,38 @@ class JobDetailBody extends ConsumerWidget {
         _BuildDetailRow(
           iconData: Icons.category,
           bodyText: jobViewModel.result!.jobCategory!,
-          titleText: 'category'.tr(),
+          titleText: LocaleKeys.category.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.business_center_outlined,
           bodyText: jobViewModel.result!.jobService!,
-          titleText: 'service'.tr(),
+          titleText: LocaleKeys.service.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.monetization_on,
           bodyText: '${jobViewModel.result!.hourlyWage} ₺',
-          titleText: 'hourlyWage'.tr(),
+          titleText: LocaleKeys.hourlyWage.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.calendar_month_sharp,
           bodyText: DateTime.parse(jobViewModel.result!.createdAt!)
               .formattedDate,
-          titleText: 'announcementTime'.tr(),
+          titleText: LocaleKeys.announcementTime.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.location_on_outlined,
           bodyText: jobViewModel.result!.city!,
-          titleText: 'city'.tr(),
+          titleText: LocaleKeys.city.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.location_searching,
           bodyText: jobViewModel.result!.district!,
-          titleText: 'district'.tr(),
+          titleText: LocaleKeys.district.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.description_outlined,
           bodyText: jobViewModel.result!.description!,
-          titleText: 'description'.tr(),
+          titleText: LocaleKeys.description.tr(),
         ),
       ],
     );

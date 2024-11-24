@@ -1,5 +1,5 @@
 import 'package:findpro/common/services/model/response/user_profile_response.dart';
-import 'package:findpro/common/services/user_service.dart';
+import 'package:findpro/common/services/routes/user_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 class UserProfileViewModel extends StateNotifier<UserProfileResponse> {

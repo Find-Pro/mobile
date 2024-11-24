@@ -15,6 +15,7 @@ class Assets {
   static const String icon7 = 'assets/icon/7.svg';
   static const String icon8 = 'assets/icon/8.svg';
   static const String icon9 = 'assets/icon/9.svg';
+  static const String iconAaa = 'assets/icon/aaa.svg';
   static const String iconApplelogo = 'assets/icon/applelogo.png';
   static const String iconBg = 'assets/icon/bg.jpg';
   static const String iconComment = 'assets/icon/comment.png';
@@ -30,19 +31,23 @@ class Assets {
   static const String iconLike = 'assets/icon/like.png';
   static const String iconLiked = 'assets/icon/liked.png';
   static const String iconMaillogo = 'assets/icon/maillogo.png';
+  static const String iconMessageBg = 'assets/icon/message_bg.png';
   static const String iconMessages = 'assets/icon/messages.png';
   static const String iconModeDark = 'assets/icon/mode_dark.png';
   static const String iconModeDaytime = 'assets/icon/mode_daytime.png';
   static const String iconModeSystem = 'assets/icon/mode_system.png';
+  static const String iconPeopleSearch = 'assets/icon/people_search.svg';
   static const String iconProfile = 'assets/icon/profile.png';
+  static const String iconSearchBg = 'assets/icon/search_bg.png';
+  static const String iconSearchBg2 = 'assets/icon/search_bg2.png';
   static const String iconSearchIcon = 'assets/icon/search_icon.png';
   static const String iconSettings = 'assets/icon/settings.png';
+  static const String iconTurkey = 'assets/icon/turkey.svg';
+  static const String iconUs = 'assets/icon/us.svg';
   static const String jsonCategories = 'assets/json/categories.json';
   static const String jsonCity = 'assets/json/city.json';
   static const String jsonDistrict = 'assets/json/district.json';
   static const String jsonServices = 'assets/json/services.json';
-  static const String langEn = 'assets/lang/en.json';
-  static const String langTr = 'assets/lang/tr.json';
   static const String lottieCircular = 'assets/lottie/circular.json';
   static const String lottieDarkBg = 'assets/lottie/dark_bg.svg';
   static const String lottieEmptyFollower =
@@ -52,4 +57,6 @@ class Assets {
   static const String lottieProfile = 'assets/lottie/profile.json';
   static const String lottieSearch = 'assets/lottie/search.json';
   static const String lottieSupport = 'assets/lottie/support.json';
+  static const String translationsEn = 'assets/translations/en.json';
+  static const String translationsTr = 'assets/translations/tr.json';
 }

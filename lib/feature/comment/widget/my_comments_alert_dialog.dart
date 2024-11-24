@@ -4,6 +4,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/feature/comment/view_model/my_comments_view_model.dart';
 import 'package:findpro/feature/comment/widget/alert_dialog_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,18 +35,18 @@ class MyCommentsAlertDialog {
                 children: <Widget>[
                   AlertDialogListTile(
                     iconData: Icons.delete_forever,
-                    text: 'deleteComment'.tr(),
+                    text: LocaleKeys.deleteComment.tr(),
                     onTap: () async {
                       final res = await ref
                           .read(myCommentsProvider.notifier)
                           .deleteComment(commentId);
                       await context.router.pop();
                       if (res) {
-                        InformationToast().show(
-                            context, 'commentDeletedSuccessfully'.tr());
+                        InformationToast().show(context,
+                            LocaleKeys.commentDeletedSuccessfully.tr());
                       } else {
-                        InformationToast()
-                            .show(context, 'anErrorOccurred'.tr());
+                        InformationToast().show(
+                            context, LocaleKeys.anErrorOccurred.tr());
                       }
                     },
                   ),
@@ -61,7 +62,7 @@ class MyCommentsAlertDialog {
 
 //   AlertDialogListTile(
 //                   iconData: Icons.report_gmailerrorred,
-//                   text: 'reportComment'.tr(),
+//                   text: LocaleKeys.reportComment.tr(),
 //                   onTap: () async {
 //                     final userId = CacheManager.instance.getUserId();
 //                     final res = await SupportService.instance.comment(

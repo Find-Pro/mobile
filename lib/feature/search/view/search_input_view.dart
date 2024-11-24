@@ -7,6 +7,7 @@ import 'package:findpro/feature/search/widget/search_category_widget.dart';
 import 'package:findpro/feature/search/widget/search_city_widget.dart';
 import 'package:findpro/feature/search/widget/search_district_widget.dart';
 import 'package:findpro/feature/search/widget/search_service_widget.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,7 +24,7 @@ class _SearchInputViewState extends ConsumerState<SearchInputView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(text: 'searchService'.tr()),
+      appBar: HomeAppBar(text: LocaleKeys.searchService.tr()),
       body: Stack(
         children: [
           PageView(

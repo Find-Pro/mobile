@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class AddCommentTextField extends StatefulWidget {
@@ -23,7 +24,7 @@ class _AddCommentTextFieldState extends State<AddCommentTextField> {
   void _checkTextLength() {
     setState(() {
       if (widget.textController.text.length < 10) {
-        errorMessage = 'commentShouldBe10Character'.tr();
+        errorMessage = LocaleKeys.commentShouldBe10Character.tr();
       } else {
         errorMessage = '';
       }
@@ -47,7 +48,7 @@ class _AddCommentTextFieldState extends State<AddCommentTextField> {
             child: TextField(
               controller: widget.textController,
               decoration: InputDecoration(
-                hintText: 'addCommentText'.tr(),
+                hintText: LocaleKeys.addCommentText.tr(),
                 labelStyle: context.themeData.textTheme.labelLarge,
                 hintStyle: context.textTheme.labelLarge,
                 focusedBorder: OutlineInputBorder(
@@ -61,7 +62,7 @@ class _AddCommentTextFieldState extends State<AddCommentTextField> {
           ),
           if (errorMessage.isNotEmpty)
             Text(
-              'commentShouldBe10Character'.tr(),
+              LocaleKeys.commentShouldBe10Character.tr(),
               style: context.textTheme.labelLarge
                   ?.copyWith(color: Colors.red),
             ),

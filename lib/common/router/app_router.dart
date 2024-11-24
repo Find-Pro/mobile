@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/router/auth_guard.dart';
+import 'package:findpro/common/router/notification_guard.dart';
 
 @AutoRouterConfig(
   replaceInRouteName: 'View,Route',
@@ -29,8 +30,18 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: OnboardingRoute.page),
     AutoRoute(page: SearchResultRoute.page),
     AutoRoute(page: SearchInputRoute.page),
-    AutoRoute(page: LoginRoute.page),
-    AutoRoute(page: RegisterRoute.page),
+    AutoRoute(
+      page: LoginRoute.page,
+      guards: [
+        NotificationGuard(),
+      ],
+    ),
+    AutoRoute(
+      page: RegisterRoute.page,
+      guards: [
+        NotificationGuard(),
+      ],
+    ),
     AutoRoute(page: SettingsRoute.page),
     AutoRoute(page: ChangePasswordRoute.page),
     AutoRoute(page: EditProfileRoute.page),

@@ -62,7 +62,7 @@ class ProfileView extends ConsumerWidget {
             },
           );
         },
-        error: (error, stackTrace) => const NoDataFoundWidget(),
+        error: (error, stackTrace) => const NoConnectionWidget(),
         loading: () => const CustomCircular());
   }
 }

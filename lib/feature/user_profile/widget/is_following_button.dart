@@ -2,12 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
+import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/profile/view_model/follow_number_box_view_model.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/user_profile/view_model/follow_view_model.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,6 +21,7 @@ class IsFollowingButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final followFuture = ref.watch(followFutureProvider(userId));
+    final currentUser = ref.watch(profileProvider);
     return followFuture.when(
       data: (isFollowing) {
         final isCurrentlyFollowing = ref.watch(followProvider);
@@ -44,15 +47,22 @@ class IsFollowingButton extends ConsumerWidget {
                 await ref
                     .read(userProfileProvider.notifier)
                     .getUser(userId);
-
+                await ref.read(notificationProvider).sendNotification(
+                      isMessage: false,
+                      message:
+                          '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} startedToFollowYou'
+                              .tr(),
+                      receiverId: userId.toString(),
+                      senderId: currentUser.user!.userId.toString(),
+                    );
                 InformationToast().show(
                   context,
                   isCurrentlyFollowing
-                      ? 'unfollowedNow'.tr()
-                      : 'followingNow'.tr(),
+                      ? LocaleKeys.unfollowedNow.tr()
+                      : LocaleKeys.followingNow.tr(),
                 );
               } else {
-                WarningAlert().show(context, 'error'.tr(), true);
+                WarningAlert().show(context, LocaleKeys.error.tr(), true);
               }
             },
             child: Container(
@@ -67,8 +77,8 @@ class IsFollowingButton extends ConsumerWidget {
               child: Center(
                 child: Text(
                   isCurrentlyFollowing
-                      ? 'unfollow'.tr()
-                      : 'startFollowing'.tr(),
+                      ? LocaleKeys.unfollow.tr()
+                      : LocaleKeys.startFollowing.tr(),
                   style: context.textTheme.labelLarge
                       ?.copyWith(color: Colors.white),
                 ),
@@ -77,7 +87,7 @@ class IsFollowingButton extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => Text('error'.tr()),
+      error: (error, stackTrace) => Text(LocaleKeys.error.tr()),
       loading: () => const CircularProgressIndicator(),
     );
   }

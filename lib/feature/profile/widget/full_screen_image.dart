@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class FullScreenImage {
@@ -69,7 +70,7 @@ class FullScreenImage {
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 16),
                       title: Text(
-                        'close'.tr(),
+                        LocaleKeys.close.tr(),
                         textAlign: TextAlign.center,
                         style: context.textTheme.headlineSmall
                             ?.copyWith(fontWeight: FontWeight.w600),

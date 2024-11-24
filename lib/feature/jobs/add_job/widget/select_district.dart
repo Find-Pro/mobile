@@ -4,6 +4,7 @@ import 'package:findpro/feature/jobs/add_job/helper/city_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -44,7 +45,7 @@ class _SelectDistrictState extends ConsumerState<SelectDistrict> {
     }
 
     if (districts.isEmpty) {
-      return Center(child: Text('couldNotFindDistrict'.tr()));
+      return Center(child: Text(LocaleKeys.couldNotFindDistrict.tr()));
     }
 
     return ListView.builder(

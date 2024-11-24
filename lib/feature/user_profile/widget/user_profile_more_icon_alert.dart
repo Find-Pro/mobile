@@ -6,6 +6,7 @@ import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/feature/user_profile/view/add_comment_widget.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +27,7 @@ final class UserProfileMoreIconAlert {
             mainAxisSize: MainAxisSize.min,
             children: [
               CustomListTile(
-                text: 'addComment'.tr(),
+                text: LocaleKeys.addComment.tr(),
                 icon: Icons.add_box_outlined,
                 onTap: () async {
                   await context.router.pop();
@@ -35,7 +36,7 @@ final class UserProfileMoreIconAlert {
                 },
               ),
               CustomListTile(
-                text: 'sendMessage'.tr(),
+                text: LocaleKeys.sendMessage.tr(),
                 icon: Icons.message_outlined,
                 onTap: () async {
                   await context.router.pop();
@@ -47,10 +48,10 @@ final class UserProfileMoreIconAlert {
                         .read(messagesProvider.notifier)
                         .getChatRooms();
                     InformationToast()
-                        .show(context, 'chatRoomCreated'.tr());
+                        .show(context, LocaleKeys.chatRoomCreated.tr());
                   } else {
-                    WarningAlert()
-                        .show(context, res.message ?? 'error'.tr(), false);
+                    WarningAlert().show(context,
+                        res.message ?? LocaleKeys.error.tr(), false);
                   }
                 },
               ),

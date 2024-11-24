@@ -1,5 +1,5 @@
 import 'package:findpro/common/cache/cache_manager.dart';
-import 'package:findpro/common/services/job_service.dart';
+import 'package:findpro/common/services/routes/job_service.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_add_model.dart';
 import 'package:riverpod/riverpod.dart';
 

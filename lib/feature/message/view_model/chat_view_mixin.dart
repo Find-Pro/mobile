@@ -1,25 +1,28 @@
 import 'dart:convert';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/api_key.dart';
+import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:findpro/feature/message/model/message_model.dart';
 import 'package:findpro/feature/message/model/send_message_model.dart';
 import 'package:findpro/feature/message/view/chat_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-mixin ChatViewMixin on State<ChatView> {
+mixin ChatViewMixin on ConsumerState<ChatView> {
   late WebSocketChannel channel;
-  final TextEditingController messageController = TextEditingController();
+  final messageController = TextEditingController();
+  final scrollCnt = ScrollController();
   List<MessageModel> messages = [];
   int currentUserId = 0;
 
   @override
   void initState() {
     super.initState();
+    scrollCnt.addListener(scrollListener);
     currentUserId = CacheManager.instance.getUserId();
     final url = '${ApiKey.webSocketUrl}${widget.roomId}';
     channel = WebSocketChannel.connect(Uri.parse(url));
-
     channel.stream.listen(
       (message) {
         final decodedMessage =
@@ -40,7 +43,6 @@ mixin ChatViewMixin on State<ChatView> {
     final previousMessages = (decodedMessage['messages'] as List)
         .map((json) => MessageModel.fromJson(json as Map<String, dynamic>))
         .toList();
-
     setState(() {
       messages.addAll(previousMessages);
     });
@@ -70,18 +72,15 @@ mixin ChatViewMixin on State<ChatView> {
         'action': 'sendMessage',
         ...messageModel.toJson(),
       });
-      final newMessage = MessageModel(
-        messageId: messageModel.messageId,
-        userId: messageModel.userId,
-        otherUserId: messageModel.otherUserId,
-        message: messageModel.message,
-        timestamp: messageModel.timestamp,
-      );
-      setState(() {
-        messages.add(newMessage);
-      });
       try {
         channel.sink.add(messageJson);
+        ref.read(notificationProvider).sendNotification(
+              isMessage: true,
+              message: messageModel.message,
+              receiverId: widget.chatWithUser.userId.toString(),
+              senderId: currentUserId.toString(),
+            );
+        setState(() {});
       } catch (e) {
         debugPrint('Mesaj gönderme hatası: $e');
       }
@@ -93,5 +92,11 @@ mixin ChatViewMixin on State<ChatView> {
   void dispose() {
     channel.sink.close();
     super.dispose();
+  }
+
+  void scrollListener() {
+    if (scrollCnt.position.pixels == scrollCnt.position.minScrollExtent) {
+      setState(() {});
+    }
   }
 }

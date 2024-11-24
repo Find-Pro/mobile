@@ -3,10 +3,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/api_key.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
-class NetworkService {
-  NetworkService._() {
+final class NetworkManager {
+  NetworkManager._() {
     _dio = Dio(
       BaseOptions(
         baseUrl: ApiKey.baseUrl,
@@ -21,7 +22,7 @@ class NetworkService {
 
   static late final Dio _dio;
 
-  static final instance = NetworkService._();
+  static final instance = NetworkManager._();
 
   Future<Map<String, dynamic>?> baseRequest(
     APIRequestMethod method,
@@ -36,7 +37,7 @@ class NetworkService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       } else {
-        debugPrint('error'.tr() + response.data.toString());
+        debugPrint(LocaleKeys.error.tr() + response.data.toString());
         return null;
       }
     } on DioException catch (e) {

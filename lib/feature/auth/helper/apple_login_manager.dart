@@ -3,8 +3,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/common/services/auth_service.dart';
+import 'package:findpro/common/services/manager/notification_manager.dart';
+import 'package:findpro/common/services/routes/auth_service.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -33,7 +35,7 @@ class AppleLoginManager {
         if (loginResult!.success) {
           CacheManager.instance.setUserId(loginResult.user!.userId ?? 0);
           CacheManager.instance.setAppleOrGoogle(true);
-          //  await ref.read(notificationProvider.login);
+          await ref.read(notificationProvider).login();
           await context.router
               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
         } else {
@@ -45,12 +47,12 @@ class AppleLoginManager {
             CacheManager.instance
                 .setUserId(registerResult.user!.userId ?? 0);
             CacheManager.instance.setAppleOrGoogle(true);
-            //  await ref.read(notificationProvider.login);
+            await ref.read(notificationProvider).login();
             await context.router.pushAndPopUntil(const MainRoute(),
                 predicate: (_) => false);
             debugPrint('Başarılı kayıt: ${registerResult.user}');
           } else {
-            WarningAlert().show(context, 'error'.tr(), false);
+            WarningAlert().show(context, LocaleKeys.error.tr(), false);
           }
         }
       } else if (credentialState == CredentialState.notFound) {
@@ -64,7 +66,7 @@ class AppleLoginManager {
         if (registerResult.success) {
           CacheManager.instance
               .setUserId(registerResult.user!.userId ?? 0);
-          //  await ref.read(notificationProvider.login);
+          await ref.read(notificationProvider).login();
           await context.router
               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
         } else {
@@ -72,7 +74,7 @@ class AppleLoginManager {
               predicate: (_) => false);
         }
       } else {
-        WarningAlert().show(context, 'error'.tr(), false);
+        WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
     } catch (e) {
       debugPrint('IOS register error:$e');

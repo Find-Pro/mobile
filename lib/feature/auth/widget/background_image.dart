@@ -6,10 +6,16 @@ class BackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      child: Image.asset(
-        Assets.iconBg,
-        fit: BoxFit.cover,
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            Assets.iconBg,
+          ),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

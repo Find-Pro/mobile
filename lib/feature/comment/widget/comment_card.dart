@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/services/model/comment_model.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +54,7 @@ class CommentCard extends ConsumerWidget {
                   ),
                   5.verticalSpace,
                   Text(
-                    commentModel.fullName ?? 'undefined'.tr(),
+                    commentModel.fullName ?? LocaleKeys.undefined.tr(),
                     style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),

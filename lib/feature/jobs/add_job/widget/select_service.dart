@@ -4,6 +4,7 @@ import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/service_model.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -43,7 +44,7 @@ class _SelectServiceState extends ConsumerState<SelectService> {
       return const CustomCircular();
     }
     if (services.isEmpty) {
-      return Center(child: Text('couldNotFindService'.tr()));
+      return Center(child: Text(LocaleKeys.couldNotFindService.tr()));
     }
     return ListView.builder(
       itemCount: services.length,

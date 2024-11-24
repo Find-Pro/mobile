@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/feature/search/view_model/search_input_view_model.dart';
 import 'package:findpro/feature/search/view_model/search_result_view_model.dart';
@@ -30,16 +31,22 @@ class SearchResultView extends ConsumerWidget {
           }
           final searchResult = ref.watch(searchResultProvider);
           if (searchResult.result == null) {
-            return const NoDataFoundWidget();
+            return const NoConnectionWidget();
           }
-          return ListView.builder(
-            itemCount: searchResult.result!.length,
-            itemBuilder: (context, index) {
-              return JobListTile(jobModel: searchResult.result![index]);
-            },
+          return Stack(
+            children: [
+              const HomeBackgroundImage(),
+              ListView.builder(
+                itemCount: searchResult.result!.length,
+                itemBuilder: (context, index) {
+                  return JobListTile(
+                      jobModel: searchResult.result![index]);
+                },
+              ),
+            ],
           );
         },
-        error: (error, stackTrace) => const NoDataFoundWidget(),
+        error: (error, stackTrace) => const NoConnectionWidget(),
         loading: () => const CustomCircular(),
       ),
     );

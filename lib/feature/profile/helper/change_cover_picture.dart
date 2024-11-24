@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/services/photo_service.dart';
+import 'package:findpro/common/services/routes/photo_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -18,7 +19,7 @@ class ChangeCoverPicture {
       if (!requestedPermission.isGranted) {
         WarningAlert().show(
           context,
-          'permissionDenied'.tr(),
+          LocaleKeys.permissionDenied.tr(),
           true,
         );
         return;
@@ -36,11 +37,12 @@ class ChangeCoverPicture {
         final file = File(croppedFile.path);
         final success = await _handleUpdate(file);
         if (success) {
-          InformationToast().show(context, 'coverPhotoChanged'.tr());
+          InformationToast()
+              .show(context, LocaleKeys.coverPhotoChanged.tr());
           await ref.read(profileProvider.notifier).getUser();
         } else {
           WarningAlert()
-              .show(context, 'photoShouldLessThan3MB'.tr(), true);
+              .show(context, LocaleKeys.photoShouldLessThan3MB.tr(), true);
         }
       }
     }

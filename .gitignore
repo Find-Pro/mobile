@@ -43,3 +43,4 @@ app.*.map.json
 *.g.dart
 *.freezed.dart
 /lib/common/const/api_key.dart
+/android/app/google-services.json

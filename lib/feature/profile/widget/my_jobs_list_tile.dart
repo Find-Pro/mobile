@@ -7,6 +7,7 @@ import 'package:findpro/common/widget/question_alert.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_category_icon.dart';
 import 'package:findpro/feature/profile/view_model/my_jobs_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,8 +24,9 @@ class MyJobsListTile extends ConsumerWidget {
     return Padding(
       padding: PaddingInsets().medium,
       child: Card(
+        elevation: 0.5,
         child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 16),
+          padding: PaddingInsets().large,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -59,17 +61,18 @@ class MyJobsListTile extends ConsumerWidget {
               ),
               IconButton(
                   onPressed: () async {
-                    QuestionAlert().show(
-                        context, 'areYouSureDeleteJob'.tr(), () async {
+                    QuestionAlert()
+                        .show(context, LocaleKeys.areYouSureDeleteJob.tr(),
+                            () async {
                       final res = await ref
                           .read(myJobsProvider.notifier)
                           .deleteJob(jobModel.jobId!);
                       if (res) {
-                        InformationToast().show(
-                            context, 'commentDeletedSuccessfully'.tr());
+                        InformationToast().show(context,
+                            LocaleKeys.commentDeletedSuccessfully.tr());
                       } else {
-                        InformationToast()
-                            .show(context, 'anErrorOccurred'.tr());
+                        InformationToast().show(
+                            context, LocaleKeys.anErrorOccurred.tr());
                       }
                     });
                   },

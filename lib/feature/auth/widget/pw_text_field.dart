@@ -3,6 +3,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/feature/auth/view_model/password_visibility_notifier.dart';
 import 'package:findpro/feature/auth/view_model/pw_valid_provider.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,7 +52,8 @@ class PwTextField extends ConsumerWidget {
                   suffixIcon: IconButton(
                     onPressed: passwordVisibility.togglePwVisibility,
                     icon: passwordVisibility.isPasswordObscured
-                        ? const Icon(Icons.visibility_off, color: Colors.blue)
+                        ? const Icon(Icons.visibility_off,
+                            color: Colors.blue)
                         : const Icon(Icons.visibility, color: Colors.blue),
                   ),
                   fillColor: context.themeData.scaffoldBackgroundColor,
@@ -70,7 +72,7 @@ class PwTextField extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
                       color:
-                      context.themeData.primaryColor.withOpacity(0.5),
+                          context.themeData.primaryColor.withOpacity(0.5),
                       width: 1.5,
                     ),
                   ),
@@ -87,7 +89,7 @@ class PwTextField extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: Text(
-                    'pwMustBeAtLeast'.tr(),
+                    LocaleKeys.pwMustBeAtLeast.tr(),
                     style: context.textTheme.labelMedium
                         ?.copyWith(color: Colors.red),
                   ),

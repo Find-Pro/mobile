@@ -1,17 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/generated/assets.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class NoDataFoundWidget extends StatefulWidget {
-  const NoDataFoundWidget({this.text, super.key});
+class NoConnectionWidget extends StatefulWidget {
+  const NoConnectionWidget({this.text, super.key});
   final String? text;
   @override
-  NoDataFoundWidgetState createState() => NoDataFoundWidgetState();
+  NoConnectionWidgetState createState() => NoConnectionWidgetState();
 }
 
-class NoDataFoundWidgetState extends State<NoDataFoundWidget> {
+class NoConnectionWidgetState extends State<NoConnectionWidget> {
   bool isAnimated = false;
 
   @override
@@ -39,7 +40,7 @@ class NoDataFoundWidgetState extends State<NoDataFoundWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget.text ?? 'noDataFound'.tr(),
+                widget.text ?? LocaleKeys.noDataFound.tr(),
                 style: context.textTheme.headlineSmall,
               ),
               Lottie.asset(

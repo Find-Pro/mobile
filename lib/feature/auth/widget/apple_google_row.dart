@@ -4,6 +4,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/auth/helper/apple_login_manager.dart';
 import 'package:findpro/feature/auth/helper/google_login_manager.dart';
 import 'package:findpro/generated/assets.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,8 +42,8 @@ class AppleGoogleRow extends ConsumerWidget {
                   20.horizontalSpace,
                   Text(
                     Platform.isAndroid
-                        ? 'loginWithGoogle'.tr()
-                        : 'loginWithApple'.tr(),
+                        ? LocaleKeys.loginWithGoogle.tr()
+                        : LocaleKeys.loginWithApple.tr(),
                     style: context.textTheme.headlineSmall?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/view_model/register_view_model.dart';
@@ -14,6 +15,7 @@ import 'package:findpro/feature/auth/widget/register_title_text.dart';
 import 'package:findpro/feature/auth/widget/string_text_field.dart';
 import 'package:findpro/feature/auth/widget/support_button.dart';
 import 'package:findpro/feature/home/widget/home_app_bar.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,8 +32,9 @@ class RegisterView extends ConsumerWidget {
     final emailCnt = TextEditingController();
     final pwCnt = TextEditingController();
     const isMaster = false;
+
     return Scaffold(
-      appBar: HomeAppBar(text: 'register'.tr()),
+      appBar: HomeAppBar(text: LocaleKeys.register.tr()),
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -47,19 +50,20 @@ class RegisterView extends ConsumerWidget {
                     30.verticalSpace,
                     StringTextField(
                       controller: fullNameCnt,
-                      hintText: 'fullName'.tr(),
+                      hintText: LocaleKeys.fullName.tr(),
                       iconData: Icons.person_outline,
                     ),
                     20.verticalSpace,
                     StringTextField(
                       controller: emailCnt,
-                      hintText: 'email'.tr(),
+                      hintText: LocaleKeys.email.tr(),
                       iconData: Icons.mail,
                     ),
                     30.verticalSpace,
-                    PwTextField(  isRegisterView: true,
+                    PwTextField(
+                      isRegisterView: true,
                       controller: pwCnt,
-                      hintText: 'password'.tr(),
+                      hintText: LocaleKeys.password.tr(),
                     ),
                     30.verticalSpace,
                     Row(
@@ -67,31 +71,24 @@ class RegisterView extends ConsumerWidget {
                       children: [
                         const SupportButton(),
                         LoginRegisterButton(
-                          text: 'register'.tr(),
-                          onTap: () async {
-                            final res = await ref
-                                .read(registerProvider.notifier)
-                                .register(RegisterRequest(
-                                    password: pwCnt.text,
-                                    email: emailCnt.text,
-                                    fullName: fullNameCnt.text,
-                                    isMaster: isMaster));
-                            res.success
-                                ? context.router.pushAndPopUntil(
-                                    const MainRoute(),
-                                    predicate: (_) => false)
-                                : WarningAlert().show(context,
-                                    res.message ?? 'error'.tr(), false);
-                          },
+                          text: LocaleKeys.register.tr(),
+                          onTap: () => _handleRegister(
+                            context,
+                            ref,
+                            fullNameCnt,
+                            emailCnt,
+                            pwCnt,
+                            isMaster,
+                          ),
                         ),
                       ],
                     ),
                     30.verticalSpace,
                     NavigateToRouteText(
-                      text1: 'alreadyHaveAnAccount'.tr(),
-                      text2: 'login'.tr(),
+                      text1: LocaleKeys.alreadyHaveAnAccount.tr(),
+                      text2: LocaleKeys.login.tr(),
                       route: const LoginRoute(),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -100,5 +97,36 @@ class RegisterView extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _handleRegister(
+    BuildContext context,
+    WidgetRef ref,
+    TextEditingController fullNameCnt,
+    TextEditingController emailCnt,
+    TextEditingController pwCnt,
+    bool isMaster,
+  ) async {
+    final res =
+        await ref.read(registerProvider.notifier).register(RegisterRequest(
+              password: pwCnt.text,
+              email: emailCnt.text,
+              fullName: fullNameCnt.text,
+              isMaster: isMaster,
+            ));
+
+    if (res.success) {
+      await ref.read(notificationProvider).login();
+      await context.router.pushAndPopUntil(
+        const MainRoute(),
+        predicate: (_) => false,
+      );
+    } else {
+      WarningAlert().show(
+        context,
+        res.message ?? LocaleKeys.error.tr(),
+        false,
+      );
+    }
   }
 }

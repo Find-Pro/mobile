@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class SendMessageField extends StatelessWidget {
@@ -18,7 +19,7 @@ class SendMessageField extends StatelessWidget {
             style: context.textTheme.labelLarge,
             decoration: InputDecoration(
               hintStyle: context.textTheme.labelLarge,
-              hintText: 'typeAMessage'.tr(),
+              hintText: LocaleKeys.typeAMessage.tr(),
               border: const OutlineInputBorder(
                   borderRadius:
                       BorderRadius.vertical(bottom: Radius.circular(16))),

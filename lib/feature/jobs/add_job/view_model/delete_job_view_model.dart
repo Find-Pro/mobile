@@ -1,5 +1,5 @@
-import 'package:findpro/common/services/job_service.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
+import 'package:findpro/common/services/routes/job_service.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 

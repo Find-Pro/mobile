@@ -2,7 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/enum/locale_enums.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/common/init/localization/app_localization.dart';
+import 'package:findpro/common/init/app_localization.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -36,11 +37,11 @@ class ChangeLanguageDialog {
                     height: 30,
                   ),
                   title: Text(
-                    'turkish'.tr(),
+                    LocaleKeys.turkish.tr(),
                     style: context.textTheme.labelLarge,
                   ),
                   onTap: () async {
-                    await ProductLocalization.updateLanguage(
+                    await AppLocalization.updateLanguage(
                       context,
                       value: Locales.tr,
                     ).then((value) {
@@ -60,11 +61,11 @@ class ChangeLanguageDialog {
                     height: 30,
                   ),
                   title: Text(
-                    'english'.tr(),
+                    LocaleKeys.english.tr(),
                     style: context.textTheme.labelLarge,
                   ),
                   onTap: () async {
-                    await ProductLocalization.updateLanguage(
+                    await AppLocalization.updateLanguage(
                       context,
                       value: Locales.en,
                     ).then((value) {

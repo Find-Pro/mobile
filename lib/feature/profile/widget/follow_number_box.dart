@@ -6,6 +6,7 @@ import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/profile/view_model/follow_number_box_view_model.dart';
 import 'package:findpro/feature/user_profile/widget/user_profile_more_icon_alert.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -61,7 +62,7 @@ class FollowNumberBox extends ConsumerWidget {
                                           fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  'following'.tr(),
+                                  LocaleKeys.following.tr(),
                                   style: context.textTheme.labelLarge,
                                 ),
                               ],
@@ -84,7 +85,7 @@ class FollowNumberBox extends ConsumerWidget {
                                           fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  'followers'.tr(),
+                                  LocaleKeys.followers.tr(),
                                   style: context.textTheme.labelLarge,
                                 ),
                               ],
@@ -111,7 +112,7 @@ class FollowNumberBox extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => const NoDataFoundWidget(),
+      error: (error, stackTrace) => const NoConnectionWidget(),
       loading: () => const CustomCircular(),
     );
   }

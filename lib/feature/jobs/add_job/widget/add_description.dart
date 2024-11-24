@@ -7,6 +7,7 @@ import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/settings/widget/settings_confirm_button.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +30,7 @@ class AddDescription extends ConsumerWidget {
                 ref.read(addJobProvider.notifier).description = text;
               },
               decoration: InputDecoration(
-                hintText: 'description'.tr(),
+                hintText: LocaleKeys.description.tr(),
                 hintStyle: context.themeData.textTheme.labelMedium
                     ?.copyWith(
                         fontWeight: FontWeight.w500, color: Colors.grey),
@@ -50,22 +51,22 @@ class AddDescription extends ConsumerWidget {
               )),
           50.verticalSpace,
           SettingsConfirmButton(
-            text: 'createService'.tr(),
+            text: LocaleKeys.createService.tr(),
             onTap: () async {
               if (descriptionCnt.text.isEmpty) {
-                WarningAlert()
-                    .show(context, 'descriptionIsRequired'.tr(), false);
+                WarningAlert().show(
+                    context, LocaleKeys.descriptionIsRequired.tr(), false);
               } else {
                 addJobViewModel.description = descriptionCnt.text;
                 final success = await addJobViewModel.createService();
                 if (success) {
-                  InformationToast()
-                      .show(context, 'serviceCreatedSuccessfully'.tr());
+                  InformationToast().show(
+                      context, LocaleKeys.serviceCreatedSuccessfully.tr());
                   await context.router.pushAndPopUntil(const MainRoute(),
                       predicate: (_) => false);
                 } else {
-                  WarningAlert()
-                      .show(context, 'serviceCouldNotAdd'.tr(), false);
+                  WarningAlert().show(
+                      context, LocaleKeys.serviceCouldNotAdd.tr(), false);
                 }
               }
             },

@@ -1,5 +1,5 @@
-import 'package:findpro/common/services/message_service.dart';
 import 'package:findpro/common/services/model/response/start_chat_room_response.dart';
+import 'package:findpro/common/services/routes/message_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 class CreateChatRoomViewModel

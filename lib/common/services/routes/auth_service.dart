@@ -1,7 +1,7 @@
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/auth_operation.dart';
-import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/request/login_request.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
@@ -11,7 +11,7 @@ class AuthService implements AuthOperation {
   static final AuthService instance = AuthService._();
   @override
   Future<UpdateProfileResponse?> login(LoginRequest loginRequest) async {
-    final response = await NetworkService.instance.baseRequest(
+    final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.login,
       data: {
@@ -28,7 +28,7 @@ class AuthService implements AuthOperation {
   @override
   Future<UpdateProfileResponse?> register(
       RegisterRequest registerRequest) async {
-    final response = await NetworkService.instance.baseRequest(
+    final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.register,
       data: {
@@ -46,7 +46,7 @@ class AuthService implements AuthOperation {
   @override
   Future<UpdateProfileResponse?> registerWithToken(
       String token, EndPointEnums endPoint) async {
-    final response = await NetworkService.instance.baseRequest(
+    final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       endPoint,
       data: {
@@ -63,7 +63,7 @@ class AuthService implements AuthOperation {
   @override
   Future<UpdateProfileResponse?> loginWithToken(
       String token, EndPointEnums endPoint) async {
-    final response = await NetworkService.instance.baseRequest(
+    final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       endPoint,
       data: {

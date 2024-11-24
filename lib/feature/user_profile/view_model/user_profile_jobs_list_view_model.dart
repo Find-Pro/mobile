@@ -1,5 +1,5 @@
-import 'package:findpro/common/services/job_service.dart';
 import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
+import 'package:findpro/common/services/routes/job_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 class UserProfileJobsListViewModel

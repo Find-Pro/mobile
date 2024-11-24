@@ -4,6 +4,7 @@ import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class UserSearchToInputButton extends StatelessWidget {
@@ -37,7 +38,7 @@ class UserSearchToInputButton extends StatelessWidget {
             Expanded(
                 flex: 5,
                 child: Text(
-                  'goSearchService'.tr(),
+                  LocaleKeys.goSearchService.tr(),
                   style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w300, color: Colors.white),
                 )),

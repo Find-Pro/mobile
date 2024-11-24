@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/feature/search/view_model/user_search_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,9 +21,9 @@ class UserSearchBar extends ConsumerWidget {
       child: Container(
         decoration: BoxDecoration(
           color: context.themeData.scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(22.5),
+          borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: context.themeData.primaryColorDark,
+            color: context.themeData.indicatorColor,
             width: 1.2,
           ),
         ),
@@ -36,6 +38,9 @@ class UserSearchBar extends ConsumerWidget {
           },
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
+              hintText: LocaleKeys.typeAUserName.tr(),
+              hintStyle: context.textTheme.labelMedium
+                  ?.copyWith(fontWeight: FontWeight.w100),
               suffixStyle: context.textTheme.labelLarge,
               border: InputBorder.none,
               suffixIcon: IconButton(
@@ -44,7 +49,7 @@ class UserSearchBar extends ConsumerWidget {
                   highlightColor: Colors.transparent,
                   onPressed: () {
                     textCnt.clear();
-                    ref.read(userSearchProvider).result!.clear();
+                    ref.read(userSearchProvider.notifier).clearResults();
                   })),
         ),
       ),

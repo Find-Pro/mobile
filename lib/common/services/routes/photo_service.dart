@@ -4,7 +4,7 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/photo_operation.dart';
-import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 
 class PhotoService implements PhotoOperation {
@@ -29,7 +29,7 @@ class PhotoService implements PhotoOperation {
       'userId': userId,
       'image': base64Image,
     };
-    final responseData = await NetworkService.instance.photoRequest(
+    final responseData = await NetworkManager.instance.photoRequest(
       APIRequestMethod.post,
       endpoint,
       data: jsonData,

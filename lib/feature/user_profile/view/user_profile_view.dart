@@ -5,11 +5,11 @@ import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/comment/view/user_profile_comments_view.dart';
 import 'package:findpro/feature/profile/view/comment_and_jobs_page_view.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
-import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:findpro/feature/user_profile/view/user_profile_jobs_list_view.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:findpro/feature/user_profile/widget/is_following_button.dart';
+import 'package:findpro/feature/user_profile/widget/user_profile_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,22 +25,12 @@ class UserProfileView extends ConsumerWidget {
     return userProfileFuture.when(
       data: (_) {
         if (userProfileViewModel.user == null) {
-          return const NoDataFoundWidget();
+          return const NoConnectionWidget();
         }
         return Scaffold(
           body: CustomScrollView(
             slivers: [
-              SliverAppBar(
-                iconTheme: const IconThemeData(color: Colors.white),
-                expandedHeight: 80,
-                pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: ProfileCoverImage(
-                    isGeneralProfile: true,
-                    photoName: userProfileViewModel.user!.coverPicture!,
-                  ),
-                ),
-              ),
+              const UserProfileAppBar(),
               SliverToBoxAdapter(
                 child: Stack(
                   children: [
@@ -79,7 +69,7 @@ class UserProfileView extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => const NoDataFoundWidget(),
+      error: (error, stackTrace) => const NoConnectionWidget(),
       loading: () => const CustomCircular(),
     );
   }

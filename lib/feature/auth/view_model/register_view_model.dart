@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
-import 'package:findpro/common/services/auth_service.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
+import 'package:findpro/common/services/routes/auth_service.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:riverpod/riverpod.dart';
 
 class RegisterViewModel extends StateNotifier<UpdateProfileResponse> {
@@ -11,7 +12,8 @@ class RegisterViewModel extends StateNotifier<UpdateProfileResponse> {
   Future<UpdateProfileResponse> register(RegisterRequest request) async {
     final response = await AuthService.instance.register(request);
     if (response == null) {
-      return UpdateProfileResponse(success: false, message: 'error'.tr());
+      return UpdateProfileResponse(
+          success: false, message: LocaleKeys.error.tr());
     }
 
     if (response.success) {

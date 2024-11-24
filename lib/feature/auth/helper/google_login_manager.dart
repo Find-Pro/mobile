@@ -3,7 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/common/services/auth_service.dart';
+import 'package:findpro/common/services/manager/notification_manager.dart';
+import 'package:findpro/common/services/routes/auth_service.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -23,13 +25,13 @@ class GoogleLoginManager {
         debugPrint('kullanıcı giris yaptı:$loginResponse');
         CacheManager.instance.setAppleOrGoogle(true);
         CacheManager.instance.setUserId(loginResponse.user!.userId ?? 0);
-        //  await ref.read(notificationProvider.login);
+        await ref.read(notificationProvider).login();
         await context.router
             .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
       } else {
         // hesabı yok token ile kayıt olacak
         CacheManager.instance.setAppleOrGoogle(true);
-        //  await ref.read(notificationProvider.login);
+        await ref.read(notificationProvider).login();
         final response = await AuthService.instance.registerWithToken(
           idToken,
           EndPointEnums.registerWithGoogle,
@@ -44,18 +46,18 @@ class GoogleLoginManager {
             CacheManager.instance.setAppleOrGoogle(true);
             CacheManager.instance
                 .setUserId(loginResponse.user!.userId ?? 0);
-            //  await ref.read(notificationProvider.login);
+            await ref.read(notificationProvider).login();
             await context.router.pushAndPopUntil(const MainRoute(),
                 predicate: (_) => false);
           } else {
-            debugPrint('error'.tr());
+            debugPrint(LocaleKeys.error.tr());
           }
         } else {
-          debugPrint('error'.tr());
+          debugPrint(LocaleKeys.error.tr());
         }
       }
     } else {
-      debugPrint('error'.tr());
+      debugPrint(LocaleKeys.error.tr());
     }
   }
 
@@ -63,7 +65,7 @@ class GoogleLoginManager {
     try {
       await googleSignIn.signOut();
     } catch (error) {
-      debugPrint('error'.tr());
+      debugPrint(error.toString());
     }
   }
 

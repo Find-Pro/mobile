@@ -11,6 +11,7 @@ import 'package:findpro/feature/comment/widget/submit_commit_button.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class AddCommentView extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: SettingsAppBar(text: 'addComment'.tr()),
+      appBar: SettingsAppBar(text: LocaleKeys.addComment.tr()),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -39,7 +40,8 @@ class AddCommentView extends ConsumerWidget {
             ),
             10.verticalSpace,
             Text(
-              userProfileViewModel.user!.fullName ?? 'undefined'.tr(),
+              userProfileViewModel.user!.fullName ??
+                  LocaleKeys.undefined.tr(),
               style: context.textTheme.labelLarge,
             ),
             30.verticalSpace,
@@ -77,11 +79,11 @@ class AddCommentView extends ConsumerWidget {
       ValueNotifier<int> ratingNotifier) async {
     final commentText = commentController.text;
     if (commentText.isEmpty) {
-      showWarning(context, 'commentShouldBe10Character'.tr());
+      showWarning(context, LocaleKeys.commentShouldBe10Character.tr());
       return;
     }
     if (CommentFilterService.containsForbiddenWord(commentText)) {
-      showWarning(context, 'pleaseAvoidBadWords'.tr());
+      showWarning(context, LocaleKeys.pleaseAvoidBadWords.tr());
       return;
     }
     final res = await ref
@@ -90,9 +92,9 @@ class AddCommentView extends ConsumerWidget {
 
     if (res) {
       await context.router.pop();
-      showInfoToast(context, 'commentCreatedSuccessfully'.tr());
+      showInfoToast(context, LocaleKeys.commentCreatedSuccessfully.tr());
     } else {
-      showInfoToast(context, 'anErrorOccurred'.tr());
+      showInfoToast(context, LocaleKeys.anErrorOccurred.tr());
     }
   }
 }

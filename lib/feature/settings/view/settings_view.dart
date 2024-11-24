@@ -10,6 +10,7 @@ import 'package:findpro/feature/settings/widget/change_language_dialog.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/settings/widget/settings_divider.dart';
 import 'package:findpro/feature/settings/widget/settings_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,7 +23,7 @@ class SettingsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: SettingsAppBar(text: 'settings'.tr()),
+      appBar: SettingsAppBar(text: LocaleKeys.settings.tr()),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets().xxl,
@@ -32,30 +33,30 @@ class SettingsView extends ConsumerWidget {
             children: [
               SettingsListTile(
                   iconData: Icons.key,
-                  text: 'changePassword'.tr(),
+                  text: LocaleKeys.changePassword.tr(),
                   onTap: () =>
                       context.router.push(const ChangePasswordRoute())),
               const SettingsDivider(),
               SettingsListTile(
                   iconData: Icons.edit_note,
-                  text: 'editProfile'.tr(),
+                  text: LocaleKeys.editProfile.tr(),
                   onTap: () =>
                       context.router.push(const EditProfileRoute())),
               const SettingsDivider(),
               SettingsListTile(
                   iconData: Icons.business_center_outlined,
-                  text: 'createService'.tr(),
+                  text: LocaleKeys.createService.tr(),
                   onTap: () => context.router.push(const AddJobRoute())),
               const SettingsDivider(),
               SettingsListTile(
                   iconData: Icons.language,
-                  text: 'changeLanguage'.tr(),
+                  text: LocaleKeys.changeLanguage.tr(),
                   onTap: () => ChangeLanguageDialog().show(context)),
               const SettingsDivider(),
               SettingsListTile(
                   iconData: Icons.highlight_remove_outlined,
                   iconColor: Colors.red,
-                  text: 'removeAccount'.tr(),
+                  text: LocaleKeys.removeAccount.tr(),
                   onTap: () => QuestionAlertDialog().show(context,
                           onTap: () async {
                         final res = await ref
@@ -66,21 +67,22 @@ class SettingsView extends ConsumerWidget {
                               const LoginRoute(),
                               predicate: (_) => false);
                         } else {
-                          WarningAlert().show(
-                              context, 'anErrorOccurred'.tr(), false);
+                          WarningAlert().show(context,
+                              LocaleKeys.anErrorOccurred.tr(), false);
                         }
                       },
-                          bodyText: 'areYouSureRemoveAccount'.tr(),
-                          buttonText: 'removeAccount'.tr())),
+                          bodyText:
+                              LocaleKeys.areYouSureRemoveAccount.tr(),
+                          buttonText: LocaleKeys.removeAccount.tr())),
               const SettingsDivider(),
               SettingsListTile(
                   iconColor: Colors.red,
                   iconData: Icons.sign_language_outlined,
-                  text: 'signOut'.tr(),
+                  text: LocaleKeys.signOut.tr(),
                   onTap: () => QuestionAlertDialog().show(context,
                       onTap: () => SignOut.instance.signOut(context),
-                      bodyText: 'areYouSureSignOut'.tr(),
-                      buttonText: 'signOut'.tr())),
+                      bodyText: LocaleKeys.areYouSureSignOut.tr(),
+                      buttonText: LocaleKeys.signOut.tr())),
             ],
           ),
         ),

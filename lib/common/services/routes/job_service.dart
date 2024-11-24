@@ -2,7 +2,7 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/job_operation.dart';
-import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
 import 'package:findpro/common/services/model/response/job_add_response.dart';
 import 'package:findpro/common/services/model/response/job_edit_response.dart';
@@ -15,7 +15,7 @@ class JobService implements JobOperation {
   static final JobService instance = JobService._();
   @override
   Future<JobAddResponse?> add(JobAddModel job) async {
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobAdd,
       data: job.toJson(),
@@ -28,7 +28,7 @@ class JobService implements JobOperation {
 
   @override
   Future<SuccessAndMessageResponse?> delete(int jobId) async {
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobDelete,
       data: {'jobId': jobId},
@@ -40,7 +40,7 @@ class JobService implements JobOperation {
 
   @override
   Future<JobEditResponse?> edit(int jobId, JobModel updatedJob) async {
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobEdit,
       data: {
@@ -55,7 +55,7 @@ class JobService implements JobOperation {
 
   @override
   Future<SuccessAndMessageResponse?> complete(int jobId) async {
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobComplete,
       data: {'jobId': jobId},
@@ -67,7 +67,7 @@ class JobService implements JobOperation {
 
   @override
   Future<JobAddResponse?> get(int jobId) async {
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobGet,
       data: {'jobId': jobId},
@@ -79,7 +79,7 @@ class JobService implements JobOperation {
 
   @override
   Future<GetUserJobsResponse?> getUserJobs(int userId) async {
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobGetUserJobs,
       data: {'userId': userId},
@@ -93,7 +93,7 @@ class JobService implements JobOperation {
   @override
   Future<GetUserJobsResponse?> getFollowingJobs() async {
     final userId = CacheManager.instance.getUserId();
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.jobGetFollowingJobs,
       data: {'userId': userId},

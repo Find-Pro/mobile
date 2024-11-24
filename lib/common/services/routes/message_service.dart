@@ -2,7 +2,7 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/message_operation.dart';
-import 'package:findpro/common/services/manager/network_service.dart';
+import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/response/chat_rooms_response.dart';
 import 'package:findpro/common/services/model/response/start_chat_room_response.dart';
 
@@ -13,7 +13,7 @@ class MessageService implements MessageOperation {
   @override
   Future<ChatRoomsResponse?> chatRooms() async {
     final userId = CacheManager.instance.getUserId();
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.messageChatRooms,
       data: {'userId': userId},
@@ -26,7 +26,7 @@ class MessageService implements MessageOperation {
   @override
   Future<StartChatRoomResponse?> startChatRoom(int otherUserId) async {
     final userId = CacheManager.instance.getUserId();
-    final responseData = await NetworkService.instance.baseRequest(
+    final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.messageStartChatRoom,
       data: {

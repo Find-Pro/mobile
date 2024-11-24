@@ -5,6 +5,7 @@ import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:findpro/feature/profile/model/follower_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class UserSearchCard extends StatelessWidget {
@@ -39,7 +40,7 @@ class UserSearchCard extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(left: 6),
             child: Text(
-              followerModel.fullName ?? 'undefined'.tr(),
+              followerModel.fullName ?? LocaleKeys.undefined.tr(),
               style: context.textTheme.labelLarge
                   ?.copyWith(fontWeight: FontWeight.w700),
             ),
@@ -47,7 +48,7 @@ class UserSearchCard extends StatelessWidget {
           trailing: TextButton(
               onPressed: () {},
               child: Text(
-                // 'removeFollower'.tr(),
+                // LocaleKeys.removeFollower.tr(),
                 '',
                 style: context.textTheme.labelMedium?.copyWith(
                     color: Colors.red, fontWeight: FontWeight.w700),

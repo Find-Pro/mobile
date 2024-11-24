@@ -1,5 +1,5 @@
-import 'package:findpro/common/services/job_service.dart';
 import 'package:findpro/common/services/model/response/job_add_response.dart';
+import 'package:findpro/common/services/routes/job_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 class JobDetailViewModel extends StateNotifier<JobAddResponse> {

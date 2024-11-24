@@ -6,6 +6,7 @@ import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follower_list_tile.dart';
 import 'package:findpro/feature/profile/widget/following_search_bar.dart';
 import 'package:findpro/feature/user_profile/view_model/following_view_model.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,8 +35,8 @@ class FollowingView extends ConsumerWidget {
             ],
           ),
           body: filteredFollowings == null || filteredFollowings.isEmpty
-              ? NoDataFoundWidget(
-                  text: 'noFollowingFound'.tr(),
+              ? NoConnectionWidget(
+                  text: LocaleKeys.noFollowingFound.tr(),
                 )
               : ListView.builder(
                   itemCount: filteredFollowings.length,
@@ -52,7 +53,7 @@ class FollowingView extends ConsumerWidget {
                 ),
         );
       },
-      error: (error, stackTrace) => const NoDataFoundWidget(),
+      error: (error, stackTrace) => const NoConnectionWidget(),
       loading: () => const CustomCircular(),
     );
   }

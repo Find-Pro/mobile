@@ -6,6 +6,7 @@ import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
 import 'package:findpro/feature/jobs/widget/job_detail_body.dart';
 import 'package:findpro/feature/jobs/widget/job_detail_user_tile.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,11 +20,11 @@ class JobDetailView extends ConsumerWidget {
     final jobFuture = ref.watch(jobDetailFutureProvider(jobId));
     final jobViewModel = ref.watch(jobDetailProvider);
     return Scaffold(
-      appBar: SettingsAppBar(text: 'serviceDetails'.tr()),
+      appBar: SettingsAppBar(text: LocaleKeys.serviceDetails.tr()),
       body: jobFuture.when(
         data: (_) {
           if (jobViewModel.result == null) {
-            return const NoDataFoundWidget();
+            return const NoConnectionWidget();
           }
           return const SingleChildScrollView(
             child: Column(
@@ -35,7 +36,7 @@ class JobDetailView extends ConsumerWidget {
           );
         },
         loading: () => const CustomCircular(),
-        error: (error, stackTrace) => const NoDataFoundWidget(),
+        error: (error, stackTrace) => const NoConnectionWidget(),
       ),
     );
   }

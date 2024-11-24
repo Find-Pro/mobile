@@ -9,6 +9,7 @@ import 'package:findpro/feature/auth/widget/string_text_field.dart';
 import 'package:findpro/feature/settings/view_model/edit_profile_view_model.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/settings/widget/settings_confirm_button.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,37 +23,37 @@ class EditProfileView extends ConsumerWidget {
     final profileFuture = ref.watch(editProfileFutureProvider);
     final mailCnt = TextEditingController(
         text: ref.watch(editProfileProvider).user?.email ??
-            'undefined'.tr());
+            LocaleKeys.undefined.tr());
     final fullNameCnt = TextEditingController(
         text: ref.watch(editProfileProvider).user?.fullName ??
-            'undefined'.tr());
+            LocaleKeys.undefined.tr());
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: SettingsAppBar(text: 'updateProfile'.tr()),
+        appBar: SettingsAppBar(text: LocaleKeys.updateProfile.tr()),
         backgroundColor: context.themeData.scaffoldBackgroundColor,
         body: profileFuture.when(
             data: (_) {
               if (!ref.watch(editProfileProvider).success) {
-                return const NoDataFoundWidget();
+                return const NoConnectionWidget();
               }
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   StringTextField(
                     controller: mailCnt,
-                    hintText: 'email'.tr(),
+                    hintText: LocaleKeys.email.tr(),
                     iconData: Icons.email,
                   ),
                   30.verticalSpace,
                   StringTextField(
                     controller: fullNameCnt,
-                    hintText: 'fullName'.tr(),
+                    hintText: LocaleKeys.fullName.tr(),
                     iconData: Icons.person_outline,
                   ),
                   30.verticalSpace,
                   SettingsConfirmButton(
-                    text: 'updateProfile'.tr(),
+                    text: LocaleKeys.updateProfile.tr(),
                     onTap: () async {
                       final success = await ref
                           .read(editProfileProvider.notifier)
@@ -62,16 +63,17 @@ class EditProfileView extends ConsumerWidget {
                           );
                       if (success) {
                         InformationToast()
-                            .show(context, 'profileUpdated'.tr());
+                            .show(context, LocaleKeys.profileUpdated.tr());
                       } else {
-                        WarningAlert().show(context, 'error'.tr(), true);
+                        WarningAlert()
+                            .show(context, LocaleKeys.error.tr(), true);
                       }
                     },
                   )
                 ],
               );
             },
-            error: (error, stackTrace) => const NoDataFoundWidget(),
+            error: (error, stackTrace) => const NoConnectionWidget(),
             loading: () => const CustomCircular()));
   }
 }

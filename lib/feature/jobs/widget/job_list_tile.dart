@@ -18,9 +18,9 @@ class JobListTile extends StatelessWidget {
     return Padding(
       padding: PaddingInsets().xl,
       child: Card(
-        elevation: 1,
+        elevation: 0.5,
         child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 16),
+          padding: PaddingInsets().large,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

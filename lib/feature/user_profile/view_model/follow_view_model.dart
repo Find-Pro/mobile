@@ -1,5 +1,5 @@
 import 'package:findpro/common/cache/cache_manager.dart';
-import 'package:findpro/common/services/follow_service.dart';
+import 'package:findpro/common/services/routes/follow_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 class FollowViewModel extends StateNotifier<bool> {
