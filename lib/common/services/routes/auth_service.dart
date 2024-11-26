@@ -59,7 +59,6 @@ class AuthService implements AuthOperation {
         : null;
   }
 
-//'appleToken','googleToken'
   @override
   Future<UpdateProfileResponse?> loginWithToken(
       String token, EndPointEnums endPoint) async {

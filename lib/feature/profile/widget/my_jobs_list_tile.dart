@@ -3,7 +3,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/widget/information_toast.dart';
-import 'package:findpro/common/widget/question_alert.dart';
+import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_category_icon.dart';
 import 'package:findpro/feature/profile/view_model/my_jobs_view_model.dart';
@@ -36,8 +36,8 @@ class MyJobsListTile extends ConsumerWidget {
                   Colors.blueAccent,
                   BlendMode.srcATop,
                 ),
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,9 +61,10 @@ class MyJobsListTile extends ConsumerWidget {
               ),
               IconButton(
                   onPressed: () async {
-                    QuestionAlert()
-                        .show(context, LocaleKeys.areYouSureDeleteJob.tr(),
-                            () async {
+                    await QuestionAlertDialog().show(context,
+                        bodyText: LocaleKeys.areYouSureDeleteJob.tr(),
+                        buttonText: LocaleKeys.delete.tr(),
+                        onTap: () async {
                       final res = await ref
                           .read(myJobsProvider.notifier)
                           .deleteJob(jobModel.jobId!);

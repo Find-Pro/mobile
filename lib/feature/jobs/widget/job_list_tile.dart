@@ -10,8 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class JobListTile extends StatelessWidget {
-  const JobListTile({required this.jobModel, super.key});
+  const JobListTile(
+      {required this.jobModel,
+      required this.isUserProfileView,
+      super.key});
   final JobModel jobModel;
+  final bool isUserProfileView;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,8 @@ class JobListTile extends StatelessWidget {
                   Colors.blueAccent,
                   BlendMode.srcATop,
                 ),
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,9 +64,10 @@ class JobListTile extends StatelessWidget {
                     '₺${jobModel.hourlyWage?.toString() ?? '0'}',
                     style: context.textTheme.labelLarge,
                   ),
-                  JobListTileButton(
-                      onTap: () => context.router
-                          .push(JobDetailRoute(jobId: jobModel.jobId!))),
+                  if (!isUserProfileView)
+                    JobListTileButton(
+                        onTap: () => context.router
+                            .push(JobDetailRoute(jobId: jobModel.jobId!))),
                 ],
               )
             ],

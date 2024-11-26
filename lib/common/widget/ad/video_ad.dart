@@ -17,6 +17,18 @@ class _VideoAdState extends State<VideoAd> {
   @override
   void initState() {
     super.initState();
+    UnityAds.init(
+      gameId: AdManager.gameId,
+    ).then((value) {
+      setState(() {
+        _isAdReady = true;
+      });
+    }).catchError((error) {
+      setState(() {
+        _isAdReady = false;
+      });
+    });
+
     _loadAdAndShow();
   }
 

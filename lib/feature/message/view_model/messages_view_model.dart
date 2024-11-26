@@ -38,8 +38,17 @@ class MessagesViewModel extends StateNotifier<List<MessageProfileModel>> {
       state = followList;
       return true;
     }
-
     return false;
+  }
+
+  Future<bool> deleteRoom(String roomId) async {
+    final res = await MessageService.instance.deleteRoom(roomId);
+    if (res != null && res.success) {
+      state = state.where((room) => room.roomId != roomId).toList();
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

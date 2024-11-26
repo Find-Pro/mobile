@@ -19,9 +19,12 @@ class UserSearchNoResultImage extends StatelessWidget {
           ),
           30.verticalSpace,
           SizedBox(
-            child: Image.asset(
-              'assets/icon/search_bg2.png',
-              //height: 280,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                'assets/icon/search_img.png',
+                height: 200,
+              ),
             ),
           ),
         ],

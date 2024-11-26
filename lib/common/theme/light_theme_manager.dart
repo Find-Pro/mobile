@@ -4,12 +4,12 @@ import 'package:findpro/common/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// Custom light theme for project design
 class LightThemeManager implements CustomTheme {
   @override
   ThemeData get themeData => ThemeData(
         useMaterial3: true,
         indicatorColor: Colors.black,
+        scaffoldBackgroundColor: Colors.white,
         canvasColor: const Color(0xff4b5a60ff),
         primaryColor: Colors.teal,
         dividerColor: Colors.grey,

@@ -16,43 +16,77 @@ class AppleGoogleRow extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        return Center(
-          child: SizedBox(
-            width: constraints.maxWidth - 70,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: Platform.isAndroid
-                  ? () => GoogleLoginManager().login(context, ref)
-                  : () => AppleLoginManager().login(context, ref),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: context.themeData.primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    Platform.isAndroid
-                        ? Assets.iconGooglelogo
-                        : Assets.iconApplelogo,
-                    height: 40,
-                  ),
-                  20.horizontalSpace,
-                  Text(
-                    Platform.isAndroid
-                        ? LocaleKeys.loginWithGoogle.tr()
-                        : LocaleKeys.loginWithApple.tr(),
-                    style: context.textTheme.headlineSmall?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
+        return Column(
+          children: [
+            _Button(
+              constraints: constraints,
+              onPressed: () => GoogleLoginManager().login(context, ref),
+              logoPath: Assets.iconGooglelogo,
+              buttonText: LocaleKeys.loginWithGoogle.tr(),
+              backgroundColor: context.themeData.primaryColor,
             ),
-          ),
+            20.verticalSpace,
+            if (Platform.isIOS)
+              _Button(
+                constraints: constraints,
+                onPressed: () => AppleLoginManager().login(context, ref),
+                logoPath: Assets.iconApplelogo,
+                buttonText: LocaleKeys.loginWithApple.tr(),
+                backgroundColor: context.themeData.primaryColor,
+              ),
+          ],
         );
       },
+    );
+  }
+}
+
+class _Button extends StatelessWidget {
+  const _Button({
+    required this.onPressed,
+    required this.logoPath,
+    required this.buttonText,
+    required this.backgroundColor,
+    required this.constraints,
+  });
+  final VoidCallback onPressed;
+  final String logoPath;
+  final String buttonText;
+  final Color backgroundColor;
+  final BoxConstraints constraints;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: constraints.maxWidth - 70,
+        height: 50,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                logoPath,
+              ),
+              20.horizontalSpace,
+              Text(
+                buttonText,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

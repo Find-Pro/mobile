@@ -5,10 +5,12 @@ import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:findpro/feature/profile/model/follower_model.dart';
+import 'package:findpro/feature/search/view_model/user_search_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UserSearchCard extends StatelessWidget {
+class UserSearchCard extends ConsumerWidget {
   const UserSearchCard(
       {required this.followerModel,
       required this.currentUserId,
@@ -16,19 +18,21 @@ class UserSearchCard extends StatelessWidget {
   final FollowerModel followerModel;
   final int currentUserId;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: PaddingInsets().large,
       child: ListTile(
           onTap: followerModel.userId == currentUserId
-              ? () {
-                  context.router.pushAndPopUntil(
+              ? () async {
+                  ref.read(userSearchProvider.notifier).clearResults();
+                  await context.router.pushAndPopUntil(
                     const ProfileRoute(),
                     predicate: (route) => false,
                   );
                 }
-              : () {
-                  context.router.push(
+              : () async {
+                  ref.read(userSearchProvider.notifier).clearResults();
+                  await context.router.push(
                       UserProfileRoute(userId: followerModel.userId!));
                 },
           leading: CircleAvatar(

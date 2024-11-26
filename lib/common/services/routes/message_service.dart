@@ -5,6 +5,7 @@ import 'package:findpro/common/services/interface/message_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/response/chat_rooms_response.dart';
 import 'package:findpro/common/services/model/response/start_chat_room_response.dart';
+import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 
 class MessageService implements MessageOperation {
   MessageService._();
@@ -36,6 +37,20 @@ class MessageService implements MessageOperation {
     );
     return responseData != null
         ? StartChatRoomResponse.fromJson(responseData)
+        : null;
+  }
+
+  @override
+  Future<SuccessAndMessageResponse?> deleteRoom(String roomId) async {
+    final responseData = await NetworkManager.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.messageDeleteRoom,
+      data: {
+        'roomId': roomId,
+      },
+    );
+    return responseData != null
+        ? SuccessAndMessageResponse.fromJson(responseData)
         : null;
   }
 }

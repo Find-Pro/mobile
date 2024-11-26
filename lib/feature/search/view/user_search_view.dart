@@ -9,6 +9,7 @@ import 'package:findpro/feature/search/widget/user_search_to_input_button.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class UserSearchView extends ConsumerStatefulWidget {
@@ -38,11 +39,12 @@ class _UserSearchViewState extends ConsumerState<UserSearchView> {
   Widget build(BuildContext context) {
     final userSearchViewModel = ref.watch(userSearchProvider);
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: HomeAppBar(text: LocaleKeys.searchUser.tr()),
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
+            10.verticalSpace,
             const UserSearchToInputButton(),
             UserSearchBar(textCnt: searchCnt),
             if (userSearchViewModel.result == null ||

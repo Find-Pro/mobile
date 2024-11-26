@@ -40,6 +40,7 @@ class SearchResultView extends ConsumerWidget {
                 itemCount: searchResult.result!.length,
                 itemBuilder: (context, index) {
                   return JobListTile(
+                      isUserProfileView: false,
                       jobModel: searchResult.result![index]);
                 },
               ),

@@ -18,7 +18,6 @@ class _BannerAdState extends State<BannerAd> {
 
     UnityAds.init(
       gameId: AdManager.gameId,
-      testMode: true,
     ).then((value) {
       setState(() {
         _isAdReady = true;

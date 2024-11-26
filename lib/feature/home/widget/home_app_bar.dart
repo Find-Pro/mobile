@@ -18,17 +18,17 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: Colors.grey.shade700,
       elevation: 4,
+      iconTheme: const IconThemeData(
+        color: Colors.white,
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(5),
         ),
       ),
-      iconTheme: const IconThemeData(
-        color: Colors.white,
-      ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 10);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 20);
 }

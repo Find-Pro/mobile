@@ -28,8 +28,13 @@
   "startFollowing": "Takip et",
   "chatRoomCreated": "Sohbet odanız başarıyla oluşturuldu",
   "unfollow": "Takibi bırak",
+  "everyoneHasTheRight": "Her kullanıcının 2 hizmet hakkı bulunmaktadır",
   "areYouSureRemoveAccount": "Hesabı silmek istediğinize emin misiniz?",
   "myJobs": "İşlerim",
+  "delete": "Sil",
+  "chatRoomHasCreatedSuccess": "Sohbet odanız başarı ile oluşturulmuştur.",
+
+  "youSureDeleteChat": "Bu görüşmeyi silmek istediğinize emin misiniz?",
   "typeAMessage": "Mesaj yaz",
   "areYouSureDeleteJob": "İşi silmek istediğinize emin misiniz?",
   "addComment": "Yorum yap",

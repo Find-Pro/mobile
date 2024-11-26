@@ -23,25 +23,25 @@ class NotificationManager {
   final Ref ref;
 
   Future<void> init() async {
-    await OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
+    await OneSignal.Debug.setLogLevel(OSLogLevel.none);
     await OneSignal.Debug.setAlertLevel(OSLogLevel.none);
     OneSignal.initialize(ApiKey.osAppID);
     await OneSignal.LiveActivities.setupDefault();
 
     await OneSignal.Notifications.clearAll();
-    final context = ref.read(routerProvider).navigatorKey.currentContext;
-    OneSignal.User.pushSubscription.addObserver((state) {
-      debugPrint(OneSignal.User.pushSubscription.optedIn.toString());
-      debugPrint(OneSignal.User.pushSubscription.id);
-      debugPrint(OneSignal.User.pushSubscription.token);
-      debugPrint(state.current.jsonRepresentation());
-    });
 
+    OneSignal.User.pushSubscription.addObserver((state) async {
+      if (!state.current.optedIn) {
+        await login();
+      }
+    });
+    OneSignal.Notifications.addPermissionObserver((state) {});
+    await login();
     OneSignal.Notifications.addClickListener((event) {
-      final senderIdString =
-          event.notification.additionalData?['sender_id'] as String?;
+      final context = ref.read(routerProvider).navigatorKey.currentContext;
       final senderId =
-          senderIdString != null ? int.tryParse(senderIdString) : null;
+          event.notification.additionalData?['sender_id'] as String?;
+
       final isMessage =
           event.notification.additionalData?['isMessage'] as bool? ??
               false;
@@ -53,11 +53,12 @@ class NotificationManager {
             predicate: (_) => false);
       } else {
         context.router.pushAndPopUntil(
-            UserProfileRoute(userId: senderId ?? 3),
+            UserProfileRoute(userId: stringToInt(senderId!)),
             predicate: (_) => false);
       }
     });
     OneSignal.Notifications.addForegroundWillDisplayListener((event) {
+      final context = ref.read(routerProvider).navigatorKey.currentContext;
       event.preventDefault();
       event.notification.display();
       final isMessage =
@@ -103,7 +104,7 @@ class NotificationManager {
     final response = await http.post(
       Uri.parse(ApiKey.osPushUrl),
       headers: {
-        'Authorization': 'Basic ${ApiKey.osApiKeyValue}',
+        'Authorization': ApiKey.osApiKeyValue,
         'accept': 'application/json',
         'content-type': 'application/json',
       },
@@ -114,8 +115,12 @@ class NotificationManager {
 
   Future<void> login() async {
     final userId = CacheManager.instance.getUserId();
+    if (userId == 0) {
+      return;
+    }
     await OneSignal.login(userId.toString());
     await OneSignal.User.addAlias('userId', userId.toString());
+    await OneSignal.User.addTagWithKey('userId', userId.toString());
   }
 
   Future<void> logout() async {

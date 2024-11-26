@@ -69,7 +69,7 @@ class IsFollowingButton extends ConsumerWidget {
               width: DeviceSize.width(context) - 150,
               height: 45,
               decoration: BoxDecoration(
-                color: isCurrentlyFollowing ? Colors.grey : Colors.cyan,
+                color: isCurrentlyFollowing ? Colors.cyan : Colors.grey,
                 borderRadius: BorderRadius.circular(10),
               ),
               padding:

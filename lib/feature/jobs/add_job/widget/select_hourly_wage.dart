@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/hourly_wage_list.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
@@ -26,8 +25,7 @@ class SelectHourlyWage extends ConsumerWidget {
             LocaleKeys.selectHourlyWage.tr(),
             style: context.textTheme.headlineMedium,
           ),
-          SizedBox(
-            height: DeviceSize.height(context) / 1.5,
+          Expanded(
             child: ListView.builder(
               itemCount: HourlyWageList.list.length,
               itemBuilder: (context, index) {

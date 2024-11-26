@@ -22,6 +22,8 @@ class UserProfileAppBar extends ConsumerWidget {
               context.router.pushAndPopUntil(const MainRoute(),
                   predicate: (_) => false);
             });
+            await context.router.pushAndPopUntil(const MainRoute(),
+                predicate: (_) => false);
           },
           icon: Icon(
             Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,

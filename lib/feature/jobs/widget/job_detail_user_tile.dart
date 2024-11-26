@@ -5,7 +5,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/information_toast.dart';
-import 'package:findpro/common/widget/warning_alert.dart';
+import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
 import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
@@ -73,11 +73,17 @@ class JobDetailUserTile extends ConsumerWidget {
                           await ref
                               .read(messagesProvider.notifier)
                               .getChatRooms();
-                          InformationToast().show(
-                              context, LocaleKeys.chatRoomCreated.tr());
+                          InformationToast().show(context,
+                              LocaleKeys.chatRoomHasCreatedSuccess.tr());
                         } else {
-                          WarningAlert().show(context,
-                              res.message ?? LocaleKeys.error.tr(), false);
+                          await QuestionAlertDialog().show(context,
+                              bodyText: LocaleKeys
+                                  .chatRoomHasCreatedSuccess
+                                  .tr(),
+                              buttonText: LocaleKeys.okay.tr(),
+                              onTap: () async => context.router
+                                  .pushAndPopUntil(const MessagesRoute(),
+                                      predicate: (_) => false));
                         }
                       },
                       icon: Icon(

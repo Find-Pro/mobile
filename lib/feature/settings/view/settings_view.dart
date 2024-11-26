@@ -5,6 +5,7 @@ import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/helper/sign_out.dart';
+import 'package:findpro/feature/profile/view_model/my_jobs_view_model.dart';
 import 'package:findpro/feature/settings/view_model/remove_account_view_model.dart';
 import 'package:findpro/feature/settings/widget/change_language_dialog.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
@@ -46,7 +47,16 @@ class SettingsView extends ConsumerWidget {
               SettingsListTile(
                   iconData: Icons.business_center_outlined,
                   text: LocaleKeys.createService.tr(),
-                  onTap: () => context.router.push(const AddJobRoute())),
+                  onTap: () {
+                    final jobCount =
+                        ref.watch(myJobsProvider).result?.length ?? 0;
+                    if (jobCount >= 2) {
+                      WarningAlert().show(
+                          context, LocaleKeys.everyoneHasTheRight, true);
+                    } else {
+                      context.router.push(const AddJobRoute());
+                    }
+                  }),
               const SettingsDivider(),
               SettingsListTile(
                   iconData: Icons.language,

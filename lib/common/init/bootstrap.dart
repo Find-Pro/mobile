@@ -4,7 +4,6 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/init/app_localization.dart';
 import 'package:findpro/common/services/manager/ad_manager.dart';
 import 'package:findpro/common/services/manager/notification_manager.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_ads_plugin/unity_ads_plugin.dart';
@@ -17,7 +16,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   EasyLocalization.logger.enableBuildModes = [];
   await UnityAds.init(
     gameId: AdManager.gameId,
-    testMode: !kReleaseMode,
   );
   await CacheManager.instance.init();
   final container = ProviderContainer();

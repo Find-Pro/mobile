@@ -8,13 +8,8 @@ import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/view_model/register_view_model.dart';
 import 'package:findpro/feature/auth/widget/background_image.dart';
-import 'package:findpro/feature/auth/widget/login_register_button.dart';
-import 'package:findpro/feature/auth/widget/navigate_to_route_text.dart';
-import 'package:findpro/feature/auth/widget/pw_text_field.dart';
+import 'package:findpro/feature/auth/widget/index.dart';
 import 'package:findpro/feature/auth/widget/register_title_text.dart';
-import 'package:findpro/feature/auth/widget/string_text_field.dart';
-import 'package:findpro/feature/auth/widget/support_button.dart';
-import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +29,6 @@ class RegisterView extends ConsumerWidget {
     const isMaster = false;
 
     return Scaffold(
-      appBar: HomeAppBar(text: LocaleKeys.register.tr()),
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
       body: Stack(

@@ -25,6 +25,7 @@ enum EndPointEnums {
   loginWithApple('/login/apple'),
   messageStartChatRoom('/message/startChatRoom'),
   messageChatRooms('/message/chatRooms'),
+  messageDeleteRoom('/message/deleteRoom'),
   photoProfile('/photo/profilePicture'),
   photoCover('/photo/coverPicture'),
   register('/register'),

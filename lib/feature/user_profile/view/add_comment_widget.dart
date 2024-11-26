@@ -8,8 +8,8 @@ import 'package:findpro/feature/comment/view_model/user_profile_comments_view_mo
 import 'package:findpro/feature/comment/widget/add_comment_text_field.dart';
 import 'package:findpro/feature/comment/widget/dialog_add_rating_stars.dart';
 import 'package:findpro/feature/comment/widget/submit_commit_button.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
-import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class AddCommentView extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: SettingsAppBar(text: LocaleKeys.addComment.tr()),
+      appBar: HomeAppBar(text: LocaleKeys.addComment.tr()),
       body: SingleChildScrollView(
         child: Column(
           children: [
