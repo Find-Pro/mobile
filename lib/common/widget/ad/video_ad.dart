@@ -40,8 +40,7 @@ class _VideoAdViewState extends State<VideoAdView> {
           _isAdReady = true;
         });
         _showAd();
-        // context.router.pushAndPopUntil(const MainRoute(), predicate: (_)=> false);
-        context.router.pop();
+        if (context.mounted) context.router.pop();
       },
       onFailed: (placementId, error, message) {
         setState(() {

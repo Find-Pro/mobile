@@ -19,7 +19,8 @@ class MyJobsListView extends ConsumerWidget {
     final myJobsFuture = ref.watch(myJobsFutureProvider);
     return myJobsFuture.when(
       data: (_) {
-        if (myJobsViewModel.result == null) {
+        if (myJobsViewModel.result == null ||
+            myJobsViewModel.result!.isEmpty) {
           return NoConnectionWidget(
             text: LocaleKeys.noJobsFound.tr(),
           );

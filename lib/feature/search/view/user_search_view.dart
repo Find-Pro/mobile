@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/search/view_model/user_search_view_model.dart';
 import 'package:findpro/feature/search/widget/user_search_bar.dart';
@@ -23,10 +24,12 @@ class UserSearchView extends ConsumerStatefulWidget {
 
 class _UserSearchViewState extends ConsumerState<UserSearchView> {
   late final TextEditingController searchCnt;
+  int currentUserId = 0;
   @override
   void initState() {
     super.initState();
     searchCnt = TextEditingController();
+    currentUserId = CacheManager.instance.getUserId();
   }
 
   @override
@@ -58,7 +61,7 @@ class _UserSearchViewState extends ConsumerState<UserSearchView> {
                   final user = userSearchViewModel.result![index];
                   return UserSearchCard(
                     followerModel: user,
-                    currentUserId: 0,
+                    currentUserId: currentUserId,
                   );
                 },
               ),

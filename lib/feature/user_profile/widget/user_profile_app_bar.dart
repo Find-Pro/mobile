@@ -18,11 +18,10 @@ class UserProfileAppBar extends ConsumerWidget {
       leading: IconButton(
           onPressed: () async {
             if (context.mounted) {
-              await context.router.pop().then((value) {
-                if (context.mounted) {
-                  context.router.pushWidget(const VideoAdView());
-                }
-              });
+              await context.router.pop();
+              if (context.mounted) {
+                await context.router.pushWidget(const VideoAdView());
+              }
             }
           },
           icon: Icon(
