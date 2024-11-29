@@ -45,13 +45,13 @@ class AuthService implements AuthOperation {
 
   @override
   Future<UpdateProfileResponse?> registerWithToken(
-      String token, EndPointEnums endPoint) async {
+      String token, String email, EndPointEnums endPoint) async {
     final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       endPoint,
       data: {
         'token': token,
-        'password': token,
+        'email': email,
       },
     );
     return response != null

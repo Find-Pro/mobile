@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
@@ -33,18 +34,26 @@ class SearchResultView extends ConsumerWidget {
           if (searchResult.result == null) {
             return const NoConnectionWidget();
           }
-          return Stack(
-            children: [
-              const HomeBackgroundImage(),
-              ListView.builder(
-                itemCount: searchResult.result!.length,
-                itemBuilder: (context, index) {
-                  return JobListTile(
-                      isUserProfileView: false,
-                      jobModel: searchResult.result![index]);
-                },
-              ),
-            ],
+          // ignore: deprecated_member_use
+          return WillPopScope(
+            onWillPop: () async {
+              Navigator.of(context).pop();
+              await context.router.pushWidget(const VideoAdView());
+              return false;
+            },
+            child: Stack(
+              children: [
+                const HomeBackgroundImage(),
+                ListView.builder(
+                  itemCount: searchResult.result!.length,
+                  itemBuilder: (context, index) {
+                    return JobListTile(
+                        isUserProfileView: false,
+                        jobModel: searchResult.result![index]);
+                  },
+                ),
+              ],
+            ),
           );
         },
         error: (error, stackTrace) => const NoConnectionWidget(),

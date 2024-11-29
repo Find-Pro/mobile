@@ -60,7 +60,8 @@ class JobDetailUserTile extends ConsumerWidget {
                 child: Text(
                   jobViewModel.result!.fullName ??
                       LocaleKeys.undefined.tr(),
-                  style: context.textTheme.titleLarge,
+                  style: context.textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w700),
                 ),
               ),
               Expanded(

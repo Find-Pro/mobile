@@ -6,6 +6,7 @@ import 'package:findpro/common/const/api_key.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/router/router_provider.dart';
+import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,6 +50,7 @@ class NotificationManager {
         return;
       }
       if (isMessage) {
+        ref.read(messagesProvider.notifier).getChatRooms();
         ref.read(routerProvider).pushAndPopUntil(const MessagesRoute(),
             predicate: (_) => false);
       } else {

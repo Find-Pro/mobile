@@ -29,6 +29,7 @@ class ChatViewState extends ConsumerState<ChatView> with ChatViewMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         reverse: true,
         child: Column(
           children: [

@@ -19,7 +19,6 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
   @override
   void initState() {
     super.initState();
-    scrollCnt.addListener(scrollListener);
     currentUserId = CacheManager.instance.getUserId();
     final url = '${ApiKey.webSocketUrl}${widget.roomId}';
     channel = WebSocketChannel.connect(Uri.parse(url));
@@ -37,6 +36,11 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
       },
       onDone: () => debugPrint('WebSocket bağlantısı kapandı.'),
     );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollCnt.hasClients) {
+        scrollCnt.jumpTo(scrollCnt.position.maxScrollExtent);
+      }
+    });
   }
 
   void _handleLoadMessages(Map<String, dynamic> decodedMessage) {
@@ -92,11 +96,5 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
   void dispose() {
     channel.sink.close();
     super.dispose();
-  }
-
-  void scrollListener() {
-    if (scrollCnt.position.pixels == scrollCnt.position.minScrollExtent) {
-      setState(() {});
-    }
   }
 }

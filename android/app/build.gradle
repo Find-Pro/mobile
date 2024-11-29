@@ -34,7 +34,7 @@ if(keyPropertiesFile.exists()){
 
 android {
     namespace = "com.kok.findpro"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -46,7 +46,7 @@ android {
         applicationId = "com.kok.findpro"
         minSdk = flutter.minSdkVersion
         multiDexEnabled true
-        targetSdk = flutter.targetSdkVersion
+        targetSdk = 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }

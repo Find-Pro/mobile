@@ -17,6 +17,7 @@ class GoogleLoginManager {
 
   Future<void> login(BuildContext context, WidgetRef ref) async {
     final user = await googleSignIn.signIn();
+
     if (user != null) {
       final loginResponse = await AuthService.instance
           .loginWithToken(user.id, EndPointEnums.loginWithGoogle);
@@ -28,6 +29,7 @@ class GoogleLoginManager {
         final registerResponse =
             await AuthService.instance.registerWithToken(
           user.id,
+          user.email,
           EndPointEnums.registerWithGoogle,
         );
         if (registerResponse != null && registerResponse.success) {

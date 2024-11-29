@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
@@ -18,12 +17,13 @@ class UserProfileAppBar extends ConsumerWidget {
     return SliverAppBar(
       leading: IconButton(
           onPressed: () async {
-            await context.router.pushWidget(const VideoAd()).then((value) {
-              context.router.pushAndPopUntil(const MainRoute(),
-                  predicate: (_) => false);
-            });
-            await context.router.pushAndPopUntil(const MainRoute(),
-                predicate: (_) => false);
+            if (context.mounted) {
+              await context.router.pop().then((value) {
+                if (context.mounted) {
+                  context.router.pushWidget(const VideoAdView());
+                }
+              });
+            }
           },
           icon: Icon(
             Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,

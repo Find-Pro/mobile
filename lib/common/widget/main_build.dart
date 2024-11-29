@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_connection_view.dart';
 import 'package:flutter/material.dart';
 
 class MainBuild {
@@ -10,18 +10,10 @@ class MainBuild {
       stream: Connectivity().onConnectivityChanged,
       builder: (context, snapshot) {
         final isConnected = snapshot.data != ConnectivityResult.none;
-        return Column(
-          children: [
-            Expanded(
-              child: Stack(
-                children: [
-                  child ?? const SizedBox(),
-                  if (!isConnected) const NoConnectionWidget(),
-                ],
-              ),
-            ),
-          ],
-        );
+        if (!isConnected) {
+          return const NoConnectionView();
+        }
+        return child ?? const SizedBox();
       },
     );
   }

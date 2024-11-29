@@ -4,14 +4,14 @@ import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:flutter/material.dart';
 import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
-class VideoAd extends StatefulWidget {
-  const VideoAd({super.key});
+class VideoAdView extends StatefulWidget {
+  const VideoAdView({super.key});
 
   @override
-  State<VideoAd> createState() => _VideoAdState();
+  State<VideoAdView> createState() => _VideoAdViewState();
 }
 
-class _VideoAdState extends State<VideoAd> {
+class _VideoAdViewState extends State<VideoAdView> {
   bool _isAdReady = false;
 
   @override
@@ -40,6 +40,8 @@ class _VideoAdState extends State<VideoAd> {
           _isAdReady = true;
         });
         _showAd();
+        // context.router.pushAndPopUntil(const MainRoute(), predicate: (_)=> false);
+        context.router.pop();
       },
       onFailed: (placementId, error, message) {
         setState(() {
