@@ -15,6 +15,7 @@ dependencies:
   equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.4.3
   flutter_riverpod: ^2.6.1
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.14
@@ -52,3 +53,9 @@ flutter:
     - assets/lottie/
     - assets/json/
     - assets/translations/
+
+flutter_native_splash:
+  color: '#ffffff'
+  image: assets/icon/launcher.png
+  color_dark: '#000000'
+  image_dark: assets/icon/launcher.png
