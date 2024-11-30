@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/const/bad_words.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
@@ -57,16 +58,21 @@ class AddDescription extends ConsumerWidget {
                 WarningAlert().show(
                     context, LocaleKeys.descriptionIsRequired.tr(), false);
               } else {
-                addJobViewModel.description = descriptionCnt.text;
-                final success = await addJobViewModel.createService();
-                if (success) {
-                  InformationToast().show(
-                      context, LocaleKeys.serviceCreatedSuccessfully.tr());
-                  await context.router.pushAndPopUntil(const MainRoute(),
-                      predicate: (_) => false);
-                } else {
+                if (BadWords.containsForbiddenWord(descriptionCnt.text)) {
                   WarningAlert().show(
-                      context, LocaleKeys.serviceCouldNotAdd.tr(), false);
+                      context, LocaleKeys.pleaseAvoidBadWords.tr(), true);
+                } else {
+                  addJobViewModel.description = descriptionCnt.text;
+                  final success = await addJobViewModel.createService();
+                  if (success) {
+                    InformationToast().show(context,
+                        LocaleKeys.serviceCreatedSuccessfully.tr());
+                    await context.router.pushAndPopUntil(const MainRoute(),
+                        predicate: (_) => false);
+                  } else {
+                    WarningAlert().show(context,
+                        LocaleKeys.serviceCouldNotAdd.tr(), false);
+                  }
                 }
               }
             },

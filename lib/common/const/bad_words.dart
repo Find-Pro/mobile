@@ -1,4 +1,4 @@
-class CommentFilterService {
+class BadWords {
   static final List<String> forbiddenWords = [
     'am',
     'amcık',

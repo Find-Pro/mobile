@@ -3,9 +3,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
-import 'package:findpro/feature/comment/view/my_comments_view.dart';
-import 'package:findpro/feature/profile/view/comment_and_jobs_page_view.dart';
-import 'package:findpro/feature/profile/view/my_jobs_list_view.dart';
+import 'package:findpro/feature/profile/view/profile_body.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
@@ -46,10 +44,7 @@ class ProfileView extends ConsumerWidget {
                         color: context.themeData.indicatorColor,
                         thickness: 0.5,
                       ),
-                      const CommentAndJobsPageView(
-                        commentWidget: MyCommentsView(),
-                        jobWidget: MyJobsListView(),
-                      )
+                      const ProfileBody()
                     ],
                   )
                 ],

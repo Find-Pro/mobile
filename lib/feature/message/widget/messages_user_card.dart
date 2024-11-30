@@ -41,7 +41,6 @@ class MessagesUserCard extends ConsumerWidget {
                       final success = await ref
                           .read(messagesProvider.notifier)
                           .deleteRoom(messageProfileModel.roomId);
-
                       if (success) {
                         await context.router.pop().then((value) {
                           InformationToast()
@@ -50,7 +49,7 @@ class MessagesUserCard extends ConsumerWidget {
                       } else {
                         await context.router.pop().then((value) {
                           InformationToast()
-                              .show(context, LocaleKeys.error);
+                              .show(context, LocaleKeys.success);
                         });
                       }
                     },

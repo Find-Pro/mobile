@@ -6,7 +6,7 @@ import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
-final class NetworkManager {
+class NetworkManager {
   NetworkManager._() {
     _dio = Dio(
       BaseOptions(

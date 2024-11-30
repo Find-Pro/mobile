@@ -1,26 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/feature/comment/view/user_profile_comments_view.dart';
+import 'package:findpro/feature/user_profile/view/user_profile_jobs_list_view.dart';
+import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CommentAndJobsPageView extends ConsumerStatefulWidget {
-  const CommentAndJobsPageView({
-    required this.jobWidget,
-    required this.commentWidget,
+class UserProfileBody extends ConsumerStatefulWidget {
+  const UserProfileBody({
     super.key,
   });
 
-  final Widget jobWidget;
-  final Widget commentWidget;
-
   @override
-  ConsumerState createState() => _CommentJobsPageViewState();
+  ConsumerState createState() => _UserProfileBodyState();
 }
 
-class _CommentJobsPageViewState
-    extends ConsumerState<CommentAndJobsPageView>
+class _UserProfileBodyState extends ConsumerState<UserProfileBody>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -38,6 +35,7 @@ class _CommentJobsPageViewState
 
   @override
   Widget build(BuildContext context) {
+    final userProfileViewModel = ref.watch(userProfileProvider);
     return SizedBox(
       height: DeviceSize.height(context),
       child: Scaffold(
@@ -63,8 +61,12 @@ class _CommentJobsPageViewState
         body: TabBarView(
           controller: _tabController,
           children: [
-            widget.jobWidget,
-            widget.commentWidget,
+            UserProfileJobsListView(
+              userId: userProfileViewModel.user!.userId!,
+            ),
+            UserProfileCommentsView(
+              userId: userProfileViewModel.user!.userId!,
+            ),
           ],
         ),
       ),

@@ -70,6 +70,7 @@ class JobDetailUserTile extends ConsumerWidget {
                         final res = await ref
                             .read(createChatRoomProvider.notifier)
                             .create(jobViewModel.result!.userId!);
+
                         if (res.success) {
                           await ref
                               .read(messagesProvider.notifier)

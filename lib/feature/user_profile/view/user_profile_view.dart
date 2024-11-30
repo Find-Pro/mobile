@@ -3,14 +3,12 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
-import 'package:findpro/feature/comment/view/user_profile_comments_view.dart';
-import 'package:findpro/feature/profile/view/comment_and_jobs_page_view.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
-import 'package:findpro/feature/user_profile/view/user_profile_jobs_list_view.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:findpro/feature/user_profile/widget/is_following_button.dart';
 import 'package:findpro/feature/user_profile/widget/user_profile_app_bar.dart';
+import 'package:findpro/feature/user_profile/widget/user_profile_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -60,14 +58,7 @@ class UserProfileView extends ConsumerWidget {
                             color: context.themeData.indicatorColor,
                             thickness: 0.7,
                           ),
-                          CommentAndJobsPageView(
-                            commentWidget: UserProfileCommentsView(
-                              userId: userProfileViewModel.user!.userId!,
-                            ),
-                            jobWidget: UserProfileJobsListView(
-                              userId: userProfileViewModel.user!.userId!,
-                            ),
-                          ),
+                          const UserProfileBody(),
                         ],
                       ),
                     ],

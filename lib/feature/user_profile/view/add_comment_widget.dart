@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/const/comment_filter_service.dart';
+import 'package:findpro/common/const/bad_words.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
@@ -82,7 +82,7 @@ class AddCommentView extends ConsumerWidget {
       showWarning(context, LocaleKeys.commentShouldBe10Character.tr());
       return;
     }
-    if (CommentFilterService.containsForbiddenWord(commentText)) {
+    if (BadWords.containsForbiddenWord(commentText)) {
       showWarning(context, LocaleKeys.pleaseAvoidBadWords.tr());
       return;
     }
