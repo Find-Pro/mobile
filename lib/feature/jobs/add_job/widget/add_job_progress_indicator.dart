@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,9 +12,9 @@ class AddJobProgressIndicator extends ConsumerWidget
     final addJobViewModel = ref.watch(addJobProvider.notifier);
     return AppBar(
       leading: IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.arrow_back,
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: Colors.white,
         ),
         onPressed: () {
           addJobViewModel.clear();
@@ -27,16 +26,17 @@ class AddJobProgressIndicator extends ConsumerWidget
           bottom: Radius.circular(5),
         ),
       ),
+      backgroundColor: Colors.grey.shade700,
+      elevation: 4,
       centerTitle: true,
       title: PreferredSize(
         preferredSize: const Size.fromHeight(4),
         child: LinearProgressIndicator(
           value: (index + 1) / 5,
           backgroundColor: Colors.grey[300],
-          color: Theme.of(context).cardColor,
+          color: Colors.blue.shade700,
         ),
       ),
-      backgroundColor: context.themeData.primaryColor,
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
@@ -21,6 +22,7 @@ class UserProfileView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userProfileViewModel = ref.watch(userProfileProvider);
     final userProfileFuture = ref.watch(userProfileFutureProvider(userId));
+    ref.read(profileProvider.notifier).getUser();
     return userProfileFuture.when(
       data: (_) {
         if (userProfileViewModel.user == null) {

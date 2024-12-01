@@ -85,7 +85,7 @@ class _NotificationWidgetState extends State<_NotificationWidget>
             padding:
                 const EdgeInsets.symmetric(horizontal: 14, vertical: 1),
             decoration: BoxDecoration(
-              color: context.themeData.primaryColor,
+              color: Colors.teal,
               borderRadius: BorderRadius.circular(15),
             ),
             child: ListTile(
@@ -93,7 +93,8 @@ class _NotificationWidgetState extends State<_NotificationWidget>
               title: Center(
                 child: Text(
                   widget.text,
-                  style: context.themeData.textTheme.headlineSmall,
+                  style: context.themeData.textTheme.headlineSmall
+                      ?.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -5,6 +5,7 @@ import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
+import 'package:findpro/feature/home/view_model/home_view_model.dart';
 import 'package:findpro/feature/profile/view_model/follow_number_box_view_model.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/user_profile/view_model/follow_view_model.dart';
@@ -50,11 +51,11 @@ class IsFollowingButton extends ConsumerWidget {
                 await ref.read(notificationProvider).sendNotification(
                       isMessage: false,
                       message:
-                          '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} startedToFollowYou'
-                              .tr(),
+                          '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} ${LocaleKeys.startedToFollowYou.tr()}',
                       receiverId: userId.toString(),
                       senderId: currentUser.user!.userId.toString(),
                     );
+                await ref.read(homeProvider.notifier).getJobs();
                 InformationToast().show(
                   context,
                   isCurrentlyFollowing

@@ -17,15 +17,15 @@ class SettingsAppBar extends StatelessWidget
           color: Colors.white,
         ),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.grey.shade700,
+      iconTheme: const IconThemeData(
+        color: Colors.white,
+      ),
       elevation: 4,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(10),
         ),
-      ),
-      iconTheme: const IconThemeData(
-        color: Colors.white,
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class ChangePageButton extends StatelessWidget {
@@ -25,11 +24,11 @@ class ChangePageButton extends StatelessWidget {
       child: FloatingActionButton(
         onPressed: onTap,
         heroTag: heroTag,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.grey.shade700,
         mini: true,
         child: Icon(
           icon,
-          color: context.themeData.scaffoldBackgroundColor,
+          color: Colors.white,
         ),
       ),
     );

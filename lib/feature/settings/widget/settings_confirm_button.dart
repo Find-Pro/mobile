@@ -24,7 +24,7 @@ class SettingsConfirmButton extends ConsumerWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            backgroundColor: context.themeData.primaryColorDark,
+            backgroundColor: Colors.teal,
             padding: const EdgeInsets.symmetric(vertical: 15),
             side: BorderSide.none,
           ),
