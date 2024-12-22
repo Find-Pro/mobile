@@ -1,30 +1,38 @@
 import 'dart:convert';
+import 'package:findpro/common/cache/cache_manager.dart';
+import 'package:findpro/common/services/routes/user_service.dart';
 import 'package:findpro/feature/jobs/add_job/model/city_model.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
-import 'package:findpro/generated/assets.dart';
 import 'package:flutter/services.dart';
 
 class CityHelper {
-  CityHelper._init();
+  CityHelper._init() {
+    getCurrentCountry();
+  }
   static final CityHelper _instance = CityHelper._init();
   static CityHelper get instance => _instance;
+  String country = 'tr';
+
+  Future<void> getCurrentCountry() async {
+    final userId = CacheManager.instance.getUserId();
+    final res = await UserService.instance.profile(userId);
+    // country = res!.user!.userId.toString();
+  }
 
   Future<List<CityModel>> parseCities() async {
-    try {
-      final jsonString = await rootBundle.loadString(Assets.jsonCity);
-      final jsonResponse = json.decode(jsonString);
-      final cityList = jsonResponse as List;
-      return cityList
-          .map((json) => CityModel.fromJson(json as Map<String, dynamic>))
-          .toList();
-    } catch (e) {
-      throw Exception('Error loading city JSON: $e');
-    }
+    final jsonString =
+        await rootBundle.loadString('assets/country/$country/city.json');
+    final jsonResponse = json.decode(jsonString);
+    final cityList = jsonResponse as List;
+    return cityList
+        .map((json) => CityModel.fromJson(json as Map<String, dynamic>))
+        .toList();
   }
 
   Future<List<DistrictModel>> parseDistricts() async {
     try {
-      final jsonString = await rootBundle.loadString(Assets.jsonDistrict);
+      final jsonString = await rootBundle
+          .loadString('assets/country/$country/district.json');
       final jsonResponse = json.decode(jsonString);
       final districtList = jsonResponse as List;
       return districtList
