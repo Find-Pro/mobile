@@ -1,3 +1,4 @@
+// ignore_for_file: must_be_immutable
 import 'package:equatable/equatable.dart';
 import 'package:findpro/feature/jobs/add_job/model/service_model.dart';
 import 'package:flutter/foundation.dart' show immutable;
@@ -10,10 +11,10 @@ part 'category_model.g.dart';
 @immutable
 final class CategoryModel extends INetworkModel<CategoryModel>
     with EquatableMixin {
-  const CategoryModel({
+  CategoryModel({
     required this.id,
-    required this.name,
     required this.services,
+    required this.name,
   });
 
   @override
@@ -27,7 +28,7 @@ final class CategoryModel extends INetworkModel<CategoryModel>
   Map<String, dynamic>? toJson() => _$CategoryModelToJson(this);
 
   final int id;
-  final String name;
+  String name;
   final List<ServiceModel> services;
 
   @override

@@ -1,0 +1,20 @@
+[
+  { "il_id": 1, "id": 1, "name": "Busan" },
+  { "il_id": 1, "id": 2, "name": "Dongnae" },
+  { "il_id": 2, "id": 3, "name": "Daegu" },
+  { "il_id": 3, "id": 4, "name": "Daejeon" },
+  { "il_id": 4, "id": 5, "name": "Gwangju" },
+  { "il_id": 5, "id": 6, "name": "Suwon" },
+  { "il_id": 5, "id": 7, "name": "Tongjin" },
+  { "il_id": 5, "id": 8, "name": "Goyang" },
+  { "il_id": 5, "id": 9, "name": "Sŏngnam" },
+  { "il_id": 5, "id": 10, "name": "Bucheon" },
+  { "il_id": 5, "id": 11, "name": "Anyang" },
+  { "il_id": 5, "id": 12, "name": "Gwangmyeongni" },
+  { "il_id": 5, "id": 13, "name": "Kunp’o" },
+  { "il_id": 5, "id": 14, "name": "Guri" },
+  { "il_id": 6, "id": 15, "name": "Changwon" },
+  { "il_id": 7, "id": 16, "name": "Incheon" },
+  { "il_id": 8, "id": 17, "name": "Seoul" },
+  { "il_id": 9, "id": 18, "name": "Ulsan" }
+]

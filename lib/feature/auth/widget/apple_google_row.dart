@@ -29,7 +29,7 @@ class AppleGoogleRow extends ConsumerWidget {
               _Button(
                 constraints: constraints,
                 onPressed: () {
-                  // AppleLoginManager().login(context, ref);
+                  //  AppleLoginManager().login(context, ref);
                 },
                 logoPath: Assets.iconApplelogo,
                 buttonText: LocaleKeys.loginWithApple.tr(),
@@ -60,7 +60,7 @@ class _Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: constraints.maxWidth - 70,
+        width: constraints.maxWidth - 100,
         height: 50,
         child: ElevatedButton(
           onPressed: onPressed,
@@ -73,17 +73,23 @@ class _Button extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                logoPath,
-              ),
-              20.horizontalSpace,
-              Text(
-                buttonText,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
+              Expanded(
+                  flex: 2,
+                  child: Image.asset(
+                    logoPath,
+                  )),
+              Expanded(
+                  flex: 3,
+                  child: Text(
+                    buttonText,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall
+                        ?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  )),
             ],
           ),
         ),

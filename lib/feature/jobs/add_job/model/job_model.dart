@@ -14,14 +14,11 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
     this.profilePicture,
     this.jobId,
     this.userId,
-    this.jobCategory,
-    this.jobService,
-    this.city,
-    this.district,
     this.jobCategoryId,
     this.cityId,
     this.jobServiceId,
     this.districtId,
+    this.country,
     this.description,
     this.isCompleted,
     this.createdAt,
@@ -36,11 +33,8 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
   final String? mongoDbId;
   final int? jobId;
   final int? userId;
-  final String? jobCategory;
   final DateTime? expiryDate;
-  final String? city;
-  final String? district;
-  final String? jobService;
+  final String? country;
   final int? jobCategoryId;
   final int? cityId;
   final int? districtId;
@@ -68,10 +62,7 @@ final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
         profilePicture,
         expiryDate,
         fullName,
-        jobCategory,
-        city,
-        district,
-        jobService,
+        country,
         jobServiceId,
         jobCategoryId,
         cityId,

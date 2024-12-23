@@ -5,18 +5,18 @@ import 'package:findpro/feature/jobs/add_job/model/city_model.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
 import 'package:flutter/services.dart';
 
-class CityHelper {
-  CityHelper._init() {
+class AddJobCityHelper {
+  AddJobCityHelper._init() {
     getCurrentCountry();
   }
-  static final CityHelper _instance = CityHelper._init();
-  static CityHelper get instance => _instance;
+  static final AddJobCityHelper _instance = AddJobCityHelper._init();
+  static AddJobCityHelper get instance => _instance;
   String country = 'tr';
 
   Future<void> getCurrentCountry() async {
     final userId = CacheManager.instance.getUserId();
     final res = await UserService.instance.profile(userId);
-    // country = res!.user!.userId.toString();
+    country = res!.user!.userId.toString();
   }
 
   Future<List<CityModel>> parseCities() async {

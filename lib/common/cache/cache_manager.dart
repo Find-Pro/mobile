@@ -28,6 +28,16 @@ final class CacheManager {
     prefs.setBool('appleOrGoogle', value);
   }
 
+// User's current Country
+  String? getCountry() {
+    return prefs.getString('country');
+  }
+
+  void setCountry(String value) {
+    prefs.setString('country', value);
+  }
+
+//clear cache
   void clearCache() {
     prefs.clear();
   }

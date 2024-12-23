@@ -18,12 +18,16 @@ class JobDetailBody extends ConsumerWidget {
       children: [
         _BuildDetailRow(
           iconData: Icons.category,
-          bodyText: jobViewModel.result!.jobCategory!,
+          bodyText: ref
+              .watch(jobDetailProvider.notifier)
+              .categoryAndServiceName[0],
           titleText: LocaleKeys.category.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.business_center_outlined,
-          bodyText: jobViewModel.result!.jobService!,
+          bodyText: ref
+              .watch(jobDetailProvider.notifier)
+              .categoryAndServiceName[1],
           titleText: LocaleKeys.service.tr(),
         ),
         _BuildDetailRow(
@@ -39,12 +43,14 @@ class JobDetailBody extends ConsumerWidget {
         ),
         _BuildDetailRow(
           iconData: Icons.location_on_outlined,
-          bodyText: jobViewModel.result!.city!,
+          bodyText:
+              ref.watch(jobDetailProvider.notifier).cityAndDistrictName[0],
           titleText: LocaleKeys.city.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.location_searching,
-          bodyText: jobViewModel.result!.district!,
+          bodyText:
+              ref.watch(jobDetailProvider.notifier).cityAndDistrictName[1],
           titleText: LocaleKeys.district.tr(),
         ),
         _BuildDetailRow(

@@ -14,8 +14,15 @@ class AppLocalization extends EasyLocalization {
         );
 
   static final List<Locale> _supportedLocales = [
-    Locales.tr.locale,
+    Locales.cn.locale,
+    Locales.de.locale,
     Locales.en.locale,
+    Locales.fr.locale,
+    Locales.ind.locale,
+    Locales.jp.locale,
+    Locales.kr.locale,
+    Locales.ru.locale,
+    Locales.tr.locale,
   ];
   static const String _translationPath = 'assets/translations';
   static Future<void> updateLanguage(

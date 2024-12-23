@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/comment/view_model/my_comments_view_model.dart';
 import 'package:findpro/feature/comment/widget/comment_card.dart';
 import 'package:findpro/feature/comment/widget/my_comments_alert_dialog.dart';
@@ -22,7 +22,7 @@ class MyCommentsView extends ConsumerWidget {
       data: (_) {
         if (myCommentViewModel.result == null ||
             myCommentViewModel.result!.isEmpty) {
-          return NoConnectionWidget(text: LocaleKeys.noCommentsFound.tr());
+          return NoDataWidget(text: LocaleKeys.noCommentsFound.tr());
         }
         return Stack(
           children: [
@@ -41,7 +41,9 @@ class MyCommentsView extends ConsumerWidget {
           ],
         );
       },
-      error: (error, stackTrace) => const NoConnectionWidget(),
+      error: (error, stackTrace) => NoDataWidget(
+        text: LocaleKeys.noCommentsFound.tr(),
+      ),
       loading: () => const CustomCircular(),
     );
   }

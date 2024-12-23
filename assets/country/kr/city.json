@@ -1,0 +1,11 @@
+[
+  { "il_id": 1, "name": "Busan" },
+  { "il_id": 2, "name": "Daegu" },
+  { "il_id": 3, "name": "Daejeon" },
+  { "il_id": 4, "name": "Gwangju" },
+  { "il_id": 5, "name": "Gyeonggi" },
+  { "il_id": 6, "name": "Gyeongnam" },
+  { "il_id": 7, "name": "Incheon" },
+  { "il_id": 8, "name": "Seoul" },
+  { "il_id": 9, "name": "Ulsan" }
+]

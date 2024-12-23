@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart' show AutoRouterX, RoutePage;
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
 import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
@@ -26,7 +26,7 @@ class UserProfileView extends ConsumerWidget {
     return userProfileFuture.when(
       data: (_) {
         if (userProfileViewModel.user == null) {
-          return const NoConnectionWidget();
+          return const NoDataWidget();
         }
         return Scaffold(
           // ignore: deprecated_member_use
@@ -71,7 +71,7 @@ class UserProfileView extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => const NoConnectionWidget(),
+      error: (error, stackTrace) => const NoDataWidget(),
       loading: () => const CustomCircular(),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follower_list_tile.dart';
 import 'package:findpro/feature/profile/widget/following_search_bar.dart';
@@ -35,7 +35,7 @@ class FollowingView extends ConsumerWidget {
             ],
           ),
           body: filteredFollowings == null || filteredFollowings.isEmpty
-              ? NoConnectionWidget(
+              ? NoDataWidget(
                   text: LocaleKeys.noFollowingFound.tr(),
                 )
               : ListView.builder(
@@ -53,7 +53,9 @@ class FollowingView extends ConsumerWidget {
                 ),
         );
       },
-      error: (error, stackTrace) => const NoConnectionWidget(),
+      error: (error, stackTrace) => NoDataWidget(
+        text: LocaleKeys.noFollowingFound.tr(),
+      ),
       loading: () => const CustomCircular(),
     );
   }

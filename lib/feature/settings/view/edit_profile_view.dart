@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/information_toast.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/widget/string_text_field.dart';
 import 'package:findpro/feature/settings/view_model/edit_profile_view_model.dart';
@@ -35,45 +35,48 @@ class EditProfileView extends ConsumerWidget {
         body: profileFuture.when(
             data: (_) {
               if (!ref.watch(editProfileProvider).success) {
-                return const NoConnectionWidget();
+                return const NoDataWidget();
               }
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  StringTextField(
-                    controller: mailCnt,
-                    hintText: LocaleKeys.email.tr(),
-                    iconData: Icons.email,
-                  ),
-                  30.verticalSpace,
-                  StringTextField(
-                    controller: fullNameCnt,
-                    hintText: LocaleKeys.fullName.tr(),
-                    iconData: Icons.person_outline,
-                  ),
-                  30.verticalSpace,
-                  SettingsConfirmButton(
-                    text: LocaleKeys.updateProfile.tr(),
-                    onTap: () async {
-                      final success = await ref
-                          .read(editProfileProvider.notifier)
-                          .updateProfile(
-                            fullNameCnt.text,
-                            mailCnt.text,
-                          );
-                      if (success) {
-                        InformationToast()
-                            .show(context, LocaleKeys.profileUpdated.tr());
-                      } else {
-                        WarningAlert()
-                            .show(context, LocaleKeys.error.tr(), true);
-                      }
-                    },
-                  )
-                ],
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    //    const SelectCountryList(),
+                    30.verticalSpace,
+                    StringTextField(
+                      controller: mailCnt,
+                      hintText: LocaleKeys.email.tr(),
+                      iconData: Icons.email,
+                    ),
+                    30.verticalSpace,
+                    StringTextField(
+                      controller: fullNameCnt,
+                      hintText: LocaleKeys.fullName.tr(),
+                      iconData: Icons.person_outline,
+                    ),
+                    30.verticalSpace,
+                    SettingsConfirmButton(
+                      text: LocaleKeys.updateProfile.tr(),
+                      onTap: () async {
+                        final success = await ref
+                            .read(editProfileProvider.notifier)
+                            .updateProfile(
+                              fullNameCnt.text,
+                              mailCnt.text,
+                            );
+                        if (success) {
+                          InformationToast().show(
+                              context, LocaleKeys.profileUpdated.tr());
+                        } else {
+                          WarningAlert()
+                              .show(context, LocaleKeys.error.tr(), true);
+                        }
+                      },
+                    )
+                  ],
+                ),
               );
             },
-            error: (error, stackTrace) => const NoConnectionWidget(),
+            error: (error, stackTrace) => const NoDataWidget(),
             loading: () => const CustomCircular()));
   }
 }

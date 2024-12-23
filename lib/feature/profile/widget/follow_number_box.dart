@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/profile/view_model/follow_number_box_view_model.dart';
 import 'package:findpro/feature/user_profile/widget/user_profile_more_icon_alert.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -112,7 +112,9 @@ class FollowNumberBox extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => const NoConnectionWidget(),
+      error: (error, stackTrace) => NoDataWidget(
+        text: LocaleKeys.noDataFound.tr(),
+      ),
       loading: () => const CustomCircular(),
     );
   }

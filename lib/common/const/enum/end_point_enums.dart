@@ -4,6 +4,7 @@ enum EndPointEnums {
   userProfile('/user/profile'),
   userUpdate('/user/updateProfile'),
   userUpdatePassword('/user/updatePassword'),
+  userChangeCountry('user/changeCountry'),
   userList('/user/list'),
   userRemoveAccount('/user/removeAccount'),
   commentAdd('/comment/add'),

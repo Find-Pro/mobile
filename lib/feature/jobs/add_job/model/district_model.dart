@@ -10,18 +10,18 @@ part 'district_model.g.dart';
 final class DistrictModel extends INetworkModel<DistrictModel>
     with EquatableMixin {
   DistrictModel({
-    this.ilId,
-    this.id,
-    this.name,
+    required this.ilId,
+    required this.id,
+    required this.name,
   });
 
   factory DistrictModel.fromJson(Map<String, dynamic> json) =>
       _$DistrictModelFromJson(json);
 
   @JsonKey(name: 'il_id')
-  final int? ilId;
-  final String? name;
-  final int? id;
+  final int ilId;
+  final String name;
+  final int id;
 
   @override
   DistrictModel fromJson(Map<String, dynamic> json) =>

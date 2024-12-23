@@ -7,6 +7,6 @@ abstract class UserOperation {
   Future<UpdateProfileResponse?> updateProfile(
       String fullName, String email);
   Future<SuccessAndMessageResponse?> updatePassword(String password);
-
+  Future<SuccessAndMessageResponse?> updateCountry(String country);
   Future<SuccessAndMessageResponse?> removeAccount();
 }

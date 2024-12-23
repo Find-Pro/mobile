@@ -1,4 +1,4 @@
-import 'package:findpro/feature/jobs/add_job/helper/city_helper.dart';
+import 'package:findpro/feature/jobs/add_job/helper/add_job_city_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/city_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
 import 'package:findpro/feature/search/view_model/search_input_view_model.dart';
@@ -23,7 +23,7 @@ class _SearchCityWidgetState extends ConsumerState<SearchCityWidget> {
   }
 
   Future<void> getData() async {
-    cities = await CityHelper.instance.getAllCities();
+    cities = await AddJobCityHelper.instance.getAllCities();
     setState(() {});
   }
 

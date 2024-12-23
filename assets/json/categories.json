@@ -1,0 +1,17 @@
+[
+  {"id": 1, "name": "cleaningServices", "services": []},
+  {"id": 2, "name": "renovationDecorationAndConstructionServices", "services": []},
+  {"id": 3, "name": "transportationAndStorageServices", "services": []},
+  {"id": 4, "name": "allAssemblyAndRepairServices", "services": []},
+  {"id": 5, "name": "tutoringServices", "services": []},
+  {"id": 6, "name": "healthAndBeautyServices", "services": []},
+  {"id": 7, "name": "organizationServices", "services": []},
+  {"id": 8, "name": "photoAndVideo", "services": []},
+  {"id": 9, "name": "digitalAndEnterprise", "services": []},
+  {"id": 10, "name": "pets", "services": []},
+  {"id": 11, "name": "autoAndVehicle", "services": []},
+  {"id": 12, "name": "other", "services": []}
+]
+
+
+

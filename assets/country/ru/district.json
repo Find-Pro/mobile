@@ -1,0 +1,554 @@
+[
+  {"id": 1, "il_id": 1, "name": "Maykop"},
+  {"id": 2, "il_id": 2, "name": "Gorno-Altaysk"},
+  {"id": 3, "il_id": 3, "name": "Barnaul"},
+  {"id": 4, "il_id": 3, "name": "Biysk"},
+  {"id": 5, "il_id": 3, "name": "Rubtsovsk"},
+  {"id": 6, "il_id": 4, "name": "Blagoveshchensk"},
+  {"id": 7, "il_id": 5, "name": "Arkhangelsk"},
+  {"id": 8, "il_id": 5, "name": "Severodvinsk"},
+  {"id": 9, "il_id": 6, "name": "Astrakhan"},
+  {"id": 10, "il_id": 6, "name": "Solyanka"},
+  {"id": 11, "il_id": 7, "name": "Ufa"},
+  {"id": 12, "il_id": 7, "name": "Sterlitamak"},
+  {"id": 13, "il_id": 7, "name": "Salavat"},
+  {"id": 14, "il_id": 7, "name": "Neftekamsk"},
+  {"id": 15, "il_id": 7, "name": "Oktyabr’skiy"},
+  {"id": 16, "il_id": 8, "name": "Belgorod"},
+  {"id": 17, "il_id": 8, "name": "Staryy Oskol"},
+  {"id": 18, "il_id": 9, "name": "Bryansk"},
+  {"id": 19, "il_id": 10, "name": "Ulan-Ude"},
+  {"id": 20, "il_id": 11, "name": "Groznyy"},
+  {"id": 21, "il_id": 12, "name": "Chelyabinsk"},
+  {"id": 22, "il_id": 12, "name": "Magnitogorsk"},
+  {"id": 23, "il_id": 12, "name": "Zlatoust"},
+  {"id": 24, "il_id": 12, "name": "Miass"},
+  {"id": 25, "il_id": 12, "name": "Kopeysk"},
+  {"id": 26, "il_id": 13, "name": "Anadyr"},
+  {"id": 27, "il_id": 14, "name": "Cheboksary"},
+  {"id": 28, "il_id": 14, "name": "Novocheboksarsk"},
+  {"id": 29, "il_id": 14, "name": "Kanash"},
+  {"id": 30, "il_id": 14, "name": "Shumerlya"},
+  {"id": 31, "il_id": 15, "name": "Makhachkala"},
+  {"id": 32, "il_id": 15, "name": "Khasavyurt"},
+  {"id": 33, "il_id": 15, "name": "Kaspiysk"},
+  {"id": 34, "il_id": 15, "name": "Derbent"},
+  {"id": 35, "il_id": 15, "name": "Buynaksk"},
+  {"id": 36, "il_id": 15, "name": "Kizlyar"},
+  {"id": 37, "il_id": 15, "name": "Dagestanskiye Ogni"},
+  {"id": 38, "il_id": 16, "name": "Nazran"},
+  {"id": 39, "il_id": 16, "name": "Magas"},
+  {"id": 40, "il_id": 17, "name": "Irkutsk"},
+  {"id": 41, "il_id": 17, "name": "Bratsk"},
+  {"id": 42, "il_id": 17, "name": "Angarsk"},
+  {"id": 43, "il_id": 18, "name": "Ivanovo"},
+  {"id": 44, "il_id": 18, "name": "Kineshma"},
+  {"id": 45, "il_id": 18, "name": "Shuya"},
+  {"id": 46, "il_id": 18, "name": "Kokhma"},
+  {"id": 47, "il_id": 19, "name": "Nalchik"},
+  {"id": 48, "il_id": 19, "name": "Prokhladnyy"},
+  {"id": 49, "il_id": 19, "name": "Baksan"},
+  {"id": 50, "il_id": 19, "name": "Khasanya"},
+  {"id": 51, "il_id": 19, "name": "Kenzhe"},
+  {"id": 52, "il_id": 19, "name": "Belaya Rechka"},
+  {"id": 53, "il_id": 20, "name": "Kaliningrad"},
+  {"id": 54, "il_id": 20, "name": "Pionerskiy"},
+  {"id": 55, "il_id": 21, "name": "Elista"},
+  {"id": 56, "il_id": 22, "name": "Petropavlovsk-Kamchatskiy"},
+  {"id": 57, "il_id": 23, "name": "Cherkessk"},
+  {"id": 58, "il_id": 23, "name": "Karachayevsk"},
+  {"id": 59, "il_id": 24, "name": "Petrozavodsk"},
+  {"id": 60, "il_id": 25, "name": "Kemerovo"},
+  {"id": 61, "il_id": 25, "name": "Novokuznetsk"},
+  {"id": 62, "il_id": 25, "name": "Prokopyevsk"},
+  {"id": 63, "il_id": 25, "name": "Yurga"},
+  {"id": 64, "il_id": 26, "name": "Khabarovsk"},
+  {"id": 65, "il_id": 26, "name": "Komsomol’sk-na-Amure"},
+  {"id": 66, "il_id": 27, "name": "Abakan"},
+  {"id": 67, "il_id": 27, "name": "Chernogorsk"},
+  {"id": 68, "il_id": 28, "name": "Surgut"},
+  {"id": 69, "il_id": 28, "name": "Nizhnevartovsk"},
+  {"id": 70, "il_id": 28, "name": "Nefteyugansk"},
+  {"id": 71, "il_id": 28, "name": "Khanty-Mansiysk"},
+  {"id": 72, "il_id": 29, "name": "Kirov"},
+  {"id": 73, "il_id": 29, "name": "Kirovo-Chepetsk"},
+  {"id": 74, "il_id": 29, "name": "Novovyatsk"},
+  {"id": 75, "il_id": 30, "name": "Syktyvkar"},
+    {
+      "id": 76,
+      "il_id": 31,
+      "name": "Kostroma"
+    },
+    {
+      "id": 77,
+      "il_id": 32,
+      "name": "Krasnodar"
+    },
+    {
+      "id": 78,
+      "il_id": 32,
+      "name": "Sochi"
+    },
+    {
+      "id": 79,
+      "il_id": 32,
+      "name": "Novorossiysk"
+    },
+    {
+      "id": 80,
+      "il_id": 32,
+      "name": "Armavir"
+    },
+    {
+      "id": 81,
+      "il_id": 32,
+      "name": "Krasnoyarsk"
+    },
+    {
+      "id": 82,
+      "il_id": 32,
+      "name": "Noginsk"
+    },
+    {
+      "id": 83,
+      "il_id": 32,
+      "name": "Norilsk"
+    },
+    {
+      "id": 84,
+      "il_id": 32,
+      "name": "Achinsk"
+    },
+    {
+      "id": 85,
+      "il_id": 32,
+      "name": "Sosnovoborsk"
+    },
+    {
+      "id": 86,
+      "il_id": 34,
+      "name": "Kurgan"
+    },
+    {
+      "id": 87,
+      "il_id": 35,
+      "name": "Kursk"
+    },
+    {
+      "id": 88,
+      "il_id": 35,
+      "name": "Zheleznogorsk"
+    },
+    {
+      "id": 89,
+      "il_id": 36,
+      "name": "Gatchina"
+    },
+    {
+      "id": 90,
+      "il_id": 36,
+      "name": "Kudrovo"
+    },
+    {
+      "id": 91,
+      "il_id": 37,
+      "name": "Lipetsk"
+    },
+    {
+      "id": 92,
+      "il_id": 37,
+      "name": "Yelets"
+    },
+    {
+      "id": 93,
+      "il_id": 38,
+      "name": "Magadan"
+    },
+    {
+      "id": 94,
+      "il_id": 39,
+      "name": "Yoshkar-Ola"
+    },
+    {
+      "id": 95,
+      "il_id": 39,
+      "name": "Volzhsk"
+    },
+    {
+      "id": 96,
+      "il_id": 39,
+      "name": "Kozmodemyansk"
+    },
+    {
+      "id": 97,
+      "il_id": 40,
+      "name": "Saransk"
+    },
+    {
+      "id": 98,
+      "il_id": 41,
+      "name": "Balashikha"
+    },
+    {
+      "id": 99,
+      "il_id": 41,
+      "name": "Podolsk"
+    },
+    {
+      "id": 100,
+      "il_id": 41,
+      "name": "Khimki"
+    },
+    {
+      "id": 101,
+      "il_id": 41,
+      "name": "Korolëv"
+    },
+    {
+      "id": 102,
+      "il_id": 41,
+      "name": "Mytishchi"
+    },
+    {
+      "id": 103,
+      "il_id": 41,
+      "name": "Lyubertsy"
+    },
+    {
+      "id": 104,
+      "il_id": 41,
+      "name": "Krasnogorsk"
+    },
+    {
+      "id": 105,
+      "il_id": 41,
+      "name": "Elektrostal"
+    },
+    {
+      "id": 106,
+      "il_id": 41,
+      "name": "Odintsovo"
+    },
+    {
+      "id": 107,
+      "il_id": 41,
+      "name": "Kolomna"
+    },
+    {
+      "id": 108,
+      "il_id": 41,
+      "name": "Domodedovo"
+    },
+    {
+      "id": 109,
+      "il_id": 41,
+      "name": "Serpukhov"
+    },
+    {
+      "id": 110,
+      "il_id": 41,
+      "name": "Shchelkovo"
+    },
+    {
+      "id": 111,
+      "il_id": 41,
+      "name": "Orekhovo-Zuyevo"
+    },
+    {
+      "id": 112,
+      "il_id": 41,
+      "name": "Ramenskoye"
+    },
+    {
+      "id": 113,
+      "il_id": 41,
+      "name": "Dolgoprudnyy"
+    },
+    {
+      "id": 114,
+      "il_id": 41,
+      "name": "Zhukovskiy"
+    },
+    {
+      "id": 115,
+      "il_id": 41,
+      "name": "Reutov"
+    },
+    {
+      "id": 116,
+      "il_id": 41,
+      "name": "Pushkino"
+    },
+    {
+      "id": 117,
+      "il_id": 41,
+      "name": "Sergiyev Posad"
+    },
+    {
+      "id": 118,
+      "il_id": 41,
+      "name": "Noginsk"
+    },
+    {
+      "id": 119,
+      "il_id": 41,
+      "name": "Lobnya"
+    },
+    {
+      "id": 120,
+      "il_id": 41,
+      "name": "Ivanteyevka"
+    },
+    {
+      "id": 121,
+      "il_id": 41,
+      "name": "Fryazino"
+    },
+    {
+      "id": 122,
+      "il_id": 41,
+      "name": "Lytkarino"
+    },
+    {
+      "id": 123,
+      "il_id": 41,
+      "name": "Klimovsk"
+    },
+    {
+      "id": 124,
+      "il_id": 41,
+      "name": "Dzerzhinskiy"
+    },
+    {
+      "id": 125,
+      "il_id": 41,
+      "name": "Moskovskiy"
+    },
+    {
+      "id": 126,
+      "il_id": 41,
+      "name": "Kotelniki"
+    },
+    {
+      "id": 127,
+      "il_id": 41,
+      "name": "Krasnoznamensk"
+    },
+    {
+      "id": 128,
+      "il_id": 41,
+      "name": "Protvino"
+    },
+    {
+      "id": 129,
+      "il_id": 41,
+      "name": "Losino-Petrovskiy"
+    },
+    {
+      "id": 130,
+      "il_id": 41,
+      "name": "Kraskovo"
+    },
+    {
+      "id": 131,
+      "il_id": 41,
+      "name": "Udelnaya"
+    },
+    {
+      "id": 132,
+      "il_id": 41,
+      "name": "Vlasikha"
+    },
+    {
+      "id": 133,
+      "il_id": 42,
+      "name": "Moscow"
+    },
+    {
+      "id": 134,
+      "il_id": 42,
+      "name": "Orekhovo-Borisovo Yuzhnoye"
+    },
+    {
+      "id": 135,
+      "il_id": 43,
+      "name": "Murmansk"
+    },
+    {
+      "id": 136,
+      "il_id": 44,
+      "name": "Nar’yan-Mar"
+    },
+    {
+      "id": 137,
+      "il_id": 45,
+      "name": "Nizhniy Novgorod"
+    },
+    {
+      "id": 138,
+      "il_id": 45,
+      "name": "Dzerzhinsk"
+    },
+    {
+      "id": 139,
+      "il_id": 45,
+      "name": "Arzamas"
+    },
+    {
+      "id": 140,
+      "il_id": 46,
+      "name": "Vladikavkaz"
+    },
+    {
+      "id": 141,
+      "il_id": 47,
+      "name": "Velikiy Novgorod"
+    },
+    {
+      "id": 142,
+      "il_id": 48,
+      "name": "Novosibirsk"
+    },
+    {
+      "id": 143,
+      "il_id": 48,
+      "name": "Berdsk"
+    },
+    {
+      "id": 144,
+      "il_id": 48,
+      "name": "Iskitim"
+    },
+    {
+      "id": 145,
+      "il_id": 49,
+      "name": "Omsk"
+    },
+    {
+      "id": 146,
+      "il_id": 50,
+      "name": "Orenburg"
+    },
+    {
+      "id": 147,
+      "il_id": 50,
+      "name": "Orsk"
+    },
+    {
+      "id": 148,
+      "il_id": 50,
+      "name": "Buzuluk"
+    },
+    {
+      "id": 149,
+      "il_id": 51,
+      "name": "Orël"
+    },
+    {
+      "id": 150,
+      "il_id": 51,
+      "name": "Mtsensk"
+    },
+    {
+      "id": 151,
+      "il_id": 52,
+      "name": "Penza"
+    },
+    {
+      "id": 152,
+      "il_id": 52,
+      "name": "Kuznetsk"
+    },
+    {
+      "id": 153,
+      "il_id": 53,
+      "name": "Perm"
+    },
+    {
+      "id": 154,
+      "il_id": 53,
+      "name": "Berezniki"
+    },
+    {"id": 155, "il_id": 54, "name": "Vladivostok"},
+    {"id": 156, "il_id": 54, "name": "Ussuriysk"},
+    {"id": 157, "il_id": 54, "name": "Nakhodka"},
+    {"id": 158, "il_id": 54, "name": "Artëm"},
+    {"id": 159, "il_id": 55, "name": "Pskov"},
+    {"id": 160, "il_id": 55, "name": "Velikiye Luki"},
+    {"id": 161, "il_id": 56, "name": "Rostov"},
+    {"id": 162, "il_id": 56, "name": "Taganrog"},
+    {"id": 163, "il_id": 56, "name": "Shakhty"},
+    {"id": 164, "il_id": 56, "name": "Volgodonsk"},
+    {"id": 165, "il_id": 56, "name": "Novocherkassk"},
+    {"id": 166, "il_id": 56, "name": "Bataysk"},
+    {"id": 167, "il_id": 56, "name": "Novoshakhtinsk"},
+    {"id": 168, "il_id": 56, "name": "Gukovo"},
+    {"id": 169, "il_id": 57, "name": "Ryazan"},
+    {"id": 170, "il_id": 57, "name": "Kasimov"},
+    {"id": 171, "il_id": 58, "name": "Yakutsk"},
+    {"id": 172, "il_id": 59, "name": "Yuzhno-Sakhalinsk"},
+    {"id": 173, "il_id": 59, "name": "Samara"},
+    {"id": 174, "il_id": 59, "name": "Tolyatti"},
+    {"id": 175, "il_id": 59, "name": "Syzran"},
+    {"id": 176, "il_id": 59, "name": "Novokuybyshevsk"},
+    {"id": 177, "il_id": 59, "name": "Timofeyevka"},
+    {"id": 178, "il_id": 60, "name": "Saint Petersburg"},
+    {"id": 179, "il_id": 60, "name": "Kolpino"},
+    {"id": 180, "il_id": 61, "name": "Saratov"},
+    {"id": 181, "il_id": 61, "name": "Engels"},
+    {"id": 182, "il_id": 61, "name": "Balakovo"},
+    {"id": 183, "il_id": 62, "name": "Smolensk"},
+    {"id": 184, "il_id": 62, "name": "Desnogorsk"},
+    {"id": 185, "il_id": 63, "name": "Stavropol"},
+    {"id": 186, "il_id": 63, "name": "Pyatigorsk"},
+    {"id": 187, "il_id": 63, "name": "Kislovodsk"},
+    {"id": 188, "il_id": 63, "name": "Nevinnomyssk"},
+    {"id": 189, "il_id": 63, "name": "Yessentuki"},
+    {"id": 190, "il_id": 63, "name": "Georgiyevsk"},
+    {"id": 191, "il_id": 64, "name": "Yekaterinburg"},
+    {"id": 192, "il_id": 64, "name": "Nizhniy Tagil"},
+    {"id": 193, "il_id": 64, "name": "Kamensk-Ural’skiy"},
+    {"id": 194, "il_id": 64, "name": "Pervouralsk"},
+    {"id": 195, "il_id": 65, "name": "Tambov"},
+    {"id": 196, "il_id": 65, "name": "Morshansk"},
+    {"id": 197, "il_id": 65, "name": "Kotovsk"},
+    {"id": 198, "il_id": 65, "name": "Kirsanov"},
+    {"id": 199, "il_id": 66, "name": "Kazan"},
+    {"id": 200, "il_id": 66, "name": "Naberezhnyye Chelny"},
+    {"id": 201, "il_id": 66, "name": "Nizhnekamsk"},
+    {"id": 202, "il_id": 66, "name": "Almetyevsk"},
+    {"id": 203, "il_id": 66, "name": "Zelënodol’sk"},
+    {"id": 204, "il_id": 67, "name": "Tomsk"},
+    {"id": 205, "il_id": 67, "name": "Seversk"},
+    {"id": 206, "il_id": 67, "name": "Dzerzhinskoye"},
+    {"id": 207, "il_id": 68, "name": "Tula"},
+    {"id": 208, "il_id": 68, "name": "Novomoskovsk"},
+    {"id": 209, "il_id": 69, "name": "Tver"},
+    {"id": 210, "il_id": 69, "name": "Udomlya"},
+    {"id": 211, "il_id": 70, "name": "Tyumen"},
+    {"id": 212, "il_id": 70, "name": "Ishim"},
+    {"id": 213, "il_id": 71, "name": "Kyzyl"},
+    {"id": 214, "il_id": 72, "name": "Izhevsk"},
+    {"id": 215, "il_id": 72, "name": "Mozhga"},
+    {"id": 216, "il_id": 73, "name": "Ulyanovsk"},
+    {"id": 217, "il_id": 73, "name": "Dimitrovgrad"},
+    {"id": 218, "il_id": 74, "name": "Vladimir"},
+    {"id": 219, "il_id": 74, "name": "Kovrov"},
+    {"id": 220, "il_id": 74, "name": "Murom"},
+    {"id": 221, "il_id": 75, "name": "Volgograd"},
+    {"id": 222, "il_id": 75, "name": "Volzhskiy"},
+    {"id": 223, "il_id": 75, "name": "Kamyshin"},
+    {"id": 224, "il_id": 76, "name": "Cherepovets"},
+    {"id": 225, "il_id": 76, "name": "Vologda"},
+    {"id": 226, "il_id": 76, "name": "Molochnoye"},
+    {"id": 227, "il_id": 77, "name": "Voronezh"},
+    {"id": 228, "il_id": 78, "name": "Novyy Urengoy"},
+    {"id": 229, "il_id": 78, "name": "Noyabrsk"},
+    {"id": 230, "il_id": 78, "name": "Salekhard"},
+    {"id": 231, "il_id": 79, "name": "Yaroslavl"},
+    {"id": 232, "il_id": 79, "name": "Rybinsk"},
+    {"id": 233, "il_id": 79, "name": "Pereslavl’-Zalesskiy"},
+    {"id": 234, "il_id": 80, "name": "Birobidzhan"},
+    {"id": 235, "il_id": 81, "name": "Chita"}
+
+]

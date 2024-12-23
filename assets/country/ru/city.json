@@ -1,0 +1,326 @@
+[
+  {
+    "il_id": 1,
+    "name": "Adygeya"
+  },
+  {
+    "il_id": 2,
+    "name": "Altay"
+  },
+  {
+    "il_id": 3,
+    "name": "Altayskiy Kray"
+  },
+  {
+    "il_id": 4,
+    "name": "Amurskaya Oblast’"
+  },
+  {
+    "il_id": 5,
+    "name": "Arkhangel’skaya Oblast’"
+  },
+  {
+    "il_id": 6,
+    "name": "Astrakhanskaya Oblast’"
+  },
+  {
+    "il_id": 7,
+    "name": "Bashkortostan"
+  },
+  {
+    "il_id": 8,
+    "name": "Belgorodskaya Oblast’"
+  },
+  {
+    "il_id": 9,
+    "name": "Bryanskaya Oblast’"
+  },
+  {
+    "il_id": 10,
+    "name": "Buryatiya"
+  },
+  {
+    "il_id": 11,
+    "name": "Chechnya"
+  },
+  {
+    "il_id": 12,
+    "name": "Chelyabinskaya Oblast’"
+  },
+  {
+    "il_id": 13,
+    "name": "Chukotskiy Avtonomnyy Okrug"
+  },
+  {
+    "il_id": 14,
+    "name": "Chuvashiya"
+  },
+  {
+    "il_id": 15,
+    "name": "Dagestan"
+  },
+  {
+    "il_id": 16,
+    "name": "Ingushetiya"
+  },
+  {
+    "il_id": 17,
+    "name": "Irkutskaya Oblast’"
+  },
+  {
+    "il_id": 18,
+    "name": "Ivanovskaya Oblast’"
+  },
+  {
+    "il_id": 19,
+    "name": "Kabardino-Balkariya"
+  },
+  {
+    "il_id": 20,
+    "name": "Kaliningradskaya Oblast’"
+  },
+  {
+    "il_id": 21,
+    "name": "Kalmykiya"
+  },
+  {
+    "il_id": 22,
+    "name": "Kamchatskiy Kray"
+  },
+  {
+    "il_id": 23,
+    "name": "Karachayevo-Cherkesiya"
+  },
+  {
+    "il_id": 24,
+    "name": "Kareliya"
+  },
+  {
+    "il_id": 25,
+    "name": "Kemerovskaya Oblast’"
+  },
+  {
+    "il_id": 26,
+    "name": "Khabarovskiy Kray"
+  },
+  {
+    "il_id": 27,
+    "name": "Khakasiya"
+  },
+  {
+    "il_id": 28,
+    "name": "Khanty-Mansiyskiy Avtonomnyy Okrug-Yugra"
+  },
+  {
+    "il_id": 29,
+    "name": "Kirovskaya Oblast’"
+  },
+  {
+    "il_id": 30,
+    "name": "Komi"
+  },
+  {
+    "il_id": 31,
+    "name": "Kostromskaya Oblast’"
+  },
+  {
+    "il_id": 32,
+    "name": "Krasnodarskiy Kray"
+  },
+  {
+    "il_id": 33,
+    "name": "Krasnoyarskiy Kray"
+  },
+  {
+    "il_id": 34,
+    "name": "Kurganskaya Oblast’"
+  },
+  {
+    "il_id": 35,
+    "name": "Kurskaya Oblast’"
+  },
+  {
+    "il_id": 36,
+    "name": "Leningradskaya Oblast’"
+  },
+  {
+    "il_id": 37,
+    "name": "Lipetskaya Oblast’"
+  },
+  {
+    "il_id": 38,
+    "name": "Magadanskaya Oblast’"
+  },
+  {
+    "il_id": 39,
+    "name": "Mariy-El"
+  },
+  {
+    "il_id": 40,
+    "name": "Mordoviya"
+  },
+  {
+    "il_id": 41,
+    "name": "Moskovskaya Oblast’"
+  },
+  {
+    "il_id": 42,
+    "name": "Moskva"
+  },
+  {
+    "il_id": 43,
+    "name": "Murmanskaya Oblast’"
+  },
+  {
+    "il_id": 44,
+    "name": "Nenetskiy Avtonomnyy Okrug"
+  },
+  {
+    "il_id": 45,
+    "name": "Nizhegorodskaya Oblast’"
+  },
+  {
+    "il_id": 46,
+    "name": "North Ossetia"
+  },
+  {
+    "il_id": 47,
+    "name": "Novgorodskaya Oblast’"
+  },
+  {
+    "il_id": 48,
+    "name": "Novosibirskaya Oblast’"
+  },
+  {
+    "il_id": 49,
+    "name": "Omskaya Oblast’"
+  },
+  {
+    "il_id": 50,
+    "name": "Orenburgskaya Oblast’"
+  },
+  {
+    "il_id": 51,
+    "name": "Orlovskaya Oblast’"
+  },
+  {
+    "il_id": 52,
+    "name": "Penzenskaya Oblast’"
+  },
+  {
+    "il_id": 53,
+    "name": "Permskiy Kray"
+  },
+  {
+    "il_id": 54,
+    "name": "Primorskiy Kray"
+  },
+  {
+    "il_id": 55,
+    "name": "Pskovskaya Oblast’"
+  },
+  {
+    "il_id": 56,
+    "name": "Rostovskaya Oblast’"
+  },
+  {
+    "il_id": 57,
+    "name": "Ryazanskaya Oblast’"
+  },
+  {
+    "il_id": 58,
+    "name": "Sakha (Yakutiya)"
+  },
+  {
+    "il_id": 59,
+    "name": "Samarskaya Oblast’"
+  },
+  {
+    "il_id": 60,
+    "name": "Sankt-Peterburg"
+  },
+  {
+    "il_id": 61,
+    "name": "Saratovskaya Oblast’"
+  },
+  {
+    "il_id": 62,
+    "name": "Smolenskaya Oblast’"
+  },
+  {
+    "il_id": 63,
+    "name": "Stavropol’skiy Kray"
+  },
+  {
+    "il_id": 64,
+    "name": "Sverdlovskaya Oblast’"
+  },
+  {
+    "il_id": 65,
+    "name": "Tambovskaya Oblast’"
+  },
+  {
+    "il_id": 66,
+    "name": "Tatarstan"
+  },
+  {
+    "il_id": 67,
+    "name": "Tomskaya Oblast’"
+  },
+  {
+    "il_id": 68,
+    "name": "Tul’skaya Oblast’"
+  },
+  {
+    "il_id": 69,
+    "name": "Tverskaya Oblast’"
+  },
+  {
+    "il_id": 70,
+    "name": "Tyumenskaya Oblast’"
+  },
+  {
+    "il_id": 71,
+    "name": "Tyva"
+  },
+  {
+    "il_id": 72,
+    "name": "Udmurtiya"
+  },
+  {
+    "il_id": 73,
+    "name": "Ul’yanovskaya Oblast’"
+  },
+  {
+    "il_id": 74,
+    "name": "Vladimirskaya Oblast’"
+  },
+  {
+    "il_id": 75,
+    "name": "Volgogradskaya Oblast’"
+  },
+  {
+    "il_id": 76,
+    "name": "Vologodskaya Oblast’"
+  },
+  {
+    "il_id": 77,
+    "name": "Voronezhskaya Oblast’"
+  },
+  {
+    "il_id": 78,
+    "name": "Yamalo-Nenetskiy Avtonomnyy Okrug"
+  },
+  {
+    "il_id": 79,
+    "name": "Yaroslavskaya Oblast’"
+  },
+  {
+    "il_id": 80,
+    "name": "Yevreyskaya Avtonomnaya Oblast’"
+  },
+  {
+    "il_id": 81,
+    "name": "Zabaykal’skiy Kray"
+  }
+]

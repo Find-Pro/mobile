@@ -30,6 +30,7 @@ class GoogleLoginManager {
             await AuthService.instance.registerWithToken(
           user.id,
           user.email,
+          context.locale.languageCode,
           EndPointEnums.registerWithGoogle,
         );
         if (registerResponse != null && registerResponse.success) {

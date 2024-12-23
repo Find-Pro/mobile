@@ -11,9 +11,9 @@ class UserModel with _$UserModel {
   factory UserModel({
     @JsonKey(name: '_id') String? mongoDbId,
     @Default(0) int? userId,
-    @Default(false) bool? isMaster,
     @Default('') String? fullName,
     @Default('') String? email,
+    @Default('') String? country,
     @Default([]) List<CommentModel>? ratings,
     @Default('') String? password,
     @Default('') String? profilePicture,

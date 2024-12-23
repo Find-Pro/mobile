@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
@@ -26,7 +26,7 @@ class MessagesView extends ConsumerWidget {
       body: messagesFuture.when(
         data: (_) {
           if (messagesViewModel.isEmpty) {
-            return NoConnectionWidget(
+            return NoDataWidget(
               text: LocaleKeys.noMessagesFound.tr(),
             );
           }
@@ -46,7 +46,9 @@ class MessagesView extends ConsumerWidget {
             ],
           );
         },
-        error: (error, stackTrace) => const NoConnectionWidget(),
+        error: (error, stackTrace) => NoDataWidget(
+          text: LocaleKeys.noDataFound.tr(),
+        ),
         loading: () => const CustomCircular(),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/feature/jobs/add_job/helper/city_helper.dart';
+import 'package:findpro/feature/jobs/add_job/helper/add_job_city_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
@@ -29,7 +29,7 @@ class _SelectDistrictState extends ConsumerState<SelectDistrict> {
   Future<void> getData() async {
     final cityId = ref.read(addJobProvider.notifier).cityId;
     if (cityId != null) {
-      districts = await CityHelper.instance.getDistrictsByCityId(cityId);
+      districts = await AddJobCityHelper.instance.getDistrictsByCityId(cityId);
     }
     setState(() {
       isLoading = false;
@@ -52,7 +52,7 @@ class _SelectDistrictState extends ConsumerState<SelectDistrict> {
       itemCount: districts.length,
       itemBuilder: (context, index) {
         return AddJobListTile(
-            text: districts[index].name!,
+            text: districts[index].name,
             onTap: () {
               addJobViewModel.districtId = districts[index].id;
               widget.pageController.nextPage(

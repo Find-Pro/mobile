@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_jobs_list_view_model.dart';
@@ -23,7 +23,7 @@ class UserProfileJobsListView extends ConsumerWidget {
       data: (_) {
         if (userProfileJobsViewModel.result == null ||
             userProfileJobsViewModel.result!.isEmpty) {
-          return NoConnectionWidget(
+          return NoDataWidget(
             text: LocaleKeys.noJobsFound.tr(),
           );
         }
@@ -40,7 +40,7 @@ class UserProfileJobsListView extends ConsumerWidget {
           ],
         );
       },
-      error: (error, stackTrace) => const NoConnectionWidget(),
+      error: (error, stackTrace) => const NoDataWidget(),
       loading: () => const CustomCircular(),
     );
   }

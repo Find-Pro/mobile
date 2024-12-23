@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/feature/search/view_model/search_input_view_model.dart';
@@ -32,7 +32,7 @@ class SearchResultView extends ConsumerWidget {
           }
           final searchResult = ref.watch(searchResultProvider);
           if (searchResult.result == null) {
-            return const NoConnectionWidget();
+            return const NoDataWidget();
           }
           // ignore: deprecated_member_use
           return WillPopScope(
@@ -56,7 +56,7 @@ class SearchResultView extends ConsumerWidget {
             ),
           );
         },
-        error: (error, stackTrace) => const NoConnectionWidget(),
+        error: (error, stackTrace) => const NoDataWidget(),
         loading: () => const CustomCircular(),
       ),
     );

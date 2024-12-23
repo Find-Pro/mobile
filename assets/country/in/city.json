@@ -1,0 +1,148 @@
+ [
+    {
+      "il_id": 1,
+      "name": "Maharashtra"
+    },
+    {
+      "il_id": 2,
+      "name": "Delhi"
+    },
+    {
+      "il_id": 3,
+      "name": "Karnataka"
+    },
+    {
+      "il_id": 4,
+      "name": "Gujarat"
+    },
+    {
+      "il_id": 5,
+      "name": "Telangana"
+    },
+    {
+      "il_id": 6,
+      "name": "Tamil Nadu"
+    },
+    {
+      "il_id": 7,
+      "name": "West Bengal"
+    },
+    {
+      "il_id": 8,
+      "name": "Haryana - Chandigarh"
+    },
+    {
+      "il_id": 9,
+      "name": "Rajasthan"
+    },
+    {
+      "il_id": 10,
+      "name": "Uttar Pradesh"
+    },
+    {
+      "il_id": 11,
+      "name": "Bihar"
+    },
+    {
+      "il_id": 12,
+      "name": "Madhya Pradesh"
+    },
+    {
+      "il_id": 13,
+      "name": "Andhra Pradesh"
+    },
+
+    {
+      "il_id": 14,
+      "name": "Punjab"
+    },
+    {
+      "il_id": 15,
+      "name": "Haryana"
+    },
+    {
+      "il_id": 16,
+      "name": "Jammu and Kashmir"
+    },
+    {
+      "il_id": 17,
+      "name": "Chhattisgarh"
+    },
+    {
+      "il_id": 18,
+      "name": "Assam"
+    },
+    {
+      "il_id": 19,
+      "name": "Chandigarh"
+    },
+    {
+      "il_id": 20,
+      "name": "Jharkhand"
+    },
+    {
+      "il_id": 21,
+      "name": "Odisha"
+    },
+    {
+      "il_id": 22,
+      "name": "Kerala"
+    },
+    {
+      "il_id": 23,
+      "name": "Tripura"
+    },
+    {
+      "il_id": 24,
+      "name": ""
+    },
+    {
+      "il_id": 25,
+      "name": "Mizoram"
+    },
+    {
+      "il_id": 26,
+      "name": "Uttarakhand"
+    },
+    {
+      "il_id": 27,
+      "name": "Himachal Pradesh"
+    },
+    {
+      "il_id": 28,
+      "name": "Manipur"
+    },
+    {
+      "il_id": 29,
+      "name": "Goa"
+    },
+    {
+      "il_id": 30,
+      "name": "Nagaland"
+    },
+    {
+      "il_id": 31,
+      "name": "Puducherry"
+    },
+    {
+      "il_id": 32,
+      "name": "Arunachal Pradesh"
+    },
+    {
+      "il_id": 33,
+      "name": "Meghalaya"
+    },
+    {
+      "il_id": 34,
+      "name": "Dadra and Nagar Haveli"
+    },
+    {
+      "il_id": 35,
+      "name": "Mizoram"
+    },
+    {
+      "il_id": 36,
+      "name": "Andaman and Nicobar Islands"
+    }
+  ]
+

@@ -33,23 +33,16 @@
 //             credential.userIdentifier ?? '', EndPointEnums.loginWithApple);
 //
 //         if (loginResult!.success) {
-//           CacheManager.instance.setUserId(loginResult.user!.userId ?? 0);
-//           CacheManager.instance.setAppleOrGoogle(true);
-//           await ref.read(notificationProvider).login();
-//           await context.router
-//               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
+//           await saveUserAndNavigate(
+//               context, ref, loginResult.user!.userId);
 //         } else {
 //           final registerResult = await AuthService.instance
 //               .registerWithToken(credential.userIdentifier ?? '',
-//                   EndPointEnums.registerWithApple);
+//                   credential.email ?? '', EndPointEnums.registerWithApple);
 //
 //           if (registerResult!.success) {
-//             CacheManager.instance
-//                 .setUserId(registerResult.user!.userId ?? 0);
-//             CacheManager.instance.setAppleOrGoogle(true);
-//             await ref.read(notificationProvider).login();
-//             await context.router.pushAndPopUntil(const MainRoute(),
-//                 predicate: (_) => false);
+//             await saveUserAndNavigate(
+//                 context, ref, registerResult.user!.userId);
 //             debugPrint('Başarılı kayıt: ${registerResult.user}');
 //           } else {
 //             WarningAlert().show(context, LocaleKeys.error.tr(), false);
@@ -59,16 +52,13 @@
 //         final registerResult =
 //             await AuthService.instance.registerWithToken(
 //           credential.userIdentifier ?? '',
+//           credential.email ?? '',
 //           EndPointEnums.registerWithApple,
 //         );
-//
 //         debugPrint(registerResult!.user.toString());
 //         if (registerResult.success) {
-//           CacheManager.instance
-//               .setUserId(registerResult.user!.userId ?? 0);
-//           await ref.read(notificationProvider).login();
-//           await context.router
-//               .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
+//           await saveUserAndNavigate(
+//               context, ref, registerResult.user!.userId);
 //         } else {
 //           await context.router.pushAndPopUntil(const LoginRoute(),
 //               predicate: (_) => false);
@@ -79,5 +69,14 @@
 //     } catch (e) {
 //       debugPrint('IOS register error:$e');
 //     }
+//   }
+//
+//   Future<void> saveUserAndNavigate(
+//       BuildContext context, WidgetRef ref, int? userId) async {
+//     CacheManager.instance.setUserId(userId ?? 0);
+//     CacheManager.instance.setAppleOrGoogle(true);
+//     await ref.read(notificationProvider).login();
+//     await context.router
+//         .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
 //   }
 // }

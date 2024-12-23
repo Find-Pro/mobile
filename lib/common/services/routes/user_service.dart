@@ -23,12 +23,18 @@ class UserService implements UserOperation {
 
   @override
   Future<UpdateProfileResponse?> updateProfile(
-      String fullName, String email) async {
+    String fullName,
+    String email,
+  ) async {
     final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.userUpdate,
-      data: {'userId': userId, 'fullName': fullName, 'email': email},
+      data: {
+        'userId': userId,
+        'fullName': fullName,
+        'email': email,
+      },
     );
 
     return UpdateProfileResponse.fromJson(responseData!);
@@ -44,6 +50,20 @@ class UserService implements UserOperation {
       data: {
         'userId': userId,
         'password': password,
+      },
+    );
+    return SuccessAndMessageResponse.fromJson(responseData!);
+  }
+
+  @override
+  Future<SuccessAndMessageResponse?> updateCountry(String country) async {
+    final userId = CacheManager.instance.getUserId();
+    final responseData = await NetworkManager.instance.baseRequest(
+      APIRequestMethod.post,
+      EndPointEnums.userUpdatePassword,
+      data: {
+        'userId': userId,
+        'country': country,
       },
     );
     return SuccessAndMessageResponse.fromJson(responseData!);

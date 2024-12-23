@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
-import 'package:findpro/common/widget/no_connection_widget.dart';
+import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/home/view_model/home_view_model.dart';
 import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
@@ -45,7 +45,9 @@ class HomeView extends ConsumerWidget {
             ],
           );
         },
-        error: (error, stackTrace) => const NoConnectionWidget(),
+        error: (error, stackTrace) => NoDataWidget(
+          text: LocaleKeys.noFollowingFound.tr(),
+        ),
         loading: () => const CustomCircular(),
       ),
     );

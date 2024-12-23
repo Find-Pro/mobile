@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:json_annotation/json_annotation.dart';
@@ -9,7 +11,7 @@ part 'service_model.g.dart';
 @immutable
 final class ServiceModel extends INetworkModel<ServiceModel>
     with EquatableMixin {
-  const ServiceModel({
+  ServiceModel({
     required this.id,
     required this.name,
   });
@@ -25,7 +27,7 @@ final class ServiceModel extends INetworkModel<ServiceModel>
   Map<String, dynamic>? toJson() => _$ServiceModelToJson(this);
 
   final int id;
-  final String name;
+  String name;
 
   @override
   List<Object?> get props => [id, name];
