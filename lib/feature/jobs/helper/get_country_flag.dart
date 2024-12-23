@@ -21,6 +21,8 @@ final class GetCountryFlag {
         return Assets.iconTurkey;
       case 'uk':
         return Assets.iconUk;
+      case 'de':
+        return Assets.iconGermany;
       case 'us':
         return Assets.iconUs;
       default:

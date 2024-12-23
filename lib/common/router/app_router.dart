@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/router/guard/auth_guard.dart';
 import 'package:findpro/common/router/guard/connection_guard.dart';
+import 'package:findpro/common/router/guard/country_guard.dart';
 import 'package:findpro/common/router/guard/notification_guard.dart';
 
 @AutoRouterConfig(
@@ -18,6 +19,7 @@ class AppRouter extends $AppRouter {
       guards: [
         AuthGuard(),
         ConnectionGuard(),
+        CountryGuard(),
       ],
       children: [
         AutoRoute(
@@ -45,6 +47,7 @@ class AppRouter extends $AppRouter {
       ],
     ),
     AutoRoute(page: SettingsRoute.page),
+    AutoRoute(page: SelectCountryRoute.page),
     AutoRoute(page: ChangePasswordRoute.page),
     AutoRoute(page: NoConnectionRoute.page),
     AutoRoute(page: EditProfileRoute.page),

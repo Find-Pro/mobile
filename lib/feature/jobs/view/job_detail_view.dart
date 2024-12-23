@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
-import 'package:findpro/feature/home/widget/home_app_bar.dart';
+import 'package:findpro/feature/home/widget/main_app_bar.dart';
 import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
 import 'package:findpro/feature/jobs/widget/job_detail_body.dart';
 import 'package:findpro/feature/jobs/widget/job_detail_user_tile.dart';
@@ -20,7 +20,7 @@ class JobDetailView extends ConsumerWidget {
     final jobFuture = ref.watch(jobDetailFutureProvider(jobId));
     final jobViewModel = ref.watch(jobDetailProvider);
     return Scaffold(
-      appBar: HomeAppBar(text: LocaleKeys.serviceDetails.tr()),
+      appBar: MainAppBar(text: LocaleKeys.serviceDetails.tr()),
       body: jobFuture.when(
         data: (_) {
           if (jobViewModel.result == null) {

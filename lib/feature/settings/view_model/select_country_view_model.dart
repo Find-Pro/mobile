@@ -35,3 +35,11 @@ class SelectCountryViewModel extends StateNotifier<String> {
 final selectCountryProvider =
     StateNotifierProvider<SelectCountryViewModel, String>(
         (ref) => SelectCountryViewModel());
+
+final selectCountryFutureProvider = FutureProvider.autoDispose<bool>(
+  (ref) async {
+    final success =
+        await ref.read(selectCountryProvider.notifier).getCountry();
+    return success;
+  },
+);

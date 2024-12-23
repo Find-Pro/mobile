@@ -7,6 +7,8 @@ import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/widget/string_text_field.dart';
 import 'package:findpro/feature/settings/view_model/edit_profile_view_model.dart';
+import 'package:findpro/feature/settings/view_model/select_country_view_model.dart';
+import 'package:findpro/feature/settings/widget/edit_profile_current_country_container.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
 import 'package:findpro/feature/settings/widget/settings_confirm_button.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -20,6 +22,7 @@ class EditProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(selectCountryFutureProvider);
     final profileFuture = ref.watch(editProfileFutureProvider);
     final mailCnt = TextEditingController(
         text: ref.watch(editProfileProvider).user?.email ??
@@ -27,7 +30,6 @@ class EditProfileView extends ConsumerWidget {
     final fullNameCnt = TextEditingController(
         text: ref.watch(editProfileProvider).user?.fullName ??
             LocaleKeys.undefined.tr());
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: SettingsAppBar(text: LocaleKeys.updateProfile.tr()),
@@ -40,7 +42,8 @@ class EditProfileView extends ConsumerWidget {
               return SingleChildScrollView(
                 child: Column(
                   children: [
-                    //    const SelectCountryList(),
+                    30.verticalSpace,
+                    const EditProfileCurrentCountryContainer(),
                     30.verticalSpace,
                     StringTextField(
                       controller: mailCnt,

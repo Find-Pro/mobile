@@ -1,8 +1,8 @@
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({required this.text, super.key});
+class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MainAppBar({required this.text, super.key});
   final String text;
 
   @override
@@ -30,5 +30,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 20);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 10);
 }

@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
+import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
 import 'package:findpro/feature/jobs/helper/get_country_string_from_code.dart';
 import 'package:findpro/feature/settings/view_model/select_country_view_model.dart';
@@ -20,8 +22,13 @@ class EditProfileCurrentCountryContainer extends ConsumerWidget {
       child: ListTile(
         titleAlignment: ListTileTitleAlignment.center,
         style: ListTileStyle.list,
-        leading:
-            SvgPicture.asset(GetCountryFlag().getSvgPath(currentCountry)),
+        leading: SizedBox(
+          height: 60,
+          child: SvgPicture.asset(
+            GetCountryFlag().getSvgPath(currentCountry),
+            height: 50,
+          ),
+        ),
         title: Text(
           GetCountryStringFromCode().get(currentCountry),
           style: context.textTheme.headlineSmall?.copyWith(
@@ -29,10 +36,13 @@ class EditProfileCurrentCountryContainer extends ConsumerWidget {
           ),
         ),
         trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(
+            onPressed: () async {
+              await context.router
+                  .push(SelectCountryRoute(isSettingsView: true));
+            },
+            icon: Icon(
               Icons.edit_outlined,
-              color: Colors.teal,
+              color: context.themeData.indicatorColor,
             )),
       ),
     );

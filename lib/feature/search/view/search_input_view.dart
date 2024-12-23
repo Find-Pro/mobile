@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/feature/home/widget/home_app_bar.dart';
+import 'package:findpro/feature/home/widget/main_app_bar.dart';
 import 'package:findpro/feature/jobs/add_job/widget/change_page_button.dart';
 import 'package:findpro/feature/search/view/search_mixin.dart';
 import 'package:findpro/feature/search/widget/search_category_widget.dart';
@@ -24,7 +24,7 @@ class _SearchInputViewState extends ConsumerState<SearchInputView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(text: LocaleKeys.searchService.tr()),
+      appBar: MainAppBar(text: LocaleKeys.searchService.tr()),
       body: Stack(
         children: [
           PageView(

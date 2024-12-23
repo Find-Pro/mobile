@@ -50,7 +50,7 @@ class HomeNoDataWidgetState extends State<HomeNoDataWidget> {
                   child: Text(
                     LocaleKeys.homeViewText.tr(),
                     style: context.textTheme.headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w600),
+                        ?.copyWith(fontWeight: FontWeight.w300),
                   ),
                 )),
                 Expanded(
