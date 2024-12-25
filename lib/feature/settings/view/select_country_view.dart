@@ -95,7 +95,7 @@ class SelectCountryView extends ConsumerWidget {
         title: Text(
           country,
           style: context.textTheme.headlineSmall?.copyWith(
-            color: isSelected ? Colors.blue : Colors.black,
+            color: isSelected ? Colors.blue : Colors.grey,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

@@ -1,61 +1,59 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
-import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
+import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/feature/jobs/helper/get_country_string_from_code.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class JobDetailBody extends ConsumerWidget {
-  const JobDetailBody({super.key});
-
+  const JobDetailBody({required this.jobModel, super.key});
+  final StringJobModel jobModel;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final jobViewModel = ref.watch(jobDetailProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _BuildDetailRow(
           iconData: Icons.category,
-          bodyText: ref
-              .watch(jobDetailProvider.notifier)
-              .categoryAndServiceName[0],
+          bodyText: jobModel.category!,
           titleText: LocaleKeys.category.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.business_center_outlined,
-          bodyText: ref
-              .watch(jobDetailProvider.notifier)
-              .categoryAndServiceName[1],
+          bodyText: jobModel.service!,
           titleText: LocaleKeys.service.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.monetization_on,
-          bodyText: '${jobViewModel.result!.hourlyWage} ₺',
+          bodyText: '${jobModel.hourlyWage} \$',
           titleText: LocaleKeys.hourlyWage.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.calendar_month_sharp,
-          bodyText: DateTime.parse(jobViewModel.result!.createdAt!)
-              .formattedDate,
+          bodyText: DateTime.parse(jobModel.createdAt!).formattedDate,
           titleText: LocaleKeys.announcementTime.tr(),
         ),
         _BuildDetailRow(
+          iconData: Icons.language,
+          bodyText: GetCountryStringFromCode().get(jobModel.country!),
+          titleText: LocaleKeys.country.tr(),
+        ),
+        _BuildDetailRow(
           iconData: Icons.location_on_outlined,
-          bodyText:
-              ref.watch(jobDetailProvider.notifier).cityAndDistrictName[0],
+          bodyText: jobModel.city!,
           titleText: LocaleKeys.city.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.location_searching,
-          bodyText:
-              ref.watch(jobDetailProvider.notifier).cityAndDistrictName[1],
+          bodyText: jobModel.district!,
           titleText: LocaleKeys.district.tr(),
         ),
         _BuildDetailRow(
           iconData: Icons.description_outlined,
-          bodyText: jobViewModel.result!.description!,
+          bodyText: jobModel.description!,
           titleText: LocaleKeys.description.tr(),
         ),
       ],

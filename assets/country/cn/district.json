@@ -203,7 +203,6 @@
     {"id": 202, "il_id": 11, "name": "Mudanjiang"},
     {"id": 203, "il_id": 22, "name": "Yan’an"},
     {"id": 204, "il_id": 25, "name": "Jincheng"},
-  [
     {"id": 205, "il_id": 16, "name": "Nantong"},
     {"id": 206, "il_id": 29, "name": "Lincang"},
     {"id": 207, "il_id": 29, "name": "Yuxi"},
@@ -367,9 +366,5 @@
       {"id": 364, "il_id": 22, "name": "Xincheng"},
       {"id": 365, "il_id": 24, "name": "Luwan"},
       {"id": 366, "il_id": 7, "name": "Chengzhong"}
-
-
-
-
 
   ]

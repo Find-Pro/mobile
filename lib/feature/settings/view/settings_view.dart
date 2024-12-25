@@ -90,7 +90,7 @@ class SettingsView extends ConsumerWidget {
                   iconData: Icons.sign_language_outlined,
                   text: LocaleKeys.signOut.tr(),
                   onTap: () => QuestionAlertDialog().show(context,
-                      onTap: () => SignOut.instance.signOut(context),
+                      onTap: () => SignOut.instance.signOut(context, ref),
                       bodyText: LocaleKeys.areYouSureSignOut.tr(),
                       buttonText: LocaleKeys.signOut.tr())),
             ],

@@ -30,7 +30,6 @@ class ProfileView extends ConsumerWidget {
                     photoName: profileViewModel.user!.coverPicture!,
                   ),
                   ProfileProfilePicture(
-                    isGeneralProfile: false,
                     photoName: profileViewModel.user!.profilePicture!,
                   ),
                   Column(

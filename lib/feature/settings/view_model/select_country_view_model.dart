@@ -14,7 +14,7 @@ class SelectCountryViewModel extends StateNotifier<String> {
       return true;
     } else {
       if (res != null) {
-        state = res.user!.country ?? 'tr';
+        state = res.user!.country!;
         return res.success;
       }
     }

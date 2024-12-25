@@ -1,39 +1,17 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+// ignore_for_file: invalid_annotation_target
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'district_model.g.dart';
+part 'district_model.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class DistrictModel extends INetworkModel<DistrictModel>
-    with EquatableMixin {
-  DistrictModel({
-    required this.ilId,
-    required this.id,
-    required this.name,
-  });
+@freezed
+class DistrictModel with _$DistrictModel {
+  factory DistrictModel({
+    @JsonKey(name: 'il_id') required int ilId,
+    required String name,
+    required int id,
+  }) = _DistrictModel;
 
   factory DistrictModel.fromJson(Map<String, dynamic> json) =>
       _$DistrictModelFromJson(json);
-
-  @JsonKey(name: 'il_id')
-  final int ilId;
-  final String name;
-  final int id;
-
-  @override
-  DistrictModel fromJson(Map<String, dynamic> json) =>
-      DistrictModel.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$DistrictModelToJson(this);
-
-  @override
-  List<Object?> get props => [
-        ilId,
-        name,
-        id,
-      ];
 }

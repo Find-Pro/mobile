@@ -5,11 +5,11 @@ import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
-import 'package:findpro/feature/profile/widget/profile_profile_picture.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:findpro/feature/user_profile/widget/is_following_button.dart';
 import 'package:findpro/feature/user_profile/widget/user_profile_app_bar.dart';
 import 'package:findpro/feature/user_profile/widget/user_profile_body.dart';
+import 'package:findpro/feature/user_profile/widget/user_profile_profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -42,11 +42,7 @@ class UserProfileView extends ConsumerWidget {
                 SliverToBoxAdapter(
                   child: Stack(
                     children: [
-                      ProfileProfilePicture(
-                        isGeneralProfile: true,
-                        photoName:
-                            userProfileViewModel.user!.profilePicture!,
-                      ),
+                      const UserProfileProfilePicture(),
                       Column(
                         children: [
                           FollowNumberBox(

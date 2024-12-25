@@ -12,6 +12,7 @@ class HomeCountryAppBar extends ConsumerWidget
   const HomeCountryAppBar({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(selectCountryFutureProvider);
     final currentCountry = ref.watch(selectCountryProvider);
     return AppBar(
       title: Row(
@@ -24,7 +25,7 @@ class HomeCountryAppBar extends ConsumerWidget
               height: 40,
             ),
           ),
-          20.horizontalSpace,
+          10.horizontalSpace,
           Text(
             GetCountryStringFromCode().get(currentCountry),
             style: context.textTheme.labelLarge?.copyWith(

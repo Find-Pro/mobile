@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/const/enum/regex_type.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
@@ -101,6 +102,15 @@ class RegisterView extends ConsumerWidget {
     TextEditingController pwCnt,
     bool isMaster,
   ) async {
+    if (RegexType.eMail.regex.hasMatch(emailCnt.text.trim())) {
+      WarningAlert().show(
+        context,
+        'Invalid e-mail format',
+        false,
+      );
+      return;
+    }
+
     final res =
         await ref.read(registerProvider.notifier).register(RegisterRequest(
               password: pwCnt.text,

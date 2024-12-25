@@ -6,6 +6,7 @@ import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/widget/string_text_field.dart';
+import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/settings/view_model/edit_profile_view_model.dart';
 import 'package:findpro/feature/settings/view_model/select_country_view_model.dart';
 import 'package:findpro/feature/settings/widget/edit_profile_current_country_container.dart';
@@ -25,11 +26,9 @@ class EditProfileView extends ConsumerWidget {
     ref.watch(selectCountryFutureProvider);
     final profileFuture = ref.watch(editProfileFutureProvider);
     final mailCnt = TextEditingController(
-        text: ref.watch(editProfileProvider).user?.email ??
-            LocaleKeys.undefined.tr());
+        text: ref.watch(editProfileProvider).user?.email ?? ' ');
     final fullNameCnt = TextEditingController(
-        text: ref.watch(editProfileProvider).user?.fullName ??
-            LocaleKeys.undefined.tr());
+        text: ref.watch(editProfileProvider).user?.fullName ?? ' ');
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: SettingsAppBar(text: LocaleKeys.updateProfile.tr()),
@@ -67,6 +66,7 @@ class EditProfileView extends ConsumerWidget {
                               mailCnt.text,
                             );
                         if (success) {
+                          ref.read(profileProvider);
                           InformationToast().show(
                               context, LocaleKeys.profileUpdated.tr());
                         } else {

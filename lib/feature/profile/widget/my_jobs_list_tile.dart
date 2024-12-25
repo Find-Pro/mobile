@@ -8,7 +8,7 @@ import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_category_icon.dart';
-import 'package:findpro/feature/profile/helper/job_list_tile_helper.dart';
+import 'package:findpro/feature/jobs/helper/job_detail_helper.dart';
 import 'package:findpro/feature/profile/view_model/my_jobs_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class MyJobsListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(
-        future: JobListTileHelper().get(jobModel),
+        future: JobDetailHelper.instance.convert(jobModel),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CustomCircular();

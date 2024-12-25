@@ -5,6 +5,7 @@ class SearchInputViewModel extends StateNotifier<SearchRequest> {
   SearchInputViewModel() : super(SearchRequest());
 
   bool isFieldsEmpty = false;
+
   Future<void> isFieldEmpty() async {
     isFieldsEmpty = state.cityId == null &&
         state.districtId == null &&
@@ -30,6 +31,11 @@ class SearchInputViewModel extends StateNotifier<SearchRequest> {
   int? get serviceId => state.jobServiceId;
   set serviceId(int? serviceId) {
     state = state.copyWith(jobServiceId: serviceId);
+  }
+  String? get country => state.country;
+
+  set country(String? country) {
+    state = state.copyWith(country: country);
   }
 }
 

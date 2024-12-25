@@ -28,8 +28,11 @@ class Assets {
   static const String iconChina = 'assets/icon/china.svg';
   static const String iconComment = 'assets/icon/comment.png';
   static const String iconDiscovery = 'assets/icon/discovery.png';
+  static const String iconFeatureGraphic =
+      'assets/icon/feature_graphic.png';
   static const String iconFindProHigh = 'assets/icon/find_pro_high.jpeg';
   static const String iconFindProLogo = 'assets/icon/find_pro_logo.jpeg';
+  static const String iconFlagsPhone = 'assets/icon/flags_phone.png';
   static const String iconFrance = 'assets/icon/france.svg';
   static const String iconFriends = 'assets/icon/friends.png';
   static const String iconGeceMsgBg = 'assets/icon/gece_msg_bg.png';
@@ -40,6 +43,7 @@ class Assets {
   static const String iconJapan = 'assets/icon/japan.svg';
   static const String iconLauncher = 'assets/icon/launcher.png';
   static const String iconLaunchers = 'assets/icon/launchers.png';
+  static const String iconLoading = 'assets/icon/loading.svg';
   static const String iconMaillogo = 'assets/icon/maillogo.png';
   static const String iconMessageBg = 'assets/icon/message_bg.png';
   static const String iconMessages = 'assets/icon/messages.png';

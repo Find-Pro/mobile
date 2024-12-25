@@ -49,7 +49,7 @@ class StringTextField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: context.themeData.primaryColor.withOpacity(0.5),
+              color: context.themeData.primaryColor,
               width: 1.5,
             ),
           ),

@@ -1,75 +1,30 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+// ignore_for_file: invalid_annotation_target
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'job_model.g.dart';
+part 'job_model.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class JobModel extends INetworkModel<JobModel> with EquatableMixin {
-  JobModel({
-    this.mongoDbId,
-    this.fullName,
-    this.profilePicture,
-    this.jobId,
-    this.userId,
-    this.jobCategoryId,
-    this.cityId,
-    this.jobServiceId,
-    this.districtId,
-    this.country,
-    this.description,
-    this.isCompleted,
-    this.createdAt,
-    this.hourlyWage,
-    this.expiryDate,
-    this.updatedAt,
-  });
+@freezed
+class JobModel with _$JobModel {
+  factory JobModel({
+    @JsonKey(name: '_id') String? mongoDbId,
+    int? jobId,
+    int? userId,
+    DateTime? expiryDate,
+    String? country,
+    int? jobCategoryId,
+    int? cityId,
+    int? districtId,
+    int? hourlyWage,
+    int? jobServiceId,
+    String? description,
+    bool? isCompleted,
+    String? createdAt,
+    String? updatedAt,
+    String? fullName,
+    String? profilePicture,
+  }) = _JobModel;
 
   factory JobModel.fromJson(Map<String, dynamic> json) =>
       _$JobModelFromJson(json);
-  @JsonKey(name: '_id')
-  final String? mongoDbId;
-  final int? jobId;
-  final int? userId;
-  final DateTime? expiryDate;
-  final String? country;
-  final int? jobCategoryId;
-  final int? cityId;
-  final int? districtId;
-  final int? hourlyWage;
-  final int? jobServiceId;
-  final String? description;
-  final bool? isCompleted;
-  final String? createdAt;
-  final String? updatedAt;
-  final String? fullName;
-  final String? profilePicture;
-
-  @override
-  JobModel fromJson(Map<String, dynamic> json) => JobModel.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$JobModelToJson(this);
-
-  @override
-  List<Object?> get props => [
-        mongoDbId,
-        jobId,
-        hourlyWage,
-        userId,
-        profilePicture,
-        expiryDate,
-        fullName,
-        country,
-        jobServiceId,
-        jobCategoryId,
-        cityId,
-        districtId,
-        description,
-        isCompleted,
-        createdAt,
-        updatedAt,
-      ];
 }

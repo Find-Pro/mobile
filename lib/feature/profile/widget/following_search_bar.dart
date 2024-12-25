@@ -57,7 +57,7 @@ class FollowingSearchBarState extends State<FollowingSearchBar> {
       closeIconColor: Colors.redAccent,
       searchFieldDecoration: BoxDecoration(
         color: context.themeData.splashColor,
-        border: Border.all(color: Colors.blue.withOpacity(.2), width: .5),
+        border: Border.all(color: Colors.blue, width: .5),
         borderRadius: BorderRadius.circular(20),
       ),
     );

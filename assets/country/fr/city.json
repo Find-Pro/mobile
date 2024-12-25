@@ -1,54 +1,15 @@
 [
-  {
-    "il_id": 1,
-    "name": "Île-de-France"
-  },
-  {
-    "il_id": 2,
-    "name": "Provence-Alpes-Côte d'Azur"
-  },
-  {
-    "il_id": 3,
-    "name": "Auvergne-Rhône-Alpes"
-  },
-  {
-    "il_id": 4,
-    "name": "Nouvelle-Aquitaine"
-  },
-  {
-    "il_id": 5,
-    "name": "Brittany"
-  },
-  {
-    "il_id": 6,
-    "name": "Normandy"
-  },
-  {
-    "il_id": 7,
-    "name": "Grand Est"
-  },
-  {
-    "il_id": 8,
-    "name": "Hauts-de-France"
-  },
-  {
-    "il_id": 9,
-    "name": "Occitanie"
-  },
-  {
-    "il_id": 10,
-    "name": "Pays de la Loire"
-  },
-  {
-    "il_id": 11,
-    "name": "Centre-Val de Loire"
-  },
-  {
-    "il_id": 12,
-    "name": "Corsica"
-  },
-  {
-    "il_id": 13,
-    "name": "Bourgogne-Franche-Comté"
-  }
+  {"il_id": 1,"name": "Île-de-France"},
+  {"il_id": 2,"name": "Provence-Alpes-Côte d'Azur" },
+  {"il_id": 3,"name": "Auvergne-Rhône-Alpes" },
+  {"il_id": 4,"name": "Nouvelle-Aquitaine" },
+  {"il_id": 5,"name": "Brittany"  },
+  {"il_id": 6,"name": "Normandy"  },
+  {"il_id": 7,"name": "Grand Est"  },
+  {"il_id": 8,"name": "Hauts-de-France"  },
+  {"il_id": 9,"name": "Occitanie"  },
+  {"il_id": 10,"name": "Pays de la Loire"  },
+  {"il_id": 11,"name": "Centre-Val de Loire"  },
+  {"il_id": 12,"name": "Corsica"  },
+  {"il_id": 13,"name": "Bourgogne-Franche-Comté"  }
 ]

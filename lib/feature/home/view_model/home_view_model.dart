@@ -13,6 +13,12 @@ class HomeViewModel extends StateNotifier<GetUserJobsResponse> {
     }
     return false;
   }
+
+  @override
+  void dispose() {
+    state = GetUserJobsResponse(success: false, result: []);
+    super.dispose();
+  }
 }
 
 final homeProvider =

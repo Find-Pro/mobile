@@ -35,7 +35,6 @@ class AddCommentView extends ConsumerWidget {
           children: [
             30.verticalSpace,
             ProfileProfilePicture(
-              isGeneralProfile: true,
               photoName: userProfileViewModel.user!.profilePicture!,
             ),
             10.verticalSpace,

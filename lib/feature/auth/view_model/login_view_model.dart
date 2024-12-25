@@ -4,11 +4,8 @@ import 'package:findpro/common/services/model/request/login_request.dart';
 import 'package:findpro/common/services/model/response/update_profile_response.dart';
 import 'package:findpro/common/services/routes/auth_service.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
-import 'package:riverpod/riverpod.dart';
 
-class LoginViewModel extends StateNotifier<UpdateProfileResponse> {
-  LoginViewModel() : super(const UpdateProfileResponse(success: false));
-
+final class LoginViewModel {
   Future<UpdateProfileResponse> login(LoginRequest request) async {
     final response = await AuthService.instance.login(request);
     if (response == null) {
@@ -19,8 +16,6 @@ class LoginViewModel extends StateNotifier<UpdateProfileResponse> {
 
     if (response.success) {
       CacheManager.instance.setUserId(response.user!.userId!);
-
-      state = response;
       return response;
     }
 
@@ -28,7 +23,3 @@ class LoginViewModel extends StateNotifier<UpdateProfileResponse> {
         success: false, message: response.message);
   }
 }
-
-final loginProvider =
-    StateNotifierProvider<LoginViewModel, UpdateProfileResponse>(
-        (ref) => LoginViewModel());

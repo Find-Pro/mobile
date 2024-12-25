@@ -10,6 +10,8 @@ final class GetCountryStringFromCode {
         return LocaleKeys.unitedKingdom.tr();
       case 'fr':
         return LocaleKeys.france.tr();
+      case 'de':
+        return LocaleKeys.germany.tr();
       case 'in':
         return LocaleKeys.india.tr();
       case 'jp':
@@ -25,7 +27,7 @@ final class GetCountryStringFromCode {
       case 'us':
         return LocaleKeys.unitedStates.tr();
       default:
-        return LocaleKeys.turkey.tr();
+        return '';
     }
   }
 }

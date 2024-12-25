@@ -11,7 +11,7 @@ class AddJobCityHelper {
   }
   static final AddJobCityHelper _instance = AddJobCityHelper._init();
   static AddJobCityHelper get instance => _instance;
-  String country = 'tr';
+  String? country;
 
   Future<void> getCurrentCountry() async {
     final userId = CacheManager.instance.getUserId();

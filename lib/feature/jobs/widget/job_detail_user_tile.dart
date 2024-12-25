@@ -4,10 +4,10 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/common/services/model/response/string_job_model.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
-import 'package:findpro/feature/jobs/view_model/job_detail_view_model.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -16,18 +16,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class JobDetailUserTile extends ConsumerWidget {
   const JobDetailUserTile({
+    required this.jobModel,
     super.key,
   });
-
+  final StringJobModel jobModel;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final jobViewModel = ref.watch(jobDetailProvider);
     return Padding(
       padding: PaddingInsets().medium,
       child: Card(
         elevation: 1,
         child: SizedBox(
-          height: 150,
+          height: 130,
           child: Row(
             children: [
               Expanded(
@@ -37,20 +37,20 @@ class JobDetailUserTile extends ConsumerWidget {
                     onTap: () {
                       final currentUserId =
                           CacheManager.instance.getUserId();
-                      if (currentUserId == jobViewModel.result!.userId!) {
+                      if (currentUserId == jobModel.userId!) {
                         context.router.pushAndPopUntil(
                             const ProfileRoute(),
                             predicate: (_) => false);
                       } else {
-                        context.router.push(UserProfileRoute(
-                            userId: jobViewModel.result!.userId!));
+                        context.router.push(
+                            UserProfileRoute(userId: jobModel.userId!));
                       }
                     },
                     child: CircleAvatar(
                       radius: 40,
                       backgroundImage: Image.network(
                         CreateImageUrl.instance
-                            .photo(jobViewModel.result!.profilePicture!),
+                            .photo(jobModel.profilePicture!),
                       ).image,
                     ),
                   ),
@@ -58,8 +58,7 @@ class JobDetailUserTile extends ConsumerWidget {
               ),
               Expanded(
                 child: Text(
-                  jobViewModel.result!.fullName ??
-                      LocaleKeys.undefined.tr(),
+                  jobModel.fullName ?? LocaleKeys.undefined.tr(),
                   style: context.textTheme.titleLarge
                       ?.copyWith(fontWeight: FontWeight.w700),
                 ),
@@ -69,7 +68,7 @@ class JobDetailUserTile extends ConsumerWidget {
                       onPressed: () async {
                         final res = await ref
                             .read(createChatRoomProvider.notifier)
-                            .create(jobViewModel.result!.userId!);
+                            .create(jobModel.userId!);
 
                         if (res.success) {
                           await ref

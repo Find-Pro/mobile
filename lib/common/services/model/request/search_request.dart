@@ -12,6 +12,7 @@ class SearchRequest with _$SearchRequest {
     @Default(0) int? jobServiceId,
     @Default(0) int? cityId,
     @Default(0) int? districtId,
+    @Default('') String? country,
   }) = _SearchRequest;
 
   factory SearchRequest.fromJson(Map<String, dynamic> json) =>

@@ -26,7 +26,7 @@ final class GetCountryFlag {
       case 'us':
         return Assets.iconUs;
       default:
-        return Assets.iconTurkey;
+        return Assets.iconLoading;
     }
   }
 }

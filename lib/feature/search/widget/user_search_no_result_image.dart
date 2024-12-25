@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/padding_insets.dart';
+import 'package:findpro/generated/assets.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,12 +20,15 @@ class UserSearchNoResultImage extends StatelessWidget {
             style: context.textTheme.headlineSmall,
           ),
           30.verticalSpace,
-          SizedBox(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/icon/search_img.png',
-                height: 200,
+          Padding(
+            padding: PaddingInsets().medium,
+            child: SizedBox(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  Assets.iconFeatureGraphic,
+                  height: 300,
+                ),
               ),
             ),
           ),
