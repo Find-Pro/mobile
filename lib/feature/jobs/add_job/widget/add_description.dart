@@ -68,11 +68,14 @@ class AddDescription extends ConsumerWidget {
                   if (success) {
                     InformationToast().show(context,
                         LocaleKeys.serviceCreatedSuccessfully.tr());
-                    await context.router.pushAndPopUntil(const MainRoute(),
-                        predicate: (_) => false);
-                    if (context.mounted) {
-                      await context.router.pushWidget(const VideoAdView());
-                    }
+                    await context.router
+                        .pushAndPopUntil(const MainRoute(),
+                            predicate: (_) => false)
+                        .then((value) {
+                      if (context.mounted) {
+                        context.router.pushWidget(const VideoAdView());
+                      }
+                    });
                   } else {
                     WarningAlert().show(context,
                         LocaleKeys.serviceCouldNotAdd.tr(), false);

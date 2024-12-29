@@ -29,6 +29,11 @@ class MyJobsListTile extends ConsumerWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CustomCircular();
+          } else if (snapshot.hasError) {
+            return Text(
+              LocaleKeys.error.tr(),
+              style: context.textTheme.labelMedium,
+            );
           } else {
             final stringJobModel = snapshot.data!;
             return Padding(

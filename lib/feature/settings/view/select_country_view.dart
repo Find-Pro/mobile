@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_use_of_protected_member,invalid_use_of_visible_for_testing_member
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
@@ -62,16 +63,17 @@ class SelectCountryView extends ConsumerWidget {
             InformationToast().show(context, LocaleKeys.error.tr());
             return;
           }
+          if (!isSettingsView) {
+            CacheManager.instance.setCountry(selectedCountry);
+            await context.router.pushAndPopUntil(const LoginRoute(),
+                predicate: (_) => false);
+            return;
+          }
           final res = await ref
               .read(selectCountryProvider.notifier)
               .setCountry(selectedCountry);
           if (res) {
-            if (isSettingsView) {
-              await context.router.pop();
-            } else {
-              await context.router.pushAndPopUntil(const MainRoute(),
-                  predicate: (_) => false);
-            }
+            await context.router.pop();
           } else {
             InformationToast().show(context, LocaleKeys.error);
           }
@@ -95,7 +97,9 @@ class SelectCountryView extends ConsumerWidget {
         title: Text(
           country,
           style: context.textTheme.headlineSmall?.copyWith(
-            color: isSelected ? Colors.blue : Colors.grey,
+            color: isSelected
+                ? context.themeData.indicatorColor
+                : Colors.teal,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

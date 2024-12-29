@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:findpro/common/cache/cache_manager.dart';
-import 'package:findpro/common/services/routes/user_service.dart';
 import 'package:findpro/feature/jobs/add_job/model/city_model.dart';
 import 'package:findpro/feature/jobs/add_job/model/district_model.dart';
 import 'package:flutter/services.dart';
 
-class AddJobCityHelper {
+final class AddJobCityHelper {
   AddJobCityHelper._init() {
     getCurrentCountry();
   }
@@ -14,9 +13,7 @@ class AddJobCityHelper {
   String? country;
 
   Future<void> getCurrentCountry() async {
-    final userId = CacheManager.instance.getUserId();
-    final res = await UserService.instance.profile(userId);
-    country = res!.user!.userId.toString();
+    country = CacheManager.instance.getCountry();
   }
 
   Future<List<CityModel>> parseCities() async {

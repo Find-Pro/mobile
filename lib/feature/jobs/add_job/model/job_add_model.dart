@@ -1,69 +1,22 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart' show immutable;
-import 'package:json_annotation/json_annotation.dart';
-import 'package:vexana/vexana.dart';
+// ignore_for_file: invalid_annotation_target
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'job_add_model.g.dart';
+part 'job_add_model.freezed.dart';
 
-@JsonSerializable()
-@immutable
-final class JobAddModel extends INetworkModel<JobAddModel>
-    with EquatableMixin {
-  JobAddModel({
-    this.cityId,
-    this.districtId,
-    this.userId,
-    this.categoryId,
-    this.serviceId,
-    this.hourlyWage,
-    this.description,
-  });
+@freezed
+class JobAddModel with _$JobAddModel {
+  factory JobAddModel({
+    @Default(0) int? cityId,
+    @Default(0) int? userId,
+    @Default(0) int? hourlyWage,
+    @Default(0) int? districtId,
+    @JsonKey(name: 'jobCategoryId') @Default(0) int? categoryId,
+    @JsonKey(name: 'jobServiceId') @Default(0) int? serviceId,
+    @Default('') String? description,
+    @Default('') String? country,
+  }) = _JobAddModel;
 
   factory JobAddModel.fromJson(Map<String, dynamic> json) =>
       _$JobAddModelFromJson(json);
-
-  final int? cityId;
-  final int? userId;
-  final int? hourlyWage;
-  final int? districtId;
-  @JsonKey(name: 'jobCategoryId')
-  final int? categoryId;
-  @JsonKey(name: 'jobServiceId')
-  final int? serviceId;
-  final String? description;
-
-  JobAddModel copyWith({
-    int? cityId,
-    int? districtId,
-    int? categoryId,
-    int? serviceId,
-    int? hourlyWage,
-    String? description,
-  }) {
-    return JobAddModel(
-      cityId: cityId ?? this.cityId,
-      hourlyWage: hourlyWage ?? this.hourlyWage,
-      districtId: districtId ?? this.districtId,
-      categoryId: categoryId ?? this.categoryId,
-      serviceId: serviceId ?? this.serviceId,
-      description: description ?? this.description,
-    );
-  }
-
-  @override
-  JobAddModel fromJson(Map<String, dynamic> json) =>
-      JobAddModel.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson() => _$JobAddModelToJson(this);
-
-  @override
-  List<Object?> get props => [
-        cityId,
-        description,
-        serviceId,
-        categoryId,
-        districtId,
-        hourlyWage,
-      ];
 }

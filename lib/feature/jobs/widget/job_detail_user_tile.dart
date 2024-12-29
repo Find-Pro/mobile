@@ -87,10 +87,8 @@ class JobDetailUserTile extends ConsumerWidget {
                                       predicate: (_) => false));
                         }
                       },
-                      icon: Icon(
-                        Icons.message_outlined,
-                        color: context.themeData.cardColor,
-                      )))
+                      icon: const Icon(Icons.message_outlined,
+                          color: Colors.grey)))
             ],
           ),
         ),

@@ -30,7 +30,7 @@ dependencies:
   onesignal_flutter: ^5.2.7
   permission_handler: ^11.3.1
   shared_preferences: ^2.0.15
-  #sign_in_with_apple: ^5.0.0
+  sign_in_with_apple: ^6.1.4
   unity_ads_plugin: ^0.3.21
   url_launcher: ^6.3.1
   vexana: ^4.0.4
@@ -53,12 +53,12 @@ flutter:
     - assets/lottie/
     - assets/json/
     - assets/translations/
-    - assets/country/cn/
+    - assets/country/zh/
     - assets/country/de/
     - assets/country/fr/
-    - assets/country/in/
-    - assets/country/jp/
-    - assets/country/kr/
+    - assets/country/id/
+    - assets/country/ja/
+    - assets/country/ko/
     - assets/country/ru/
     - assets/country/tr/
     - assets/country/uk/

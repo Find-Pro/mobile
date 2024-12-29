@@ -1,4 +1,3 @@
-import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/category_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
@@ -39,7 +38,6 @@ class _SearchCategoryWidgetState
             onTap: () {
               ref.read(searchInputProvider.notifier).categoryId =
                   categories[index].id;
-              ref.read(searchInputProvider.notifier).country = CacheManager.instance.getCountry();
               widget.pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,

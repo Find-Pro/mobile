@@ -4,7 +4,7 @@ import 'package:findpro/feature/jobs/add_job/model/job_add_model.dart';
 import 'package:riverpod/riverpod.dart';
 
 class AddJobViewModel extends StateNotifier<JobAddModel> {
-  AddJobViewModel() : super(JobAddModel(userId: 0));
+  AddJobViewModel() : super(JobAddModel());
 
   int? get cityId => state.cityId;
   set cityId(int? cityId) {
@@ -38,10 +38,12 @@ class AddJobViewModel extends StateNotifier<JobAddModel> {
 
   Future<bool> createService() async {
     final userId = CacheManager.instance.getUserId();
+    final currentCountry = CacheManager.instance.getCountry();
     final res = await JobService.instance.add(JobAddModel(
         cityId: state.cityId,
         hourlyWage: state.hourlyWage,
         userId: userId,
+        country: currentCountry,
         districtId: state.districtId,
         categoryId: state.categoryId,
         serviceId: state.serviceId,

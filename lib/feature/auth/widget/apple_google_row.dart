@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/feature/auth/helper/apple_login_manager.dart';
 import 'package:findpro/feature/auth/helper/google_login_manager.dart';
 import 'package:findpro/generated/assets.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -29,7 +30,7 @@ class AppleGoogleRow extends ConsumerWidget {
               _Button(
                 constraints: constraints,
                 onPressed: () {
-                  //  AppleLoginManager().login(context, ref);
+                  AppleLoginManager().login(context, ref);
                 },
                 logoPath: Assets.iconApplelogo,
                 buttonText: LocaleKeys.loginWithApple.tr(),

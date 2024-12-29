@@ -19,7 +19,6 @@ class AppRouter extends $AppRouter {
       guards: [
         AuthGuard(),
         ConnectionGuard(),
-        CountryGuard(),
       ],
       children: [
         AutoRoute(
@@ -38,6 +37,7 @@ class AppRouter extends $AppRouter {
       page: LoginRoute.page,
       guards: [
         NotificationGuard(),
+        CountryGuard(),
       ],
     ),
     AutoRoute(

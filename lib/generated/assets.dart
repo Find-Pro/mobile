@@ -3,8 +3,6 @@ class Assets {
   Assets._();
 
   static const String assetsIconLauncher = 'assets/icon/launcher.jpeg';
-  static const String cnCity = 'assets/country/cn/city.json';
-  static const String cnDistrict = 'assets/country/cn/district.json';
   static const String deCity = 'assets/country/de/city.json';
   static const String deDistrict = 'assets/country/de/district.json';
   static const String frCity = 'assets/country/fr/city.json';
@@ -62,14 +60,14 @@ class Assets {
   static const String iconTurkey = 'assets/icon/turkey.svg';
   static const String iconUk = 'assets/icon/uk.svg';
   static const String iconUs = 'assets/icon/us.svg';
-  static const String inCity = 'assets/country/in/city.json';
-  static const String inDistrict = 'assets/country/in/district.json';
-  static const String jpCity = 'assets/country/jp/city.json';
-  static const String jpDistrict = 'assets/country/jp/district.json';
+  static const String idCity = 'assets/country/id/city.json';
+  static const String idDistrict = 'assets/country/id/district.json';
+  static const String jaCity = 'assets/country/ja/city.json';
+  static const String jaDistrict = 'assets/country/ja/district.json';
   static const String jsonCategories = 'assets/json/categories.json';
   static const String jsonServices = 'assets/json/services.json';
-  static const String krCity = 'assets/country/kr/city.json';
-  static const String krDistrict = 'assets/country/kr/district.json';
+  static const String koCity = 'assets/country/ko/city.json';
+  static const String koDistrict = 'assets/country/ko/district.json';
   static const String lottieCircular = 'assets/lottie/circular.json';
   static const String lottieDarkBg = 'assets/lottie/dark_bg.svg';
   static const String lottieEmptyFollower =
@@ -83,17 +81,19 @@ class Assets {
   static const String ruDistrict = 'assets/country/ru/district.json';
   static const String trCity = 'assets/country/tr/city.json';
   static const String trDistrict = 'assets/country/tr/district.json';
-  static const String translationsCn = 'assets/translations/cn.json';
   static const String translationsDe = 'assets/translations/de.json';
   static const String translationsEn = 'assets/translations/en.json';
   static const String translationsFr = 'assets/translations/fr.json';
-  static const String translationsInd = 'assets/translations/ind.json';
-  static const String translationsJp = 'assets/translations/jp.json';
-  static const String translationsKr = 'assets/translations/kr.json';
+  static const String translationsId = 'assets/translations/id.json';
+  static const String translationsJa = 'assets/translations/ja.json';
+  static const String translationsKo = 'assets/translations/ko.json';
   static const String translationsRu = 'assets/translations/ru.json';
   static const String translationsTr = 'assets/translations/tr.json';
+  static const String translationsZh = 'assets/translations/zh.json';
   static const String ukCity = 'assets/country/uk/city.json';
   static const String ukDistrict = 'assets/country/uk/district.json';
   static const String usCity = 'assets/country/us/city.json';
   static const String usDistrict = 'assets/country/us/district.json';
+  static const String zhCity = 'assets/country/zh/city.json';
+  static const String zhDistrict = 'assets/country/zh/district.json';
 }

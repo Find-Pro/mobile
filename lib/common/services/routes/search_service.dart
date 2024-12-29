@@ -1,3 +1,4 @@
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/search_operation.dart';
@@ -12,6 +13,7 @@ class SearchService implements SearchOperation {
   @override
   Future<GetUserJobsResponse?> searchJob(
       SearchRequest searchRequest) async {
+    final currentCountry = CacheManager.instance.getCountry();
     final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.searchJob,
@@ -20,6 +22,7 @@ class SearchService implements SearchOperation {
         'jobServiceId': searchRequest.jobServiceId,
         'cityId': searchRequest.cityId,
         'districtId': searchRequest.districtId,
+        'country': currentCountry,
       },
     );
 

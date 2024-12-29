@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 /// Project locale enum for operation and configuration
 enum Locales {
-  tr(Locale('tr', 'TR')),
+  zh(Locale('zh', 'CN')),
   de(Locale('de', 'DE')),
-  cn(Locale('cn', 'CN')),
+  en(Locale('en', 'US')),
   fr(Locale('fr', 'FR')),
-  ind(Locale('ind', 'IND')),
-  jp(Locale('jp', 'JP')),
-  kr(Locale('kr', 'KR')),
+  id(Locale('id', 'ID')),
+  ja(Locale('ja', 'JP')),
+  ko(Locale('ko', 'KR')),
   ru(Locale('ru', 'RU')),
-  en(Locale('en', 'US'));
+  tr(Locale('tr', 'TR'));
 
   const Locales(this.locale);
 
-  /// Locale value
   final Locale locale;
 }

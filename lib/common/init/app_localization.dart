@@ -14,13 +14,13 @@ class AppLocalization extends EasyLocalization {
         );
 
   static final List<Locale> _supportedLocales = [
-    Locales.cn.locale,
+    Locales.zh.locale,
     Locales.de.locale,
     Locales.en.locale,
     Locales.fr.locale,
-    Locales.ind.locale,
-    Locales.jp.locale,
-    Locales.kr.locale,
+    Locales.id.locale,
+    Locales.ja.locale,
+    Locales.ko.locale,
     Locales.ru.locale,
     Locales.tr.locale,
   ];

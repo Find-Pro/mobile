@@ -32,11 +32,6 @@ class SearchInputViewModel extends StateNotifier<SearchRequest> {
   set serviceId(int? serviceId) {
     state = state.copyWith(jobServiceId: serviceId);
   }
-  String? get country => state.country;
-
-  set country(String? country) {
-    state = state.copyWith(country: country);
-  }
 }
 
 final searchInputProvider =

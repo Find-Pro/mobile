@@ -51,7 +51,8 @@ class ProfileView extends ConsumerWidget {
             ),
             onHorizontalDragEnd: (details) {
               if (details.primaryVelocity! < -500) {
-                context.router.push(const SettingsRoute());
+                context.router.pushAndPopUntil(const SettingsRoute(),
+                    predicate: (_) => false);
               }
             },
           );

@@ -8,7 +8,7 @@ import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-final class ChangeLanguageDialog {
+class ChangeLanguageDialog {
   void show(BuildContext context) {
     showModalBottomSheet<Widget>(
       context: context,
@@ -28,7 +28,7 @@ final class ChangeLanguageDialog {
               children: [
                 LanguageTile(
                   context: context,
-                  locale: Locales.cn,
+                  locale: Locales.zh,
                   iconPath: Assets.iconChina,
                   title: LocaleKeys.chinaLang.tr(),
                 ),
@@ -46,19 +46,19 @@ final class ChangeLanguageDialog {
                 ),
                 LanguageTile(
                   context: context,
-                  locale: Locales.ind,
+                  locale: Locales.id,
                   iconPath: Assets.iconIndia,
                   title: LocaleKeys.indianLang.tr(),
                 ),
                 LanguageTile(
                   context: context,
-                  locale: Locales.jp,
+                  locale: Locales.ja,
                   iconPath: Assets.iconJapan,
                   title: LocaleKeys.japaneseLang.tr(),
                 ),
                 LanguageTile(
                   context: context,
-                  locale: Locales.kr,
+                  locale: Locales.ko,
                   iconPath: Assets.iconSouthKorea,
                   title: LocaleKeys.southKoreanLang.tr(),
                 ),
