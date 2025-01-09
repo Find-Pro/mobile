@@ -24,59 +24,86 @@ class AppleLoginManager {
       final credentialState = await SignInWithApple.getCredentialState(
           credential.userIdentifier!);
       debugPrint(credentialState.toString());
-      if (credentialState == CredentialState.revoked) {
-        Future.delayed(Duration.zero, () {
-          context.router.pop();
-        });
-      } else if (credentialState == CredentialState.authorized) {
-        final loginResult = await AuthService.instance.loginWithToken(
-            credential.userIdentifier ?? '', EndPointEnums.loginWithApple);
 
-        if (loginResult!.success) {
-          await saveUserAndNavigate(
-              context, ref, loginResult.user!.userId);
-        } else {
-          final registerResult = await AuthService.instance
-              .registerWithToken(
-                  credential.userIdentifier ?? '',
-                  credential.email ?? '',
-                  context.locale.languageCode,
-                  EndPointEnums.registerWithApple);
+      await handleCredentialState(context, ref, credentialState, credential);
+    } catch (e) {
+      debugPrint('IOS register error: $e');
+    }
+  }
 
-          if (registerResult!.success) {
-            await saveUserAndNavigate(
-                context, ref, registerResult.user!.userId);
-            debugPrint('Başarılı kayıt: ${registerResult.user}');
-          } else {
-            WarningAlert().show(context, LocaleKeys.error.tr(), false);
-          }
-        }
-      } else if (credentialState == CredentialState.notFound) {
-        final registerResult =
-            await AuthService.instance.registerWithToken(
-          credential.userIdentifier ?? '',
-          credential.email ?? '',
-          context.locale.languageCode,
-          EndPointEnums.registerWithApple,
-        );
-        debugPrint(registerResult!.user.toString());
-        if (registerResult.success) {
-          await saveUserAndNavigate(
-              context, ref, registerResult.user!.userId);
-        } else {
-          await context.router.pushAndPopUntil(const LoginRoute(),
-              predicate: (_) => false);
-        }
+  Future<void> handleCredentialState(
+      BuildContext context,
+      WidgetRef ref,
+      CredentialState credentialState,
+      AuthorizationCredentialAppleID credential,
+      ) async {
+    switch (credentialState) {
+      case CredentialState.revoked:
+       await context.router.pop();
+      case CredentialState.authorized:
+        await handleAuthorizedState(context, ref, credential);
+      case CredentialState.notFound:
+        await handleNotFoundState(context, ref, credential);
+    }
+  }
+
+  Future<void> handleAuthorizedState(
+      BuildContext context,
+      WidgetRef ref,
+      AuthorizationCredentialAppleID credential,
+      ) async {
+    final loginResult = await AuthService.instance.loginWithToken(
+      credential.userIdentifier ?? '',
+      EndPointEnums.loginWithApple,
+    );
+
+    if (loginResult!.success) {
+      await saveUserAndNavigate(context, ref, loginResult.user!.userId);
+    } else {
+      final registerResult = await AuthService.instance.registerWithToken(
+        credential.userIdentifier ?? '',
+        credential.email ?? '',
+        context.locale.languageCode,
+        EndPointEnums.registerWithApple,
+      );
+
+      if (registerResult!.success) {
+        await saveUserAndNavigate(context, ref, registerResult.user!.userId);
+        debugPrint('Başarılı kayıt: ${registerResult.user}');
       } else {
         WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
-    } catch (e) {
-      debugPrint('IOS register error:$e');
+    }
+  }
+
+  Future<void> handleNotFoundState(
+      BuildContext context,
+      WidgetRef ref,
+      AuthorizationCredentialAppleID credential,
+      ) async {
+    final registerResult = await AuthService.instance.registerWithToken(
+      credential.userIdentifier ?? '',
+      credential.email ?? '',
+      context.locale.languageCode,
+      EndPointEnums.registerWithApple,
+    );
+    debugPrint(registerResult!.user.toString());
+
+    if (registerResult.success) {
+      await saveUserAndNavigate(context, ref, registerResult.user!.userId);
+    } else {
+      await context.router.pushAndPopUntil(
+        const LoginRoute(),
+        predicate: (_) => false,
+      );
     }
   }
 
   Future<void> saveUserAndNavigate(
-      BuildContext context, WidgetRef ref, int? userId) async {
+      BuildContext context,
+      WidgetRef ref,
+      int? userId,
+      ) async {
     CacheManager.instance.setUserId(userId ?? 0);
     CacheManager.instance.setAppleOrGoogle(true);
     await ref.read(notificationProvider).login();

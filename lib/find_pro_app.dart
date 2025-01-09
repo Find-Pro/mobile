@@ -27,8 +27,7 @@ class FindProApp extends ConsumerWidget {
           darkTheme: DarkThemeManager().themeData,
           supportedLocales: context.supportedLocales,
           routerDelegate: ref.read(routerProvider).delegate(),
-          routeInformationParser:
-              ref.read(routerProvider).defaultRouteParser(),
+          routeInformationParser: ref.read(routerProvider).defaultRouteParser(),
           debugShowCheckedModeBanner: false,
           builder: MainBuild.build,
         ),

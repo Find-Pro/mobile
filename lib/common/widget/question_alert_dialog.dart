@@ -20,14 +20,14 @@ class QuestionAlertDialog {
           return CupertinoAlertDialog(
             content: Text(
               bodyText,
-              style: context.textTheme.bodyLarge,
+              style: context.textTheme.headlineSmall,
             ),
             actions: [
               CupertinoDialogAction(
                 onPressed: onTap,
                 child: Text(
                   buttonText,
-                  style: context.textTheme.bodyLarge
+                  style: context.textTheme.labelLarge
                       ?.copyWith(color: Colors.red),
                 ),
               ),
@@ -35,7 +35,7 @@ class QuestionAlertDialog {
                 onPressed: () => context.router.pop(),
                 child: Text(
                   LocaleKeys.cancel.tr(),
-                  style: context.textTheme.bodyLarge,
+                  style: context.textTheme.labelLarge,
                 ),
               ),
             ],

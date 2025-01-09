@@ -18,13 +18,14 @@ class AppleGoogleRow extends ConsumerWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         return Column(
           children: [
-            _Button(
-              constraints: constraints,
-              onPressed: () => GoogleLoginManager().login(context, ref),
-              logoPath: Assets.iconGooglelogo,
-              buttonText: LocaleKeys.loginWithGoogle.tr(),
-              backgroundColor: context.themeData.primaryColor,
-            ),
+            if (Platform.isAndroid)
+              _Button(
+                constraints: constraints,
+                onPressed: () => GoogleLoginManager().login(context, ref),
+                logoPath: Assets.iconGooglelogo,
+                buttonText: LocaleKeys.loginWithGoogle.tr(),
+                backgroundColor: context.themeData.primaryColor,
+              ),
             20.verticalSpace,
             if (Platform.isIOS)
               _Button(
@@ -83,10 +84,7 @@ class _Button extends StatelessWidget {
                   flex: 3,
                   child: Text(
                     buttonText,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),

@@ -14,9 +14,9 @@ class AppLocalization extends EasyLocalization {
         );
 
   static final List<Locale> _supportedLocales = [
+    Locales.en.locale,
     Locales.zh.locale,
     Locales.de.locale,
-    Locales.en.locale,
     Locales.fr.locale,
     Locales.id.locale,
     Locales.ja.locale,
