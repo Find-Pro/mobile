@@ -16,7 +16,7 @@ class JobListTileButton extends StatelessWidget {
       child: const Icon(
         Icons.arrow_forward_rounded,
         color: Colors.white,
-        size: 17,
+        size: 22,
       ),
     );
   }

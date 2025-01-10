@@ -49,6 +49,7 @@
   "selectHourlyWage": "Select hourly wage ($)",
   "description": "Description",
   "city": "City",
+  "perHour": "/hour",
   "serviceDetails": "Service Details",
   "district": "District",
   "followerDeleted": "Follower deleted.",

@@ -38,7 +38,6 @@ class HomeView extends ConsumerWidget {
                 itemCount: homeViewModel.result!.length,
                 itemBuilder: (context, index) {
                   return JobListTile(
-                      isUserProfileView: false,
                       jobModel: homeViewModel.result![index]);
                 },
               )

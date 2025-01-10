@@ -17,7 +17,6 @@ class FollowNumberBox extends ConsumerWidget {
       required this.fullName,
       super.key});
   final bool isGeneralProfile;
-
   final int userId;
   final String fullName;
 

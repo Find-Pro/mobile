@@ -34,7 +34,6 @@ class UserProfileJobsListView extends ConsumerWidget {
                 itemCount: userProfileJobsViewModel.result!.length,
                 itemBuilder: (context, index) {
                   return JobListTile(
-                      isUserProfileView: true,
                       jobModel: userProfileJobsViewModel.result![index]);
                 }),
           ],
