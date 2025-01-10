@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+    <string>We use your music library to enhance the user experience and provide personalized features.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use your location to provide location-based services and improve app functionality.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need your camera permission to change profile photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>

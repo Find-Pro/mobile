@@ -82,14 +82,14 @@ class JobListTile extends ConsumerWidget {
                               style: context.textTheme.labelLarge
                                   ?.copyWith(
                                       color:
-                                          context.themeData.dividerColor),
+                                          context.themeData.dividerColor,fontWeight: FontWeight.w600),
                             ),
                             Text(
                               '${stringJobModel.city}/${stringJobModel.district}',
                               style: context.textTheme.labelLarge
                                   ?.copyWith(
                                       color:
-                                          context.themeData.dividerColor),
+                                          context.themeData.dividerColor,fontWeight: FontWeight.w600),
                             ),
                             Text(
                               DateTime.parse(jobModel.createdAt!)
@@ -98,7 +98,7 @@ class JobListTile extends ConsumerWidget {
                                   ?.copyWith(
                                       color:
                                           context.themeData.dividerColor,
-                                      fontWeight: FontWeight.w700),
+                                      fontWeight: FontWeight.w600),
                             ),
                           ],
                         )),
