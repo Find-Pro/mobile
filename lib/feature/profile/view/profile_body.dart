@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileBody extends ConsumerStatefulWidget {
-  const ProfileBody({
-    super.key,
-  });
+  const ProfileBody({super.key});
 
   @override
   ConsumerState createState() => _ProfileBodyState();
@@ -34,35 +32,37 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: DeviceSize.height(context),
-      child: Scaffold(
-        appBar: TabBar(
-          dividerColor: Colors.transparent,
-          unselectedLabelStyle: context.textTheme.labelMedium,
-          labelStyle: context.textTheme.labelMedium,
-          controller: _tabController,
-          indicatorColor: Colors.blueAccent,
-          labelColor: Colors.blueAccent,
-          unselectedLabelColor: context.themeData.indicatorColor,
-          tabs: [
-            Tab(
-              icon: const Icon(Icons.business_center_outlined),
-              text: LocaleKeys.jobs.tr(),
+    return SizedBox(height: DeviceSize.height(context),
+      child: Column(
+        children: [
+          TabBar(
+            controller: _tabController,
+            indicatorColor: Colors.blueAccent,
+            labelColor: Colors.blueAccent,
+            unselectedLabelColor: context.themeData.indicatorColor,
+            labelStyle: context.textTheme.labelMedium,
+            unselectedLabelStyle: context.textTheme.labelMedium,
+            tabs: [
+              Tab(
+                icon: const Icon(Icons.business_center_outlined),
+                text: LocaleKeys.jobs.tr(),
+              ),
+              Tab(
+                icon: const Icon(Icons.comment_outlined),
+                text: LocaleKeys.comments.tr(),
+              ),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: const [
+                MyJobsListView(),
+                MyCommentsView(),
+              ],
             ),
-            Tab(
-              icon: const Icon(Icons.comment_outlined),
-              text: LocaleKeys.comments.tr(),
-            ),
-          ],
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: const [
-            MyJobsListView(),
-            MyCommentsView(),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -30,14 +30,10 @@
     <string>We use your music library to enhance the user experience and provide personalized features.</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>We use your location to provide location-based services and improve app functionality.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>We need your camera permission to change profile photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need your permission for gallery</string>
-	<key>NSMicrophoneUsageDescription</key>
-    <string>We need your permission for microphone</string>
+	<string>We need access to your photo library to allow you to select photos for your profile or share them with your friends.</string>
 	<key>NSUserNotificationUsageDescription</key>
-	<string>We need your notification permission for notifications</string>
+   <string>We need notification permission to send important updates and message alerts.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
