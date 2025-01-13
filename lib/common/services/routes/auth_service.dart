@@ -35,7 +35,6 @@ class AuthService implements AuthOperation {
         'fullName': registerRequest.fullName,
         'email': registerRequest.email,
         'password': registerRequest.password,
-        'isMaster': registerRequest.isMaster,
       },
     );
     return response != null

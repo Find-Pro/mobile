@@ -12,7 +12,6 @@ final class RegisterRequest extends INetworkModel<RegisterRequest>
   const RegisterRequest({
     this.email,
     this.password,
-    this.isMaster,
     this.fullName,
   });
 
@@ -28,14 +27,12 @@ final class RegisterRequest extends INetworkModel<RegisterRequest>
 
   final String? email;
   final String? fullName;
-  final bool? isMaster;
   final String? password;
 
   @override
   List<Object?> get props => [
         password,
         email,
-        isMaster,
         password,
       ];
 }

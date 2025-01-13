@@ -31,7 +31,7 @@
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>We use your location to provide location-based services and improve app functionality.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need access to your photo library to allow you to select photos for your profile or share them with your friends.</string>
+    <string>We need access to your photo library so you can select photos to set as your profile picture or share with friends through posts and messages in the app. This helps us personalize your experience and enhance social features.</string>
 	<key>NSUserNotificationUsageDescription</key>
    <string>We need notification permission to send important updates and message alerts.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

@@ -27,8 +27,6 @@ class RegisterView extends ConsumerWidget {
     final fullNameCnt = TextEditingController();
     final emailCnt = TextEditingController();
     final pwCnt = TextEditingController();
-    const isMaster = false;
-
     return Scaffold(
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
@@ -73,7 +71,6 @@ class RegisterView extends ConsumerWidget {
                             fullNameCnt,
                             emailCnt,
                             pwCnt,
-                            isMaster,
                           ),
                         ),
                       ],
@@ -85,6 +82,7 @@ class RegisterView extends ConsumerWidget {
                       route: const LoginRoute(),
                     ),
                   ],
+
                 ),
               ),
             ),
@@ -100,9 +98,8 @@ class RegisterView extends ConsumerWidget {
     TextEditingController fullNameCnt,
     TextEditingController emailCnt,
     TextEditingController pwCnt,
-    bool isMaster,
   ) async {
-    if (RegexType.eMail.regex.hasMatch(emailCnt.text.trim())) {
+    if (!RegexType.eMail.regex.hasMatch(emailCnt.text.trim())) {
       WarningAlert().show(
         context,
         'Invalid e-mail format',
@@ -110,13 +107,11 @@ class RegisterView extends ConsumerWidget {
       );
       return;
     }
-
     final res =
         await ref.read(registerProvider.notifier).register(RegisterRequest(
               password: pwCnt.text,
               email: emailCnt.text,
               fullName: fullNameCnt.text,
-              isMaster: isMaster,
             ));
 
     if (res.success) {

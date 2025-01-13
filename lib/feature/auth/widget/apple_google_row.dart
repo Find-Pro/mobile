@@ -27,16 +27,16 @@ class AppleGoogleRow extends ConsumerWidget {
                 backgroundColor: context.themeData.primaryColor,
               ),
             20.verticalSpace,
-            if (Platform.isIOS)
-              _Button(
-                constraints: constraints,
-                onPressed: () {
-                  AppleLoginManager().login(context, ref);
-                },
-                logoPath: Assets.iconApplelogo,
-                buttonText: LocaleKeys.loginWithApple.tr(),
-                backgroundColor: context.themeData.primaryColor,
-              ),
+            // if (Platform.isIOS)
+            //   _Button(
+            //     constraints: constraints,
+            //     onPressed: () {
+            //       AppleLoginManager().login(context, ref);
+            //     },
+            //     logoPath: Assets.iconApplelogo,
+            //     buttonText: LocaleKeys.loginWithApple.tr(),
+            //     backgroundColor: context.themeData.primaryColor,
+            //   ),
           ],
         );
       },
