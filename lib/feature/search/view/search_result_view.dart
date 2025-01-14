@@ -27,8 +27,8 @@ class SearchResultView extends ConsumerWidget {
       body: searchResultFuture.when(
         data: (result) {
           if (result != null) {
-            Future.microtask(() =>
-                ref.read(searchResultProvider.notifier).result = result);
+            Future.microtask(
+                () => ref.read(searchResultProvider.notifier).result = result);
           }
           final searchResult = ref.watch(searchResultProvider);
           if (searchResult.result == null) {
@@ -37,7 +37,7 @@ class SearchResultView extends ConsumerWidget {
           // ignore: deprecated_member_use
           return WillPopScope(
             onWillPop: () async {
-              Navigator.of(context).pop();
+              await context.router.pop();
               await context.router.pushWidget(const VideoAdView());
               return false;
             },
@@ -47,8 +47,7 @@ class SearchResultView extends ConsumerWidget {
                 ListView.builder(
                   itemCount: searchResult.result!.length,
                   itemBuilder: (context, index) {
-                    return JobListTile(
-                        jobModel: searchResult.result![index]);
+                    return JobListTile(jobModel: searchResult.result![index]);
                   },
                 ),
               ],

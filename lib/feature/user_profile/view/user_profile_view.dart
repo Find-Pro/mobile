@@ -16,6 +16,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 @RoutePage()
 class UserProfileView extends ConsumerWidget {
   const UserProfileView({required this.userId, super.key});
+
   final int userId;
 
   @override
@@ -32,7 +33,7 @@ class UserProfileView extends ConsumerWidget {
           // ignore: deprecated_member_use
           body: WillPopScope(
             onWillPop: () async {
-              Navigator.of(context).pop();
+              await context.router.pop();
               await context.router.pushWidget(const VideoAdView());
               return false;
             },
@@ -48,8 +49,7 @@ class UserProfileView extends ConsumerWidget {
                           FollowNumberBox(
                             isGeneralProfile: true,
                             userId: userProfileViewModel.user!.userId!,
-                            fullName:
-                                userProfileViewModel.user!.fullName ?? '',
+                            fullName: userProfileViewModel.user!.fullName ?? '',
                           ),
                           IsFollowingButton(userId: userId),
                           Divider(
