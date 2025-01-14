@@ -1,11 +1,9 @@
-import 'dart:io';
-
-import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
-class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppBar({required this.text, super.key});
+class SelectCountryAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const SelectCountryAppBar({required this.text, super.key});
 
   final String text;
 
@@ -20,14 +18,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.white,
         ),
       ),
-      leading: IconButton(
-          onPressed: () {
-            context.router.pop();
-          },
-          icon: Icon(
-            Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-            color: Colors.white,
-          )),
       backgroundColor: Colors.grey.shade700,
       elevation: 4,
       iconTheme: const IconThemeData(

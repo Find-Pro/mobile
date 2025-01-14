@@ -6,7 +6,7 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/information_toast.dart';
-import 'package:findpro/feature/home/widget/main_app_bar.dart';
+import 'package:findpro/feature/home/widget/select_country_app_bar.dart';
 import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
 import 'package:findpro/feature/settings/view_model/select_country_view_model.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
@@ -19,6 +19,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 @RoutePage()
 class SelectCountryView extends ConsumerWidget {
   const SelectCountryView({required this.isSettingsView, super.key});
+
   final bool isSettingsView;
 
   @override
@@ -29,23 +30,23 @@ class SelectCountryView extends ConsumerWidget {
           ? SettingsAppBar(
               text: LocaleKeys.selectCountry.tr(),
             )
-          : MainAppBar(
+          : SelectCountryAppBar(
               text: LocaleKeys.selectCountry.tr(),
             ),
       body: ListView(
         children: [
           _buildListTile(
               context, LocaleKeys.china.tr(), 'cn', selectedCountry, ref),
-          _buildListTile(context, LocaleKeys.germany.tr(), 'de',
-              selectedCountry, ref),
+          _buildListTile(
+              context, LocaleKeys.germany.tr(), 'de', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.france.tr(), 'fr', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.india.tr(), 'in', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.japan.tr(), 'jp', selectedCountry, ref),
-          _buildListTile(context, LocaleKeys.southKorea.tr(), 'kr',
-              selectedCountry, ref),
+          _buildListTile(
+              context, LocaleKeys.southKorea.tr(), 'kr', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.russia.tr(), 'ru', selectedCountry, ref),
           _buildListTile(
@@ -65,8 +66,8 @@ class SelectCountryView extends ConsumerWidget {
           }
           if (!isSettingsView) {
             CacheManager.instance.setCountry(selectedCountry);
-            await context.router.pushAndPopUntil(const LoginRoute(),
-                predicate: (_) => false);
+            await context.router
+                .pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
             return;
           }
           final res = await ref
@@ -97,15 +98,12 @@ class SelectCountryView extends ConsumerWidget {
         title: Text(
           country,
           style: context.textTheme.headlineSmall?.copyWith(
-            color: isSelected
-                ? context.themeData.indicatorColor
-                : Colors.teal,
+            color: isSelected ? context.themeData.indicatorColor : Colors.teal,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
-        trailing: isSelected
-            ? const Icon(Icons.check, color: Colors.green)
-            : null,
+        trailing:
+            isSelected ? const Icon(Icons.check, color: Colors.green) : null,
         onTap: () async {
           ref.read(selectCountryProvider.notifier).state = countryCode;
         },

@@ -13,6 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 @RoutePage()
 class JobDetailView extends ConsumerWidget {
   const JobDetailView({required this.jobModel, super.key});
+
   final JobModel jobModel;
 
   @override

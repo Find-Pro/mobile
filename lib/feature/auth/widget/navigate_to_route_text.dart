@@ -12,20 +12,51 @@ class NavigateToRouteText extends StatelessWidget {
       required this.text2,
       required this.route,
       super.key});
+
   final String text1;
   final String text2;
   final PageRouteInfo route;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextButton(onPressed: (){
-          PrivacyContractUrlLauncher().launch();
-        }, child:   Text(
-          LocaleKeys.privacyContract.tr(),
-          style: context.textTheme.labelLarge
-              ?.copyWith(color: Colors.black,decoration: TextDecoration.underline,),
-        )),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          child: Text(
+            LocaleKeys.privacyContractAgree.tr(),
+            style: context.textTheme.labelLarge?.copyWith(
+              color: Colors.black,
+            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            TextButton(
+                onPressed: () {
+                  PrivacyContractUrlLauncher().launchPrivacyPolicy();
+                },
+                child: Text(
+                  LocaleKeys.privacyContract.tr(),
+                  style: context.textTheme.labelLarge?.copyWith(
+                    color: Colors.black,
+                    decoration: TextDecoration.underline,
+                  ),
+                )),
+            TextButton(
+                onPressed: () {
+                  PrivacyContractUrlLauncher().launchTermsOfUse();
+                },
+                child: Text(
+                  LocaleKeys.termsOfUse.tr(),
+                  style: context.textTheme.labelLarge?.copyWith(
+                    color: Colors.black,
+                    decoration: TextDecoration.underline,
+                  ),
+                )),
+          ],
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
