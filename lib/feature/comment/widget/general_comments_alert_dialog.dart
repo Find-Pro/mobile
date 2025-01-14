@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/services/routes/support_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
@@ -39,9 +38,8 @@ class GeneralCommentsAlertDialog {
                   iconData: Icons.report_gmailerrorred,
                   text: LocaleKeys.reportComment.tr(),
                   onTap: () async {
-                    final userId = CacheManager.instance.getUserId();
                     final res = await SupportService.instance.comment(
-                        userId, commentId, LocaleKeys.harmfulContent.tr());
+                        commentId, LocaleKeys.harmfulContent.tr());
                     await context.router.pop();
                     if (res!.success) {
                       InformationToast()

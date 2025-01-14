@@ -52,10 +52,12 @@ class AddCommentView extends ConsumerWidget {
               textController: commentController,
             ),
             30.verticalSpace,
-            SubmitCommitButton(onTap: () {
-              submitComment(
-                  context, ref, userId, commentController, ratingNotifier);
-            })
+            SubmitCommitButton(
+                text: LocaleKeys.submitComment.tr(),
+                onTap: () {
+                  submitComment(context, ref, userId, commentController,
+                      ratingNotifier);
+                })
           ],
         ),
       ),

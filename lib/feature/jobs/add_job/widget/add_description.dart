@@ -59,7 +59,8 @@ class AddDescription extends ConsumerWidget {
                 WarningAlert().show(
                     context, LocaleKeys.descriptionIsRequired.tr(), false);
               } else {
-                if (BadWords.containsForbiddenWord(descriptionCnt.text)) {
+                if (BadWords.containsForbiddenWord(
+                    descriptionCnt.text)) {
                   WarningAlert().show(
                       context, LocaleKeys.pleaseAvoidBadWords.tr(), true);
                 } else {

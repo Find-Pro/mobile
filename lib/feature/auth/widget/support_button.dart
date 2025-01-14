@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
-import 'package:findpro/feature/auth/helper/launch_support_mail.dart';
+import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class SupportButton extends StatelessWidget {
       height: 60,
       width: 120,
       child: GestureDetector(
-        onTap: () => LaunchSupportMail().launch,
+        onTap: () => context.router.push(const SupportRoute()),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

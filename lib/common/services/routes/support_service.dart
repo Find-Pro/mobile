@@ -1,3 +1,4 @@
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/support_operation.dart';
@@ -9,7 +10,8 @@ class SupportService implements SupportOperation {
   static final SupportService instance = SupportService._();
   @override
   Future<SuccessAndMessageResponse?> user(
-      int userId, int otherId, String subject) async {
+      int otherId, String subject) async {
+    final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.supportUser,
@@ -26,7 +28,8 @@ class SupportService implements SupportOperation {
 
   @override
   Future<SuccessAndMessageResponse?> comment(
-      int userId, int otherId, String subject) async {
+      int otherId, String subject) async {
+    final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.supportComment,
@@ -43,8 +46,8 @@ class SupportService implements SupportOperation {
   }
 
   @override
-  Future<SuccessAndMessageResponse?> general(
-      int userId, String subject) async {
+  Future<SuccessAndMessageResponse?> general(String subject) async {
+    final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       EndPointEnums.supportGeneral,

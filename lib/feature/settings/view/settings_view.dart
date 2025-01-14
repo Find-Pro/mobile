@@ -71,6 +71,12 @@ class SettingsView extends ConsumerWidget {
                     onTap: () => ChangeLanguageDialog().show(context)),
                 const SettingsDivider(),
                 SettingsListTile(
+                    iconData: Icons.support_agent_rounded,
+                    text: LocaleKeys.support.tr(),
+                    onTap: () =>
+                        context.router.push(const SupportRoute())),
+                const SettingsDivider(),
+                SettingsListTile(
                     iconData: Icons.highlight_remove_outlined,
                     iconColor: Colors.red,
                     text: LocaleKeys.removeAccount.tr(),
