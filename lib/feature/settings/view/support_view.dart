@@ -6,10 +6,12 @@ import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/comment/widget/submit_commit_button.dart';
 import 'package:findpro/feature/settings/view_model/support_view_model.dart';
 import 'package:findpro/feature/settings/widget/settings_app_bar.dart';
+import 'package:findpro/generated/assets.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
 class SupportView extends ConsumerWidget {
@@ -25,8 +27,12 @@ class SupportView extends ConsumerWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            30.verticalSpace,
+            SvgPicture.asset(
+              Assets.iconSupport,
+              height: 200.h,
+            ),
             TextFormField(
               style: context.textTheme.labelLarge,
               controller: textController,
@@ -46,7 +52,6 @@ class SupportView extends ConsumerWidget {
               maxLines: 4,
               minLines: 1,
             ),
-            30.verticalSpace,
             SubmitCommitButton(
                 onTap: () async {
                   if (BadWords.containsForbiddenWord(

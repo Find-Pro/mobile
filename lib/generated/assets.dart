@@ -57,6 +57,7 @@ class Assets {
   static const String iconSearchImg = 'assets/icon/search_img.png';
   static const String iconSettings = 'assets/icon/settings.png';
   static const String iconSouthKorea = 'assets/icon/south_korea.svg';
+  static const String iconSupport = 'assets/icon/support.svg';
   static const String iconTurkey = 'assets/icon/turkey.svg';
   static const String iconUk = 'assets/icon/uk.svg';
   static const String iconUs = 'assets/icon/us.svg';
