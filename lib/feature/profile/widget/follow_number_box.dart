@@ -24,6 +24,7 @@ class FollowNumberBox extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final followFuture = ref.watch(followNumberBoxFutureProvider(userId));
     final followNumberBoxViewModel = ref.watch(followNumberBoxProvider);
+
     return followFuture.when(
       data: (_) {
         return Padding(

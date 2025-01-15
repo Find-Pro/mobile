@@ -1,21 +1,21 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/feature/message/model/message_profile_model.dart';
+import 'package:findpro/feature/message/widget/chat_more_icon_alert.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ChatAppBar(
-      {required this.onTap,
-      required this.fullName,
-      required this.photo,
-      super.key});
-  final VoidCallback onTap;
-  final String photo;
-  final String fullName;
+class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
+  const ChatAppBar({required this.messageProfileModel, super.key});
+  final MessageProfileModel messageProfileModel;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
       centerTitle: true,
       leading: IconButton(
@@ -26,24 +26,35 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
             Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
             color: context.themeData.indicatorColor,
           )),
-      title: GestureDetector(
-        onTap: onTap,
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 23,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: () => context.router.push(
+                UserProfileRoute(userId: messageProfileModel.userId)),
+            child: CircleAvatar(
+              radius: 30,
               backgroundImage: Image.network(
-                CreateImageUrl.instance.photo(photo),
+                CreateImageUrl.instance
+                    .photo(messageProfileModel.profilePicture),
               ).image,
             ),
-            30.horizontalSpace,
-            Text(
-              fullName,
-              style: context.textTheme.headlineSmall
-                  ?.copyWith(fontWeight: FontWeight.w800),
-            ),
-          ],
-        ),
+          ),
+          Text(
+            messageProfileModel.fullName ?? LocaleKeys.undefined.tr(),
+            style: context.textTheme.headlineSmall
+                ?.copyWith(fontWeight: FontWeight.w800),
+          ),
+          IconButton(
+              onPressed: () {
+                ChatMoreIconAlert()
+                    .show(context, ref, messageProfileModel.userId);
+              },
+              icon: Icon(
+                Icons.more_vert,
+                color: context.themeData.indicatorColor,
+              ))
+        ],
       ),
     );
   }

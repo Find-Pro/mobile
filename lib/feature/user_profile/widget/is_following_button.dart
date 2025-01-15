@@ -22,10 +22,13 @@ class IsFollowingButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final followFuture = ref.watch(followFutureProvider(userId));
+
     final currentUser = ref.watch(profileProvider);
+
     return followFuture.when(
       data: (isFollowing) {
         final isCurrentlyFollowing = ref.watch(followProvider);
+
         return Padding(
           padding: PaddingInsets().large,
           child: GestureDetector(

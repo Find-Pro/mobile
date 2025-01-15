@@ -36,7 +36,9 @@ enum EndPointEnums {
   searchUser('/search/user'),
   supportUser('/support/user'),
   supportComment('/support/comment'),
-  supportGeneral('/support/general');
+  supportGeneral('/support/general'),
+  block('/block'),
+  blockList('/block/list');
 
   const EndPointEnums(this.value);
   final String value;
