@@ -6,6 +6,7 @@ import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/home/view_model/home_view_model.dart';
+import 'package:findpro/feature/message/view_model/block_view_model.dart';
 import 'package:findpro/feature/profile/view_model/follow_number_box_view_model.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/user_profile/view_model/follow_view_model.dart';
@@ -22,8 +23,13 @@ class IsFollowingButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final followFuture = ref.watch(followFutureProvider(userId));
-
     final currentUser = ref.watch(profileProvider);
+    final blockViewModel = ref.watch(blockProvider);
+    if (blockViewModel) {
+      return Text(LocaleKeys.youHaveBlockedUser.tr(),
+          style: context.textTheme.headlineSmall!
+              .copyWith(color: Colors.red, fontWeight: FontWeight.w500));
+    }
 
     return followFuture.when(
       data: (isFollowing) {

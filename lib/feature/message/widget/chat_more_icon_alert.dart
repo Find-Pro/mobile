@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final class ChatMoreIconAlert {
   void show(BuildContext context, WidgetRef ref, int userId) {
+    ref.watch(blockFutureProvider(userId));
     final isBlockedViewModel = ref.watch(blockProvider);
     showModalBottomSheet<Widget>(
       context: context,

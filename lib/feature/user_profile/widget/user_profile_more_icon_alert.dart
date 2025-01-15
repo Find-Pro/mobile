@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
+import 'package:findpro/feature/message/view_model/block_view_model.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/feature/message/widget/alert_dialog_list_tile.dart';
 import 'package:findpro/feature/user_profile/view/add_comment_widget.dart';
@@ -12,6 +13,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final class UserProfileMoreIconAlert {
   void show(BuildContext context, WidgetRef ref, int userId) {
+    ref.watch(blockFutureProvider(userId));
+    final isBlockedViewModel = ref.watch(blockProvider);
     showModalBottomSheet<Widget>(
       context: context,
       builder: (BuildContext context) {
@@ -53,6 +56,22 @@ final class UserProfileMoreIconAlert {
                     WarningAlert().show(context,
                         res.message ?? LocaleKeys.error.tr(), false);
                   }
+                },
+              ),
+              AlertDialogListTile(
+                text: isBlockedViewModel
+                    ? LocaleKeys.unBlock.tr()
+                    : LocaleKeys.block.tr(),
+                icon: isBlockedViewModel ? Icons.undo : Icons.block,
+                onTap: () async {
+                  isBlockedViewModel
+                      ? await ref
+                          .read(blockProvider.notifier)
+                          .unblock(userId)
+                      : await ref
+                          .read(blockProvider.notifier)
+                          .block(userId);
+                  await context.router.pop();
                 },
               ),
             ],

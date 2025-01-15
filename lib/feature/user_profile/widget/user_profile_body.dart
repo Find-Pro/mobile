@@ -36,6 +36,7 @@ class _UserProfileBodyState extends ConsumerState<UserProfileBody>
   @override
   Widget build(BuildContext context) {
     final userProfileViewModel = ref.watch(userProfileProvider);
+
     return SizedBox(
       height: DeviceSize.height(context),
       child: Column(
@@ -59,10 +60,10 @@ class _UserProfileBodyState extends ConsumerState<UserProfileBody>
               ),
             ],
           ),
-          Expanded(child: TabBarView(
+          Expanded(
+              child: TabBarView(
             controller: _tabController,
             children: [
-
               UserProfileJobsListView(
                 userId: userProfileViewModel.user!.userId!,
               ),
