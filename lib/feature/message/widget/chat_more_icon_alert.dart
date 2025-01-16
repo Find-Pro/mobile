@@ -32,11 +32,11 @@ final class ChatMoreIconAlert {
                 onTap: () async {
                   isBlockedViewModel
                       ? await ref
-                          .read(blockProvider.notifier)
-                          .unblock(userId)
+                      .read(blockProvider.notifier)
+                      .unblock(userId)
                       : await ref
-                          .read(blockProvider.notifier)
-                          .block(userId);
+                      .read(blockProvider.notifier)
+                      .block(userId);
                   await context.router.pop();
                 },
               ),

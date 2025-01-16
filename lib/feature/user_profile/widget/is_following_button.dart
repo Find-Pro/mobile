@@ -58,12 +58,12 @@ class IsFollowingButton extends ConsumerWidget {
                     .read(userProfileProvider.notifier)
                     .getUser(userId);
                 await ref.read(notificationProvider).sendNotification(
-                      isMessage: false,
-                      message:
-                          '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} ${LocaleKeys.startedToFollowYou.tr()}',
-                      receiverId: userId.toString(),
-                      senderId: currentUser.user!.userId.toString(),
-                    );
+                  isMessage: false,
+                  message:
+                  '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} ${LocaleKeys.startedToFollowYou.tr()}',
+                  receiverId: userId.toString(),
+                  senderId: currentUser.user!.userId.toString(),
+                );
                 await ref.read(homeProvider.notifier).getJobs();
                 InformationToast().show(
                   context,
@@ -83,7 +83,7 @@ class IsFollowingButton extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               padding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Center(
                 child: Text(
                   isCurrentlyFollowing

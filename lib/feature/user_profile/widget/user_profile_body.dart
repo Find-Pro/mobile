@@ -62,16 +62,16 @@ class _UserProfileBodyState extends ConsumerState<UserProfileBody>
           ),
           Expanded(
               child: TabBarView(
-            controller: _tabController,
-            children: [
-              UserProfileJobsListView(
-                userId: userProfileViewModel.user!.userId!,
-              ),
-              UserProfileCommentsView(
-                userId: userProfileViewModel.user!.userId!,
-              ),
-            ],
-          ))
+                controller: _tabController,
+                children: [
+                  UserProfileJobsListView(
+                    userId: userProfileViewModel.user!.userId!,
+                  ),
+                  UserProfileCommentsView(
+                    userId: userProfileViewModel.user!.userId!,
+                  ),
+                ],
+              ))
         ],
       ),
     );
