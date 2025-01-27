@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/home/widget/nav_bar_item.dart';
@@ -37,8 +38,10 @@ class AppBottomNavigationBar extends StatelessWidget {
       currentIndex: tabsRouter.activeIndex,
       onTap: (value) {
         if (tabsRouter.activeIndex == 3 && value == 3) {
-          context.router.pushAndPopUntil(const SettingsRoute(),
-              predicate: (_) => false);
+          if (CacheManager.instance.getIsLoggedIn()) {
+            context.router.pushAndPopUntil(const SettingsRoute(),
+                predicate: (_) => false);
+          }
         } else {
           tabsRouter.setActiveIndex(value);
         }

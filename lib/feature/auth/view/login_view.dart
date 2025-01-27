@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
@@ -8,6 +9,7 @@ import 'package:findpro/common/services/model/request/login_request.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/view_model/login_view_model.dart';
 import 'package:findpro/feature/auth/widget/apple_google_row.dart';
+import 'package:findpro/feature/auth/widget/auth_app_bar.dart';
 import 'package:findpro/feature/auth/widget/background_image.dart';
 import 'package:findpro/feature/auth/widget/index.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -30,59 +32,68 @@ class LoginView extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: context.themeData.scaffoldBackgroundColor,
-      body: Stack(
-        children: [
-          const BackgroundImage(),
-          Center(
-            child: Padding(
-              padding: PaddingInsets().small,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const LoginWelcomeText(),
-                    40.verticalSpace,
-                    StringTextField(
-                      controller: emailCnt,
-                      hintText: LocaleKeys.mailOrPhoneNumber.tr(),
-                      iconData: Icons.mail,
-                    ),
-                    20.verticalSpace,
-                    PwTextField(
-                      controller: pwCnt,
-                      hintText: LocaleKeys.password.tr(),
-                    ),
-                    40.verticalSpace,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const SupportButton(),
-                        LoginRegisterButton(
-                          text: LocaleKeys.login.tr(),
-                          onTap: () => _handleLogin(
-                            context,
-                            ref,
-                            loginViewModel,
-                            emailCnt,
-                            pwCnt,
+      // ignore: deprecated_member_use
+      body: WillPopScope(
+        onWillPop: () async {
+          await context.router.pushAndPopUntil(const DemoOrFullVersion(),
+              predicate: (_) => false);
+          return false;
+        },
+        child: Stack(
+          children: [
+            const BackgroundImage(),
+            Center(
+              child: Padding(
+                padding: PaddingInsets().small,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const LoginWelcomeText(),
+                      40.verticalSpace,
+                      StringTextField(
+                        controller: emailCnt,
+                        hintText: LocaleKeys.mailOrPhoneNumber.tr(),
+                        iconData: Icons.mail,
+                      ),
+                      20.verticalSpace,
+                      PwTextField(
+                        controller: pwCnt,
+                        hintText: LocaleKeys.password.tr(),
+                      ),
+                      40.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const SupportButton(),
+                          LoginRegisterButton(
+                            text: LocaleKeys.login.tr(),
+                            onTap: () => _handleLogin(
+                              context,
+                              ref,
+                              loginViewModel,
+                              emailCnt,
+                              pwCnt,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    40.verticalSpace,
-                    const AppleGoogleRow(),
-                    40.verticalSpace,
-                    NavigateToRouteText(
-                      text1: LocaleKeys.doNotYouHaveAnAccount.tr(),
-                      text2: LocaleKeys.register.tr(),
-                      route: const RegisterRoute(),
-                    ),
-                  ],
+                        ],
+                      ),
+                      40.verticalSpace,
+                      const AppleGoogleRow(),
+                      40.verticalSpace,
+                      NavigateToRouteText(
+                        text1: LocaleKeys.doNotYouHaveAnAccount.tr(),
+                        text2: LocaleKeys.register.tr(),
+                        route: const RegisterRoute(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+      appBar: const AuthAppBar(),
     );
   }
 
@@ -104,6 +115,7 @@ class LoginView extends ConsumerWidget {
       );
       if (res.success) {
         await ref.read(notificationProvider).login();
+        CacheManager.instance.setIsLoggedIn(true);
         await context.router.pushAndPopUntil(
           const MainRoute(),
           predicate: (_) => false,

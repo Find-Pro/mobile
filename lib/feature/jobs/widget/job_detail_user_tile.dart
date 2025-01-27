@@ -42,8 +42,10 @@ class JobDetailUserTile extends ConsumerWidget {
                             const ProfileRoute(),
                             predicate: (_) => false);
                       } else {
-                        context.router.push(
-                            UserProfileRoute(userId: jobModel.userId!));
+                        if (CacheManager.instance.getIsLoggedIn()) {
+                          context.router.push(
+                              UserProfileRoute(userId: jobModel.userId!));
+                        }
                       }
                     },
                     child: CircleAvatar(
@@ -63,32 +65,33 @@ class JobDetailUserTile extends ConsumerWidget {
                       ?.copyWith(fontWeight: FontWeight.w700),
                 ),
               ),
-              Expanded(
-                  child: IconButton(
-                      onPressed: () async {
-                        final res = await ref
-                            .read(createChatRoomProvider.notifier)
-                            .create(jobModel.userId!);
+              if (CacheManager.instance.getIsLoggedIn())
+                Expanded(
+                    child: IconButton(
+                        onPressed: () async {
+                          final res = await ref
+                              .read(createChatRoomProvider.notifier)
+                              .create(jobModel.userId!);
 
-                        if (res.success) {
-                          await ref
-                              .read(messagesProvider.notifier)
-                              .getChatRooms();
-                          InformationToast().show(context,
-                              LocaleKeys.chatRoomHasCreatedSuccess.tr());
-                        } else {
-                          await QuestionAlertDialog().show(context,
-                              bodyText: LocaleKeys
-                                  .chatRoomHasCreatedSuccess
-                                  .tr(),
-                              buttonText: LocaleKeys.okay.tr(),
-                              onTap: () async => context.router
-                                  .pushAndPopUntil(const MessagesRoute(),
-                                      predicate: (_) => false));
-                        }
-                      },
-                      icon: const Icon(Icons.message_outlined,
-                          color: Colors.grey)))
+                          if (res.success) {
+                            await ref
+                                .read(messagesProvider.notifier)
+                                .getChatRooms();
+                            InformationToast().show(context,
+                                LocaleKeys.chatRoomHasCreatedSuccess.tr());
+                          } else {
+                            await QuestionAlertDialog().show(context,
+                                bodyText: LocaleKeys
+                                    .chatRoomHasCreatedSuccess
+                                    .tr(),
+                                buttonText: LocaleKeys.okay.tr(),
+                                onTap: () async => context.router
+                                    .pushAndPopUntil(const MessagesRoute(),
+                                        predicate: (_) => false));
+                          }
+                        },
+                        icon: const Icon(Icons.message_outlined,
+                            color: Colors.grey)))
             ],
           ),
         ),

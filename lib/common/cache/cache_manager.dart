@@ -19,15 +19,6 @@ final class CacheManager {
     prefs.setInt('userId', value);
   }
 
-  //register/login with google or apple
-  bool? getAppleOrGoogle({bool defaultValue = false}) {
-    return prefs.getBool('appleOrGoogle') ?? defaultValue;
-  }
-
-  void setAppleOrGoogle(bool value) {
-    prefs.setBool('appleOrGoogle', value);
-  }
-
 // User's current Country
   String? getCountry() {
     return prefs.getString('country');
@@ -35,6 +26,15 @@ final class CacheManager {
 
   void setCountry(String value) {
     prefs.setString('country', value);
+  }
+
+// isLoggedIn
+  bool getIsLoggedIn({bool defaultValue = false}) {
+    return prefs.getBool('isLoggedIn') ?? defaultValue;
+  }
+
+  void setIsLoggedIn(bool value) {
+    prefs.setBool('isLoggedIn', value);
   }
 
 //clear cache

@@ -3,6 +3,12 @@
   "appName": "Find Pro",
   "harmfulContent": "Contenu nuisible",
   "register": "S'inscrire",
+  "continueWithAccount": "Continuez avec votre compte",
+  "continueWithoutAccount": "Continuez sans compte",
+  "toAccessTheseFeatures": "Pour accéder à ces fonctionnalités, veuillez utiliser votre compte personnel.",
+  "loginRegister": "Connexion/Inscription",
+  "demo": "Démo",
+
   "typeAUserName": "Tapez un nom d'utilisateur",
   "unityAdUrl": "https://unity.com/",
   "youCanNotSendMessage": "Vous ne pouvez pas envoyer de message à cet utilisateur",

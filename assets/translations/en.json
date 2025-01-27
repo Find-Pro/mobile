@@ -1,5 +1,12 @@
 {
   "login": "Login",
+
+  "continueWithAccount": "Continue with your account",
+  "continueWithoutAccount": "Continue without an account",
+  "toAccessTheseFeatures": "To access these features, please use your personal account.",
+  "loginRegister": "Login/Register",
+  "demo": "Demo",
+
   "appName": "Find Pro",
   "harmfulContent": "Harmful content",
   "register": "Register",

@@ -48,7 +48,7 @@ class GoogleLoginManager {
 
   Future<void> saveUserAndNavigate(
       BuildContext context, WidgetRef ref, int? userId) async {
-    CacheManager.instance.setAppleOrGoogle(true);
+    CacheManager.instance.setIsLoggedIn(true);
     CacheManager.instance.setUserId(userId ?? 0);
     await ref.read(notificationProvider).login();
     await context.router

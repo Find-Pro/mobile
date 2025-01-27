@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart' show AutoRouterX, RoutePage;
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
+import 'package:findpro/common/widget/you_should_login_app_widget.dart';
 import 'package:findpro/feature/profile/view/profile_body.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
 import 'package:findpro/feature/profile/widget/follow_number_box.dart';
@@ -19,6 +21,9 @@ class ProfileView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileViewModel = ref.watch(profileProvider);
     final profileFuture = ref.watch(profileFutureProvider);
+    if (!CacheManager.instance.getIsLoggedIn()) {
+      return const YouShouldLoginAppWidget();
+    }
     return profileFuture.when(
         data: (_) {
           return GestureDetector(

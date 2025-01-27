@@ -1,6 +1,11 @@
 {
   "login": "Anmelden",
   "appName": "Find Pro",
+  "continueWithAccount": "Mit Ihrem Konto fortfahren",
+  "continueWithoutAccount": "Ohne ein Konto fortfahren",
+  "toAccessTheseFeatures": "Um auf diese Funktionen zuzugreifen, verwenden Sie bitte Ihr persönliches Konto.",
+  "loginRegister": "Anmelden/Registrieren",
+  "demo": "Demo",
   "harmfulContent": "Schädliche Inhalte",
   "register": "Registrieren",
   "privacyContractAgree": "Durch das Betreten unserer App erklären Sie, dass Sie unsere Nutzungsbedingungen gelesen haben und diesen zustimmen.",

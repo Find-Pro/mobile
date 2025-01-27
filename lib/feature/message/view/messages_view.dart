@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
+import 'package:findpro/common/widget/you_should_login_app_widget.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/home/widget/select_country_app_bar.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
@@ -20,7 +22,9 @@ class MessagesView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final messagesViewModel = ref.watch(messagesProvider);
     final messagesFuture = ref.watch(messagesFutureProvider);
-
+    if (!CacheManager.instance.getIsLoggedIn()) {
+      return const YouShouldLoginAppWidget();
+    }
     return Scaffold(
       appBar: SelectCountryAppBar(text: LocaleKeys.messages.tr()),
       body: messagesFuture.when(
@@ -36,7 +40,8 @@ class MessagesView extends ConsumerWidget {
               ListView.builder(
                 itemCount: messagesViewModel.length,
                 itemBuilder: (context, index) {
-                  final reverseIndex = messagesViewModel.length - 1 - index;
+                  final reverseIndex =
+                      messagesViewModel.length - 1 - index;
                   return MessagesUserCard(
                     messageProfileModel: messagesViewModel[reverseIndex],
                   );

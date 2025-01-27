@@ -47,7 +47,8 @@ class _UserSearchViewState extends ConsumerState<UserSearchView> {
           children: [
             10.verticalSpace,
             const UserSearchToInputButton(),
-            UserSearchBar(textCnt: searchCnt),
+            if (CacheManager.instance.getIsLoggedIn())
+              UserSearchBar(textCnt: searchCnt),
             if (userSearchViewModel.result == null ||
                 userSearchViewModel.result!.isEmpty)
               const UserSearchNoResultImage()

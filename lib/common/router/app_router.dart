@@ -13,11 +13,16 @@ class AppRouter extends $AppRouter {
   RouteType get defaultRouteType => const RouteType.adaptive();
   @override
   final List<AutoRoute> routes = [
+    AutoRoute(page: OnboardingRoute.page, initial: true, guards: [
+      AuthGuard(),
+    ]),
+    AutoRoute(
+      page: DemoOrFullVersion.page,
+    ),
     AutoRoute(
       page: MainRoute.page,
-      initial: true,
       guards: [
-        AuthGuard(),
+        // AuthGuard(),
         ConnectionGuard(),
       ],
       children: [
@@ -30,9 +35,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ProfileRoute.page),
       ],
     ),
-    AutoRoute(page: OnboardingRoute.page),
-    AutoRoute(page: SearchResultRoute.page),
-    AutoRoute(page: SearchInputRoute.page),
     AutoRoute(
       page: LoginRoute.page,
       guards: [
@@ -46,6 +48,8 @@ class AppRouter extends $AppRouter {
         NotificationGuard(),
       ],
     ),
+    AutoRoute(page: SearchResultRoute.page),
+    AutoRoute(page: SearchInputRoute.page),
     AutoRoute(page: SettingsRoute.page),
     AutoRoute(page: SupportRoute.page),
     AutoRoute(page: SelectCountryRoute.page),
@@ -56,7 +60,6 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: JobDetailRoute.page),
     AutoRoute(page: FollowersRoute.page),
     AutoRoute(page: FollowingRoute.page),
-    AutoRoute(page: AddJobRoute.page),
     AutoRoute(page: UserProfileRoute.page),
     AutoRoute(page: AddCommentRoute.page),
     AutoRoute(page: ChatRoute.page),

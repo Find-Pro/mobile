@@ -1,8 +1,8 @@
 import 'package:findpro/common/router/app_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AppRoute {
-  AppRoute(this.ref) {
+class RouterProvider {
+  RouterProvider(this.ref) {
     appRouter = AppRouter();
   }
   late AppRouter appRouter;
@@ -10,5 +10,5 @@ class AppRoute {
 }
 
 final routerProvider = Provider<AppRouter>((ref) {
-  return AppRoute(ref).appRouter;
+  return RouterProvider(ref).appRouter;
 });

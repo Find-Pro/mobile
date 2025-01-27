@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
@@ -27,46 +28,49 @@ class HomeCountryAppBar extends ConsumerWidget
         return AppBar(
           title: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                          radius: 25,
-                          backgroundImage: Image.network(
-                            CreateImageUrl.instance
-                                .photo(currentUser.user!.profilePicture!),
-                          ).image),
-                      10.horizontalSpace,
-                      Text(
-                        currentUser.user!.fullName ?? '',
-                        style: context.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+              if (CacheManager.instance.getIsLoggedIn())
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    if (CacheManager.instance.getIsLoggedIn())
+                      Row(
+                        children: [
+                          CircleAvatar(
+                              radius: 25,
+                              backgroundImage: Image.network(
+                                CreateImageUrl.instance.photo(
+                                    currentUser.user!.profilePicture!),
+                              ).image),
+                          10.horizontalSpace,
+                          Text(
+                            currentUser.user!.fullName ?? '',
+                            style: context.textTheme.headlineSmall
+                                ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 60,
-                        child: SvgPicture.asset(
-                          GetCountryFlag().getSvgPath(currentCountry),
-                          height: 40,
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 60,
+                          child: SvgPicture.asset(
+                            GetCountryFlag().getSvgPath(currentCountry),
+                            height: 40,
+                          ),
                         ),
-                      ),
-                      10.horizontalSpace,
-                      Text(
-                        GetCountryStringFromCode().get(currentCountry),
-                        style: context.textTheme.labelLarge?.copyWith(
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white),
-                      )
-                    ],
-                  ),
-                ],
-              ),
+                        10.horizontalSpace,
+                        Text(
+                          GetCountryStringFromCode().get(currentCountry),
+                          style: context.textTheme.labelLarge?.copyWith(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
             ],
           ),
           backgroundColor: Colors.grey.shade700,

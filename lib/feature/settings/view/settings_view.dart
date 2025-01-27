@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
+import 'package:findpro/common/widget/you_should_login_app_widget.dart';
 import 'package:findpro/feature/auth/helper/sign_out.dart';
 import 'package:findpro/feature/profile/view_model/my_jobs_view_model.dart';
 import 'package:findpro/feature/settings/view_model/remove_account_view_model.dart';
@@ -23,6 +25,9 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (!CacheManager.instance.getIsLoggedIn()) {
+      return const YouShouldLoginAppWidget();
+    }
     return Scaffold(
       appBar: const CustomPushSettingsAppbar(),
       // ignore: deprecated_member_use
