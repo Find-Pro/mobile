@@ -92,11 +92,11 @@ class JobService implements JobOperation {
 
   @override
   Future<GetUserJobsResponse?> getFollowingJobs() async {
-    final userId = CacheManager.instance.getUserId();
+    final country = CacheManager.instance.getCountry();
     final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
-      EndPointEnums.jobGetFollowingJobs,
-      data: {'userId': userId},
+      EndPointEnums.jobHomeJobs,
+      data: {'country': country},
     );
 
     return responseData != null
