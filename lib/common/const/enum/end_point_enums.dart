@@ -19,7 +19,7 @@ enum EndPointEnums {
   jobComplete('/job/complete'),
   jobEdit('/job/edit'),
   jobGetUserJobs('/job/getUserJobs'),
-  jobGetFollowingJobs('/job/getFollowingJobs'),
+  jobHomeJobs('/job/homeJobs'),
   jobGet('/job/get'),
   login('/login'),
   loginWithGoogle('/login/google'),

@@ -95,7 +95,7 @@ class JobService implements JobOperation {
     final userId = CacheManager.instance.getUserId();
     final responseData = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
-      EndPointEnums.jobGetFollowingJobs,
+      EndPointEnums.jobHomeJobs,
       data: {'userId': userId},
     );
 
