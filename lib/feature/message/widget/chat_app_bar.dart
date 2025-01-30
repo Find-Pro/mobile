@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/extension/platform_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/message/model/message_profile_model.dart';
 import 'package:findpro/feature/message/widget/chat_more_icon_alert.dart';
@@ -19,13 +19,16 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       leading: IconButton(
-          onPressed: () {
-            context.router.pop();
-          },
-          icon: Icon(
-            Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-            color: context.themeData.indicatorColor,
-          )),
+        onPressed: () {
+          context.router.pop();
+        },
+        icon: Icon(
+          context.platform == PlatformExtension.iOS
+              ? Icons.arrow_back_ios
+              : Icons.arrow_back,
+          color: Colors.white,
+        ),
+      ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

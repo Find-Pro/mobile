@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/extension/platform_extension.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -31,19 +31,22 @@ class SearchResultAppbar extends StatelessWidget
         color: Colors.white,
       ),
       leading: IconButton(
-          onPressed: () async {
-            if (context.mounted) {
-              await context.router.pop().then((value) {
-                if (context.mounted) {
-                  context.router.pushWidget(const VideoAdView());
-                }
-              });
-            }
-          },
-          icon: Icon(
-            Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-            color: Colors.white,
-          )),
+        onPressed: () async {
+          if (context.mounted) {
+            await context.router.pop().then((value) {
+              if (context.mounted) {
+                context.router.pushWidget(const VideoAdView());
+              }
+            });
+          }
+        },
+        icon: Icon(
+          context.platform == PlatformExtension.iOS
+              ? Icons.arrow_back_ios
+              : Icons.arrow_back,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 

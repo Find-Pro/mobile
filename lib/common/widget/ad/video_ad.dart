@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/services/manager/ad_manager.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
@@ -28,8 +29,11 @@ class _VideoAdViewState extends State<VideoAdView> {
         _isAdReady = false;
       });
     });
-
-    _loadAdAndShow();
+    if (!kIsWeb) {
+      _loadAdAndShow();
+    } else {
+      debugPrint('Unity Ads not supported on Windows');
+    }
   }
 
   void _loadAdAndShow() {

@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:findpro/common/const/extension/platform_extension.dart';
 import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
@@ -16,18 +16,21 @@ class UserProfileAppBar extends ConsumerWidget {
     final userProfileViewModel = ref.watch(userProfileProvider);
     return SliverAppBar(
       leading: IconButton(
-          onPressed: () async {
+        onPressed: () async {
+          if (context.mounted) {
+            Navigator.pop(context);
             if (context.mounted) {
-              Navigator.pop(context);
-              if (context.mounted) {
-                await context.router.pushWidget(const VideoAdView());
-              }
+              await context.router.pushWidget(const VideoAdView());
             }
-          },
-          icon: Icon(
-            Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-            color: Colors.white,
-          )),
+          }
+        },
+        icon: Icon(
+          context.platform == PlatformExtension.iOS
+              ? Icons.arrow_back_ios
+              : Icons.arrow_back,
+          color: Colors.white,
+        ),
+      ),
       iconTheme: const IconThemeData(color: Colors.white),
       expandedHeight: 80,
       pinned: true,

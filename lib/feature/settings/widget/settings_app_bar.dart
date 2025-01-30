@@ -1,10 +1,10 @@
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/extension/platform_extension.dart';
 import 'package:flutter/material.dart';
 
-class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
+class SettingsAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   const SettingsAppBar({required this.text, super.key});
 
   final String text;
@@ -21,13 +21,16 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       leading: IconButton(
-          onPressed: () {
-            context.router.pop();
-          },
-          icon: Icon(
-            Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-            color: Colors.white,
-          )),
+        onPressed: () {
+          context.router.pop();
+        },
+        icon: Icon(
+          context.platform == PlatformExtension.iOS
+              ? Icons.arrow_back_ios
+              : Icons.arrow_back,
+          color: Colors.white,
+        ),
+      ),
       backgroundColor: Colors.grey.shade700,
       iconTheme: const IconThemeData(
         color: Colors.white,
