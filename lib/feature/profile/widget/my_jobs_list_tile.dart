@@ -8,6 +8,7 @@ import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/question_alert_dialog.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_category_icon.dart';
+import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
 import 'package:findpro/feature/jobs/helper/job_detail_helper.dart';
 import 'package:findpro/feature/profile/view_model/my_jobs_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -43,8 +44,13 @@ class MyJobsListTile extends ConsumerWidget {
                 child: Padding(
                   padding: PaddingInsets().large,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      SvgPicture.asset(
+                        GetCountryFlag()
+                            .getSvgPath(stringJobModel.country!),
+                        height: 30,
+                      ),
                       SvgPicture.asset(
                         GetCategoryIcon().get(jobModel.jobCategoryId ?? 1),
                         colorFilter: const ColorFilter.mode(

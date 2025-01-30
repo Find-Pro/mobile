@@ -4,7 +4,7 @@ import 'package:findpro/generated/locale_keys.g.dart';
 final class GetCountryStringFromCode {
   String get(String country) {
     switch (country) {
-      case 'cn':
+      case 'zh':
         return LocaleKeys.china.tr();
       case 'en':
         return LocaleKeys.unitedKingdom.tr();
@@ -12,11 +12,11 @@ final class GetCountryStringFromCode {
         return LocaleKeys.france.tr();
       case 'de':
         return LocaleKeys.germany.tr();
-      case 'in':
+      case 'id':
         return LocaleKeys.india.tr();
-      case 'jp':
+      case 'ja':
         return LocaleKeys.japan.tr();
-      case 'kr':
+      case 'ko':
         return LocaleKeys.southKorea.tr();
       case 'ru':
         return LocaleKeys.russia.tr();

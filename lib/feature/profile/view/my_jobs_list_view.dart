@@ -25,14 +25,13 @@ class MyJobsListView extends ConsumerWidget {
             text: LocaleKeys.noJobsFound.tr(),
           );
         }
+        final reversedList = myJobsViewModel.result!.reversed.toList();
         return Stack(
           children: [
             const HomeBackgroundImage(),
             ListView.builder(
                 itemCount: myJobsViewModel.result!.length,
                 itemBuilder: (context, index) {
-                  final reversedList =
-                      myJobsViewModel.result!.reversed.toList();
                   return MyJobsListTile(jobModel: reversedList[index]);
                 }),
           ],
