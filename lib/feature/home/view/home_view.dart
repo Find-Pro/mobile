@@ -41,7 +41,7 @@ class HomeView extends ConsumerWidget {
                   return JobListTile(
                       jobModel: homeViewModel.result![index]);
                 },
-              )
+              ),
             ],
           );
         },

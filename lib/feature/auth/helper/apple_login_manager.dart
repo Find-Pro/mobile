@@ -40,7 +40,7 @@ class AppleLoginManager {
   ) async {
     switch (credentialState) {
       case CredentialState.revoked:
-       // await context.router.pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
+        await context.router.pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
         case CredentialState.authorized:
         await handleAuthorizedState(context, ref, credential);
       case CredentialState.notFound:
@@ -53,6 +53,7 @@ class AppleLoginManager {
       WidgetRef ref,
       AuthorizationCredentialAppleID credential,
       ) async {
+
     final loginResult = await AuthService.instance.loginWithToken(
       credential.userIdentifier ?? '',
       EndPointEnums.loginWithApple,
@@ -62,20 +63,22 @@ class AppleLoginManager {
       await handleNotFoundState(context, ref, credential);
       return;
     } else {
+      await saveUserAndNavigate(context, ref, loginResult.user!.userId);
+
       final registerResult = await AuthService.instance.registerWithToken(
         credential.userIdentifier ?? '',
         credential.userIdentifier ?? '',
         EndPointEnums.registerWithApple,
       );
-      if (registerResult!.success) {
+      if (registerResult != null && registerResult.success) {
         await saveUserAndNavigate(
             context, ref, registerResult.user!.userId);
-        debugPrint('Başarılı kayıt: ${registerResult.user}');
       } else {
         WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
     }
   }
+
 
 
   Future<void> handleNotFoundState(
