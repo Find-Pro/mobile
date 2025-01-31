@@ -7,6 +7,7 @@ import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_category_icon.dart';
+import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
 import 'package:findpro/feature/jobs/helper/job_detail_helper.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile_button.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -71,6 +72,11 @@ class JobListTile extends ConsumerWidget {
                                         fontWeight: FontWeight.w700),
                               ),
                             ),
+                            SvgPicture.asset(
+                              GetCountryFlag()
+                                  .getSvgPath(stringJobModel.country!),
+                              height: 30,
+                            ),
                             JobListTileButton(
                                 onTap: () => context.router.push(
                                     JobDetailRoute(jobModel: jobModel))),
@@ -86,14 +92,16 @@ class JobListTile extends ConsumerWidget {
                               style: context.textTheme.labelLarge
                                   ?.copyWith(
                                       color:
-                                          context.themeData.dividerColor,fontWeight: FontWeight.w600),
+                                          context.themeData.dividerColor,
+                                      fontWeight: FontWeight.w600),
                             ),
                             Text(
                               '${stringJobModel.city}/${stringJobModel.district}',
                               style: context.textTheme.labelLarge
                                   ?.copyWith(
                                       color:
-                                          context.themeData.dividerColor,fontWeight: FontWeight.w600),
+                                          context.themeData.dividerColor,
+                                      fontWeight: FontWeight.w600),
                             ),
                             Text(
                               DateTime.parse(jobModel.createdAt!)
