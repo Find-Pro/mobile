@@ -3,17 +3,17 @@ import 'package:findpro/generated/assets.dart';
 final class GetCountryFlag {
   String getSvgPath(String country) {
     switch (country) {
-      case 'cn':
+      case 'zh':
         return Assets.iconChina;
       case 'en':
         return Assets.iconUk;
       case 'fr':
         return Assets.iconFrance;
-      case 'in':
+      case 'id':
         return Assets.iconIndia;
-      case 'jp':
+      case 'ja':
         return Assets.iconJapan;
-      case 'kr':
+      case 'ko':
         return Assets.iconSouthKorea;
       case 'ru':
         return Assets.iconRussia;
