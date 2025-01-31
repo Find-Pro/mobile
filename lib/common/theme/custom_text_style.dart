@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextStyle {
-  static final TextStyle headline38 = GoogleFonts.oswald(
+  static final TextStyle headline38 = GoogleFonts.dosis(
     fontSize: 38,
   );
   static final TextStyle headline34 =

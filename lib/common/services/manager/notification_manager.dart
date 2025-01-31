@@ -133,8 +133,9 @@ class NotificationManager {
       return;
     }
     await OneSignal.login(userId.toString());
-    await OneSignal.User.addAlias('userId', userId.toString());
-    await OneSignal.User.addTagWithKey('userId', userId.toString());
+  await OneSignal.User.addAlias('userId', userId.toString());
+  await OneSignal.User.addTagWithKey('userId', userId.toString());
+
   }
 
   Future<void> logout() async {

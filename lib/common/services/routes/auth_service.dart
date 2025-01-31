@@ -1,3 +1,4 @@
+import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/auth_operation.dart';
@@ -44,7 +45,8 @@ class AuthService implements AuthOperation {
 
   @override
   Future<UpdateProfileResponse?> registerWithToken(String token,
-      String email, String country, EndPointEnums endPoint) async {
+      String email,  EndPointEnums endPoint) async {
+    final country = CacheManager.instance.getCountry();
     final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       endPoint,
