@@ -6,11 +6,13 @@ class HomeViewModel extends StateNotifier<GetUserJobsResponse> {
   HomeViewModel() : super(GetUserJobsResponse(success: false, result: []));
 
   Future<bool> getJobs() async {
-    final response = await JobService.instance.getFollowingJobs();
+    final response = await JobService.instance.homeJobs();
     if (response != null) {
       state = response;
-      return response.success;
+    } else {
+      state = GetUserJobsResponse(success: false, result: []);
     }
+
     return false;
   }
 }

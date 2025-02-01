@@ -33,6 +33,7 @@ class HomeView extends ConsumerWidget {
           }
           return Stack(
             children: [
+
               const HomeBackgroundImage(),
               ListView.builder(
                 itemCount: homeViewModel.result!.length,
@@ -40,7 +41,7 @@ class HomeView extends ConsumerWidget {
                   return JobListTile(
                       jobModel: homeViewModel.result![index]);
                 },
-              )
+              ),
             ],
           );
         },

@@ -36,17 +36,17 @@ class SelectCountryView extends ConsumerWidget {
       body: ListView(
         children: [
           _buildListTile(
-              context, LocaleKeys.china.tr(), 'cn', selectedCountry, ref),
+              context, LocaleKeys.china.tr(), 'zh', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.germany.tr(), 'de', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.france.tr(), 'fr', selectedCountry, ref),
           _buildListTile(
-              context, LocaleKeys.india.tr(), 'in', selectedCountry, ref),
+              context, LocaleKeys.india.tr(), 'id', selectedCountry, ref),
           _buildListTile(
-              context, LocaleKeys.japan.tr(), 'jp', selectedCountry, ref),
+              context, LocaleKeys.japan.tr(), 'ja', selectedCountry, ref),
           _buildListTile(
-              context, LocaleKeys.southKorea.tr(), 'kr', selectedCountry, ref),
+              context, LocaleKeys.southKorea.tr(), 'ko', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.russia.tr(), 'ru', selectedCountry, ref),
           _buildListTile(
@@ -56,6 +56,7 @@ class SelectCountryView extends ConsumerWidget {
           _buildListTile(context, LocaleKeys.unitedStates.tr(), 'us',
               selectedCountry, ref),
         ],
+
       ),
       floatingActionButton: SettingsConfirmButton(
         text: LocaleKeys.continueE.tr(),

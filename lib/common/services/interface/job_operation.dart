@@ -12,5 +12,5 @@ abstract class JobOperation {
   Future<SuccessAndMessageResponse?> complete(int jobId);
   Future<JobAddResponse?> get(int jobId);
   Future<GetUserJobsResponse?> getUserJobs(int userId);
-  Future<GetUserJobsResponse?> getFollowingJobs();
+  Future<GetUserJobsResponse?> homeJobs();
 }

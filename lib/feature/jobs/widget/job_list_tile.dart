@@ -28,10 +28,14 @@ class JobListTile extends ConsumerWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CustomCircular();
           } else if (snapshot.hasError || snapshot.data == null) {
+
             return Center(
-              child: Text(
-                '${LocaleKeys.error.tr()} : ${snapshot.error}',
-                style: context.textTheme.headlineSmall,
+              child: TextButton(onPressed: (){
+              },
+                child: Text(
+                  '${LocaleKeys.error.tr()} : ${snapshot.error}',
+                  style: context.textTheme.headlineSmall,
+                ),
               ),
             );
           } else {
