@@ -14,7 +14,7 @@ final class JobDetailHelper {
   static final JobDetailHelper _instance = JobDetailHelper._init();
   static JobDetailHelper get instance => _instance;
 
-  Future<StringJobModel?> convert(JobModel jobModel) async {
+  Future<StringJobModel> convert(JobModel jobModel) async {
       final cityAndDistrict = await getCityAndDistrictName(
         jobModel.country!,
         jobModel.cityId!,
@@ -64,7 +64,7 @@ final class JobDetailHelper {
 
       return [category.name.tr(), service.name.tr()];
     } catch (e) {
-      return ['Bilinmiyor', 'Bilinmiyor'];
+      return ['Unknown', 'Unknown'];
     }
   }
 
@@ -81,7 +81,7 @@ final class JobDetailHelper {
       final city = cityModels.firstWhere(
             (city) => city.ilId == cityId,
         orElse: () {
-          return CityModel(ilId: -1, name: 'Bilinmiyor');
+          return CityModel(ilId: -1, name: 'Unknown');
         },
       );
 
@@ -92,13 +92,13 @@ final class JobDetailHelper {
       final district = districtModels.firstWhere(
             (district) => district.id == districtId,
         orElse: () {
-          return DistrictModel(ilId: -1, name: 'Bilinmiyor', id: 31);
+          return DistrictModel(ilId: -1, name: 'Unknown', id: 31);
         },
       );
 
       return [city.name, district.name];
     } catch (e) {
-      return ['Bilinmiyor', 'Bilinmiyor'];
+      return ['Unknown', 'Unknown'];
     }
   }
 }
