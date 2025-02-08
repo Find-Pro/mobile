@@ -14,7 +14,7 @@ final class JobDetailHelper {
   static final JobDetailHelper _instance = JobDetailHelper._init();
   static JobDetailHelper get instance => _instance;
 
-  Future<StringJobModel?> convert(JobModel jobModel) async {
+  Future<StringJobModel> convert(JobModel jobModel) async {
     final cityAndDistrict = await getCityAndDistrictName(
       jobModel.country!,
       jobModel.cityId!,
@@ -76,8 +76,10 @@ final class JobDetailHelper {
           await rootBundle.loadString('assets/country/$country/city.json');
       final districtJsonString = await rootBundle
           .loadString('assets/country/$country/district.json');
+
       final cityJsonResponse = json.decode(cityJsonString);
       final cityList = cityJsonResponse as List;
+
       final cityModels = cityList
           .map((json) => CityModel.fromJson(json as Map<String, dynamic>))
           .toList();

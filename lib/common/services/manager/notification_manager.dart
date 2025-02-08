@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io' show Platform;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -9,7 +10,7 @@ import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/router/router_provider.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -26,7 +27,7 @@ class NotificationManager {
   final Ref ref;
 
   Future<void> init() async {
-    if (!kIsWeb) {
+    if (Platform.isWindows) {
       debugPrint('OneSignal bu platformda desteklenmiyor.');
       return;
     }
@@ -34,21 +35,15 @@ class NotificationManager {
     await OneSignal.Debug.setAlertLevel(OSLogLevel.none);
     OneSignal.initialize(ApiKey.osAppID);
     await OneSignal.LiveActivities.setupDefault();
-
     await OneSignal.Notifications.clearAll();
-
     OneSignal.User.pushSubscription.addObserver((state) async {
-      debugPrint(
-          'Push subscription state changed: ${state.current.optedIn}');
       if (!state.current.optedIn) {
         await login();
       }
     });
 
     OneSignal.Notifications.addPermissionObserver((state) {});
-
     await login();
-
     OneSignal.Notifications.addClickListener((event) {
       final context = ref.read(routerProvider).navigatorKey.currentContext;
       final senderId =
@@ -56,17 +51,12 @@ class NotificationManager {
       final isMessage =
           event.notification.additionalData?['isMessage'] as bool? ??
               false;
-
       debugPrint(
           'Notification clicked. Sender ID: $senderId, isMessage: $isMessage');
-
       if (context == null) {
-        debugPrint('Context is null, cannot navigate.');
         return;
       }
-
       if (isMessage) {
-        debugPrint('Navigating to MessagesRoute');
         ref.read(messagesProvider.notifier).getChatRooms();
         ref.read(routerProvider).pushAndPopUntil(const MessagesRoute(),
             predicate: (_) => false);
@@ -144,7 +134,6 @@ class NotificationManager {
 
   Future<void> login() async {
     final userId = CacheManager.instance.getUserId();
-
     if (userId == 0) {
       debugPrint('User is not logged in.');
       return;

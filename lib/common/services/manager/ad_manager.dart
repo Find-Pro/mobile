@@ -10,11 +10,23 @@ class AdManager {
     }
   }
 
-  static String get bannerAdPlacement => ApiKey.bannerAdPlacement;
-  static String get rewardedVideoAdPlacement =>
-      ApiKey.rewardedVideoAdPlacement;
-  static String get interstitialVideoAdPlacement =>
-      ApiKey.interstitialVideoAdPlacement;
+  static String get bannerAdPlacement {
+    return defaultTargetPlatform == TargetPlatform.android
+        ? ApiKey.bannerAdPlacementAndroid
+        : ApiKey.bannerAdPlacementIos;
+  }
+
+  static String get rewardedVideoAdPlacement {
+    return defaultTargetPlatform == TargetPlatform.android
+        ? ApiKey.rewardedVideoAdPlacementAndroid
+        : ApiKey.rewardedVideoAdPlacementIos;
+  }
+
+  static String get interstitialVideoAdPlacement {
+    return defaultTargetPlatform == TargetPlatform.android
+        ? ApiKey.interstitialAdAndroid
+        : ApiKey.interstitialAdIos;
+  }
 
   static final Map<String, bool> placements = {
     bannerAdPlacement: false,

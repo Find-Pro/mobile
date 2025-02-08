@@ -8,6 +8,7 @@ import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/home/widget/select_country_app_bar.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/feature/message/widget/messages_user_card.dart';
+import 'package:findpro/feature/message/widget/messages_users_circle_avatar.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,10 +39,15 @@ class MessagesView extends ConsumerWidget {
             children: [
               const HomeBackgroundImage(),
               ListView.builder(
-                itemCount: messagesViewModel.length,
+                itemCount: messagesViewModel.length + 1,
                 itemBuilder: (context, index) {
-                  final reverseIndex =
-                      messagesViewModel.length - 1 - index;
+                  if (index == 0) {
+                    return const SizedBox(
+                      height: 150,
+                      child: MessagesUsersCircleAvatar(),
+                    );
+                  }
+                  final reverseIndex = messagesViewModel.length - index;
                   return MessagesUserCard(
                     messageProfileModel: messagesViewModel[reverseIndex],
                   );

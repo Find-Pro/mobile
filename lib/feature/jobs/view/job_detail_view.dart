@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/widget/custom_circular.dart';
+import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/common/widget/custom_future_builder.dart';
 import 'package:findpro/feature/home/widget/main_app_bar.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/job_detail_helper.dart';
@@ -20,23 +21,17 @@ class JobDetailView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: MainAppBar(text: LocaleKeys.serviceDetails.tr()),
-      body: FutureBuilder(
-          future: JobDetailHelper.instance.convert(jobModel),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CustomCircular();
-            } else {
-              final stringJobModel = snapshot.data!;
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    JobDetailUserTile(jobModel: stringJobModel),
-                    JobDetailBody(jobModel: stringJobModel),
-                  ],
-                ),
-              );
-            }
-          }),
+      body: CustomFutureBuilder<StringJobModel>(
+        future: JobDetailHelper.instance.convert(jobModel),
+        child: (stringJobModel) => SingleChildScrollView(
+          child: Column(
+            children: [
+              JobDetailUserTile(jobModel: stringJobModel),
+              JobDetailBody(jobModel: stringJobModel),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
