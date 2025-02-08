@@ -15,48 +15,49 @@ final class JobDetailHelper {
   static JobDetailHelper get instance => _instance;
 
   Future<StringJobModel?> convert(JobModel jobModel) async {
-      final cityAndDistrict = await getCityAndDistrictName(
-        jobModel.country!,
-        jobModel.cityId!,
-        jobModel.districtId!,
-      );
-      final categoryAndService = await getCategoryAndServiceName(
-        jobModel.jobCategoryId!,
-        jobModel.jobServiceId!,
-      );
+    final cityAndDistrict = await getCityAndDistrictName(
+      jobModel.country!,
+      jobModel.cityId!,
+      jobModel.districtId!,
+    );
+    final categoryAndService = await getCategoryAndServiceName(
+      jobModel.jobCategoryId!,
+      jobModel.jobServiceId!,
+    );
 
-      return StringJobModel(
-        city: cityAndDistrict[0],
-        district: cityAndDistrict[1],
-        country: jobModel.country,
-        createdAt: jobModel.createdAt,
-        category: categoryAndService[0],
-        service: categoryAndService[1],
-        fullName: jobModel.fullName,
-        profilePicture: jobModel.profilePicture,
-        description: jobModel.description,
-        hourlyWage: jobModel.hourlyWage,
-        jobId: jobModel.jobId,
-        userId: jobModel.userId,
-        expiryDate: jobModel.expiryDate,
-      );
-
+    return StringJobModel(
+      city: cityAndDistrict[0],
+      district: cityAndDistrict[1],
+      country: jobModel.country,
+      createdAt: jobModel.createdAt,
+      category: categoryAndService[0],
+      service: categoryAndService[1],
+      fullName: jobModel.fullName,
+      profilePicture: jobModel.profilePicture,
+      description: jobModel.description,
+      hourlyWage: jobModel.hourlyWage,
+      jobId: jobModel.jobId,
+      userId: jobModel.userId,
+      expiryDate: jobModel.expiryDate,
+    );
   }
 
-  Future<List<String>> getCategoryAndServiceName(int categoryId, int serviceId) async {
+  Future<List<String>> getCategoryAndServiceName(
+      int categoryId, int serviceId) async {
     try {
-
-      final categoriesList = await CategoriesHelper.instance.parseCategories();
+      final categoriesList =
+          await CategoriesHelper.instance.parseCategories();
 
       final category = categoriesList.firstWhere(
-            (category) => category.id == categoryId,
+        (category) => category.id == categoryId,
         orElse: () {
-          return CategoryModel(id: -1, name: 'Unknown', services: const []);
+          return CategoryModel(
+              id: -1, name: 'Unknown', services: const []);
         },
       );
 
       final service = category.services.firstWhere(
-            (service) => service.id == serviceId,
+        (service) => service.id == serviceId,
         orElse: () {
           return ServiceModel(id: -1, name: 'Unknown');
         },
@@ -64,41 +65,46 @@ final class JobDetailHelper {
 
       return [category.name.tr(), service.name.tr()];
     } catch (e) {
-      return ['Bilinmiyor', 'Bilinmiyor'];
+      return ['Unknown', 'Unknown'];
     }
   }
 
-  Future<List<String>> getCityAndDistrictName(String country, int cityId, int districtId) async {
+  Future<List<String>> getCityAndDistrictName(
+      String country, int cityId, int districtId) async {
     try {
-
-      final cityJsonString = await rootBundle.loadString('assets/country/$country/city.json');
-      final districtJsonString = await rootBundle.loadString('assets/country/$country/district.json');
-
+      final cityJsonString =
+          await rootBundle.loadString('assets/country/$country/city.json');
+      final districtJsonString = await rootBundle
+          .loadString('assets/country/$country/district.json');
       final cityJsonResponse = json.decode(cityJsonString);
       final cityList = cityJsonResponse as List;
-
-      final cityModels = cityList.map((json) => CityModel.fromJson(json as Map<String, dynamic>)).toList();
+      final cityModels = cityList
+          .map((json) => CityModel.fromJson(json as Map<String, dynamic>))
+          .toList();
       final city = cityModels.firstWhere(
-            (city) => city.ilId == cityId,
+        (city) => city.ilId == cityId,
         orElse: () {
-          return CityModel(ilId: -1, name: 'Bilinmiyor');
+          return CityModel(ilId: -1, name: 'Unknown');
         },
       );
 
       final districtJsonResponse = json.decode(districtJsonString);
       final districtList = districtJsonResponse as List;
 
-      final districtModels = districtList.map((json) => DistrictModel.fromJson(json as Map<String, dynamic>)).toList();
+      final districtModels = districtList
+          .map((json) =>
+              DistrictModel.fromJson(json as Map<String, dynamic>))
+          .toList();
       final district = districtModels.firstWhere(
-            (district) => district.id == districtId,
+        (district) => district.id == districtId,
         orElse: () {
-          return DistrictModel(ilId: -1, name: 'Bilinmiyor', id: 31);
+          return DistrictModel(ilId: -1, name: 'Unknown', id: 31);
         },
       );
 
       return [city.name, district.name];
     } catch (e) {
-      return ['Bilinmiyor', 'Bilinmiyor'];
+      return ['Unknown', 'Unknown'];
     }
   }
 }
