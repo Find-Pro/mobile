@@ -53,6 +53,8 @@ class Assets {
   static const String iconRussia = 'assets/icon/russia.svg';
   static const String iconSearchBg = 'assets/icon/search_bg.png';
   static const String iconSearchBg2 = 'assets/icon/search_bg2.png';
+  static const String iconSearchBgAvatars =
+      'assets/icon/search_bg_avatars.png';
   static const String iconSearchIcon = 'assets/icon/search_icon.png';
   static const String iconSearchImg = 'assets/icon/search_img.png';
   static const String iconSettings = 'assets/icon/settings.png';

@@ -1,3 +1,4 @@
+import 'package:findpro/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 class HomeBackgroundImage extends StatelessWidget {
@@ -13,10 +14,7 @@ class HomeBackgroundImage extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            isDarkMode
-                ? 'assets/icon/bg_dark.png'
-                : 'assets/icon/bg_light.png',
-          ),
+              isDarkMode ? Assets.iconBgDark : Assets.iconBgLight),
           fit: BoxFit.cover,
         ),
       ),
