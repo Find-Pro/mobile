@@ -11,36 +11,34 @@ class ProfileProfilePicture extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: Container(
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: context.themeData.splashColor,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                ChangeProfilePicture().show(context, ref);
-              },
-              onLongPress: () {
-                FullScreenImage().show(context, photoName);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: context.themeData.splashColor,
-                ),
-                child: CircleAvatar(
-                  radius: 55,
-                  backgroundImage: Image.network(
-                    CreateImageUrl.instance.photo(photoName),
-                  ).image,
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 40, left: 15),
+      child: Container(
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: context.themeData.splashColor,
+          ),
+          child: GestureDetector(
+            onTap: () {
+              ChangeProfilePicture().show(context, ref);
+            },
+            onLongPress: () {
+              FullScreenImage().show(context, photoName);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: context.themeData.splashColor,
               ),
-            )),
-      ),
+              child: CircleAvatar(
+                radius: 55,
+                backgroundImage: Image.network(
+                  CreateImageUrl.instance.photo(photoName),
+                ).image,
+              ),
+            ),
+          )),
     );
   }
 }
