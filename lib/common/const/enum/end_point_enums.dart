@@ -44,7 +44,7 @@ enum EndPointEnums {
   final String value;
 
   String get fullUrl {
-    const baseUrl = ApiKey.baseUrl;
+    final baseUrl = ApiKey.baseUrl;
     return '$baseUrl$value';
   }
 }

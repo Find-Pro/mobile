@@ -8,6 +8,7 @@ import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
@@ -18,7 +19,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   await EasyLocalization.ensureInitialized();
   EasyLocalization.logger.enableBuildModes = [];
-
+  await dotenv.load();
   if (!kIsWeb && !Platform.isWindows) {
     await UnityAds.init(
       gameId: AdManager.gameId,

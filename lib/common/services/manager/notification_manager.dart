@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:io' show Platform;
-
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
@@ -10,7 +8,7 @@ import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/router/router_provider.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -27,7 +25,7 @@ class NotificationManager {
   final Ref ref;
 
   Future<void> init() async {
-    if (Platform.isWindows) {
+    if (kIsWeb) {
       debugPrint('OneSignal bu platformda desteklenmiyor.');
       return;
     }
@@ -123,7 +121,7 @@ class NotificationManager {
     final response = await http.post(
       Uri.parse(ApiKey.osPushUrl),
       headers: {
-        'Authorization': ApiKey.osApiKeyValue,
+        'Authorization': ApiKey.osApiKey,
         'accept': 'application/json',
         'content-type': 'application/json',
       },

@@ -14,6 +14,7 @@ import 'package:findpro/feature/auth/widget/background_image.dart';
 import 'package:findpro/feature/auth/widget/index.dart';
 import 'package:findpro/feature/auth/widget/register_title_text.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -125,7 +126,10 @@ class RegisterView extends ConsumerWidget {
             ));
 
     if (res.success) {
-      await ref.read(notificationProvider).login();
+      if (!kIsWeb) {
+        await ref.read(notificationProvider).login();
+      }
+
       CacheManager.instance.setIsLoggedIn(true);
       await context.router.pushAndPopUntil(
         const MainRoute(),
