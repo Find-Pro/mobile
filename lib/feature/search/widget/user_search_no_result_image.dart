@@ -7,16 +7,18 @@ class UserSearchNoResultImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    final isDarkMode = brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Container(
         width: DeviceSize.width(context),
         height: DeviceSize.height(context) * 0.53,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-              Assets.iconSearchBg,
-            ),
+            image: AssetImage(isDarkMode
+                ? Assets.iconSearchBgDark
+                : Assets.iconSearchBg),
           ),
         ),
       ),

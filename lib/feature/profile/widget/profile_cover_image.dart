@@ -14,7 +14,7 @@ class ProfileCoverImage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
         width: double.infinity,
-        height: 160,
+        height: 170,
         child: Image.network(
           CreateImageUrl.instance.photo(photoName),
           fit: BoxFit.cover,

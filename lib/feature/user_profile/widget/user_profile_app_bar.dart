@@ -32,7 +32,7 @@ class UserProfileAppBar extends ConsumerWidget {
         ),
       ),
       iconTheme: const IconThemeData(color: Colors.white),
-      expandedHeight: 80,
+      expandedHeight: 120,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         background: ProfileCoverImage(

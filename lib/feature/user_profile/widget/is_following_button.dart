@@ -3,6 +3,8 @@ import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/services/manager/notification_manager.dart';
+import 'package:findpro/common/services/model/response/user_profile_response.dart';
+import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/home/view_model/home_view_model.dart';
@@ -24,6 +26,7 @@ class IsFollowingButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final followFuture = ref.watch(followFutureProvider(userId));
     final currentUser = ref.watch(profileProvider);
+
     final blockViewModel = ref.watch(blockProvider);
     if (blockViewModel) {
       return Text(LocaleKeys.youHaveBlockedUser.tr(),
@@ -34,47 +37,11 @@ class IsFollowingButton extends ConsumerWidget {
     return followFuture.when(
       data: (isFollowing) {
         final isCurrentlyFollowing = ref.watch(followProvider);
-
         return Padding(
           padding: PaddingInsets().large,
           child: GestureDetector(
-            onTap: () async {
-              final followNotifier = ref.read(followProvider.notifier);
-              bool result;
-              if (isCurrentlyFollowing) {
-                result = await followNotifier.unfollow(userId);
-                await ref
-                    .read(followNumberBoxProvider.notifier)
-                    .get(userId);
-              } else {
-                result = await followNotifier.follow(userId);
-                await ref
-                    .read(followNumberBoxProvider.notifier)
-                    .get(userId);
-              }
-              if (result) {
-                await ref.read(profileProvider.notifier).getUser();
-                await ref
-                    .read(userProfileProvider.notifier)
-                    .getUser(userId);
-                await ref.read(notificationProvider).sendNotification(
-                  isMessage: false,
-                  message:
-                  '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} ${LocaleKeys.startedToFollowYou.tr()}',
-                  receiverId: userId.toString(),
-                  senderId: currentUser.user!.userId.toString(),
-                );
-                await ref.read(homeProvider.notifier).getJobs();
-                InformationToast().show(
-                  context,
-                  isCurrentlyFollowing
-                      ? LocaleKeys.unfollowedNow.tr()
-                      : LocaleKeys.followingNow.tr(),
-                );
-              } else {
-                WarningAlert().show(context, LocaleKeys.error.tr(), true);
-              }
-            },
+            onTap: () => handleFollow(
+                context, ref, isCurrentlyFollowing, currentUser),
             child: Container(
               width: DeviceSize.width(context) - 150,
               height: 45,
@@ -83,7 +50,7 @@ class IsFollowingButton extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               padding:
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Center(
                 child: Text(
                   isCurrentlyFollowing
@@ -97,8 +64,44 @@ class IsFollowingButton extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => Text(LocaleKeys.error.tr()),
-      loading: () => const CircularProgressIndicator(),
+      error: (error, stackTrace) {
+        debugPrint(error.toString());
+        return Text(LocaleKeys.error.tr());
+      },
+      loading: () => const CustomCircular(),
     );
+  }
+
+  Future<void> handleFollow(BuildContext context, WidgetRef ref,
+      bool isCurrentlyFollowing, UserProfileResponse currentUser) async {
+    final followNotifier = ref.read(followProvider.notifier);
+    bool result;
+    if (isCurrentlyFollowing) {
+      result = await followNotifier.unfollow(userId);
+      await ref.read(followNumberBoxProvider.notifier).get(userId);
+    } else {
+      result = await followNotifier.follow(userId);
+      await ref.read(followNumberBoxProvider.notifier).get(userId);
+    }
+    if (result) {
+      await ref.read(profileProvider.notifier).getUser();
+      await ref.read(userProfileProvider.notifier).getUser(userId);
+      await ref.read(notificationProvider).sendNotification(
+            isMessage: false,
+            message:
+                '${currentUser.user?.fullName ?? LocaleKeys.aFindProUser.tr()} ${LocaleKeys.startedToFollowYou.tr()}',
+            receiverId: userId.toString(),
+            senderId: currentUser.user!.userId.toString(),
+          );
+      await ref.read(homeProvider.notifier).getJobs();
+      InformationToast().show(
+        context,
+        isCurrentlyFollowing
+            ? LocaleKeys.unfollowedNow.tr()
+            : LocaleKeys.followingNow.tr(),
+      );
+    } else {
+      WarningAlert().show(context, LocaleKeys.error.tr(), true);
+    }
   }
 }

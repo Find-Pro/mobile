@@ -1,5 +1,6 @@
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/services/routes/follow_service.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
 class FollowViewModel extends StateNotifier<bool> {
@@ -46,8 +47,15 @@ final followProvider = StateNotifierProvider<FollowViewModel, bool>(
 
 final followFutureProvider = FutureProvider.autoDispose.family<bool, int>(
   (ref, userId) async {
-    final success =
-        await ref.read(followProvider.notifier).isFollowing(userId);
-    return success;
+    try {
+      final success =
+          await ref.read(followProvider.notifier).isFollowing(userId);
+
+      return success;
+    } catch (e, stackTrace) {
+      debugPrint('followFutureProvider error: $e');
+      debugPrint('StackTrace: $stackTrace');
+      return false;
+    }
   },
 );
