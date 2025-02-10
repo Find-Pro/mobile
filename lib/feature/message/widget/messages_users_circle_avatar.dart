@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
+import 'package:findpro/feature/message/view_model/full_name_shorter.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,8 @@ class MessagesUsersCircleAvatar extends ConsumerWidget {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    reversedMessages[index].fullName ?? '',
+                    FullNameShorter()
+                        .cut(reversedMessages[index].fullName ?? ''),
                     style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
