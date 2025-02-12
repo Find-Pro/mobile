@@ -15,11 +15,16 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
   final scrollCnt = ScrollController();
   List<MessageModel> messages = [];
   int currentUserId = 0;
+  bool isReconnecting = false;
 
   @override
   void initState() {
     super.initState();
     currentUserId = CacheManager.instance.getUserId();
+    _connectWebSocket();
+  }
+
+  void _connectWebSocket() {
     final url = '${ApiKey.webSocketUrl}${widget.roomId}';
     channel = WebSocketChannel.connect(Uri.parse(url));
     channel.stream.listen(
@@ -34,11 +39,20 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
           _handleReceiveMessage(decodedMessage);
         }
       },
-      onDone: () => debugPrint('WebSocket bağlantısı kapandı.'),
+      onDone: () {
+        debugPrint('WebSocket bağlantısı kapandı, tekrar bağlanılıyor...');
+        _reconnectWebSocket();
+      },
     );
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (scrollCnt.hasClients) {
-        scrollCnt.jumpTo(scrollCnt.position.maxScrollExtent);
+  }
+
+  void _reconnectWebSocket() {
+    if (isReconnecting) return;
+    isReconnecting = true;
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        _connectWebSocket();
+        isReconnecting = false;
       }
     });
   }
@@ -50,6 +64,7 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
     setState(() {
       messages.addAll(previousMessages);
     });
+    _scrollToBottom();
   }
 
   void _handleReceiveMessage(Map<String, dynamic> decodedMessage) {
@@ -59,6 +74,7 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
       setState(() {
         messages.add(newMessage);
       });
+      _scrollToBottom();
     }
   }
 
@@ -76,25 +92,37 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
         'action': 'sendMessage',
         ...messageModel.toJson(),
       });
-      try {
-        channel.sink.add(messageJson);
-        ref.read(notificationProvider).sendNotification(
-              isMessage: true,
-              message: messageModel.message,
-              receiverId: widget.chatWithUser.userId.toString(),
-              senderId: currentUserId.toString(),
-            );
-        setState(() {});
-      } catch (e) {
-        debugPrint('Mesaj gönderme hatası: $e');
-      }
+      channel.sink.add(messageJson);
+      ref.read(notificationProvider).sendNotification(
+            isMessage: true,
+            message: messageModel.message,
+            receiverId: widget.chatWithUser.userId.toString(),
+            senderId: currentUserId.toString(),
+          );
+      setState(() {});
+
       messageController.clear();
+      _scrollToBottom();
     }
+  }
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollCnt.hasClients) {
+        scrollCnt.animateTo(
+          scrollCnt.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
+    });
   }
 
   @override
   void dispose() {
     channel.sink.close();
+    scrollCnt.dispose();
+    messageController.dispose();
     super.dispose();
   }
 }

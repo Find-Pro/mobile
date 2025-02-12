@@ -18,6 +18,7 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
       centerTitle: true,
+      backgroundColor: Colors.grey.shade700,
       leading: IconButton(
         onPressed: () {
           context.router.pop();

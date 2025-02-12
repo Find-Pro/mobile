@@ -109,7 +109,6 @@ class NotificationManager {
   }) async {
     debugPrint(
         'Sending notification: receiverId: $receiverId, senderId: $senderId, message: $message, isMessage: $isMessage');
-
     final requestBody = <String, dynamic>{
       'app_id': ApiKey.osAppID,
       'include_external_user_ids': [receiverId],
