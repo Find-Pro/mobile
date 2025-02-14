@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
@@ -38,7 +37,7 @@ class SearchResultView extends ConsumerWidget {
           return WillPopScope(
             onWillPop: () async {
               await context.router.pop();
-              await context.router.pushWidget(const VideoAdView());
+              //await context.router.pushWidget(const VideoAdView());
               return false;
             },
             child: Stack(

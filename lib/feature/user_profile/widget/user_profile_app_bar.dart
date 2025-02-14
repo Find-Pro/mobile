@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/const/extension/platform_extension.dart';
-import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/feature/profile/widget/profile_cover_image.dart';
 import 'package:findpro/feature/user_profile/view_model/user_profile_view_model.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +18,7 @@ class UserProfileAppBar extends ConsumerWidget {
           if (context.mounted) {
             Navigator.pop(context);
             if (context.mounted) {
-              await context.router.pushWidget(const VideoAdView());
+              //   await context.router.pushWidget(const VideoAdView());
             }
           }
         },

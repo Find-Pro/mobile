@@ -4,7 +4,6 @@ import 'package:findpro/common/const/bad_words.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/common/widget/ad/video_ad.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
@@ -34,8 +33,7 @@ class AddDescription extends ConsumerWidget {
               decoration: InputDecoration(
                 hintText: LocaleKeys.description.tr(),
                 hintStyle: context.themeData.textTheme.labelMedium
-                    ?.copyWith(
-                        fontWeight: FontWeight.w500, color: Colors.grey),
+                    ?.copyWith(fontWeight: FontWeight.w500, color: Colors.grey),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(
@@ -59,27 +57,26 @@ class AddDescription extends ConsumerWidget {
                 WarningAlert().show(
                     context, LocaleKeys.descriptionIsRequired.tr(), false);
               } else {
-                if (BadWords.containsForbiddenWord(
-                    descriptionCnt.text)) {
-                  WarningAlert().show(
-                      context, LocaleKeys.pleaseAvoidBadWords.tr(), true);
+                if (BadWords.containsForbiddenWord(descriptionCnt.text)) {
+                  WarningAlert()
+                      .show(context, LocaleKeys.pleaseAvoidBadWords.tr(), true);
                 } else {
                   addJobViewModel.description = descriptionCnt.text;
                   final success = await addJobViewModel.createService();
                   if (success) {
-                    InformationToast().show(context,
-                        LocaleKeys.serviceCreatedSuccessfully.tr());
+                    InformationToast().show(
+                        context, LocaleKeys.serviceCreatedSuccessfully.tr());
                     await context.router
                         .pushAndPopUntil(const MainRoute(),
                             predicate: (_) => false)
                         .then((value) {
                       if (context.mounted) {
-                        context.router.pushWidget(const VideoAdView());
+                        // context.router.pushWidget(const VideoAdView());
                       }
                     });
                   } else {
-                    WarningAlert().show(context,
-                        LocaleKeys.serviceCouldNotAdd.tr(), false);
+                    WarningAlert().show(
+                        context, LocaleKeys.serviceCouldNotAdd.tr(), false);
                   }
                 }
               }

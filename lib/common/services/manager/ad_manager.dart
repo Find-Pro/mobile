@@ -4,11 +4,9 @@ import 'package:flutter/foundation.dart';
 class AdManager {
   static String get gameId {
     if (defaultTargetPlatform == TargetPlatform.android) {
-      return '';
-      // return ApiKey.unityAndroidGameId;
+      return ApiKey.unityAndroidGameId;
     } else {
-      return '';
-      // return ApiKey.unityIosGameId;
+      return ApiKey.unityIosGameId;
     }
   }
 
