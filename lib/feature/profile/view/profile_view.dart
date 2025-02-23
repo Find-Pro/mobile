@@ -21,7 +21,7 @@ class ProfileView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileViewModel = ref.watch(profileProvider);
     final profileFuture = ref.watch(profileFutureProvider);
-    if (!CacheManager.instance.getIsLoggedIn()) {
+    if (CacheManager.instance.getUserId() == 0) {
       return const YouShouldLoginAppWidget();
     }
     return profileFuture.when(

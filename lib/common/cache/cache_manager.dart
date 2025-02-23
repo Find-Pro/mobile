@@ -2,8 +2,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final class CacheManager {
   CacheManager._init();
+
   late SharedPreferences prefs;
   static final CacheManager _instance = CacheManager._init();
+
   static CacheManager get instance => _instance;
 
   Future<void> init() async {
@@ -26,15 +28,6 @@ final class CacheManager {
 
   void setCountry(String value) {
     prefs.setString('country', value);
-  }
-
-// isLoggedIn
-  bool getIsLoggedIn({bool defaultValue = false}) {
-    return prefs.getBool('isLoggedIn') ?? defaultValue;
-  }
-
-  void setIsLoggedIn(bool value) {
-    prefs.setBool('isLoggedIn', value);
   }
 
 //clear cache

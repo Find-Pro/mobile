@@ -118,7 +118,7 @@ class LoginView extends ConsumerWidget {
         if (!kIsWeb) {
           await ref.read(notificationProvider).login();
         }
-        CacheManager.instance.setIsLoggedIn(true);
+        CacheManager.instance.setUserId(res.user!.userId ?? 0);
         await context.router.pushAndPopUntil(
           const MainRoute(),
           predicate: (_) => false,

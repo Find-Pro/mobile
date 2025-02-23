@@ -17,17 +17,9 @@ class AppleLoginManager {
       debugPrint('Apple Login: Giriş işlemi başlatıldı.');
 
       final credential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
+        scopes: [],
       );
-
-      debugPrint('Apple Login: Kimlik alındı.');
       debugPrint('Apple User Identifier: ${credential.userIdentifier}');
-      debugPrint('Apple Email: ${credential.email}');
-      debugPrint(
-          'Apple Full Name: ${credential.givenName} ${credential.familyName}');
 
       if (credential.userIdentifier == null) {
         debugPrint('Apple Login: Kullanıcı kimliği NULL döndü!');
@@ -95,7 +87,6 @@ class AppleLoginManager {
 
       final registerResult = await AuthService.instance.registerWithToken(
         credential.userIdentifier ?? '',
-        credential.userIdentifier ?? '',
         EndPointEnums.registerWithApple,
       );
       if (registerResult != null && registerResult.success) {
@@ -117,7 +108,6 @@ class AppleLoginManager {
 
     final registerResult = await AuthService.instance.registerWithToken(
       credential.userIdentifier ?? '',
-      '',
       EndPointEnums.registerWithApple,
     );
 
@@ -144,8 +134,6 @@ class AppleLoginManager {
   ) async {
     debugPrint('Apple Giriş Başarılı: Kullanıcı kaydediliyor.');
     CacheManager.instance.setUserId(userId ?? 0);
-    CacheManager.instance.setIsLoggedIn(true);
-
     await ref.read(notificationProvider).login();
     debugPrint('Apple Giriş Başarılı: Ana sayfaya yönlendiriliyor.');
     await context.router

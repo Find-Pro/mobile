@@ -19,7 +19,7 @@ class YouShouldLoginAppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future<bool> getIsLoggedIn() async {
-      return CacheManager.instance.getIsLoggedIn();
+      return CacheManager.instance.getUserId() != 0;
     }
 
     return Scaffold(

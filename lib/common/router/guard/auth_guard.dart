@@ -8,9 +8,8 @@ class AuthGuard extends AutoRouteGuard {
     NavigationResolver resolver,
     StackRouter router,
   ) async {
-    final isLoggedIn = CacheManager.instance.getIsLoggedIn();
     final userId = CacheManager.instance.getUserId();
-    if (isLoggedIn && userId != 0) {
+    if (userId != 0) {
       resolver.next();
     } else {
       await resolver.redirect(const DemoOrFullVersion());

@@ -9,7 +9,9 @@ import 'package:findpro/common/services/model/response/update_profile_response.d
 
 class AuthService implements AuthOperation {
   AuthService._();
+
   static final AuthService instance = AuthService._();
+
   @override
   Future<UpdateProfileResponse?> login(LoginRequest loginRequest) async {
     final response = await NetworkManager.instance.baseRequest(
@@ -21,9 +23,7 @@ class AuthService implements AuthOperation {
       },
     );
 
-    return response != null
-        ? UpdateProfileResponse.fromJson(response)
-        : null;
+    return response != null ? UpdateProfileResponse.fromJson(response) : null;
   }
 
   @override
@@ -38,27 +38,22 @@ class AuthService implements AuthOperation {
         'password': registerRequest.password,
       },
     );
-    return response != null
-        ? UpdateProfileResponse.fromJson(response)
-        : null;
+    return response != null ? UpdateProfileResponse.fromJson(response) : null;
   }
 
   @override
-  Future<UpdateProfileResponse?> registerWithToken(String token,
-      String email,  EndPointEnums endPoint) async {
+  Future<UpdateProfileResponse?> registerWithToken(
+      String token, EndPointEnums endPoint) async {
     final country = CacheManager.instance.getCountry();
     final response = await NetworkManager.instance.baseRequest(
       APIRequestMethod.post,
       endPoint,
       data: {
         'token': token,
-        'email': email,
         'country': country,
       },
     );
-    return response != null
-        ? UpdateProfileResponse.fromJson(response)
-        : null;
+    return response != null ? UpdateProfileResponse.fromJson(response) : null;
   }
 
   @override
@@ -71,8 +66,6 @@ class AuthService implements AuthOperation {
         'token': token,
       },
     );
-    return response != null
-        ? UpdateProfileResponse.fromJson(response)
-        : null;
+    return response != null ? UpdateProfileResponse.fromJson(response) : null;
   }
 }

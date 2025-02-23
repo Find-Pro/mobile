@@ -23,13 +23,10 @@ class GoogleLoginManager {
           .loginWithToken(user.id, EndPointEnums.loginWithGoogle);
       if (loginResponse != null && loginResponse.success) {
         debugPrint(loginResponse.toString());
-        await saveUserAndNavigate(
-            context, ref, loginResponse.user!.userId);
+        await saveUserAndNavigate(context, ref, loginResponse.user!.userId);
       } else {
-        final registerResponse =
-            await AuthService.instance.registerWithToken(
+        final registerResponse = await AuthService.instance.registerWithToken(
           user.id,
-          user.email,
           EndPointEnums.registerWithGoogle,
         );
         if (registerResponse != null && registerResponse.success) {
@@ -47,7 +44,6 @@ class GoogleLoginManager {
 
   Future<void> saveUserAndNavigate(
       BuildContext context, WidgetRef ref, int? userId) async {
-    CacheManager.instance.setIsLoggedIn(true);
     CacheManager.instance.setUserId(userId ?? 0);
     await ref.read(notificationProvider).login();
     await context.router

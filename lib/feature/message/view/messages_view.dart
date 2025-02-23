@@ -23,7 +23,7 @@ class MessagesView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final messagesViewModel = ref.watch(messagesProvider);
     final messagesFuture = ref.watch(messagesFutureProvider);
-    if (!CacheManager.instance.getIsLoggedIn()) {
+    if (CacheManager.instance.getUserId() == 0) {
       return const YouShouldLoginAppWidget();
     }
     return Scaffold(
