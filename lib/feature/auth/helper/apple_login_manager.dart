@@ -95,7 +95,7 @@ class AppleLoginManager {
       EndPointEnums.registerWithApple,
     );
 
-    if (registerResult.success) {
+    if (registerResult != null && registerResult.success) {
       debugPrint(
           'Apple Kayıt: Kullanıcı başarıyla kaydedildi, yönlendiriliyor.');
       await saveUserAndNavigate(context, ref, registerResult.user!.userId);
@@ -114,8 +114,10 @@ class AppleLoginManager {
     WidgetRef ref,
     int? userId,
   ) async {
+    debugPrint('Apple Giriş Başarılı: Kullanıcı kaydediliyor.');
     CacheManager.instance.setUserId(userId ?? 0);
     await ref.read(notificationProvider).login();
+    debugPrint('Apple Giriş Başarılı: Ana sayfaya yönlendiriliyor.');
     await context.router
         .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
   }
