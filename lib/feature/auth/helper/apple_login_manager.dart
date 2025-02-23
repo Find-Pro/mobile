@@ -17,7 +17,10 @@ class AppleLoginManager {
       debugPrint('Apple Login: Giriş işlemi başlatıldı.');
 
       final credential = await SignInWithApple.getAppleIDCredential(
-        scopes: [],
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
       );
       debugPrint('Apple User Identifier: ${credential.userIdentifier}');
 
@@ -46,18 +49,10 @@ class AppleLoginManager {
 
     switch (credentialState) {
       case CredentialState.revoked:
-        debugPrint(
-            'Apple Login: Kullanıcı yetkisi iptal edilmiş (revoked). Giriş sayfasına yönlendiriliyor.');
-        await context.router
-            .pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
-
-      case CredentialState.authorized:
-        debugPrint('Apple Login: Kullanıcı yetkisi onaylanmış.');
         await handleAuthorizedState(context, ref, credential);
-
+      case CredentialState.authorized:
+        await handleAuthorizedState(context, ref, credential);
       case CredentialState.notFound:
-        debugPrint(
-            'Apple Login: Kullanıcı bulunamadı, kayıt işlemi başlatılıyor.');
         await handleNotFoundState(context, ref, credential);
     }
   }
@@ -67,33 +62,24 @@ class AppleLoginManager {
     WidgetRef ref,
     AuthorizationCredentialAppleID credential,
   ) async {
-    debugPrint('Apple Yetkilendirme: Kullanıcı giriş yapıyor.');
     debugPrint('Apple User Identifier: ${credential.userIdentifier}');
 
     final loginResult = await AuthService.instance.loginWithToken(
       credential.userIdentifier ?? '',
       EndPointEnums.loginWithApple,
     );
-
     if (loginResult == null || !loginResult.success) {
-      debugPrint(
-          'Apple Yetkilendirme: Kullanıcı girişi başarısız, kayıt işlemi başlatılıyor.');
       await handleNotFoundState(context, ref, credential);
       return;
     } else {
-      debugPrint(
-          'Apple Yetkilendirme: Kullanıcı girişi başarılı, yönlendirme yapılıyor.');
       await saveUserAndNavigate(context, ref, loginResult.user!.userId);
-
       final registerResult = await AuthService.instance.registerWithToken(
         credential.userIdentifier ?? '',
         EndPointEnums.registerWithApple,
       );
       if (registerResult != null && registerResult.success) {
-        debugPrint('Apple Yetkilendirme: Kullanıcı kaydı başarılı.');
         await saveUserAndNavigate(context, ref, registerResult.user!.userId);
       } else {
-        debugPrint('Apple Yetkilendirme: Kullanıcı kaydı başarısız.');
         WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
     }
@@ -104,14 +90,10 @@ class AppleLoginManager {
     WidgetRef ref,
     AuthorizationCredentialAppleID credential,
   ) async {
-    debugPrint('Apple Kayıt: Kullanıcı bulunamadı, kayıt işlemi başlatılıyor.');
-
     final registerResult = await AuthService.instance.registerWithToken(
       credential.userIdentifier ?? '',
       EndPointEnums.registerWithApple,
     );
-
-    debugPrint('Apple Kayıt Sonucu: ${registerResult!.user}');
 
     if (registerResult.success) {
       debugPrint(
@@ -132,10 +114,8 @@ class AppleLoginManager {
     WidgetRef ref,
     int? userId,
   ) async {
-    debugPrint('Apple Giriş Başarılı: Kullanıcı kaydediliyor.');
     CacheManager.instance.setUserId(userId ?? 0);
     await ref.read(notificationProvider).login();
-    debugPrint('Apple Giriş Başarılı: Ana sayfaya yönlendiriliyor.');
     await context.router
         .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
   }
