@@ -6,6 +6,19 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>GIDClientID</key>
+    <string>881001363119-466cf8jf04ogcv7dj9u1j0qbcdjl6n6m.apps.googleusercontent.com</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<string>com.googleusercontent.apps.881001363119-466cf8jf04ogcv7dj9u1j0qbcdjl6n6m</string>
+    		</array>
+    	</dict>
+    </array>
 	<key>CFBundleDisplayName</key>
 	<string>Find Pro</string>
 	<key>CFBundleExecutable</key>

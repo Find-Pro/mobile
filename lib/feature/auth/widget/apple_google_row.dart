@@ -15,15 +15,10 @@ class AppleGoogleRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // if (context.platform == PlatformExtension.web) {
-    //   return const SizedBox.shrink();
-    // }
-
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return Column(
           children: [
-              if (Platform.isAndroid)
             _Button(
               constraints: constraints,
               onPressed: () => GoogleLoginManager().login(context, ref),
@@ -57,6 +52,7 @@ class _Button extends StatelessWidget {
     required this.backgroundColor,
     required this.constraints,
   });
+
   final VoidCallback onPressed;
   final String logoPath;
   final String buttonText;
@@ -89,10 +85,7 @@ class _Button extends StatelessWidget {
                   flex: 3,
                   child: Text(
                     buttonText,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
