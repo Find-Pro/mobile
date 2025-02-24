@@ -15,6 +15,7 @@ class AppBottomNavigationBar extends StatelessWidget {
     required this.tabsRouter,
     super.key,
   });
+
   final Function onItemTapped;
   final int pageIndex;
   final TabsRouter tabsRouter;
@@ -38,7 +39,7 @@ class AppBottomNavigationBar extends StatelessWidget {
       currentIndex: tabsRouter.activeIndex,
       onTap: (value) {
         if (tabsRouter.activeIndex == 3 && value == 3) {
-          if (CacheManager.instance.getIsLoggedIn()) {
+          if (CacheManager.instance.getUserId() != 0) {
             context.router.pushAndPopUntil(const SettingsRoute(),
                 predicate: (_) => false);
           }

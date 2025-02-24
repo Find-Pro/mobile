@@ -17,13 +17,10 @@ class AppRouter extends $AppRouter {
       AuthGuard(),
     ]),
     AutoRoute(
-      page: DemoOrFullVersion.page,
-    ),
-    AutoRoute(
       page: MainRoute.page,
       guards: [
-        // AuthGuard(),
         ConnectionGuard(),
+        CountryGuard(),
       ],
       children: [
         AutoRoute(

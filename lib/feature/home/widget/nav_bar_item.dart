@@ -8,6 +8,7 @@ class NavBarItem {
     required this.isActive,
     required this.isSettings,
   });
+
   final String image;
   final String text;
   final bool isActive;

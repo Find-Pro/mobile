@@ -9,7 +9,6 @@ import 'package:findpro/common/services/manager/notification_manager.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/auth/view_model/register_view_model.dart';
-import 'package:findpro/feature/auth/widget/auth_app_bar.dart';
 import 'package:findpro/feature/auth/widget/background_image.dart';
 import 'package:findpro/feature/auth/widget/index.dart';
 import 'package:findpro/feature/auth/widget/register_title_text.dart';
@@ -34,72 +33,64 @@ class RegisterView extends ConsumerWidget {
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: false,
       // ignore: deprecated_member_use
-      body: WillPopScope(
-        onWillPop: () async {
-          await context.router.pushAndPopUntil(const DemoOrFullVersion(),
-              predicate: (_) => false);
-          return false;
-        },
-        child: Stack(
-          children: [
-            const BackgroundImage(),
-            Center(
-              child: Padding(
-                padding: PaddingInsets().small,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const RegisterTitleText(),
-                      30.verticalSpace,
-                      StringTextField(
-                        controller: fullNameCnt,
-                        hintText: LocaleKeys.fullName.tr(),
-                        iconData: Icons.person_outline,
-                      ),
-                      20.verticalSpace,
-                      StringTextField(
-                        controller: emailCnt,
-                        hintText: LocaleKeys.email.tr(),
-                        iconData: Icons.mail,
-                      ),
-                      30.verticalSpace,
-                      PwTextField(
-                        isRegisterView: true,
-                        controller: pwCnt,
-                        hintText: LocaleKeys.password.tr(),
-                      ),
-                      30.verticalSpace,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const SupportButton(),
-                          LoginRegisterButton(
-                            text: LocaleKeys.register.tr(),
-                            onTap: () => _handleRegister(
-                              context,
-                              ref,
-                              fullNameCnt,
-                              emailCnt,
-                              pwCnt,
-                            ),
+      body: Stack(
+        children: [
+          const BackgroundImage(),
+          Center(
+            child: Padding(
+              padding: PaddingInsets().small,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const RegisterTitleText(),
+                    30.verticalSpace,
+                    StringTextField(
+                      controller: fullNameCnt,
+                      hintText: LocaleKeys.fullName.tr(),
+                      iconData: Icons.person_outline,
+                    ),
+                    20.verticalSpace,
+                    StringTextField(
+                      controller: emailCnt,
+                      hintText: LocaleKeys.email.tr(),
+                      iconData: Icons.mail,
+                    ),
+                    30.verticalSpace,
+                    PwTextField(
+                      isRegisterView: true,
+                      controller: pwCnt,
+                      hintText: LocaleKeys.password.tr(),
+                    ),
+                    30.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const SupportButton(),
+                        LoginRegisterButton(
+                          text: LocaleKeys.register.tr(),
+                          onTap: () => _handleRegister(
+                            context,
+                            ref,
+                            fullNameCnt,
+                            emailCnt,
+                            pwCnt,
                           ),
-                        ],
-                      ),
-                      30.verticalSpace,
-                      NavigateToRouteText(
-                        text1: LocaleKeys.alreadyHaveAnAccount.tr(),
-                        text2: LocaleKeys.login.tr(),
-                        route: const LoginRoute(),
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                    30.verticalSpace,
+                    NavigateToRouteText(
+                      text1: LocaleKeys.alreadyHaveAnAccount.tr(),
+                      text2: LocaleKeys.login.tr(),
+                      route: const LoginRoute(),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-      appBar: const AuthAppBar(),
     );
   }
 
@@ -130,7 +121,7 @@ class RegisterView extends ConsumerWidget {
         await ref.read(notificationProvider).login();
       }
 
-      CacheManager.instance.setIsLoggedIn(true);
+      CacheManager.instance.setUserId(res.user!.userId ?? 0);
       await context.router.pushAndPopUntil(
         const MainRoute(),
         predicate: (_) => false,

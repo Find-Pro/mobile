@@ -11,8 +11,10 @@ abstract class AuthOperation {
   Future<UpdateProfileResponse?> register(
     RegisterRequest registerRequest,
   );
+
   Future<UpdateProfileResponse?> registerWithToken(
-      String token, String email, EndPointEnums endPoint);
+      String token, EndPointEnums endPoint);
+
   Future<UpdateProfileResponse?> loginWithToken(
       String token, EndPointEnums endPoint);
 }

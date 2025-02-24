@@ -19,7 +19,9 @@ class JobDetailUserTile extends ConsumerWidget {
     required this.jobModel,
     super.key,
   });
+
   final StringJobModel jobModel;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
@@ -35,24 +37,21 @@ class JobDetailUserTile extends ConsumerWidget {
                   padding: PaddingInsets().medium,
                   child: GestureDetector(
                     onTap: () {
-                      final currentUserId =
-                          CacheManager.instance.getUserId();
+                      final currentUserId = CacheManager.instance.getUserId();
                       if (currentUserId == jobModel.userId!) {
-                        context.router.pushAndPopUntil(
-                            const ProfileRoute(),
+                        context.router.pushAndPopUntil(const ProfileRoute(),
                             predicate: (_) => false);
                       } else {
-                        if (CacheManager.instance.getIsLoggedIn()) {
-                          context.router.push(
-                              UserProfileRoute(userId: jobModel.userId!));
+                        if (CacheManager.instance.getUserId() != 0) {
+                          context.router
+                              .push(UserProfileRoute(userId: jobModel.userId!));
                         }
                       }
                     },
                     child: CircleAvatar(
                       radius: 40,
                       backgroundImage: Image.network(
-                        CreateImageUrl.instance
-                            .photo(jobModel.profilePicture!),
+                        CreateImageUrl.instance.photo(jobModel.profilePicture!),
                       ).image,
                     ),
                   ),
@@ -65,7 +64,7 @@ class JobDetailUserTile extends ConsumerWidget {
                       ?.copyWith(fontWeight: FontWeight.w700),
                 ),
               ),
-              if (CacheManager.instance.getIsLoggedIn())
+              if (CacheManager.instance.getUserId() != 0)
                 Expanded(
                     child: IconButton(
                         onPressed: () async {
@@ -81,9 +80,8 @@ class JobDetailUserTile extends ConsumerWidget {
                                 LocaleKeys.chatRoomHasCreatedSuccess.tr());
                           } else {
                             await QuestionAlertDialog().show(context,
-                                bodyText: LocaleKeys
-                                    .chatRoomHasCreatedSuccess
-                                    .tr(),
+                                bodyText:
+                                    LocaleKeys.chatRoomHasCreatedSuccess.tr(),
                                 buttonText: LocaleKeys.okay.tr(),
                                 onTap: () async => context.router
                                     .pushAndPopUntil(const MessagesRoute(),

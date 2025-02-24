@@ -14,21 +14,28 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 class AppleLoginManager {
   Future<void> login(BuildContext context, WidgetRef ref) async {
     try {
+      debugPrint('Apple Login: Giriş işlemi başlatıldı.');
+
       final credential = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
           AppleIDAuthorizationScopes.fullName,
         ],
       );
+      debugPrint('Apple User Identifier: ${credential.userIdentifier}');
 
-      final credentialState = await SignInWithApple.getCredentialState(
-          credential.userIdentifier!);
-      debugPrint(credentialState.toString());
+      if (credential.userIdentifier == null) {
+        debugPrint('Apple Login: Kullanıcı kimliği NULL döndü!');
+        return;
+      }
 
-      await handleCredentialState(
-          context, ref, credentialState, credential);
+      final credentialState =
+          await SignInWithApple.getCredentialState(credential.userIdentifier!);
+      debugPrint('Apple Credential State: $credentialState');
+
+      await handleCredentialState(context, ref, credentialState, credential);
     } catch (e) {
-      debugPrint('IOS register error: $e');
+      debugPrint('Apple Login Hatası: $e');
     }
   }
 
@@ -38,10 +45,12 @@ class AppleLoginManager {
     CredentialState credentialState,
     AuthorizationCredentialAppleID credential,
   ) async {
+    debugPrint('Apple Handle Credential State: $credentialState');
+
     switch (credentialState) {
       case CredentialState.revoked:
-        await context.router.pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
-        case CredentialState.authorized:
+        await handleAuthorizedState(context, ref, credential);
+      case CredentialState.authorized:
         await handleAuthorizedState(context, ref, credential);
       case CredentialState.notFound:
         await handleNotFoundState(context, ref, credential);
@@ -49,37 +58,32 @@ class AppleLoginManager {
   }
 
   Future<void> handleAuthorizedState(
-      BuildContext context,
-      WidgetRef ref,
-      AuthorizationCredentialAppleID credential,
-      ) async {
+    BuildContext context,
+    WidgetRef ref,
+    AuthorizationCredentialAppleID credential,
+  ) async {
+    debugPrint('Apple User Identifier: ${credential.userIdentifier}');
 
     final loginResult = await AuthService.instance.loginWithToken(
       credential.userIdentifier ?? '',
       EndPointEnums.loginWithApple,
     );
-
     if (loginResult == null || !loginResult.success) {
       await handleNotFoundState(context, ref, credential);
       return;
     } else {
       await saveUserAndNavigate(context, ref, loginResult.user!.userId);
-
       final registerResult = await AuthService.instance.registerWithToken(
-        credential.userIdentifier ?? '',
         credential.userIdentifier ?? '',
         EndPointEnums.registerWithApple,
       );
       if (registerResult != null && registerResult.success) {
-        await saveUserAndNavigate(
-            context, ref, registerResult.user!.userId);
+        await saveUserAndNavigate(context, ref, registerResult.user!.userId);
       } else {
         WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
     }
   }
-
-
 
   Future<void> handleNotFoundState(
     BuildContext context,
@@ -88,14 +92,16 @@ class AppleLoginManager {
   ) async {
     final registerResult = await AuthService.instance.registerWithToken(
       credential.userIdentifier ?? '',
-      '',
       EndPointEnums.registerWithApple,
     );
-    debugPrint(registerResult!.user.toString());
 
-    if (registerResult.success) {
+    if (registerResult != null && registerResult.success) {
+      debugPrint(
+          'Apple Kayıt: Kullanıcı başarıyla kaydedildi, yönlendiriliyor.');
       await saveUserAndNavigate(context, ref, registerResult.user!.userId);
     } else {
+      debugPrint(
+          'Apple Kayıt: Kullanıcı kaydı başarısız, giriş sayfasına yönlendiriliyor.');
       await context.router.pushAndPopUntil(
         const LoginRoute(),
         predicate: (_) => false,
@@ -108,9 +114,10 @@ class AppleLoginManager {
     WidgetRef ref,
     int? userId,
   ) async {
+    debugPrint('Apple Giriş Başarılı: Kullanıcı kaydediliyor.');
     CacheManager.instance.setUserId(userId ?? 0);
-    CacheManager.instance.setIsLoggedIn(true);
     await ref.read(notificationProvider).login();
+    debugPrint('Apple Giriş Başarılı: Ana sayfaya yönlendiriliyor.');
     await context.router
         .pushAndPopUntil(const MainRoute(), predicate: (_) => false);
   }

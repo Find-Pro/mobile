@@ -14,9 +14,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeCountryAppBar extends ConsumerWidget
-    implements PreferredSizeWidget {
+class HomeCountryAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const HomeCountryAppBar({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(selectCountryFutureProvider);
@@ -28,26 +28,25 @@ class HomeCountryAppBar extends ConsumerWidget
         return AppBar(
           title: Column(
             children: [
-              if (CacheManager.instance.getIsLoggedIn())
+              if (CacheManager.instance.getUserId() != 0)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (CacheManager.instance.getIsLoggedIn())
+                    if (CacheManager.instance.getUserId() != 0)
                       Row(
                         children: [
                           CircleAvatar(
                               radius: 25,
                               backgroundImage: Image.network(
-                                CreateImageUrl.instance.photo(
-                                    currentUser.user!.profilePicture!),
+                                CreateImageUrl.instance
+                                    .photo(currentUser.user!.profilePicture!),
                               ).image),
                           10.horizontalSpace,
                           Text(
                             currentUser.user!.fullName ?? '',
-                            style: context.textTheme.headlineSmall
-                                ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                            style: context.textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
                         ],
                       ),

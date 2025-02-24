@@ -23,6 +23,7 @@ class UserSearchView extends ConsumerStatefulWidget {
 class _UserSearchViewState extends ConsumerState<UserSearchView> {
   late final TextEditingController searchCnt;
   int currentUserId = 0;
+
   @override
   void initState() {
     super.initState();
@@ -47,7 +48,7 @@ class _UserSearchViewState extends ConsumerState<UserSearchView> {
           children: [
             10.verticalSpace,
             const UserSearchToInputButton(),
-            if (CacheManager.instance.getIsLoggedIn())
+            if (CacheManager.instance.getUserId() != 0)
               UserSearchBar(textCnt: searchCnt),
             if (userSearchViewModel.result == null ||
                 userSearchViewModel.result!.isEmpty)

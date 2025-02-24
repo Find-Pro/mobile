@@ -1,4 +1,3 @@
-import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +19,10 @@ class LoginRegisterButton extends StatelessWidget {
       onPressed: onTap,
       style: ButtonStyle(
         minimumSize: WidgetStateProperty.all<Size>(
-          Size(DeviceSize.width(context) / 2.3, 45),
+          const Size(155, 45),
         ),
         maximumSize: WidgetStateProperty.all<Size>(
-          Size(DeviceSize.width(context) / 2.3, 45),
+          const Size(155, 45),
         ),
         elevation: WidgetStateProperty.all<double>(0),
         shape: WidgetStateProperty.all<OutlinedBorder>(
