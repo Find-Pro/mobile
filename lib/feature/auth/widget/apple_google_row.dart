@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/const/extension/platform_extension.dart';
 import 'package:findpro/feature/auth/helper/apple_login_manager.dart';
 import 'package:findpro/feature/auth/helper/google_login_manager.dart';
 import 'package:findpro/generated/assets.dart';
@@ -15,22 +16,22 @@ class AppleGoogleRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // if (context.platform == PlatformExtension.web) {
-    //   return const SizedBox.shrink();
-    // }
+    if (context.platform == PlatformExtension.web) {
+      return const SizedBox.shrink();
+    }
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return Column(
           children: [
-              if (Platform.isAndroid)
-            _Button(
-              constraints: constraints,
-              onPressed: () => GoogleLoginManager().login(context, ref),
-              logoPath: Assets.iconGooglelogo,
-              buttonText: LocaleKeys.loginWithGoogle.tr(),
-              backgroundColor: context.themeData.primaryColor,
-            ),
+            if (Platform.isAndroid)
+              _Button(
+                constraints: constraints,
+                onPressed: () => GoogleLoginManager().login(context, ref),
+                logoPath: Assets.iconGooglelogo,
+                buttonText: LocaleKeys.loginWithGoogle.tr(),
+                backgroundColor: context.themeData.primaryColor,
+              ),
             20.verticalSpace,
             if (Platform.isIOS)
               _Button(

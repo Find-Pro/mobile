@@ -55,9 +55,4 @@ final class AddJobCityHelper {
   Future<List<CityModel>> getAllCities() async {
     return parseCities();
   }
-
-  Future<CityModel?> findCityByName(String name) async {
-    final cities = await parseCities();
-    return cities.firstWhere((city) => city.name == name);
-  }
 }

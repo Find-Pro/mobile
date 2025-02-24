@@ -33,9 +33,8 @@ class ProfileProfilePicture extends ConsumerWidget {
               ),
               child: CircleAvatar(
                 radius: 55,
-                backgroundImage: Image.network(
-                  CreateImageUrl.instance.photo(photoName),
-                ).image,
+                backgroundImage:
+                    NetworkImage(CreateImageUrl.instance.photo(photoName)),
               ),
             ),
           )),
