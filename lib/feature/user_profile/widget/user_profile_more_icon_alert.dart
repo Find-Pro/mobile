@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/widget/information_toast.dart';
+import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
-import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
 import 'package:findpro/feature/message/view_model/block_view_model.dart';
-import 'package:findpro/feature/message/view_model/messages_view_model.dart';
+import 'package:findpro/feature/message/view_model/chat_view_model.dart';
 import 'package:findpro/feature/message/widget/alert_dialog_list_tile.dart';
 import 'package:findpro/feature/user_profile/view/add_comment_widget.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -44,17 +43,18 @@ final class UserProfileMoreIconAlert {
                 onTap: () async {
                   await context.router.pop();
                   final res = await ref
-                      .read(createChatRoomProvider.notifier)
-                      .create(userId);
-                  if (res.success) {
-                    await ref
-                        .read(messagesProvider.notifier)
-                        .getChatRooms();
-                    InformationToast()
-                        .show(context, LocaleKeys.chatRoomCreated.tr());
+                      .read(chatProvider.notifier)
+                      .getChatRoom(userId);
+                  if (res) {
+                    final chatWithUser = ref.watch(chatProvider);
+                    await context.router.pushAndPopUntil(
+                        ChatRoute(
+                            roomId: chatWithUser.roomId,
+                            chatWithUser: chatWithUser),
+                        predicate: (_) => false);
                   } else {
-                    WarningAlert().show(context,
-                        res.message ?? LocaleKeys.error.tr(), false);
+                    WarningAlert()
+                        .show(context, LocaleKeys.anErrorOccurred, true);
                   }
                 },
               ),
@@ -66,11 +66,11 @@ final class UserProfileMoreIconAlert {
                 onTap: () async {
                   isBlockedViewModel
                       ? await ref
-                      .read(blockProvider.notifier)
-                      .unblock(userId)
+                          .read(blockProvider.notifier)
+                          .unblock(userId)
                       : await ref
-                      .read(blockProvider.notifier)
-                      .block(userId);
+                          .read(blockProvider.notifier)
+                          .block(userId);
                   await context.router.pop();
                 },
               ),

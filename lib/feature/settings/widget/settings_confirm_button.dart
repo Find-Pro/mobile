@@ -20,7 +20,7 @@ class SettingsConfirmButton extends ConsumerWidget {
           onPressed: onTap,
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(155, 50),
-            maximumSize: const Size(155, 50),
+            maximumSize: const Size(180, 50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),

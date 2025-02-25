@@ -25,6 +25,7 @@ class StringTextField extends StatelessWidget {
         style: context.themeData.textTheme.labelLarge,
         keyboardType: keyboardType,
         controller: controller,
+        textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           prefixIcon: IconButton(
             onPressed: onIconButtonPressed,

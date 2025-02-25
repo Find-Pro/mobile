@@ -5,10 +5,8 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/services/model/response/string_job_model.dart';
-import 'package:findpro/common/widget/information_toast.dart';
-import 'package:findpro/common/widget/question_alert_dialog.dart';
-import 'package:findpro/feature/jobs/view_model/create_chat_room_view_model.dart';
-import 'package:findpro/feature/message/view_model/messages_view_model.dart';
+import 'package:findpro/common/widget/warning_alert.dart';
+import 'package:findpro/feature/message/view_model/chat_view_model.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -37,21 +35,24 @@ class JobDetailUserTile extends ConsumerWidget {
                   padding: PaddingInsets().medium,
                   child: GestureDetector(
                     onTap: () {
-                      final currentUserId = CacheManager.instance.getUserId();
+                      final currentUserId =
+                          CacheManager.instance.getUserId();
                       if (currentUserId == jobModel.userId!) {
-                        context.router.pushAndPopUntil(const ProfileRoute(),
+                        context.router.pushAndPopUntil(
+                            const ProfileRoute(),
                             predicate: (_) => false);
                       } else {
                         if (CacheManager.instance.getUserId() != 0) {
-                          context.router
-                              .push(UserProfileRoute(userId: jobModel.userId!));
+                          context.router.push(
+                              UserProfileRoute(userId: jobModel.userId!));
                         }
                       }
                     },
                     child: CircleAvatar(
                       radius: 40,
                       backgroundImage: Image.network(
-                        CreateImageUrl.instance.photo(jobModel.profilePicture!),
+                        CreateImageUrl.instance
+                            .photo(jobModel.profilePicture!),
                       ).image,
                     ),
                   ),
@@ -69,27 +70,22 @@ class JobDetailUserTile extends ConsumerWidget {
                     child: IconButton(
                         onPressed: () async {
                           final res = await ref
-                              .read(createChatRoomProvider.notifier)
-                              .create(jobModel.userId!);
-
-                          if (res.success) {
-                            await ref
-                                .read(messagesProvider.notifier)
-                                .getChatRooms();
-                            InformationToast().show(context,
-                                LocaleKeys.chatRoomHasCreatedSuccess.tr());
+                              .read(chatProvider.notifier)
+                              .getChatRoom(jobModel.userId!);
+                          if (res) {
+                            final chatWithUser = ref.watch(chatProvider);
+                            await context.router.pushAndPopUntil(
+                                ChatRoute(
+                                    roomId: chatWithUser.roomId,
+                                    chatWithUser: chatWithUser),
+                                predicate: (_) => false);
                           } else {
-                            await QuestionAlertDialog().show(context,
-                                bodyText:
-                                    LocaleKeys.chatRoomHasCreatedSuccess.tr(),
-                                buttonText: LocaleKeys.okay.tr(),
-                                onTap: () async => context.router
-                                    .pushAndPopUntil(const MessagesRoute(),
-                                        predicate: (_) => false));
+                            WarningAlert().show(
+                                context, LocaleKeys.anErrorOccurred, true);
                           }
                         },
                         icon: const Icon(Icons.message_outlined,
-                            color: Colors.grey)))
+                            color: Colors.blue)))
             ],
           ),
         ),

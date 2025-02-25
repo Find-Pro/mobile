@@ -80,7 +80,7 @@ class _BuildDetailRow extends StatelessWidget {
             Expanded(
               child: Icon(
                 iconData,
-                color: context.themeData.primaryColor,
+                color: Colors.blueAccent,
                 size: 27,
               ),
             ),

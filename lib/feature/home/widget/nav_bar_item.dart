@@ -19,8 +19,8 @@ class NavBarItem {
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       icon: Image.asset(
         image,
-        width: 25,
-        height: 25,
+        width: 30,
+        height: 30,
         color: isSettings
             ? Colors.green
             : (isActive ? Colors.cyan : context.themeData.indicatorColor),

@@ -21,7 +21,8 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
       backgroundColor: Colors.grey.shade700,
       leading: IconButton(
         onPressed: () {
-          context.router.pop();
+          context.router.pushAndPopUntil(const MessagesRoute(),
+              predicate: (_) => false);
         },
         icon: Icon(
           context.platform == PlatformExtension.iOS
@@ -46,17 +47,17 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
           ),
           Text(
             messageProfileModel.fullName ?? LocaleKeys.undefined.tr(),
-            style: context.textTheme.headlineSmall
-                ?.copyWith(fontWeight: FontWeight.w800),
+            style: context.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w800, color: Colors.white),
           ),
           IconButton(
               onPressed: () {
                 ChatMoreIconAlert()
                     .show(context, ref, messageProfileModel.userId);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.more_vert,
-                color: context.themeData.indicatorColor,
+                color: Colors.white,
               ))
         ],
       ),
