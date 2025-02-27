@@ -38,7 +38,7 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
             onTap: () => context.router.push(
                 UserProfileRoute(userId: messageProfileModel.userId)),
             child: CircleAvatar(
-              radius: 30,
+              radius: 25,
               backgroundImage: Image.network(
                 CreateImageUrl.instance
                     .photo(messageProfileModel.profilePicture),

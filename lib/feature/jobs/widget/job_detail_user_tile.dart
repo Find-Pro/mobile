@@ -49,7 +49,7 @@ class JobDetailUserTile extends ConsumerWidget {
                       }
                     },
                     child: CircleAvatar(
-                      radius: 40,
+                      radius: 35,
                       backgroundImage: Image.network(
                         CreateImageUrl.instance
                             .photo(jobModel.profilePicture!),

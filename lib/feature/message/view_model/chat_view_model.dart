@@ -8,11 +8,10 @@ class ChatViewModel extends StateNotifier<MessageProfileModel> {
 
   Future<bool> getChatRoom(int otherUserId) async {
     final currentUserId = CacheManager.instance.getUserId();
-    final response =
-        await MessageService.instance.startChatRoom(otherUserId);
+    final res = await MessageService.instance.startChatRoom(otherUserId);
 
-    if (response != null && response.success && response.room != null) {
-      final room = response.room!;
+    if (res != null && res.success && res.room != null) {
+      final room = res.room!;
       final roomIdParts = room.roomId.split('_');
 
       if (roomIdParts.length == 2) {
@@ -39,7 +38,6 @@ class ChatViewModel extends StateNotifier<MessageProfileModel> {
             roomId: guestProfile.roomId,
           );
         }
-
         return true;
       }
     }
@@ -50,11 +48,3 @@ class ChatViewModel extends StateNotifier<MessageProfileModel> {
 final chatProvider =
     StateNotifierProvider<ChatViewModel, MessageProfileModel>(
         (ref) => ChatViewModel());
-
-final chatFutureProvider = FutureProvider.autoDispose.family<bool, int>(
-  (ref, otherUserId) async {
-    final success =
-        await ref.read(chatProvider.notifier).getChatRoom(otherUserId);
-    return success;
-  },
-);

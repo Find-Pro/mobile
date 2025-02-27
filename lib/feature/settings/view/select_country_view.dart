@@ -16,6 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+//if user came from settings view,
+// he/she need a back button
 @RoutePage()
 class SelectCountryView extends ConsumerWidget {
   const SelectCountryView({required this.isSettingsView, super.key});
@@ -37,16 +39,16 @@ class SelectCountryView extends ConsumerWidget {
         children: [
           _buildListTile(
               context, LocaleKeys.china.tr(), 'zh', selectedCountry, ref),
-          _buildListTile(
-              context, LocaleKeys.germany.tr(), 'de', selectedCountry, ref),
+          _buildListTile(context, LocaleKeys.germany.tr(), 'de',
+              selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.france.tr(), 'fr', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.india.tr(), 'id', selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.japan.tr(), 'ja', selectedCountry, ref),
-          _buildListTile(
-              context, LocaleKeys.southKorea.tr(), 'ko', selectedCountry, ref),
+          _buildListTile(context, LocaleKeys.southKorea.tr(), 'ko',
+              selectedCountry, ref),
           _buildListTile(
               context, LocaleKeys.russia.tr(), 'ru', selectedCountry, ref),
           _buildListTile(
@@ -56,7 +58,6 @@ class SelectCountryView extends ConsumerWidget {
           _buildListTile(context, LocaleKeys.unitedStates.tr(), 'us',
               selectedCountry, ref),
         ],
-
       ),
       floatingActionButton: SettingsConfirmButton(
         text: LocaleKeys.continueE.tr(),
@@ -67,8 +68,8 @@ class SelectCountryView extends ConsumerWidget {
           }
           if (!isSettingsView) {
             CacheManager.instance.setCountry(selectedCountry);
-            await context.router
-                .pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
+            await context.router.pushAndPopUntil(const LoginRoute(),
+                predicate: (_) => false);
             return;
           }
           final res = await ref
@@ -99,12 +100,15 @@ class SelectCountryView extends ConsumerWidget {
         title: Text(
           country,
           style: context.textTheme.headlineSmall?.copyWith(
-            color: isSelected ? context.themeData.indicatorColor : Colors.teal,
+            color: isSelected
+                ? context.themeData.indicatorColor
+                : Colors.teal,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
-        trailing:
-            isSelected ? const Icon(Icons.check, color: Colors.green) : null,
+        trailing: isSelected
+            ? const Icon(Icons.check, color: Colors.green)
+            : null,
         onTap: () async {
           ref.read(selectCountryProvider.notifier).state = countryCode;
         },

@@ -105,7 +105,9 @@ class _BuildDetailRow extends StatelessWidget {
             )
           ],
         ),
-        const Divider(),
+        const Divider(
+          thickness: 0.7,
+        ),
       ],
     );
   }

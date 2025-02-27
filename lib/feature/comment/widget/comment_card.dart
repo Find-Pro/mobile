@@ -30,7 +30,7 @@ class CommentCard extends ConsumerWidget {
           children: [
             Expanded(
               child: CircleAvatar(
-                  radius: 30,
+                  radius: 25,
                   backgroundImage: Image.network(
                     CreateImageUrl.instance
                         .photo(commentModel.profilePhoto!),

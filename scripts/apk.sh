@@ -1,3 +1,3 @@
-flutter build appbundle --build-name=1.9 --build-number=26
+flutter build appbundle --build-name=2.0 --build-number=27
 
 

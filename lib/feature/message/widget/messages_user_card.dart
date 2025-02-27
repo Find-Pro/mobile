@@ -29,7 +29,7 @@ class MessagesUserCard extends ConsumerWidget {
                   chatWithUser: messageProfileModel));
             },
             leading: CircleAvatar(
-              radius: 30,
+              radius: 25,
               backgroundImage: Image.network(
                 CreateImageUrl.instance
                     .photo(messageProfileModel.profilePicture),

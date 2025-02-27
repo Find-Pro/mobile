@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
+import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
@@ -14,7 +16,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeCountryAppBar extends ConsumerWidget implements PreferredSizeWidget {
+class HomeCountryAppBar extends ConsumerWidget
+    implements PreferredSizeWidget {
   const HomeCountryAppBar({super.key});
 
   @override
@@ -28,29 +31,31 @@ class HomeCountryAppBar extends ConsumerWidget implements PreferredSizeWidget {
         return AppBar(
           title: Column(
             children: [
-              if (CacheManager.instance.getUserId() != 0)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (CacheManager.instance.getUserId() != 0)
-                      Row(
-                        children: [
-                          CircleAvatar(
-                              radius: 25,
-                              backgroundImage: Image.network(
-                                CreateImageUrl.instance
-                                    .photo(currentUser.user!.profilePicture!),
-                              ).image),
-                          10.horizontalSpace,
-                          Text(
-                            currentUser.user!.fullName ?? '',
-                            style: context.textTheme.headlineSmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (CacheManager.instance.getUserId() != 0)
                     Row(
+                      children: [
+                        CircleAvatar(
+                            radius: 25,
+                            backgroundImage: Image.network(
+                              CreateImageUrl.instance.photo(
+                                  currentUser.user!.profilePicture!),
+                            ).image),
+                        10.horizontalSpace,
+                        Text(
+                          currentUser.user!.fullName ?? '',
+                          style: context.textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  GestureDetector(
+                    onTap: () => context.router
+                        .push(SelectCountryRoute(isSettingsView: true)),
+                    child: Row(
                       children: [
                         SizedBox(
                           height: 60,
@@ -68,8 +73,9 @@ class HomeCountryAppBar extends ConsumerWidget implements PreferredSizeWidget {
                         )
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
             ],
           ),
           backgroundColor: Colors.grey.shade700,
