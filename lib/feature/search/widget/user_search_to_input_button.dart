@@ -18,10 +18,10 @@ class UserSearchToInputButton extends StatelessWidget {
         onPressed: () => context.router.push(const SearchInputRoute()),
         style: ButtonStyle(
           minimumSize: WidgetStateProperty.all<Size>(
-            Size(DeviceSize.width(context) / 1.7, 45),
+            Size(DeviceSize.width(context) - 100, 45),
           ),
           maximumSize: WidgetStateProperty.all<Size>(
-            Size(DeviceSize.width(context) / 1.7, 45),
+            Size(DeviceSize.width(context) - 100, 45),
           ),
           elevation: WidgetStateProperty.all<double>(0),
           shape: WidgetStateProperty.all<OutlinedBorder>(

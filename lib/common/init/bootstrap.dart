@@ -13,7 +13,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 
   await EasyLocalization.ensureInitialized();
   EasyLocalization.logger.enableBuildModes = [];
@@ -22,7 +24,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     // await UnityAds.init(
     //   gameId: AdManager.gameId,
     // );
-    debugPrint('Unity Ads Initialized Successfully!');
+    // debugPrint('Unity Ads Initialized Successfully!');
   }
 
   await CacheManager.instance.init();

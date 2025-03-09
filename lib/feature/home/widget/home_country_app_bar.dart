@@ -55,14 +55,11 @@ class HomeCountryAppBar extends ConsumerWidget
                   GestureDetector(
                     onTap: () => context.router
                         .push(SelectCountryRoute(isSettingsView: true)),
-                    child: Row(
+                    child: Column(
                       children: [
-                        SizedBox(
-                          height: 60,
-                          child: SvgPicture.asset(
-                            GetCountryFlag().getSvgPath(currentCountry),
-                            height: 40,
-                          ),
+                        SvgPicture.asset(
+                          GetCountryFlag().getSvgPath(currentCountry),
+                          height: 40,
                         ),
                         10.horizontalSpace,
                         Text(
@@ -98,5 +95,5 @@ class HomeCountryAppBar extends ConsumerWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 30);
 }

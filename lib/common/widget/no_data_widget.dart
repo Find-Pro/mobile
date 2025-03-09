@@ -41,19 +41,21 @@ class NoDataWidgetState extends State<NoDataWidget> {
                 padding: isAnimated
                     ? const EdgeInsets.only(bottom: 80)
                     : const EdgeInsets.only(bottom: 30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      widget.text ?? LocaleKeys.noDataFound.tr(),
-                      style: context.textTheme.headlineSmall,
-                    ),
-                    Lottie.asset(
-                      Assets.lottieEmptyFollower,
-                      width: 150,
-                      height: 150,
-                    ),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        widget.text ?? LocaleKeys.noDataFound.tr(),
+                        style: context.textTheme.headlineSmall,
+                      ),
+                      Lottie.asset(
+                        Assets.lottieEmptyFollower,
+                        width: 150,
+                        height: 150,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -56,7 +56,7 @@ class UserProfileProfilePicture extends ConsumerWidget {
             Text(
               GetCountryStringFromCode().get(userProfileVM.user!.country!),
               style: context.textTheme.labelLarge
-                  ?.copyWith(fontWeight: FontWeight.normal),
+                  ?.copyWith(fontWeight: FontWeight.bold),
             )
           ],
         ),

@@ -31,6 +31,7 @@ class UserProfileJobsListView extends ConsumerWidget {
           children: [
             const HomeBackgroundImage(),
             ListView.builder(
+                shrinkWrap: true,
                 itemCount: userProfileJobsViewModel.result!.length,
                 itemBuilder: (context, index) {
                   return JobListTile(

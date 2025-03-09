@@ -36,8 +36,8 @@ class UserProfileView extends ConsumerWidget {
               //  await context.router.pushWidget(const VideoAdView());
               return false;
             },
-            child: CustomScrollView(
-              slivers: [
+            child: NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 const UserProfileAppBar(),
                 SliverToBoxAdapter(
                   child: Stack(
@@ -48,20 +48,21 @@ class UserProfileView extends ConsumerWidget {
                           FollowNumberBox(
                             isGeneralProfile: true,
                             userId: userProfileViewModel.user!.userId!,
-                            fullName: userProfileViewModel.user!.fullName ?? '',
+                            fullName:
+                                userProfileViewModel.user!.fullName ?? '',
                           ),
                           IsFollowingButton(userId: userId),
                           Divider(
                             color: context.themeData.indicatorColor,
                             thickness: 0.7,
                           ),
-                          const UserProfileBody(),
                         ],
                       ),
                     ],
                   ),
                 ),
               ],
+              body: const UserProfileBody(),
             ),
           ),
         );

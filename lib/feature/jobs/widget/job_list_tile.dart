@@ -26,7 +26,8 @@ class JobListTile extends ConsumerWidget {
     return CustomFutureBuilder<StringJobModel>(
       future: JobDetailHelper.instance.convert(jobModel),
       child: (stringJobModel) => GestureDetector(
-        onTap: () => context.router.push(JobDetailRoute(jobModel: jobModel)),
+        onTap: () =>
+            context.router.push(JobDetailRoute(jobModel: jobModel)),
         child: Padding(
           padding: PaddingInsets().xl,
           child: SizedBox(
@@ -41,7 +42,8 @@ class JobListTile extends ConsumerWidget {
                       child: Row(
                         children: [
                           SvgPicture.asset(
-                            GetCategoryIcon().get(jobModel.jobCategoryId ?? 1),
+                            GetCategoryIcon()
+                                .get(jobModel.jobCategoryId ?? 1),
                             colorFilter: const ColorFilter.mode(
                               Colors.blueAccent,
                               BlendMode.srcATop,
@@ -53,14 +55,16 @@ class JobListTile extends ConsumerWidget {
                           Expanded(
                             child: Text(
                               stringJobModel.service!,
-                              style: context.textTheme.labelLarge?.copyWith(
+                              style:
+                                  context.textTheme.labelLarge?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
                           SvgPicture.asset(
-                            GetCountryFlag().getSvgPath(stringJobModel.country!),
-                            height: 30,
+                            GetCountryFlag()
+                                .getSvgPath(stringJobModel.country!),
+                            height: 50,
                           ),
                           JobListTileButton(onTap: () {}),
                         ],
@@ -73,21 +77,22 @@ class JobListTile extends ConsumerWidget {
                         children: [
                           Text(
                             '${jobModel.hourlyWage?.toString() ?? '0'} \$${LocaleKeys.perHour.tr()}',
-                            style: context.textTheme.labelLarge?.copyWith(
+                            style: context.textTheme.labelMedium?.copyWith(
                               color: context.themeData.dividerColor,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
                             '${stringJobModel.city}/${stringJobModel.district}',
-                            style: context.textTheme.labelLarge?.copyWith(
+                            style: context.textTheme.labelMedium?.copyWith(
                               color: context.themeData.dividerColor,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
-                            DateTime.parse(jobModel.createdAt!).formattedDate,
-                            style: context.textTheme.labelLarge?.copyWith(
+                            DateTime.parse(jobModel.createdAt!)
+                                .formattedDate,
+                            style: context.textTheme.labelMedium?.copyWith(
                               color: context.themeData.dividerColor,
                               fontWeight: FontWeight.w600,
                             ),
