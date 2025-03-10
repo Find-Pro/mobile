@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/services/routes/photo_service.dart';
 import 'package:findpro/common/widget/information_toast.dart';
@@ -25,8 +26,8 @@ class ChangeProfilePicture {
         return;
       }
     }
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile = await ImagePicker()
+        .pickImage(requestFullMetadata: false, source: ImageSource.gallery);
     if (pickedFile != null) {
       final croppedFile = await ImageCropper().cropImage(
         sourcePath: pickedFile.path,
@@ -37,8 +38,7 @@ class ChangeProfilePicture {
         final file = File(croppedFile.path);
         final success = await _handleUpdate(file);
         if (success) {
-          InformationToast()
-              .show(context, LocaleKeys.profilePhotoChanged.tr());
+          InformationToast().show(context, LocaleKeys.profilePhotoChanged.tr());
           await ref.read(profileProvider.notifier).getUser();
         } else {
           WarningAlert()
