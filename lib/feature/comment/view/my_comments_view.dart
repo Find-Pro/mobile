@@ -28,6 +28,7 @@ class MyCommentsView extends ConsumerWidget {
           children: [
             const HomeBackgroundImage(),
             ListView.builder(
+              shrinkWrap: true,
               itemCount: myCommentViewModel.result!.length,
               itemBuilder: (context, index) => CommentCard(
                   commentModel: myCommentViewModel.result![index],

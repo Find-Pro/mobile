@@ -30,6 +30,7 @@ class MyJobsListView extends ConsumerWidget {
           children: [
             const HomeBackgroundImage(),
             ListView.builder(
+                shrinkWrap: true,
                 itemCount: myJobsViewModel.result!.length,
                 itemBuilder: (context, index) {
                   return MyJobsListTile(jobModel: reversedList[index]);

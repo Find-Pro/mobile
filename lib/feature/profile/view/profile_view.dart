@@ -27,33 +27,40 @@ class ProfileView extends ConsumerWidget {
     return profileFuture.when(
         data: (_) {
           return GestureDetector(
-            child: SingleChildScrollView(
-              child: Stack(
-                children: [
-                  ProfileCoverImage(
-                    isGeneralProfile: false,
-                    photoName: profileViewModel.user!.coverPicture!,
-                  ),
-                  ProfileProfilePicture(
-                    photoName: profileViewModel.user!.profilePicture!,
-                  ),
-                  Column(
-                    children: [
-                      FollowNumberBox(
-                        userId: profileViewModel.user!.userId!,
-                        fullName: profileViewModel.user!.fullName ?? '',
-                        isGeneralProfile: false,
-                      ),
-                      Divider(
-                        color: context.themeData.indicatorColor,
-                        thickness: 0.5,
-                      ),
-                      const ProfileBody()
+            child: NestedScrollView(
+                headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                      SliverToBoxAdapter(
+                        child: Stack(
+                          children: [
+                            ProfileCoverImage(
+                              isGeneralProfile: false,
+                              photoName:
+                                  profileViewModel.user!.coverPicture!,
+                            ),
+                            ProfileProfilePicture(
+                              photoName:
+                                  profileViewModel.user!.profilePicture!,
+                            ),
+                            Column(
+                              children: [
+                                FollowNumberBox(
+                                  userId: profileViewModel.user!.userId!,
+                                  fullName:
+                                      profileViewModel.user!.fullName ??
+                                          '',
+                                  isGeneralProfile: false,
+                                ),
+                                Divider(
+                                  color: context.themeData.indicatorColor,
+                                  thickness: 0.5,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
                     ],
-                  )
-                ],
-              ),
-            ),
+                body: const ProfileBody()),
             onHorizontalDragEnd: (details) {
               if (details.primaryVelocity! < -500) {
                 context.router.pushAndPopUntil(const SettingsRoute(),

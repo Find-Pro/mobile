@@ -23,7 +23,7 @@ class NoDataWidgetState extends State<NoDataWidget> {
         const HomeBackgroundImage(),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 400),
+            padding: const EdgeInsets.only(bottom: 100),
             child: GestureDetector(
               onTap: () {
                 setState(() {
