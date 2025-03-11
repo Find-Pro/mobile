@@ -27,6 +27,8 @@ class AppBottomNavigationBar extends StatelessWidget {
       selectedItemColor: Colors.blue,
       backgroundColor: context.themeData.scaffoldBackgroundColor,
       currentIndex: tabsRouter.activeIndex,
+      selectedColorOpacity: 0.2,
+      curve: Curves.easeInCubic,
       onTap: (value) {
         if (tabsRouter.activeIndex == 3 && value == 3) {
           if (CacheManager.instance.getUserId() != 0) {

@@ -29,50 +29,46 @@ class HomeCountryAppBar extends ConsumerWidget
     return profileFuture.when(
       data: (_) {
         return AppBar(
-          title: Column(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (CacheManager.instance.getUserId() != 0)
-                    Row(
-                      children: [
-                        CircleAvatar(
-                            radius: 30,
-                            backgroundImage: Image.network(
-                              height: 40,
-                              CreateImageUrl.instance.photo(
-                                  currentUser.user!.profilePicture!),
-                            ).image),
-                        10.horizontalSpace,
-                        Text(
-                          currentUser.user!.fullName ?? '',
-                          style: context.textTheme.headlineSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  GestureDetector(
-                    onTap: () => context.router
-                        .push(SelectCountryRoute(isSettingsView: true)),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset(
-                          GetCountryFlag().getSvgPath(currentCountry),
+              if (CacheManager.instance.getUserId() != 0)
+                Row(
+                  children: [
+                    CircleAvatar(
+                        radius: 30,
+                        backgroundImage: Image.network(
                           height: 40,
-                        ),
-                        10.horizontalSpace,
-                        Text(
-                          GetCountryStringFromCode().get(currentCountry),
-                          style: context.textTheme.labelLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        )
-                      ],
+                          CreateImageUrl.instance
+                              .photo(currentUser.user!.profilePicture!),
+                        ).image),
+                    10.horizontalSpace,
+                    Text(
+                      currentUser.user!.fullName ?? '',
+                      style: context.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              GestureDetector(
+                onTap: () => context.router
+                    .push(SelectCountryRoute(isSettingsView: true)),
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      GetCountryFlag().getSvgPath(currentCountry),
+                      height: 40,
+                    ),
+                    10.horizontalSpace,
+                    Text(
+                      GetCountryStringFromCode().get(currentCountry),
+                      style: context.textTheme.labelLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    )
+                  ],
+                ),
               ),
             ],
           ),

@@ -33,7 +33,7 @@ class CustomPushSettingsAppbar extends StatelessWidget
           color: Colors.white,
         ),
       ),
-      backgroundColor: Colors.grey.shade700,
+      backgroundColor: Colors.teal.shade500,
       iconTheme: const IconThemeData(
         color: Colors.white,
       ),
