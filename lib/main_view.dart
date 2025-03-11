@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/feature/home/widget/app_bottom_navigation_bar.dart';
+import 'package:findpro/common/widget/app_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +20,6 @@ class MainView extends ConsumerWidget {
       bottomNavigationBuilder: (context, tabsRouter) {
         return AppBottomNavigationBar(
           tabsRouter: tabsRouter,
-          onItemTapped: tabsRouter.setActiveIndex,
           pageIndex: tabsRouter.activeIndex,
         );
       },

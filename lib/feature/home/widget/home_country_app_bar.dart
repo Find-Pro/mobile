@@ -38,8 +38,9 @@ class HomeCountryAppBar extends ConsumerWidget
                     Row(
                       children: [
                         CircleAvatar(
-                            radius: 25,
+                            radius: 30,
                             backgroundImage: Image.network(
+                              height: 40,
                               CreateImageUrl.instance.photo(
                                   currentUser.user!.profilePicture!),
                             ).image),
@@ -65,7 +66,7 @@ class HomeCountryAppBar extends ConsumerWidget
                         Text(
                           GetCountryStringFromCode().get(currentCountry),
                           style: context.textTheme.labelLarge?.copyWith(
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.bold,
                               color: Colors.white),
                         )
                       ],
@@ -75,7 +76,7 @@ class HomeCountryAppBar extends ConsumerWidget
               ),
             ],
           ),
-          backgroundColor: Colors.grey.shade700,
+          backgroundColor: Colors.teal.shade500,
           elevation: 4,
           iconTheme: const IconThemeData(
             color: Colors.white,
@@ -95,5 +96,5 @@ class HomeCountryAppBar extends ConsumerWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 30);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
 }

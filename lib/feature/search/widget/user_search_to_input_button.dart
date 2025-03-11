@@ -30,7 +30,7 @@ class UserSearchToInputButton extends StatelessWidget {
             ),
           ),
           backgroundColor: WidgetStateProperty.all<Color>(
-            Colors.grey.shade600,
+            Colors.teal.shade500,
           ),
         ),
         child: Row(

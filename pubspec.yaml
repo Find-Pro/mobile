@@ -30,9 +30,10 @@ dependencies:
   mockito: ^5.4.4
   onesignal_flutter: ^5.3.0
   permission_handler: ^11.3.1
+  salomon_bottom_bar: ^3.3.2
   shared_preferences: ^2.0.15
   sign_in_with_apple: ^6.1.4
-  unity_ads_plugin: ^0.3.21
+  # unity_ads_plugin: ^0.3.21
   url_launcher: ^6.3.1
   vexana: ^4.0.4
   web_socket_channel: ^3.0.1
