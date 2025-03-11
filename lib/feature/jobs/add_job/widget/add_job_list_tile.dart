@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class AddJobListTile extends StatelessWidget {
   const AddJobListTile(
       {required this.text, required this.onTap, super.key});
+
   final String text;
   final VoidCallback onTap;
 
@@ -20,8 +21,10 @@ class AddJobListTile extends StatelessWidget {
           style: context.textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w600),
         ),
-        trailing: Icon(Icons.arrow_forward_ios,
-            color: context.themeData.primaryColorDark),
+        trailing: Icon(
+          Icons.arrow_forward_ios,
+          color: Colors.teal.shade600,
+        ),
         onTap: onTap,
       ),
     );

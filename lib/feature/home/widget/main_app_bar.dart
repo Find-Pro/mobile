@@ -30,7 +30,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.white,
         ),
       ),
-      backgroundColor: Colors.grey.shade700,
+      backgroundColor: Colors.teal.shade600,
       elevation: 4,
       iconTheme: const IconThemeData(
         color: Colors.white,
@@ -44,5 +44,5 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 10);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

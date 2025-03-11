@@ -23,8 +23,8 @@ class ChangePasswordView extends ConsumerWidget {
       resizeToAvoidBottomInset: false,
       appBar: SettingsAppBar(text: LocaleKeys.changePassword.tr()),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          50.verticalSpace,
           PwTextField(
             controller: pwCnt,
             hintText: LocaleKeys.password.tr(),

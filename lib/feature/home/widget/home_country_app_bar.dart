@@ -26,9 +26,21 @@ class HomeCountryAppBar extends ConsumerWidget
     final profileFuture = ref.watch(profileFutureProvider);
     final currentCountry = ref.watch(selectCountryProvider);
     final currentUser = ref.watch(profileProvider);
+
     return profileFuture.when(
       data: (_) {
         return AppBar(
+          backgroundColor: Colors.teal.shade600,
+          elevation: 0,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.teal.shade600, Colors.teal.shade800],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -36,18 +48,19 @@ class HomeCountryAppBar extends ConsumerWidget
                 Row(
                   children: [
                     CircleAvatar(
-                        radius: 30,
-                        backgroundImage: Image.network(
-                          height: 40,
-                          CreateImageUrl.instance
-                              .photo(currentUser.user!.profilePicture!),
-                        ).image),
+                      radius: 30,
+                      backgroundImage: NetworkImage(
+                        CreateImageUrl.instance
+                            .photo(currentUser.user!.profilePicture!),
+                      ),
+                    ),
                     10.horizontalSpace,
                     Text(
                       currentUser.user!.fullName ?? '',
-                      style: context.textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                      style: context.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),
@@ -58,30 +71,22 @@ class HomeCountryAppBar extends ConsumerWidget
                   children: [
                     SvgPicture.asset(
                       GetCountryFlag().getSvgPath(currentCountry),
-                      height: 40,
+                      height: 30,
                     ),
-                    10.horizontalSpace,
+                    8.horizontalSpace,
                     Text(
                       GetCountryStringFromCode().get(currentCountry),
                       style: context.textTheme.labelLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     )
                   ],
                 ),
               ),
             ],
           ),
-          backgroundColor: Colors.teal.shade500,
-          elevation: 4,
-          iconTheme: const IconThemeData(
-            color: Colors.white,
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(5),
-            ),
-          ),
+          iconTheme: const IconThemeData(color: Colors.white),
         );
       },
       error: (error, stackTrace) => NoDataWidget(
@@ -92,5 +97,5 @@ class HomeCountryAppBar extends ConsumerWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10);
 }

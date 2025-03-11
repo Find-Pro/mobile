@@ -14,12 +14,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MessagesUserCard extends ConsumerWidget {
   const MessagesUserCard({required this.messageProfileModel, super.key});
+
   final MessageProfileModel messageProfileModel;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.only(top: 18),
+      padding: const EdgeInsets.only(top: 4),
       child: Card(
+        elevation: 0.3,
         child: Padding(
           padding: PaddingInsets().large,
           child: ListTile(

@@ -81,8 +81,10 @@ class Assets {
   static const String lottieProfile = 'assets/lottie/profile.json';
   static const String lottieSearch = 'assets/lottie/search.json';
   static const String lottieSupport = 'assets/lottie/support.json';
+  static const String mobile = '.env';
   static const String ruCity = 'assets/country/ru/city.json';
   static const String ruDistrict = 'assets/country/ru/district.json';
+  static const String trAsd = 'assets/country/tr/asd.json';
   static const String trCity = 'assets/country/tr/city.json';
   static const String trDistrict = 'assets/country/tr/district.json';
   static const String translationsDe = 'assets/translations/de.json';

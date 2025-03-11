@@ -1,84 +1,326 @@
 [
-    {"il_id": 1, "name": "ADANA"},
-    {"il_id": 2, "name": "ADIYAMAN"},
-    {"il_id": 3, "name": "AFYONKARAHİSAR"},
-    {"il_id": 4, "name": "AĞRI"},
-    {"il_id": 5, "name": "AMASYA"},
-    {"il_id": 6, "name": "ANKARA"},
-    {"il_id": 7, "name": "ANTALYA"},
-    {"il_id": 8, "name": "ARTVİN"},
-    {"il_id": 9, "name": "AYDIN"},
-    {"il_id": 10, "name": "BALIKESİR"},
-    {"il_id": 11, "name": "BİLECİK"},
-    {"il_id": 12, "name": "BİNGÖL"},
-    {"il_id": 13, "name": "BİTLİS"},
-    {"il_id": 14, "name": "BOLU"},
-    {"il_id": 15, "name": "BURDUR"},
-    {"il_id": 16, "name": "BURSA"},
-    {"il_id": 17, "name": "ÇANAKKALE"},
-    {"il_id": 18, "name": "ÇANKIRI"},
-    {"il_id": 19, "name": "ÇORUM"},
-    {"il_id": 20, "name": "DENİZLİ"},
-    {"il_id": 21, "name": "DİYARBAKIR"},
-    {"il_id": 22, "name": "EDİRNE"},
-    {"il_id": 23, "name": "ELAZIĞ"},
-    {"il_id": 24, "name": "ERZİNCAN"},
-    {"il_id": 25, "name": "ERZURUM"},
-    {"il_id": 26, "name": "ESKİŞEHİR"},
-    {"il_id": 27, "name": "GAZİANTEP"},
-    {"il_id": 28, "name": "GİRESUN"},
-    {"il_id": 29, "name": "GÜMÜŞHANE"},
-    {"il_id": 30, "name": "HAKKARİ"},
-    {"il_id": 31, "name": "HATAY"},
-    {"il_id": 32, "name": "ISPARTA"},
-    {"il_id": 33, "name": "MERSİN"},
-    {"il_id": 34, "name": "İSTANBUL"},
-    {"il_id": 35, "name": "İZMİR"},
-    {"il_id": 36, "name": "KARS"},
-    {"il_id": 37, "name": "KASTAMONU"},
-    {"il_id": 38, "name": "KAYSERİ"},
-    {"il_id": 39, "name": "KIRKLARELİ"},
-    {"il_id": 40, "name": "KIRŞEHİR"},
-    {"il_id": 41, "name": "KOCAELİ"},
-    {"il_id": 42, "name": "KONYA"},
-    {"il_id": 43, "name": "KÜTAHYA"},
-    {"il_id": 44, "name": "MALATYA"},
-    {"il_id": 45, "name": "MANİSA"},
-    {"il_id": 46, "name": "KAHRAMANMARAŞ"},
-    {"il_id": 47, "name": "MARDİN"},
-    {"il_id": 48, "name": "MUĞLA"},
-    {"il_id": 49, "name": "MUŞ"},
-    {"il_id": 50, "name": "NEVŞEHİR"},
-    {"il_id": 51, "name": "NİĞDE"},
-    {"il_id": 52, "name": "ORDU"},
-    {"il_id": 53, "name": "RİZE"},
-    {"il_id": 54, "name": "SAKARYA"},
-    {"il_id": 55, "name": "SAMSUN"},
-    {"il_id": 56, "name": "SİİRT"},
-    {"il_id": 57, "name": "SİNOP"},
-    {"il_id": 58, "name": "SİVAS"},
-    {"il_id": 59, "name": "TEKİRDAĞ"},
-    {"il_id": 60, "name": "TOKAT"},
-    {"il_id": 61, "name": "TRABZON"},
-    {"il_id": 62, "name": "TUNCELİ"},
-    {"il_id": 63, "name": "ŞANLIURFA"},
-    {"il_id": 64, "name": "UŞAK"},
-    {"il_id": 65, "name": "VAN"},
-    {"il_id": 66, "name": "YOZGAT"},
-    {"il_id": 67, "name": "ZONGULDAK"},
-    {"il_id": 68, "name": "AKSARAY"},
-    {"il_id": 69, "name": "BAYBURT"},
-    {"il_id": 70, "name": "KARAMAN"},
-    {"il_id": 71, "name": "KIRIKKALE"},
-    {"il_id": 72, "name": "BATMAN"},
-    {"il_id": 73, "name": "ŞIRNAK"},
-    {"il_id": 74, "name": "BARTIN"},
-    {"il_id": 75, "name": "ARDAHAN"},
-    {"il_id": 76, "name": "IĞDIR"},
-    {"il_id": 77, "name": "YALOVA"},
-    {"il_id": 78, "name": "KARABÜK"},
-    {"il_id": 79, "name": "KİLİS"},
-    {"il_id": 80, "name": "OSMANİYE"},
-    {"il_id": 81, "name": "DÜZCE"}
-  ]
-
+  {
+    "il_id": 1,
+    "name": "Adana"
+  },
+  {
+    "il_id": 2,
+    "name": "Adıyaman"
+  },
+  {
+    "il_id": 3,
+    "name": "Afyonkarahisar"
+  },
+  {
+    "il_id": 4,
+    "name": "Ağrı"
+  },
+  {
+    "il_id": 5,
+    "name": "Amasya"
+  },
+  {
+    "il_id": 6,
+    "name": "Ankara"
+  },
+  {
+    "il_id": 7,
+    "name": "Antalya"
+  },
+  {
+    "il_id": 8,
+    "name": "Artvin"
+  },
+  {
+    "il_id": 9,
+    "name": "Aydın"
+  },
+  {
+    "il_id": 10,
+    "name": "Balıkesir"
+  },
+  {
+    "il_id": 11,
+    "name": "Bilecik"
+  },
+  {
+    "il_id": 12,
+    "name": "Bingöl"
+  },
+  {
+    "il_id": 13,
+    "name": "Bitlis"
+  },
+  {
+    "il_id": 14,
+    "name": "Bolu"
+  },
+  {
+    "il_id": 15,
+    "name": "Burdur"
+  },
+  {
+    "il_id": 16,
+    "name": "Bursa"
+  },
+  {
+    "il_id": 17,
+    "name": "Çanakkale"
+  },
+  {
+    "il_id": 18,
+    "name": "Çankırı"
+  },
+  {
+    "il_id": 19,
+    "name": "Çorum"
+  },
+  {
+    "il_id": 20,
+    "name": "Denizli"
+  },
+  {
+    "il_id": 21,
+    "name": "Diyarbakır"
+  },
+  {
+    "il_id": 22,
+    "name": "Edirne"
+  },
+  {
+    "il_id": 23,
+    "name": "Elazığ"
+  },
+  {
+    "il_id": 24,
+    "name": "Erzincan"
+  },
+  {
+    "il_id": 25,
+    "name": "Erzurum"
+  },
+  {
+    "il_id": 26,
+    "name": "Eskişehir"
+  },
+  {
+    "il_id": 27,
+    "name": "Gaziantep"
+  },
+  {
+    "il_id": 28,
+    "name": "Giresun"
+  },
+  {
+    "il_id": 29,
+    "name": "Gümüşhane"
+  },
+  {
+    "il_id": 30,
+    "name": "Hakkari"
+  },
+  {
+    "il_id": 31,
+    "name": "Hatay"
+  },
+  {
+    "il_id": 32,
+    "name": "Isparta"
+  },
+  {
+    "il_id": 33,
+    "name": "Mersin"
+  },
+  {
+    "il_id": 34,
+    "name": "İstanbul"
+  },
+  {
+    "il_id": 35,
+    "name": "İzmir"
+  },
+  {
+    "il_id": 36,
+    "name": "Kars"
+  },
+  {
+    "il_id": 37,
+    "name": "Kastamonu"
+  },
+  {
+    "il_id": 38,
+    "name": "Kayseri"
+  },
+  {
+    "il_id": 39,
+    "name": "Kırklareli"
+  },
+  {
+    "il_id": 40,
+    "name": "Kırşehir"
+  },
+  {
+    "il_id": 41,
+    "name": "Kocaeli"
+  },
+  {
+    "il_id": 42,
+    "name": "Konya"
+  },
+  {
+    "il_id": 43,
+    "name": "Kütahya"
+  },
+  {
+    "il_id": 44,
+    "name": "Malatya"
+  },
+  {
+    "il_id": 45,
+    "name": "Manisa"
+  },
+  {
+    "il_id": 46,
+    "name": "Kahramanmaraş"
+  },
+  {
+    "il_id": 47,
+    "name": "Mardin"
+  },
+  {
+    "il_id": 48,
+    "name": "Muğla"
+  },
+  {
+    "il_id": 49,
+    "name": "Muş"
+  },
+  {
+    "il_id": 50,
+    "name": "Nevşehir"
+  },
+  {
+    "il_id": 51,
+    "name": "Niğde"
+  },
+  {
+    "il_id": 52,
+    "name": "Ordu"
+  },
+  {
+    "il_id": 53,
+    "name": "Rize"
+  },
+  {
+    "il_id": 54,
+    "name": "Sakarya"
+  },
+  {
+    "il_id": 55,
+    "name": "Samsun"
+  },
+  {
+    "il_id": 56,
+    "name": "Siirt"
+  },
+  {
+    "il_id": 57,
+    "name": "Sinop"
+  },
+  {
+    "il_id": 58,
+    "name": "Sivas"
+  },
+  {
+    "il_id": 59,
+    "name": "Tekirdağ"
+  },
+  {
+    "il_id": 60,
+    "name": "Tokat"
+  },
+  {
+    "il_id": 61,
+    "name": "Trabzon"
+  },
+  {
+    "il_id": 62,
+    "name": "Tunceli"
+  },
+  {
+    "il_id": 63,
+    "name": "Şanlıurfa"
+  },
+  {
+    "il_id": 64,
+    "name": "Uşak"
+  },
+  {
+    "il_id": 65,
+    "name": "Van"
+  },
+  {
+    "il_id": 66,
+    "name": "Yozgat"
+  },
+  {
+    "il_id": 67,
+    "name": "Zonguldak"
+  },
+  {
+    "il_id": 68,
+    "name": "Aksaray"
+  },
+  {
+    "il_id": 69,
+    "name": "Bayburt"
+  },
+  {
+    "il_id": 70,
+    "name": "Karaman"
+  },
+  {
+    "il_id": 71,
+    "name": "Kırıkkale"
+  },
+  {
+    "il_id": 72,
+    "name": "Batman"
+  },
+  {
+    "il_id": 73,
+    "name": "Şırnak"
+  },
+  {
+    "il_id": 74,
+    "name": "Bartın"
+  },
+  {
+    "il_id": 75,
+    "name": "Ardahan"
+  },
+  {
+    "il_id": 76,
+    "name": "Iğdır"
+  },
+  {
+    "il_id": 77,
+    "name": "Yalova"
+  },
+  {
+    "il_id": 78,
+    "name": "Karabük"
+  },
+  {
+    "il_id": 79,
+    "name": "Kilis"
+  },
+  {
+    "il_id": 80,
+    "name": "Osmaniye"
+  },
+  {
+    "il_id": 81,
+    "name": "Düzce"
+  }
+]

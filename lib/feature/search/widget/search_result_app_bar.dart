@@ -18,7 +18,7 @@ class SearchResultAppbar extends StatelessWidget
           bottom: Radius.circular(5),
         ),
       ),
-      backgroundColor: Colors.grey.shade700,
+      backgroundColor: Colors.teal.shade600,
       title: Text(
         LocaleKeys.searchResult.tr(),
         style: context.textTheme.titleMedium?.copyWith(
@@ -50,5 +50,5 @@ class SearchResultAppbar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 10);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

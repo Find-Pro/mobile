@@ -16,6 +16,7 @@ class FollowNumberBox extends ConsumerWidget {
       required this.userId,
       required this.fullName,
       super.key});
+
   final bool isGeneralProfile;
   final int userId;
   final String fullName;
@@ -40,7 +41,7 @@ class FollowNumberBox extends ConsumerWidget {
                           EdgeInsets.only(left: isGeneralProfile ? 35 : 0),
                       child: Text(
                         fullName,
-                        style: context.textTheme.headlineSmall
+                        style: context.textTheme.headlineMedium
                             ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
