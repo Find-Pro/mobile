@@ -16,7 +16,7 @@ I also prepared Backend app for this application with NodeJS Express.
 [link](https://github.com/Find-Pro/server)
 
 # Features
-Auth system<br>
+Auth system (Apple,Google,mail-password)<br>
 Find a professional or be someones professional<br>
 Friend management (search, follow,block)<br>
 Real-Time chat <br>
