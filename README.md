@@ -59,8 +59,6 @@ Push Notification
       <td><img src="https://github.com/user-attachments/assets/1ed742de-bc1d-4594-9b20-813559a8c47b" width="200"/></td>
       <td><img src="https://github.com/user-attachments/assets/2352c413-c3da-4076-ad30-4e448c466aed" width="200"/></td>
     <tr>
-      
-    </tr>
   </table>
 </div>
 
