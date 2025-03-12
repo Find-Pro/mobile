@@ -9,13 +9,15 @@ https://apps.apple.com/us/app/find-pro/id6740331723?platform=iphone
 
 Features:
 View professional profiles.Create your service requests.Communicate directly through the app.Make the best choice by reading trusted user reviews.
-Getting or providing services has never been easier with Find Pro. Download now and discover professionals! It's available int 10 country.
+Getting or providing services has never been easier with Find Pro. Download now and discover professionals! It's available in 10 country. 
+(Turkey,United Kingdom,Germany,France,South Korea,Chine,Russia,India,Japan,United States)
 
 I also prepared Backend app for this application with NodeJS Express.
 [link](https://github.com/Find-Pro/server)
 
 # Features
 Auth system<br>
+Find a professional or be someones professional<br>
 Friend management (search, follow,block)<br>
 Real-Time chat <br>
 Push Notification
