@@ -5,7 +5,7 @@ import 'package:findpro/common/services/interface/auth_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/request/login_request.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
-import 'package:findpro/common/services/model/response/update_profile_response.dart';
+import 'package:findpro/common/services/model/response/user/update_profile_response.dart';
 
 class AuthService implements AuthOperation {
   AuthService._();
@@ -23,7 +23,9 @@ class AuthService implements AuthOperation {
       },
     );
 
-    return response != null ? UpdateProfileResponse.fromJson(response) : null;
+    return response != null
+        ? UpdateProfileResponse.fromJson(response)
+        : null;
   }
 
   @override
@@ -38,7 +40,9 @@ class AuthService implements AuthOperation {
         'password': registerRequest.password,
       },
     );
-    return response != null ? UpdateProfileResponse.fromJson(response) : null;
+    return response != null
+        ? UpdateProfileResponse.fromJson(response)
+        : null;
   }
 
   @override
@@ -53,7 +57,9 @@ class AuthService implements AuthOperation {
         'country': country,
       },
     );
-    return response != null ? UpdateProfileResponse.fromJson(response) : null;
+    return response != null
+        ? UpdateProfileResponse.fromJson(response)
+        : null;
   }
 
   @override
@@ -66,6 +72,8 @@ class AuthService implements AuthOperation {
         'token': token,
       },
     );
-    return response != null ? UpdateProfileResponse.fromJson(response) : null;
+    return response != null
+        ? UpdateProfileResponse.fromJson(response)
+        : null;
   }
 }

@@ -4,13 +4,13 @@ import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/common/services/model/response/job/string_job_model.dart';
 import 'package:findpro/common/widget/custom_future_builder.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_category_icon.dart';
 import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
 import 'package:findpro/feature/jobs/helper/job_detail_helper.dart';
-import 'package:findpro/feature/jobs/widget/job_list_tile_button.dart';
+import 'package:findpro/feature/jobs/view_model/saved_jobs_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,10 +19,14 @@ import 'package:flutter_svg/svg.dart';
 
 class JobListTile extends ConsumerWidget {
   const JobListTile({required this.jobModel, super.key});
+
   final JobModel jobModel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final savedJobs = ref.watch(savedJobsProvider);
+    final savedJobsVM = ref.read(savedJobsProvider.notifier);
+    final isSaved = savedJobs.any((job) => job.jobId == jobModel.jobId);
     return CustomFutureBuilder<StringJobModel>(
       future: JobDetailHelper.instance.convert(jobModel),
       child: (stringJobModel) => GestureDetector(
@@ -61,12 +65,29 @@ class JobListTile extends ConsumerWidget {
                               ),
                             ),
                           ),
-                          SvgPicture.asset(
-                            GetCountryFlag()
-                                .getSvgPath(stringJobModel.country!),
-                            height: 50,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: SvgPicture.asset(
+                              GetCountryFlag()
+                                  .getSvgPath(stringJobModel.country!),
+                              height: 30,
+                            ),
                           ),
-                          JobListTileButton(onTap: () {}),
+                          10.horizontalSpace,
+                          IconButton(
+                            onPressed: () {
+                              isSaved
+                                  ? savedJobsVM.removeJob(jobModel.jobId!)
+                                  : savedJobsVM.saveJob(jobModel.jobId!);
+                            },
+                            icon: Icon(
+                              isSaved
+                                  ? Icons.bookmark_added
+                                  : Icons.bookmark_add_outlined,
+                              color: Colors.blueAccent,
+                              size: 30,
+                            ),
+                          ),
                         ],
                       ),
                     ),

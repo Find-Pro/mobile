@@ -6,7 +6,8 @@
   "typeAUserName": "ユーザー名を入力してください",
   "unityAdUrl": "https://unity.com/",
   "country": "国",
-
+  "savedJobs": "保存された仕事",
+  "areYouSureDeleteAllSavedJobs": "すべての保存されたジョブを削除してもよろしいですか？",
   "youCanNotSendMessage": "このユーザーにメッセージを送信することはできません",
   "youHaveBlockedUser": "このユーザーをブロックしました",
   "perHour": "/時間",
@@ -146,7 +147,8 @@
   "searchResult": "検索結果",
   "editProfile": "プロフィールを編集",
   "changeLanguage": "言語を変更",
-  "months": [ "1月",
+  "months": [
+    "1月",
     "2月",
     "3月",
     "4月",
@@ -157,7 +159,9 @@
     "9月",
     "10月",
     "11月",
-    "12月" ], "cleaningServices": "清掃サービス",
+    "12月"
+  ],
+  "cleaningServices": "清掃サービス",
   "renovationDecorationAndConstructionServices": "改装、装飾、建設サービス",
   "transportationAndStorageServices": "輸送および保管サービス",
   "allAssemblyAndRepairServices": "すべての組み立ておよび修理サービス",

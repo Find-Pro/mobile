@@ -4,11 +4,13 @@ import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/comment_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/request/add_comment_request.dart';
-import 'package:findpro/common/services/model/response/get_comments_response.dart';
+import 'package:findpro/common/services/model/response/comment/get_comments_response.dart';
 
 class CommentService implements CommentOperation {
   CommentService._();
+
   static final CommentService instance = CommentService._();
+
   @override
   Future<GetCommentsResponse?> addComment(
       AddCommentRequest requestModel) async {

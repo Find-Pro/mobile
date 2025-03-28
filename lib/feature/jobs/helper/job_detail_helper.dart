@@ -1,6 +1,7 @@
 import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/common/services/model/response/job/string_job_model.dart';
 import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/category_model.dart';
 import 'package:findpro/feature/jobs/add_job/model/city_model.dart';
@@ -11,7 +12,9 @@ import 'package:flutter/services.dart';
 
 final class JobDetailHelper {
   JobDetailHelper._init();
+
   static final JobDetailHelper _instance = JobDetailHelper._init();
+
   static JobDetailHelper get instance => _instance;
 
   Future<StringJobModel> convert(JobModel jobModel) async {

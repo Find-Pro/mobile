@@ -6,6 +6,7 @@ import 'package:findpro/feature/home/view_model/home_view_model.dart';
 import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/home/widget/home_no_data_widget.dart';
+import 'package:findpro/feature/jobs/view_model/saved_jobs_view_model.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class HomeView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final homeViewModel = ref.watch(homeProvider);
     final homeFuture = ref.watch(homeFutureProvider);
-
+    ref.watch(savedJobsFutureProvider);
     return Scaffold(
       appBar: const HomeAppBar(),
       body: homeFuture.when(

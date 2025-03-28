@@ -1,6 +1,6 @@
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/services/model/request/add_comment_request.dart';
-import 'package:findpro/common/services/model/response/get_comments_response.dart';
+import 'package:findpro/common/services/model/response/comment/get_comments_response.dart';
 import 'package:findpro/common/services/routes/comment_service.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -9,6 +9,7 @@ class UserProfileCommentsViewModel
   UserProfileCommentsViewModel() : super(GetCommentsResponse());
 
   int _currentUserId = 0;
+
   int get currentUserId => _currentUserId;
 
   Future<bool> getComments(int userId) async {

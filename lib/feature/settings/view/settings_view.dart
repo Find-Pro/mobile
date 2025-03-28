@@ -33,8 +33,8 @@ class SettingsView extends ConsumerWidget {
       // ignore: deprecated_member_use
       body: WillPopScope(
         onWillPop: () async {
-          await context.router
-              .pushAndPopUntil(const ProfileRoute(), predicate: (_) => false);
+          await context.router.pushAndPopUntil(const ProfileRoute(),
+              predicate: (_) => false);
           return false;
         },
         child: SingleChildScrollView(
@@ -53,7 +53,14 @@ class SettingsView extends ConsumerWidget {
                 SettingsListTile(
                     iconData: Icons.edit_note,
                     text: LocaleKeys.editProfile.tr(),
-                    onTap: () => context.router.push(const EditProfileRoute())),
+                    onTap: () =>
+                        context.router.push(const EditProfileRoute())),
+                const SettingsDivider(),
+                SettingsListTile(
+                    iconData: Icons.bookmarks_rounded,
+                    text: LocaleKeys.savedJobs.tr(),
+                    onTap: () =>
+                        context.router.push(const SavedJobsRoute())),
                 const SettingsDivider(),
                 SettingsListTile(
                     iconData: Icons.business_center_outlined,
@@ -62,8 +69,8 @@ class SettingsView extends ConsumerWidget {
                       final jobCount =
                           ref.watch(myJobsProvider).result?.length ?? 0;
                       if (jobCount >= 2) {
-                        WarningAlert().show(
-                            context, LocaleKeys.everyoneHasTheRight.tr(), true);
+                        WarningAlert().show(context,
+                            LocaleKeys.everyoneHasTheRight.tr(), true);
                       } else {
                         context.router.push(const AddJobRoute());
                       }
@@ -77,7 +84,8 @@ class SettingsView extends ConsumerWidget {
                 SettingsListTile(
                     iconData: Icons.support_agent_rounded,
                     text: LocaleKeys.support.tr(),
-                    onTap: () => context.router.push(const SupportRoute())),
+                    onTap: () =>
+                        context.router.push(const SupportRoute())),
                 const SettingsDivider(),
                 SettingsListTile(
                     iconData: Icons.highlight_remove_outlined,
@@ -97,7 +105,8 @@ class SettingsView extends ConsumerWidget {
                                 LocaleKeys.anErrorOccurred.tr(), false);
                           }
                         },
-                            bodyText: LocaleKeys.areYouSureRemoveAccount.tr(),
+                            bodyText:
+                                LocaleKeys.areYouSureRemoveAccount.tr(),
                             buttonText: LocaleKeys.removeAccount.tr())),
                 const SettingsDivider(),
                 SettingsListTile(
@@ -105,7 +114,8 @@ class SettingsView extends ConsumerWidget {
                     iconData: Icons.sign_language_outlined,
                     text: LocaleKeys.signOut.tr(),
                     onTap: () => QuestionAlertDialog().show(context,
-                        onTap: () => SignOut.instance.signOut(context, ref),
+                        onTap: () =>
+                            SignOut.instance.signOut(context, ref),
                         bodyText: LocaleKeys.areYouSureSignOut.tr(),
                         buttonText: LocaleKeys.signOut.tr())),
               ],

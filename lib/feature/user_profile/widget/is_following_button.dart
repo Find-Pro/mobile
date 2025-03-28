@@ -3,7 +3,7 @@ import 'package:findpro/common/const/device_size.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/services/manager/notification_manager.dart';
-import 'package:findpro/common/services/model/response/user_profile_response.dart';
+import 'package:findpro/common/services/model/response/user/user_profile_response.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/information_toast.dart';
 import 'package:findpro/common/widget/warning_alert.dart';

@@ -1,4 +1,4 @@
-import 'package:findpro/common/services/model/response/follow_list_response.dart';
+import 'package:findpro/common/services/model/response/follow/follow_list_response.dart';
 import 'package:findpro/common/services/routes/follow_service.dart';
 import 'package:findpro/feature/profile/model/follower_model.dart';
 import 'package:riverpod/riverpod.dart';

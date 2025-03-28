@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/common/services/model/response/job/string_job_model.dart';
 import 'package:findpro/common/widget/custom_future_builder.dart';
 import 'package:findpro/feature/home/widget/main_app_bar.dart';
 import 'package:findpro/feature/jobs/add_job/model/job_model.dart';

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/services/model/request/register_request.dart';
-import 'package:findpro/common/services/model/response/update_profile_response.dart';
+import 'package:findpro/common/services/model/response/user/update_profile_response.dart';
 import 'package:findpro/common/services/routes/auth_service.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:riverpod/riverpod.dart';

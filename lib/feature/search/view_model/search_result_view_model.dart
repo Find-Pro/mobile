@@ -1,5 +1,5 @@
 import 'package:findpro/common/services/model/request/search_request.dart';
-import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
+import 'package:findpro/common/services/model/response/job/get_user_jobs_response.dart';
 import 'package:findpro/common/services/routes/search_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,6 +13,7 @@ class SearchResultViewModel extends StateNotifier<GetUserJobsResponse> {
   }
 
   GetUserJobsResponse get result => state;
+
   set result(GetUserJobsResponse response) {
     state = response;
   }

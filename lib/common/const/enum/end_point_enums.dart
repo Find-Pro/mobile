@@ -17,9 +17,9 @@ enum EndPointEnums {
   jobAdd('/job/add'),
   jobDelete('/job/delete'),
   jobComplete('/job/complete'),
-  jobEdit('/job/edit'),
   jobGetUserJobs('/job/getUserJobs'),
   jobHomeJobs('/job/homeJobs'),
+  jobGetMultipleJobs('/job/getMultipleJobs'),
   jobGet('/job/get'),
   login('/login'),
   loginWithGoogle('/login/google'),
@@ -41,6 +41,7 @@ enum EndPointEnums {
   blockList('/block/list');
 
   const EndPointEnums(this.value);
+
   final String value;
 
   String get fullUrl {

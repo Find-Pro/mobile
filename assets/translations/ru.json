@@ -7,6 +7,8 @@
   "unityAdUrl": "https://unity.com/",
   "country": "Страна",
   "perHour": "/час",
+  "savedJobs": "Сохраненные работы",
+  "areYouSureDeleteAllSavedJobs": "Вы уверены, что хотите удалить все сохраненные вакансии?",
   "continueWithAccount": "Продолжить с вашей учетной записью",
   "continueWithoutAccount": "Продолжить без учетной записи",
   "toAccessTheseFeatures": "Для доступа к этим функциям, пожалуйста, используйте свою личную учетную запись.",
@@ -142,7 +144,7 @@
   "updateProfile": "Обновить профиль",
   "profileUpdated": "Профиль обновлен",
   "themeSettings": "Настройки темы",
-  "searchResult" : "Результаты поиска",
+  "searchResult": "Результаты поиска",
   "editProfile": "Редактировать профиль",
   "changeLanguage": "Изменить язык",
   "months": [

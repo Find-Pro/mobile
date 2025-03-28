@@ -3,12 +3,13 @@ import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/message_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
-import 'package:findpro/common/services/model/response/chat_rooms_response.dart';
-import 'package:findpro/common/services/model/response/start_chat_room_response.dart';
+import 'package:findpro/common/services/model/response/comment/chat_rooms_response.dart';
+import 'package:findpro/common/services/model/response/message/start_chat_room_response.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 
 class MessageService implements MessageOperation {
   MessageService._();
+
   static final MessageService instance = MessageService._();
 
   @override

@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:findpro/common/services/model/response/follow_list_response.dart';
+import 'package:findpro/common/services/model/response/follow/follow_list_response.dart';
 import 'package:findpro/common/services/routes/search_service.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

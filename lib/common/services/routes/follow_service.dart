@@ -2,13 +2,15 @@ import 'package:findpro/common/const/enum/api_request_method_enum.dart';
 import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/follow_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
-import 'package:findpro/common/services/model/response/follow_list_response.dart';
+import 'package:findpro/common/services/model/response/follow/follow_list_response.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
 import 'package:findpro/feature/profile/model/follow_number_box_model.dart';
 
 class FollowService implements FollowOperation {
   FollowService._();
+
   static final FollowService instance = FollowService._();
+
   @override
   Future<SuccessAndMessageResponse?> follow(
       int userId, int followUserId, bool follow) async {

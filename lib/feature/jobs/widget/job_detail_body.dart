@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/extension/date_time_extension.dart';
-import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/common/services/model/response/job/string_job_model.dart';
 import 'package:findpro/feature/jobs/helper/get_country_string_from_code.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class JobDetailBody extends ConsumerWidget {
   const JobDetailBody({required this.jobModel, super.key});
+
   final StringJobModel jobModel;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
@@ -67,6 +69,7 @@ class _BuildDetailRow extends StatelessWidget {
     required this.titleText,
     required this.bodyText,
   });
+
   final IconData iconData;
   final String titleText;
   final String bodyText;

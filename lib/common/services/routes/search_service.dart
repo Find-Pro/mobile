@@ -4,12 +4,14 @@ import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/search_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/request/search_request.dart';
-import 'package:findpro/common/services/model/response/follow_list_response.dart';
-import 'package:findpro/common/services/model/response/get_user_jobs_response.dart';
+import 'package:findpro/common/services/model/response/follow/follow_list_response.dart';
+import 'package:findpro/common/services/model/response/job/get_user_jobs_response.dart';
 
 class SearchService implements SearchOperation {
   SearchService._();
+
   static final SearchService instance = SearchService._();
+
   @override
   Future<GetUserJobsResponse?> searchJob(
       SearchRequest searchRequest) async {

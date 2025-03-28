@@ -4,11 +4,12 @@ import 'package:findpro/common/const/enum/end_point_enums.dart';
 import 'package:findpro/common/services/interface/user_operation.dart';
 import 'package:findpro/common/services/manager/network_manager.dart';
 import 'package:findpro/common/services/model/response/success_and_message_response.dart';
-import 'package:findpro/common/services/model/response/update_profile_response.dart';
-import 'package:findpro/common/services/model/response/user_profile_response.dart';
+import 'package:findpro/common/services/model/response/user/update_profile_response.dart';
+import 'package:findpro/common/services/model/response/user/user_profile_response.dart';
 
 class UserService implements UserOperation {
   UserService._();
+
   static final UserService instance = UserService._();
 
   @override

@@ -1,5 +1,5 @@
 import 'package:findpro/common/cache/cache_manager.dart';
-import 'package:findpro/common/services/model/response/update_profile_response.dart';
+import 'package:findpro/common/services/model/response/user/update_profile_response.dart';
 import 'package:findpro/common/services/routes/user_service.dart';
 import 'package:riverpod/riverpod.dart';
 

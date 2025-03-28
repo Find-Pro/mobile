@@ -8,6 +8,8 @@
   "turkey": "土耳其",
   "germany": "德国",
   "perHour": "/час",
+  "savedJobs": "已保存的工作",
+  "areYouSureDeleteAllSavedJobs": "您确定要删除所有保存的工作吗？",
   "continueWithAccount": "继续使用您的账户",
   "continueWithoutAccount": "无需账户继续",
   "toAccessTheseFeatures": "要访问这些功能，请使用您的个人账户。",

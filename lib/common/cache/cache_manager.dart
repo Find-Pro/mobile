@@ -12,7 +12,6 @@ final class CacheManager {
     prefs = await SharedPreferences.getInstance();
   }
 
-// user id
   int getUserId({int defaultValue = 0}) {
     return prefs.getInt('userId') ?? defaultValue;
   }
@@ -21,13 +20,33 @@ final class CacheManager {
     prefs.setInt('userId', value);
   }
 
-// User's current Country
   String? getCountry() {
     return prefs.getString('country');
   }
 
   void setCountry(String value) {
     prefs.setString('country', value);
+  }
+
+  List<String> getSavedJobs() {
+    return prefs.getStringList('savedJobs') ?? [];
+  }
+
+  void saveJob(String jobId) {
+    final savedJobs = getSavedJobs();
+    if (!savedJobs.contains(jobId)) {
+      savedJobs.add(jobId);
+      prefs.setStringList('savedJobs', savedJobs);
+    }
+  }
+
+  void removeJob(String jobId) {
+    final savedJobs = getSavedJobs()..remove(jobId);
+    prefs.setStringList('savedJobs', savedJobs);
+  }
+
+  void clearJobs() {
+    prefs.remove('savedJobs');
   }
 
 //clear cache

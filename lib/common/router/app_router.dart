@@ -49,6 +49,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: SearchInputRoute.page),
     AutoRoute(page: SettingsRoute.page),
     AutoRoute(page: SupportRoute.page),
+    AutoRoute(page: SavedJobsRoute.page),
     AutoRoute(page: SelectCountryRoute.page),
     AutoRoute(page: ChangePasswordRoute.page),
     AutoRoute(page: NoConnectionRoute.page),

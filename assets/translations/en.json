@@ -1,12 +1,12 @@
 {
   "login": "Login",
-
   "continueWithAccount": "Continue with your account",
   "continueWithoutAccount": "Continue without an account",
   "toAccessTheseFeatures": "To access these features, please use your personal account.",
   "loginRegister": "Login/Register",
   "demo": "Demo",
-
+  "savedJobs": "Saved Jobs",
+  "areYouSureDeleteAllSavedJobs": "Are you sure you want to delete all saved jobs?",
   "appName": "Find Pro",
   "harmfulContent": "Harmful content",
   "register": "Register",
@@ -140,7 +140,7 @@
   "updateProfile": "Update Profile",
   "profileUpdated": "Profile Updated",
   "themeSettings": "Theme Settings",
-  "searchResult" : "Search Results",
+  "searchResult": "Search Results",
   "editProfile": "Edit Profile",
   "changeLanguage": "Change Language",
   "months": [
@@ -194,7 +194,6 @@
   "antControl": "Ant Control",
   "airConditioningCleaning": "Air Conditioning Cleaning",
   "sofaWashing": "Sofa Washing",
-
   "combiRadiatorCleaning": "Combi Radiator Cleaning",
   "dryCleaning": "Dry Cleaning",
   "storeWindowCleaning": "Store Window Cleaning",
@@ -363,7 +362,6 @@
   "intercityMotorbikeTransport": "Intercity Motorbike Transport",
   "intercityTransport": "Intercity Transport",
   "intercityTaxi": "Intercity Taxi",
-
   "intercityLoadTransport": "Intercity Load Transport",
   "chauffeuredVehicleRental": "Chauffeured Vehicle Rental",
   "nonChauffeuredVanRental": "Non-Chauffeured Van Rental",
@@ -545,7 +543,6 @@
   "onlineRussianPrivateLesson": "Online Russian Private Lesson",
   "onlineSingingLesson": "Online Singing Lesson",
   "onlineTurkishPrivateLesson": "Online Turkish Private Lesson",
-
   "onlineTytMathematicsPrivateLesson": "Online TYT Mathematics Private Lesson",
   "onlineYksCoach": "Online YKS Coach",
   "onlineYogaLesson": "Online Yoga Lesson",
@@ -708,7 +705,6 @@
   "mevlutReading": "Mevlut Reading",
   "mevlutPilaf": "Mevlut Pilaf",
   "mevlutMeal": "Mevlut Meal",
-
   "weddingFavor": "Wedding Favor",
   "engagementGift": "Engagement Gift",
   "engagementTreatsCatering": "Engagement Treats Catering",
@@ -876,7 +872,6 @@
   "engineOilChange": "Engine Oil Change",
   "carPaint": "Car Paint",
   "carWindowTint": "Car Window Tint",
-
   "carInspection": "Car Inspection",
   "carElectrical": "Car Electrical",
   "carBodyPaint": "Car Body Paint",
@@ -955,7 +950,7 @@
   "japaneseLang": "Japanese",
   "southKoreanLang": "Korean",
   "selectCountry": "Select Country",
-  "currentCountry":"Current Country",
+  "currentCountry": "Current Country",
   "complete": "Complete",
   "continueE": "Continue",
   "russianLang": "Russian"

@@ -4,7 +4,7 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
-import 'package:findpro/common/services/model/response/string_job_model.dart';
+import 'package:findpro/common/services/model/response/job/string_job_model.dart';
 import 'package:findpro/common/widget/warning_alert.dart';
 import 'package:findpro/feature/message/view_model/chat_view_model.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
