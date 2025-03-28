@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/jobs/helper/get_country_flag.dart';
 import 'package:findpro/feature/jobs/helper/get_country_string_from_code.dart';
@@ -36,10 +37,10 @@ class UserProfileProfilePicture extends ConsumerWidget {
                 ),
                 child: CircleAvatar(
                   radius: 55,
-                  backgroundImage: Image.network(
+                  backgroundImage: CachedNetworkImageProvider(
                     CreateImageUrl.instance
                         .photo(userProfileVM.user!.profilePicture!),
-                  ).image,
+                  ),
                 ),
               ),
             )),

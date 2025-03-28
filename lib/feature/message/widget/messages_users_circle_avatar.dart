@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/router/app_router.gr.dart';
 import 'package:findpro/feature/message/view_model/full_name_shorter.dart';
@@ -37,11 +38,11 @@ class MessagesUsersCircleAvatar extends ConsumerWidget {
                     },
                     child: CircleAvatar(
                       radius: 35,
-                      backgroundImage: Image.network(
+                      backgroundImage: CachedNetworkImageProvider(
                         CreateImageUrl.instance.photo(
                           reversedMessages[index].profilePicture,
                         ),
-                      ).image,
+                      ),
                     ),
                   ),
                 ),

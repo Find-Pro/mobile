@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
@@ -15,8 +16,10 @@ class UserSearchCard extends ConsumerWidget {
       {required this.followerModel,
       required this.currentUserId,
       super.key});
+
   final FollowerModel followerModel;
   final int currentUserId;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
@@ -37,10 +40,10 @@ class UserSearchCard extends ConsumerWidget {
                 },
           leading: CircleAvatar(
               radius: 25,
-              backgroundImage: Image.network(
+              backgroundImage: CachedNetworkImageProvider(
                 CreateImageUrl.instance
                     .photo(followerModel.profilePicture!),
-              ).image),
+              )),
           title: Padding(
             padding: const EdgeInsets.only(left: 6),
             child: Text(

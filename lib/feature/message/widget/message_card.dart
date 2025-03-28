@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
 import 'package:findpro/feature/profile/view_model/profile_view_model.dart';
@@ -73,10 +74,11 @@ class _AvatarAndText extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-              radius: 20,
-              backgroundImage: Image.network(
-                CreateImageUrl.instance.photo(photo),
-              ).image),
+            radius: 20,
+            backgroundImage: CachedNetworkImageProvider(
+              CreateImageUrl.instance.photo(photo),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(

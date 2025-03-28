@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/profile/helper/change_profile_picture.dart';
 import 'package:findpro/feature/profile/helper/create_image_url.dart';
@@ -33,8 +34,8 @@ class ProfileProfilePicture extends ConsumerWidget {
               ),
               child: CircleAvatar(
                 radius: 55,
-                backgroundImage:
-                    NetworkImage(CreateImageUrl.instance.photo(photoName)),
+                backgroundImage: CachedNetworkImageProvider(
+                    CreateImageUrl.instance.photo(photoName)),
               ),
             ),
           )),

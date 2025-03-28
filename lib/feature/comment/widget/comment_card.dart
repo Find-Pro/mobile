@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/services/model/comment_model.dart';
@@ -15,6 +16,7 @@ class CommentCard extends ConsumerWidget {
     required this.onTap,
     super.key,
   });
+
   final CommentModel commentModel;
   final VoidCallback onTap;
 
@@ -30,11 +32,12 @@ class CommentCard extends ConsumerWidget {
           children: [
             Expanded(
               child: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: Image.network(
-                    CreateImageUrl.instance
-                        .photo(commentModel.profilePhoto!),
-                  ).image),
+                radius: 25,
+                backgroundImage: CachedNetworkImageProvider(
+                  CreateImageUrl.instance
+                      .photo(commentModel.profilePhoto!),
+                ),
+              ),
             ),
             Expanded(
               flex: 3,

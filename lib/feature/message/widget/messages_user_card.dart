@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/const/padding_insets.dart';
@@ -33,10 +34,10 @@ class MessagesUserCard extends ConsumerWidget {
             },
             leading: CircleAvatar(
               radius: 25,
-              backgroundImage: Image.network(
+              backgroundImage: CachedNetworkImageProvider(
                 CreateImageUrl.instance
                     .photo(messageProfileModel.profilePicture),
-              ).image,
+              ),
             ),
             trailing: IconButton(
                 onPressed: () => QuestionAlertDialog().show(context,
