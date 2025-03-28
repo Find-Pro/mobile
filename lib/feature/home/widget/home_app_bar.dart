@@ -33,7 +33,11 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.teal.shade600, Colors.teal.shade800],
+                colors: [
+                  Colors.teal.shade400,
+                  Colors.teal.shade600,
+                  Colors.teal.shade400
+                ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
