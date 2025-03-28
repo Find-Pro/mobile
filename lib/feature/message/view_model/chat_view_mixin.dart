@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/const/api_key.dart';
 import 'package:findpro/common/services/manager/notification_manager.dart';
@@ -61,8 +62,13 @@ mixin ChatViewMixin on ConsumerState<ChatView> {
     final previousMessages = (decodedMessage['messages'] as List)
         .map((json) => MessageModel.fromJson(json as Map<String, dynamic>))
         .toList();
+
     setState(() {
-      messages.addAll(previousMessages);
+      for (final message in previousMessages) {
+        if (!messages.any((msg) => msg.messageId == message.messageId)) {
+          messages.add(message);
+        }
+      }
     });
     _scrollToBottom();
   }

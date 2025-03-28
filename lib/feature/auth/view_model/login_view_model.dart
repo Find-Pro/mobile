@@ -5,7 +5,7 @@ import 'package:findpro/common/services/model/response/update_profile_response.d
 import 'package:findpro/common/services/routes/auth_service.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 
-final class LoginViewModel {
+class LoginViewModel {
   Future<UpdateProfileResponse> login(LoginRequest request) async {
     final response = await AuthService.instance.login(request);
     if (response == null) {

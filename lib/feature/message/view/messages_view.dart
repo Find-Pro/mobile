@@ -4,8 +4,8 @@ import 'package:findpro/common/cache/cache_manager.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/common/widget/you_should_login_app_widget.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
-import 'package:findpro/feature/home/widget/home_country_app_bar.dart';
 import 'package:findpro/feature/message/view_model/messages_view_model.dart';
 import 'package:findpro/feature/message/widget/messages_user_card.dart';
 import 'package:findpro/feature/message/widget/messages_users_circle_avatar.dart';
@@ -27,7 +27,7 @@ class MessagesView extends ConsumerWidget {
       return const YouShouldLoginAppWidget();
     }
     return Scaffold(
-      appBar: const HomeCountryAppBar(),
+      appBar: const HomeAppBar(),
       body: messagesFuture.when(
         data: (_) {
           if (messagesViewModel.isEmpty) {

@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const ChatAppBar({required this.messageProfileModel, super.key});
+
   final MessageProfileModel messageProfileModel;
 
   @override
@@ -19,6 +20,15 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       backgroundColor: Colors.grey.shade700,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade600, Colors.teal.shade800],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+      ),
       leading: IconButton(
         onPressed: () {
           context.router.pushAndPopUntil(const MessagesRoute(),
@@ -38,7 +48,7 @@ class ChatAppBar extends ConsumerWidget implements PreferredSizeWidget {
             onTap: () => context.router.push(
                 UserProfileRoute(userId: messageProfileModel.userId)),
             child: CircleAvatar(
-              radius: 25,
+              radius: 27,
               backgroundImage: Image.network(
                 CreateImageUrl.instance
                     .photo(messageProfileModel.profilePicture),

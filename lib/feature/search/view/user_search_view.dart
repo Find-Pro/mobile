@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:findpro/common/cache/cache_manager.dart';
-import 'package:findpro/feature/home/widget/home_country_app_bar.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/search/view_model/user_search_view_model.dart';
 import 'package:findpro/feature/search/widget/user_search_bar.dart';
 import 'package:findpro/feature/search/widget/user_search_card.dart';
@@ -41,7 +41,7 @@ class _UserSearchViewState extends ConsumerState<UserSearchView> {
   Widget build(BuildContext context) {
     final userSearchViewModel = ref.watch(userSearchProvider);
     return Scaffold(
-      appBar: const HomeCountryAppBar(),
+      appBar: const HomeAppBar(),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(

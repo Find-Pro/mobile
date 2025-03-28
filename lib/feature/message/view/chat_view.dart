@@ -23,8 +23,10 @@ class ChatView extends ConsumerStatefulWidget {
     required this.chatWithUser,
     super.key,
   });
+
   final String roomId;
   final MessageProfileModel chatWithUser;
+
   @override
   ConsumerState<ChatView> createState() => ChatViewState();
 }
@@ -55,6 +57,8 @@ class ChatViewState extends ConsumerState<ChatView> with ChatViewMixin {
                         itemBuilder: (context, index) {
                           final message = messages[index];
                           return MessageCard(
+                              profilePhoto:
+                                  widget.chatWithUser.profilePicture,
                               isMyMessage: currentUserId == message.userId,
                               time: message.timestamp?.formatMessageDate ??
                                   LocaleKeys.error.tr(),

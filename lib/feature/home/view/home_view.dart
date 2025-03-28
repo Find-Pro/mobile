@@ -3,8 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/common/widget/no_data_widget.dart';
 import 'package:findpro/feature/home/view_model/home_view_model.dart';
+import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
-import 'package:findpro/feature/home/widget/home_country_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_no_data_widget.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -23,7 +23,7 @@ class HomeView extends ConsumerWidget {
     final homeFuture = ref.watch(homeFutureProvider);
 
     return Scaffold(
-      appBar: const HomeCountryAppBar(),
+      appBar: const HomeAppBar(),
       body: homeFuture.when(
         data: (_) {
           if (homeViewModel.result!.isEmpty) {
