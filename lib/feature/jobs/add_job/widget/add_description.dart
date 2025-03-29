@@ -24,6 +24,13 @@ class AddDescription extends ConsumerWidget {
       padding: PaddingInsets().xxl,
       child: Column(
         children: [
+          10.verticalSpace,
+          Text(
+            LocaleKeys.pleaseAddDescription.tr(),
+            style: context.textTheme.headlineSmall
+                ?.copyWith(fontWeight: FontWeight.w600),
+          ),
+          10.verticalSpace,
           TextField(
               style: context.textTheme.labelLarge,
               controller: descriptionCnt,
@@ -33,7 +40,8 @@ class AddDescription extends ConsumerWidget {
               decoration: InputDecoration(
                 hintText: LocaleKeys.description.tr(),
                 hintStyle: context.themeData.textTheme.labelMedium
-                    ?.copyWith(fontWeight: FontWeight.w500, color: Colors.grey),
+                    ?.copyWith(
+                        fontWeight: FontWeight.w500, color: Colors.grey),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(
@@ -58,14 +66,14 @@ class AddDescription extends ConsumerWidget {
                     context, LocaleKeys.descriptionIsRequired.tr(), false);
               } else {
                 if (BadWords.containsForbiddenWord(descriptionCnt.text)) {
-                  WarningAlert()
-                      .show(context, LocaleKeys.pleaseAvoidBadWords.tr(), true);
+                  WarningAlert().show(
+                      context, LocaleKeys.pleaseAvoidBadWords.tr(), true);
                 } else {
                   addJobViewModel.description = descriptionCnt.text;
                   final success = await addJobViewModel.createService();
                   if (success) {
-                    InformationToast().show(
-                        context, LocaleKeys.serviceCreatedSuccessfully.tr());
+                    InformationToast().show(context,
+                        LocaleKeys.serviceCreatedSuccessfully.tr());
                     await context.router
                         .pushAndPopUntil(const MainRoute(),
                             predicate: (_) => false)
@@ -75,8 +83,8 @@ class AddDescription extends ConsumerWidget {
                       }
                     });
                   } else {
-                    WarningAlert().show(
-                        context, LocaleKeys.serviceCouldNotAdd.tr(), false);
+                    WarningAlert().show(context,
+                        LocaleKeys.serviceCouldNotAdd.tr(), false);
                   }
                 }
               }

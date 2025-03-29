@@ -13,7 +13,9 @@ class SelectHourlyWage extends ConsumerWidget {
     required this.pageController,
     super.key,
   });
+
   final PageController pageController;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final addJobViewModel = ref.read(addJobProvider.notifier);
@@ -23,7 +25,8 @@ class SelectHourlyWage extends ConsumerWidget {
           10.verticalSpace,
           Text(
             LocaleKeys.selectHourlyWage.tr(),
-            style: context.textTheme.headlineMedium,
+            style: context.textTheme.headlineSmall
+                ?.copyWith(fontWeight: FontWeight.w600),
           ),
           Expanded(
             child: ListView.builder(

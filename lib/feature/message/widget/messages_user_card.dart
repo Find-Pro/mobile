@@ -25,7 +25,7 @@ class MessagesUserCard extends ConsumerWidget {
       child: Card(
         elevation: 0.3,
         child: Padding(
-          padding: PaddingInsets().large,
+          padding: PaddingInsets().medium,
           child: ListTile(
             onTap: () {
               context.router.push(ChatRoute(
@@ -60,7 +60,7 @@ class MessagesUserCard extends ConsumerWidget {
                         bodyText: LocaleKeys.youSureDeleteChat.tr(),
                         buttonText: LocaleKeys.delete.tr()),
                 icon: const Icon(
-                  Icons.dangerous_outlined,
+                  Icons.delete_forever_outlined,
                   color: Colors.red,
                 )),
             title: Text(

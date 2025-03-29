@@ -26,7 +26,8 @@ class Assets {
   static const String iconChina = 'assets/icon/china.svg';
   static const String iconComment = 'assets/icon/comment.png';
   static const String iconDiscovery = 'assets/icon/discovery.png';
-  static const String iconFeatureGraphic = 'assets/icon/feature_graphic.png';
+  static const String iconFeatureGraphic =
+      'assets/icon/feature_graphic.png';
   static const String iconFindProHigh = 'assets/icon/find_pro_high.jpeg';
   static const String iconFindProLogo = 'assets/icon/find_pro_logo.jpeg';
   static const String iconFlagsPhone = 'assets/icon/flags_phone.png';
@@ -36,7 +37,9 @@ class Assets {
   static const String iconGermany = 'assets/icon/germany.svg';
   static const String iconGooglelogo = 'assets/icon/googlelogo.png';
   static const String iconGunduzMsgBg = 'assets/icon/gunduz_msg_bg.png';
+  static const String iconHr = 'assets/icon/hr.jpg';
   static const String iconIndia = 'assets/icon/india.svg';
+  static const String iconInterview = 'assets/icon/interview.svg';
   static const String iconJapan = 'assets/icon/japan.svg';
   static const String iconLauncher = 'assets/icon/launcher.png';
   static const String iconLaunchers = 'assets/icon/launchers.png';
@@ -52,7 +55,8 @@ class Assets {
   static const String iconRussia = 'assets/icon/russia.svg';
   static const String iconSearchBg = 'assets/icon/search_bg.png';
   static const String iconSearchBg2 = 'assets/icon/search_bg2.png';
-  static const String iconSearchBgAvatars = 'assets/icon/search_bg_avatars.png';
+  static const String iconSearchBgAvatars =
+      'assets/icon/search_bg_avatars.png';
   static const String iconSearchBgDark = 'assets/icon/search_bg_dark.png';
   static const String iconSearchIcon = 'assets/icon/search_icon.png';
   static const String iconSearchImg = 'assets/icon/search_img.png';
@@ -72,7 +76,8 @@ class Assets {
   static const String koDistrict = 'assets/country/ko/district.json';
   static const String lottieCircular = 'assets/lottie/circular.json';
   static const String lottieDarkBg = 'assets/lottie/dark_bg.svg';
-  static const String lottieEmptyFollower = 'assets/lottie/empty_follower.json';
+  static const String lottieEmptyFollower =
+      'assets/lottie/empty_follower.json';
   static const String lottieEmptyHome = 'assets/lottie/empty_home.json';
   static const String lottieLightBg = 'assets/lottie/light_bg.svg';
   static const String lottieProfile = 'assets/lottie/profile.json';
@@ -98,5 +103,4 @@ class Assets {
   static const String usDistrict = 'assets/country/us/district.json';
   static const String zhCity = 'assets/country/zh/city.json';
   static const String zhDistrict = 'assets/country/zh/district.json';
-
 }

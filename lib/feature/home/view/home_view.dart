@@ -6,6 +6,7 @@ import 'package:findpro/feature/home/view_model/home_view_model.dart';
 import 'package:findpro/feature/home/widget/home_app_bar.dart';
 import 'package:findpro/feature/home/widget/home_background_image.dart';
 import 'package:findpro/feature/home/widget/home_no_data_widget.dart';
+import 'package:findpro/feature/home/widget/home_read_more_image.dart';
 import 'package:findpro/feature/jobs/view_model/saved_jobs_view_model.dart';
 import 'package:findpro/feature/jobs/widget/job_list_tile.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
@@ -35,12 +36,16 @@ class HomeView extends ConsumerWidget {
           return Stack(
             children: [
               const HomeBackgroundImage(),
-              ListView.builder(
-                itemCount: homeViewModel.result!.length,
-                itemBuilder: (context, index) {
-                  return JobListTile(
-                      jobModel: homeViewModel.result![index]);
-                },
+              const HomeReadMoreImage(),
+              Padding(
+                padding: const EdgeInsets.only(top: 210),
+                child: ListView.builder(
+                  itemCount: homeViewModel.result!.length,
+                  itemBuilder: (context, index) {
+                    return JobListTile(
+                        jobModel: homeViewModel.result![index]);
+                  },
+                ),
               ),
             ],
           );

@@ -37,7 +37,7 @@ class MessagesUsersCircleAvatar extends ConsumerWidget {
                       ));
                     },
                     child: CircleAvatar(
-                      radius: 35,
+                      radius: 30,
                       backgroundImage: CachedNetworkImageProvider(
                         CreateImageUrl.instance.photo(
                           reversedMessages[index].profilePicture,
@@ -51,7 +51,7 @@ class MessagesUsersCircleAvatar extends ConsumerWidget {
                   child: Text(
                     FullNameShorter()
                         .cut(reversedMessages[index].fullName ?? ''),
-                    style: context.textTheme.labelLarge?.copyWith(
+                    style: context.textTheme.labelMedium?.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
                   ),

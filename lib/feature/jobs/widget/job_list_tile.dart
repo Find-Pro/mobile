@@ -14,7 +14,6 @@ import 'package:findpro/feature/jobs/view_model/saved_jobs_view_model.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class JobListTile extends ConsumerWidget {
@@ -35,14 +34,15 @@ class JobListTile extends ConsumerWidget {
         child: Padding(
           padding: PaddingInsets().xl,
           child: SizedBox(
-            height: 110,
+            height: 130,
             child: Card(
               elevation: 0.5,
               child: Padding(
-                padding: PaddingInsets().medium,
+                padding: const EdgeInsets.all(4),
                 child: Column(
                   children: [
                     Expanded(
+                      flex: 2,
                       child: Row(
                         children: [
                           SvgPicture.asset(
@@ -52,46 +52,70 @@ class JobListTile extends ConsumerWidget {
                               Colors.blueAccent,
                               BlendMode.srcATop,
                             ),
-                            width: 40,
-                            height: 40,
+                            width: 50,
+                            height: 50,
                           ),
-                          20.horizontalSpace,
                           Expanded(
-                            child: Text(
-                              stringJobModel.service!,
-                              style:
-                                  context.textTheme.labelLarge?.copyWith(
-                                fontWeight: FontWeight.w700,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 35),
+                              child: Column(
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    stringJobModel.service!,
+                                    style: context.textTheme.labelLarge
+                                        ?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  Text(
+                                    stringJobModel.category!,
+                                    style: context.textTheme.labelMedium
+                                        ?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color:
+                                          context.themeData.dividerColor,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SvgPicture.asset(
+                                      GetCountryFlag().getSvgPath(
+                                          stringJobModel.country!),
+                                      height: 35,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 6),
-                            child: SvgPicture.asset(
-                              GetCountryFlag()
-                                  .getSvgPath(stringJobModel.country!),
-                              height: 30,
-                            ),
-                          ),
-                          10.horizontalSpace,
-                          IconButton(
-                            onPressed: () {
-                              isSaved
-                                  ? savedJobsVM.removeJob(jobModel.jobId!)
-                                  : savedJobsVM.saveJob(jobModel.jobId!);
-                            },
-                            icon: Icon(
-                              isSaved
-                                  ? Icons.bookmark_added
-                                  : Icons.bookmark_add_outlined,
-                              color: Colors.blueAccent,
-                              size: 30,
-                            ),
+                          Column(
+                            children: [
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    isSaved
+                                        ? savedJobsVM
+                                            .removeJob(jobModel.jobId!)
+                                        : savedJobsVM
+                                            .saveJob(jobModel.jobId!);
+                                  },
+                                  icon: Icon(
+                                    isSaved
+                                        ? Icons.bookmark_added
+                                        : Icons.bookmark_add_outlined,
+                                    color: Colors.blueAccent,
+                                    size: 35,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    20.verticalSpace,
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,

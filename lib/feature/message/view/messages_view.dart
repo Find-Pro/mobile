@@ -43,7 +43,7 @@ class MessagesView extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   if (index == 0) {
                     return const SizedBox(
-                      height: 150,
+                      height: 140,
                       child: MessagesUsersCircleAvatar(),
                     );
                   }

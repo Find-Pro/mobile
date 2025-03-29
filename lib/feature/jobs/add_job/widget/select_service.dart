@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/common/widget/custom_circular.dart';
 import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/service_model.dart';
@@ -7,9 +8,11 @@ import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
 import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectService extends ConsumerStatefulWidget {
   const SelectService({required this.pageController, super.key});
+
   final PageController pageController;
 
   @override
@@ -46,19 +49,31 @@ class _SelectServiceState extends ConsumerState<SelectService> {
     if (services.isEmpty) {
       return Center(child: Text(LocaleKeys.couldNotFindService.tr()));
     }
-    return ListView.builder(
-      itemCount: services.length,
-      itemBuilder: (context, index) {
-        return AddJobListTile(
-            text: services[index].name,
-            onTap: () {
-              addJobViewModel.serviceId = services[index].id;
-              widget.pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            });
-      },
+    return Column(
+      children: [
+        10.verticalSpace,
+        Text(
+          'LocaleKeys.pleaseSelectACategory.tr()',
+          style: context.textTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: services.length,
+            itemBuilder: (context, index) {
+              return AddJobListTile(
+                  text: services[index].name,
+                  onTap: () {
+                    addJobViewModel.serviceId = services[index].id;
+                    widget.pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  });
+            },
+          ),
+        ),
+      ],
     );
   }
 }
