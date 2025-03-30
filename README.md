@@ -36,6 +36,7 @@ Push Notification
   * [logger](https://pub.dev/packages/logger)
   * [json_annotation](https://pub.dev/packages/json_annotation)
   * [freezed](https://pub.dev/packages/freezed)
+  * [easy_localization](https://pub.dev/packages/easy_localization)
 - UI
   * [flutter_native_splash](https://pub.dev/packages/flutter_native_splash)
   * [flutter_svg](https://pub.dev/packages/flutter_svg)
