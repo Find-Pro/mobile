@@ -53,7 +53,7 @@ class _SelectServiceState extends ConsumerState<SelectService> {
       children: [
         10.verticalSpace,
         Text(
-          'LocaleKeys.pleaseSelectACategory.tr()',
+          LocaleKeys.pleaseSelectAService.tr(),
           style: context.textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w600),
         ),

@@ -1,14 +1,17 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/jobs/add_job/helper/add_job_city_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/city_model.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectCity extends ConsumerStatefulWidget {
   const SelectCity({required this.pageController, super.key});
+
   final PageController pageController;
 
   @override
@@ -17,6 +20,7 @@ class SelectCity extends ConsumerStatefulWidget {
 
 class _SelectCityState extends ConsumerState<SelectCity> {
   List<CityModel> cities = [];
+
   @override
   void initState() {
     super.initState();
@@ -35,7 +39,7 @@ class _SelectCityState extends ConsumerState<SelectCity> {
       children: [
         10.verticalSpace,
         Text(
-          'LocaleKeys.pleaseSelectACategory.tr()',
+          LocaleKeys.pleaseSelectYourCity.tr(),
           style: context.textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w600),
         ),

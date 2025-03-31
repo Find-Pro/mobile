@@ -23,10 +23,10 @@ class SavedJobsView extends ConsumerWidget {
       floatingActionButton: IconButton(
           onPressed: () {
             QuestionAlertDialog().show(context,
-                bodyText: 'LocaleKeys.areYouSureDeleteAllSavedJobs.tr()',
-                buttonText: LocaleKeys.yes,
-                onTap: () =>
-                    ref.read(savedJobsProvider.notifier).clearSavedJobs());
+                bodyText: LocaleKeys.areYouSureDeleteAllSavedJobs.tr(),
+                buttonText: LocaleKeys.yes, onTap: () async {
+              ref.read(savedJobsProvider.notifier).clearSavedJobs();
+            });
           },
           icon: Icon(
             Icons.delete_forever_outlined,

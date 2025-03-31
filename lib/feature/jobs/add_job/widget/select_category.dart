@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:findpro/common/const/extension/context_extension.dart';
 import 'package:findpro/feature/jobs/add_job/helper/categories_helper.dart';
 import 'package:findpro/feature/jobs/add_job/model/category_model.dart';
 import 'package:findpro/feature/jobs/add_job/view_model/add_job_view_model.dart';
 import 'package:findpro/feature/jobs/add_job/widget/add_job_list_tile.dart';
+import 'package:findpro/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +39,7 @@ class _SelectCategoryState extends ConsumerState<SelectCategory> {
       children: [
         10.verticalSpace,
         Text(
-          'LocaleKeys.pleaseSelectACategory.tr()',
+          LocaleKeys.pleaseSelectACategory.tr(),
           style: context.textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w600),
         ),

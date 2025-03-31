@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectDistrict extends ConsumerStatefulWidget {
   const SelectDistrict({required this.pageController, super.key});
+
   final PageController pageController;
 
   @override
@@ -55,7 +56,7 @@ class _SelectDistrictState extends ConsumerState<SelectDistrict> {
       children: [
         10.verticalSpace,
         Text(
-          'LocaleKeys.pleaseSelectACategory.tr()',
+          LocaleKeys.pleaseSelectYourDistrict.tr(),
           style: context.textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w600),
         ),
