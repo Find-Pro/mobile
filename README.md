@@ -1,11 +1,11 @@
 # Find Pro
 Find Pro is a completely free innovative platform that connects professional service providers and customers. It's easy to find electricians, plumbers, software developers, cleaners and much more!
 
-Available on online stores :
+### 📱 Check out the mobile client on stores:
 
-https://play.google.com/store/apps/details?id=com.kok.findpro
-
-https://apps.apple.com/us/app/find-pro/id6740331723?platform=iphone
+[![App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/find-pro/id6740331723?platform=iphone)
+&nbsp;&nbsp;
+[![Google Play](https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg)](https://play.google.com/store/apps/details?id=com.kok.findpro)
 
 Features:
 View professional profiles.Create your service requests.Communicate directly through the app.Make the best choice by reading trusted user reviews.
